@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cupons & Indicações — Meu Locus</title>
+  <title>Cupons, achadinhos & indicações — Meu Locus</title>
   <meta name="description" content="Cupons, descontos e links de embaixadora da Fernanda Damasceno — só o que eu uso e recomendo de verdade." />
   <meta property="og:title" content="Cupons & Indicações — Meu Locus" />
   <meta property="og:description" content="Só o que eu uso e recomendo de verdade." />
@@ -61,6 +61,16 @@
     .tag{margin-bottom:4px;align-self:flex-start;font-size:.62rem;font-weight:700;letter-spacing:.14em;color:#100C2A;background:var(--lilac);border-radius:6px;padding:2px 7px}
     .coupon{margin-top:6px;align-self:flex-start;font-size:.7rem;font-weight:600;letter-spacing:.06em;color:var(--orange);background:rgba(251,146,60,.10);border:1px dashed rgba(251,146,60,.55);border-radius:6px;padding:2px 8px}
     .arrow{margin-left:auto;color:var(--lilac);flex:0 0 auto;opacity:.7}
+    .prod{display:grid;grid-template-columns:104px minmax(0,1fr);gap:14px;align-items:start;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:12px}
+    .prod img{width:104px;height:104px;object-fit:cover;border-radius:12px;box-shadow:0 0 0 1px var(--line),0 8px 20px rgba(0,0,0,.35)}
+    .prod .txt{gap:2px}
+    .prod .cat{font-size:.62rem;font-weight:700;letter-spacing:.16em;color:var(--lilac);text-transform:uppercase}
+    .prod .s{line-height:1.45}
+    .prod .s b{color:var(--ink);font-weight:600}
+    .prod .fav{align-self:flex-start;margin-bottom:2px;font-size:.62rem;font-weight:700;letter-spacing:.12em;color:#100C2A;background:var(--orange);border-radius:6px;padding:2px 7px}
+    .btns{grid-column:1/-1;display:flex;gap:8px;flex-wrap:wrap}
+    .btns a{flex:1 1 140px;text-align:center;font-size:.85rem;font-weight:600;color:#100C2A;background:var(--lilac);text-decoration:none;padding:10px 12px;border-radius:999px;border:none;justify-content:center;backdrop-filter:none;transition:transform .12s ease,box-shadow .12s ease}
+    .btns a:hover,.btns a:focus-visible{background:#E8D2FF;transform:translateY(-2px);box-shadow:0 8px 20px rgba(168,96,216,.4);outline:none}
     .social{margin-top:32px;display:flex;flex-wrap:wrap;justify-content:center;gap:8px}
     .social a{display:flex;align-items:center;gap:7px;font-size:.78rem;font-weight:600;color:var(--ink);text-decoration:none;
       padding:8px 12px;border-radius:999px;border:1px solid var(--line);background:rgba(16,12,42,.55)}
@@ -77,7 +87,7 @@
     <div class="avatar" role="img" aria-label="Foto de Fernanda Damasceno"></div>
     <p class="marca"><i>meu</i> locus</p>
     <h1>Cupons &amp; <i>indicações</i></h1>
-    <p class="role">Só o que eu uso e recomendo de verdade.</p>
+    <p class="role">Tudo que eu indico num só lugar: embaixadora, achadinhos e descontos. Só o que eu uso de verdade.</p>
 
     <p class="disclosure">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 4 6v6c0 4.5 3.4 8.2 8 9 4.6-.8 8-4.5 8-9V6l-8-3Z"/><path d="m9 12 2 2 4-4"/></svg>
@@ -92,7 +102,23 @@
         <span class="arrow" aria-hidden="true">↗</span></a></li>
     </ul>
 
-    <p class="section-label">Saúde &amp; bem-estar</p>
+    <p class="section-label">Achadinhos</p>
+    <ul class="links">
+      <li class="prod">
+        <img src="img/osmo-pocket-3.jpg" alt="DJI Osmo Pocket 3" loading="lazy" />
+        <span class="txt"><span class="fav">MEU QUERIDINHO</span><span class="cat">Tecnologia · Mercado Livre</span><span class="t">DJI Osmo Pocket 3</span><span class="s">A câmera que eu mais uso pra gravar o Meu Locus. <b>Estabilização absurda</b> e cabe na palma da mão.</span></span>
+        <span class="btns"><a href="https://meli.la/2UDgjBr" target="_blank" rel="noopener sponsored">Só a câmera ↗</a><a href="https://meli.la/1oh93fj" target="_blank" rel="noopener sponsored">Creator Combo ↗</a></span></li>
+      <li class="prod">
+        <img src="img/insta360-go-3s.webp" alt="Insta360 GO 3S" loading="lazy" />
+        <span class="txt"><span class="cat">Tecnologia · Mercado Livre</span><span class="t">Insta360 GO 3S</span><span class="s">Câmera minúscula que gruda em qualquer lugar e grava sozinha. <b>Perfeita pra Reels</b> sem precisar segurar nada.</span></span>
+        <span class="btns"><a href="https://meli.la/13HZcTN" target="_blank" rel="noopener sponsored">Ver achadinho ↗</a></span></li>
+      <li class="prod">
+        <img src="img/carimbo-delineador.jpg" alt="Carimbo delineador à prova d'água" loading="lazy" />
+        <span class="txt"><span class="cat">Beleza · Amazon</span><span class="t">Carimbo delineador à prova d'água</span><span class="s">Carimba e sai o gatinho perfeito nos dois olhos. <b>Não borra</b> nem no calor nem na choradeira.</span></span>
+        <span class="btns"><a href="https://link.amazon/B022ZQkbD" target="_blank" rel="noopener sponsored">Ver achadinho ↗</a></span></li>
+    </ul>
+
+    <p class="section-label">Descontos · saúde &amp; bem-estar</p>
     <ul class="links">
       <li><a href="https://quei.ma/c/143ghfa9dj457" target="_blank" rel="noopener noreferrer">
         <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.07-2.14-.22-4.05 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.15.43-2.29 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg></span>
