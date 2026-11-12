@@ -1,14 +1,16 @@
-# Cupons & Descontos — Fernanda Damasceno
+# Cupons & Indicações — Meu Locus
 
 Página única (`index.html`), sem dependências, pronta pra GitHub Pages.
-Tema claro (mesmo DNA da página pessoal: navy/cobalto/prata).
+Estética V4 do Meu Locus: fundo roxo + padrão de ícones médicos (`padrao-lilas.png`), Playfair Display + Inter.
 
 Hub de **cupons, descontos e links de indicação** de coisas que a Fernanda usa e
 recomenda de verdade. Inclui aviso de transparência ("links de indicação · sem
 custo extra pra você") para proteger a confiança da audiência.
 
 ## Conteúdo atual
+- **Embaixadora:** Meta Analysis Academy, MRCC 2026
 - **Saúde & bem-estar:** Queima Diária (link de indicação: `quei.ma/c/143ghfa9dj457`)
+- Rodapé: redes do Meu Locus + volta pra página de links principal
 
 ## Como adicionar um cupom/desconto novo
 Copie um bloco `<li>...</li>` e troque:
@@ -16,10 +18,10 @@ Copie um bloco `<li>...</li>` e troque:
 - `.t` → nome
 - `.s` → descrição curta
 - (opcional) adicione `<span class="coupon">CÓDIGO</span>` dentro de `.txt` para
-  mostrar o código do cupom num "chip" verde.
+  mostrar o código do cupom num "chip" laranja tracejado. Link de embaixadora: `class="embaixadora"` no `<a>` + `<span class="tag">EMBAIXADORA</span>`.
 
 Crie novas seções duplicando um `<p class="section-label">...</p>` + `<ul class="links">`.
 
 ## 🚀 Publicar / atualizar
 Repo público `linksdescontos`. Cada `git push` na `main` redeploya o GitHub Pages.
-URL: `https://ferdamas96.github.io/linksdescontos/`
+URL: `https://damatech00.github.io/linksdescontos/`

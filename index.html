@@ -3,187 +3,117 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cupons & Descontos — Fernanda Damasceno</title>
-  <meta name="description" content="Cupons, descontos e indicações que a Fernanda usa e recomenda de verdade." />
-
-  <meta property="og:title" content="Cupons & Descontos — Fernanda Damasceno" />
-  <meta property="og:description" content="Indicações que eu uso e recomendo de verdade." />
+  <title>Cupons & Indicações — Meu Locus</title>
+  <meta name="description" content="Cupons, descontos e links de embaixadora da Fernanda Damasceno — só o que eu uso e recomendo de verdade." />
+  <meta property="og:title" content="Cupons & Indicações — Meu Locus" />
+  <meta property="og:description" content="Só o que eu uso e recomendo de verdade." />
   <meta property="og:type" content="website" />
-  <meta name="theme-color" content="#0F1628" />
-
+  <meta name="theme-color" content="#100C2A" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🪻</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,400;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
-    :root {
-      --navy:   #E9ECF6;   /* texto principal (off-white suave, dark) */
-      --cobalt: #6E93EA;   /* acento cobalto (clareado p/ fundo escuro) */
-      --silver: #AAB3C7;   /* prata — assinatura */
-      --muted:  #99A3BC;   /* secundário */
-      --bg:     #0F1628;   /* fundo navy escuro */
-      --card:   #182241;   /* superfície dos cards */
-      --line:   rgba(255,255,255,.09);
+    :root{
+      --bg:#100C2A; --bg2:#0B0820; --ink:#EDE6FF; --muted:rgba(237,230,255,.66); --dim:rgba(237,230,255,.5);
+      --lilac:#D9B8FF; --violet:#A860D8; --blue:#3A5BD0; --orange:#FB923C;
+      --card:rgba(160,96,216,.10); --line:rgba(216,184,255,.22);
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { -webkit-text-size-adjust: 100%; }
-
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      color: var(--navy);
-      line-height: 1.5;
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      padding: 40px 20px 56px;
-      -webkit-font-smoothing: antialiased;
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{-webkit-text-size-adjust:100%;background:var(--bg)}
+    body{
+      font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+      color:var(--ink);line-height:1.55;min-height:100vh;display:flex;justify-content:center;
+      padding:44px 20px 56px;-webkit-font-smoothing:antialiased;
       background:
-        radial-gradient(900px 520px at 50% -8%, #1E2C54 0%, rgba(30,44,84,0) 60%),
-        linear-gradient(180deg, #141C34 0%, #0F1628 46%, #0C1120 100%);
-      background-attachment: fixed;
+        url("padrao-lilas.png") 0 0/620px auto repeat,
+        radial-gradient(760px 460px at 50% -6%, rgba(168,96,216,.34) 0%, rgba(168,96,216,0) 62%),
+        radial-gradient(600px 420px at 100% 100%, rgba(58,91,208,.18) 0%, rgba(58,91,208,0) 60%),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%);
+      background-attachment:fixed;
     }
-
-    .wrap { width: 100%; max-width: 480px; display: flex; flex-direction: column; align-items: center; }
-
-    /* ---- Cabeçalho ---- */
-    .badge {
-      width: 84px; height: 84px; border-radius: 22px;
-      background: var(--cobalt); color: #fff;
-      display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 0 0 4px #0C1120, 0 0 0 6px rgba(110,147,234,.5), 0 10px 30px rgba(0,0,0,.45);
-      user-select: none;
-    }
-    .badge svg { width: 40px; height: 40px; }
-
-    h1 { margin-top: 18px; font-size: 1.5rem; font-weight: 700; text-align: center; }
-    .role { margin-top: 6px; font-size: 0.98rem; color: #C2CADC; text-align: center; max-width: 360px; }
-
-    .disclosure {
-      margin-top: 16px;
-      font-size: 0.78rem;
-      color: #B7C0D6;
-      background: rgba(255,255,255,.04);
-      border: 1px solid rgba(255,255,255,.1);
-      border-radius: 12px;
-      padding: 10px 14px;
-      text-align: center;
-      max-width: 420px;
-    }
-
-    .divider { width: 44px; height: 2px; background: linear-gradient(90deg, transparent, var(--silver), transparent); border: none; margin: 22px 0 4px; }
-
-    .section-label {
-      width: 100%; font-size: 0.72rem; font-weight: 700; letter-spacing: 1.5px;
-      text-transform: uppercase; color: var(--silver); margin: 24px 0 4px;
-      display: flex; align-items: center; gap: 12px;
-    }
-    .section-label::after { content: ""; flex: 1; height: 1px; background: var(--line); }
-
-    /* ---- Cards ---- */
-    .links { width: 100%; list-style: none; display: flex; flex-direction: column; gap: 12px; margin-top: 12px; }
-    .links a {
-      display: flex; align-items: center; gap: 14px;
-      background: linear-gradient(180deg, var(--card) 0%, #131B33 100%); border: 1px solid var(--line); border-radius: 14px;
-      padding: 15px 18px; text-decoration: none; color: var(--navy);
-      transition: transform .12s ease, border-color .12s ease, box-shadow .12s ease;
-    }
-    .links a:hover, .links a:focus-visible {
-      border-color: var(--cobalt); transform: translateY(-2px);
-      box-shadow: 0 8px 22px rgba(110,147,234,.18); outline: none;
-    }
-    .links a:focus-visible { box-shadow: 0 0 0 3px rgba(110,147,234,.4); }
-
-    .ic { flex: 0 0 26px; width: 26px; height: 26px; color: var(--cobalt); display: flex; align-items: center; justify-content: center; }
-    .ic svg { width: 24px; height: 24px; }
-
-    .txt { display: flex; flex-direction: column; min-width: 0; }
-    .txt .t { font-weight: 600; font-size: 1rem; }
-    .txt .s { font-size: 0.8rem; color: var(--muted); }
-
-    /* chip de cupom */
-    .coupon {
-      margin-top: 5px; align-self: flex-start;
-      font-size: 0.72rem; font-weight: 700; letter-spacing: .5px;
-      color: #79D9A6; background: rgba(46,138,91,.18); border: 1px dashed rgba(86,200,140,.45);
-      border-radius: 7px; padding: 2px 8px;
-    }
-
-    .arrow { margin-left: auto; color: var(--silver); flex: 0 0 auto; opacity: .65; }
-
-    footer { margin-top: 30px; font-size: 0.74rem; color: #6E7796; text-align: center; }
-
-    @media (max-width: 380px) { .links a { padding: 13px 15px; } h1 { font-size: 1.35rem; } }
+    .wrap{width:100%;max-width:480px;display:flex;flex-direction:column;align-items:center}
+    .avatar{width:96px;height:96px;border-radius:50%;background:url('avatar.jpg') center/cover, var(--violet);
+      box-shadow:0 0 0 3px var(--bg),0 0 0 5px var(--lilac),0 0 34px rgba(168,96,216,.5)}
+    .marca{margin-top:16px;font-family:"Playfair Display",Georgia,serif;font-size:1.05rem;letter-spacing:.3px}
+    .marca i{background:linear-gradient(90deg,var(--blue),var(--violet));-webkit-background-clip:text;background-clip:text;color:transparent}
+    h1{margin-top:4px;font-family:"Playfair Display",Georgia,serif;font-weight:800;font-size:2rem;line-height:1.1;text-align:center}
+    h1 i{font-weight:600;color:var(--lilac)}
+    .role{margin-top:8px;font-size:.95rem;color:var(--muted);text-align:center;max-width:360px}
+    .disclosure{margin-top:18px;display:flex;gap:10px;align-items:flex-start;font-size:.8rem;color:var(--muted);
+      background:rgba(16,12,42,.6);border:1px solid var(--line);border-radius:14px;padding:12px 14px;max-width:440px}
+    .disclosure svg{flex:0 0 18px;width:18px;height:18px;color:var(--lilac);margin-top:1px}
+    .disclosure strong{color:var(--ink)}
+    .section-label{align-self:flex-start;color:var(--lilac);font-size:.7rem;font-weight:600;letter-spacing:.24em;text-transform:uppercase;margin:28px 0 2px;display:flex;align-items:center;gap:10px;width:100%}
+    .section-label::after{content:"";flex:1;height:1px;background:var(--line)}
+    .links{width:100%;list-style:none;display:flex;flex-direction:column;gap:10px;margin-top:12px}
+    .links a{display:flex;align-items:center;gap:14px;background:var(--card);border:1px solid var(--line);border-radius:16px;
+      padding:15px 18px;text-decoration:none;color:var(--ink);backdrop-filter:blur(2px);
+      transition:transform .12s ease,border-color .12s ease,box-shadow .12s ease,background .12s ease}
+    .links a:hover,.links a:focus-visible{border-color:var(--lilac);background:rgba(160,96,216,.18);transform:translateY(-2px);box-shadow:0 10px 26px rgba(168,96,216,.30);outline:none}
+    .links a:focus-visible{box-shadow:0 0 0 3px rgba(216,184,255,.45)}
+    .links a.embaixadora{background:linear-gradient(135deg,rgba(58,91,208,.20),rgba(168,96,216,.22));border-color:rgba(216,184,255,.4)}
+    .ic{flex:0 0 40px;width:40px;height:40px;border-radius:12px;background:rgba(216,184,255,.12);color:var(--lilac);display:flex;align-items:center;justify-content:center}
+    .ic svg{width:22px;height:22px}
+    .txt{display:flex;flex-direction:column;min-width:0}
+    .txt .t{font-weight:600;font-size:1rem}
+    .txt .s{font-size:.8rem;color:var(--muted)}
+    .tag{margin-bottom:4px;align-self:flex-start;font-size:.62rem;font-weight:700;letter-spacing:.14em;color:#100C2A;background:var(--lilac);border-radius:6px;padding:2px 7px}
+    .coupon{margin-top:6px;align-self:flex-start;font-size:.7rem;font-weight:600;letter-spacing:.06em;color:var(--orange);background:rgba(251,146,60,.10);border:1px dashed rgba(251,146,60,.55);border-radius:6px;padding:2px 8px}
+    .arrow{margin-left:auto;color:var(--lilac);flex:0 0 auto;opacity:.7}
+    .social{margin-top:32px;display:flex;flex-wrap:wrap;justify-content:center;gap:8px}
+    .social a{display:flex;align-items:center;gap:7px;font-size:.78rem;font-weight:600;color:var(--ink);text-decoration:none;
+      padding:8px 12px;border-radius:999px;border:1px solid var(--line);background:rgba(16,12,42,.55)}
+    .social a:hover,.social a:focus-visible{border-color:var(--lilac);outline:none}
+    .social svg{width:15px;height:15px;color:var(--lilac)}
+    .back{margin-top:18px;font-size:.85rem;color:var(--lilac);text-decoration:none;font-weight:600}
+    .back:hover{text-decoration:underline}
+    footer{margin-top:22px;font-size:.74rem;color:var(--dim);text-align:center}
+    @media (max-width:380px){.links a{padding:13px 14px}h1{font-size:1.7rem}}
   </style>
 </head>
 <body>
   <main class="wrap">
+    <div class="avatar" role="img" aria-label="Foto de Fernanda Damasceno"></div>
+    <p class="marca"><i>meu</i> locus</p>
+    <h1>Cupons &amp; <i>indicações</i></h1>
+    <p class="role">Só o que eu uso e recomendo de verdade.</p>
 
-    <div class="badge" aria-hidden="true">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M20 12a2 2 0 0 1 2-2V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v3a2 2 0 0 1 0 4v3a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-3a2 2 0 0 1-2-2Z"/>
-        <path d="M9 9h0M15 15h0M15 9l-6 6"/>
-      </svg>
-    </div>
+    <p class="disclosure">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 4 6v6c0 4.5 3.4 8.2 8 9 4.6-.8 8-4.5 8-9V6l-8-3Z"/><path d="m9 12 2 2 4-4"/></svg>
+      <span>Alguns são <strong>links de embaixadora ou de indicação</strong>: se você usar, posso ganhar um bônus, <strong>sem custo extra pra você</strong>.</span>
+    </p>
 
-    <h1>Cupons &amp; Descontos</h1>
-    <p class="role">Indicações que eu uso e recomendo de verdade.</p>
-
-    <p class="disclosure">🔖 Alguns são <strong>links de indicação</strong>: se você usar, posso ganhar um bônus — <strong>sem custo extra pra você</strong>. Só indico o que eu realmente uso.</p>
-
-    <hr class="divider" />
-
-    <!-- ===================== CIÊNCIA & FORMAÇÃO ===================== -->
-    <p class="section-label">Ciência &amp; formação</p>
+    <p class="section-label">Embaixadora</p>
     <ul class="links">
-
-      <li>
-        <a href="https://m.metaanalysisacademy.com/fernanda2" target="_blank" rel="noopener noreferrer">
-          <span class="ic" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c0 1 2.7 2.5 6 2.5s6-1.5 6-2.5v-5"/></svg>
-          </span>
-          <span class="txt">
-            <span class="t">Meta Analysis Academy</span>
-            <span class="s">Onde aprendi mais sobre produzir evidência · metanálise na prática</span>
-          </span>
-          <span class="arrow" aria-hidden="true">↗</span>
-        </a>
-      </li>
-
-      <li>
-        <a href="https://rc.metaanalysisacademy.com/mrcc/" target="_blank" rel="noopener noreferrer">
-          <span class="ic" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
-          </span>
-          <span class="txt">
-            <span class="t">MRCC 2026</span>
-            <span class="s">Congresso de pesquisa &amp; carreira médica · 15–16 ago · São Paulo</span>
-            <span class="coupon">CUPOM FERNANDA46A8C338 · 10% OFF</span>
-          </span>
-          <span class="arrow" aria-hidden="true">↗</span>
-        </a>
-      </li>
-
+      <li><a class="embaixadora" href="https://m.metaanalysisacademy.com/fernanda2" target="_blank" rel="noopener noreferrer">
+        <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c0 1 2.7 2.5 6 2.5s6-1.5 6-2.5v-5"/></svg></span>
+        <span class="txt"><span class="tag">EMBAIXADORA</span><span class="t">Meta Analysis Academy</span><span class="s">Onde aprendi a produzir evidência · metanálise na prática</span><span class="coupon">BLACK NOVEMBER · PRÉ-INSCRIÇÃO GRATUITA</span></span>
+        <span class="arrow" aria-hidden="true">↗</span></a></li>
+      <li><a class="embaixadora" href="https://rc.metaanalysisacademy.com/mrcc/" target="_blank" rel="noopener noreferrer">
+        <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span>
+        <span class="txt"><span class="tag">EMBAIXADORA</span><span class="t">MRCC 2026</span><span class="s">Congresso de pesquisa &amp; carreira médica · 15–16 ago · São Paulo</span><span class="coupon">CUPOM FERNANDA46A8C338 · 10% OFF</span></span>
+        <span class="arrow" aria-hidden="true">↗</span></a></li>
     </ul>
 
-    <!-- ===================== SAÚDE & BEM-ESTAR ===================== -->
     <p class="section-label">Saúde &amp; bem-estar</p>
     <ul class="links">
-
-      <li>
-        <a href="https://quei.ma/c/143ghfa9dj457" target="_blank" rel="noopener noreferrer">
-          <span class="ic" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 6.5 17.5 17.5M3 12h2M19 12h2M7 7 5.5 5.5M17 17l1.5 1.5"/><circle cx="12" cy="12" r="3.2"/></svg>
-          </span>
-          <span class="txt">
-            <span class="t">Queima Diária</span>
-            <span class="s">Treinos em casa que eu faço · meu link</span>
-            <span class="coupon">15% OFF · 30 DIAS PRA TESTAR</span>
-          </span>
-          <span class="arrow" aria-hidden="true">↗</span>
-        </a>
-      </li>
-
+      <li><a href="https://quei.ma/c/143ghfa9dj457" target="_blank" rel="noopener noreferrer">
+        <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.07-2.14-.22-4.05 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.15.43-2.29 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg></span>
+        <span class="txt"><span class="t">Queima Diária</span><span class="s">Treinos em casa que eu faço · meu link</span><span class="coupon">15% OFF · 30 DIAS PRA TESTAR</span></span>
+        <span class="arrow" aria-hidden="true">↗</span></a></li>
     </ul>
 
-    <footer>© <span id="y"></span> Fernanda Damasceno de Souza</footer>
-  </main>
+    <nav class="social" aria-label="Meu Locus nas redes">
+      <a href="https://www.youtube.com/@MeuLocus" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="4"/><path d="M10 9.2 15 12l-5 2.8V9.2Z" fill="currentColor" stroke="none"/></svg>@meulocus</a>
+      <a href="https://www.tiktok.com/@meulocus" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3v11.5a3.5 3.5 0 1 1-3.5-3.5"/><path d="M14 3c.4 2.6 2.2 4.4 5 4.6"/></svg>@meulocus</a>
+      <a href="https://www.instagram.com/dra.fernanda.damasceno" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/></svg>@dra.fernanda.damasceno</a>
+      <a href="https://www.threads.net/@dra.fernanda.damasceno" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M16.5 11.2c-.3-2.6-2-4-4.4-4-2.6 0-4.3 1.7-4.6 4.2"/><path d="M8.9 14.6c.3 1.3 1.5 2.1 3.1 2.1 2.2 0 3.6-1.5 3.6-3.6 0-1.8-1.5-2.6-3.6-2.6-1.6 0-3 .6-3.1 1.9"/><circle cx="12" cy="12" r="9"/></svg>Threads</a>
+    </nav>
 
-  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+    <a class="back" href="https://damatech00.github.io/linksinstapessoal/">← todos os meus links</a>
+    <footer>© <span id="y"></span> Fernanda Damasceno de Souza · Meu Locus</footer>
+  </main>
+  <script>document.getElementById('y').textContent=new Date().getFullYear();</script>
 </body>
 </html>
