@@ -9,7 +9,6 @@ custo extra pra você") para proteger a confiança da audiência.
 
 ## Conteúdo atual
 - **Embaixadora:** Meta Analysis Academy
-- **Achadinhos (afiliado):** DJI Osmo Pocket 3 (2 links), Insta360 GO 3S, carimbo delineador — fotos em `img/` (vieram do repo uau-q)
 - **Saúde & bem-estar:** Queima Diária (link de indicação: `quei.ma/c/143ghfa9dj457`)
 - Rodapé: redes do Meu Locus + volta pra página de links principal
 
