@@ -23,5 +23,5 @@ Copie um bloco `<li>...</li>` e troque:
 Crie novas seções duplicando um `<p class="section-label">...</p>` + `<ul class="links">`.
 
 ## 🚀 Publicar / atualizar
-Repo público `linksdescontos`. Cada `git push` na `main` redeploya o GitHub Pages.
-URL: `https://damatech00.github.io/linksdescontos/`
+Repo público `indicacoes`. Cada `git push` na `main` redeploya o GitHub Pages.
+URL: `https://damatech00.github.io/indicacoes/`
