@@ -9,6 +9,7 @@ custo extra pra você") para proteger a confiança da audiência.
 
 ## Conteúdo atual
 - **Embaixadora:** Meta Analysis Academy
+- **Recursos que eu criei:** Guia de gravação (`guia-gravacao.html`: mesa com 3 câmeras e luz, checklist profissional, cola de marcações faladas pra editar com IA)
 - **Saúde & bem-estar:** Queima Diária (link de indicação: `quei.ma/c/143ghfa9dj457`)
 - Rodapé: redes do Meu Locus + volta pra página de links principal
 

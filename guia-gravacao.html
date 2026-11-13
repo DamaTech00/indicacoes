@@ -1,0 +1,365 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Guia de gravação do Meu Locus: montagem da mesa com 3 câmeras e luz, checklist profissional e cola de marcações faladas para editar com IA.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<title>Guia de Gravação meu locus</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,800;1,600;1,800&display=swap">
+<style>
+/* Layout: três folhas A4 — 1) estúdio e enquadramento, 2) checklist profissional, 3) cola de marcações faladas. Visual V4 na tela, papel branco na impressão. */
+:root{
+  --bg:#100C2A; --bg2:#0B0820; --fg:#EDE6FF; --muted:rgba(237,230,255,.70);
+  --lilac:#D9B8FF; --violet:#A860D8; --blue:#3A5BD0; --orange:#FB923C;
+  --card:rgba(160,96,216,.10); --line:rgba(216,184,255,.26); --frame:#1a1440; --skin:#3b2f6b;
+  --serif:"Playfair Display",Georgia,"Times New Roman",serif;
+  --sans:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  color-scheme:dark;
+}
+body{background:linear-gradient(180deg,var(--bg),var(--bg2));color:var(--fg);font-family:var(--sans);font-size:15px;line-height:1.5}
+.wrap{max-width:980px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 48px;display:grid;gap:40px}
+.sheet{display:grid;gap:22px}
+.brand{font-family:var(--serif);font-weight:800;font-size:15px;letter-spacing:.01em}
+.brand i{background:linear-gradient(90deg,var(--blue),var(--violet));-webkit-background-clip:text;background-clip:text;color:transparent}
+h1{font-family:var(--serif);font-weight:800;font-size:clamp(28px,5vw,40px);line-height:1.1;margin:4px 0 0;text-wrap:balance}
+h1 em{font-style:italic;color:var(--lilac)}
+h2{font-family:var(--serif);font-weight:700;font-size:21px;margin:0;text-wrap:balance}
+h2 em{color:var(--lilac)}
+.lead{color:var(--muted);max-width:68ch;margin:6px 0 0}
+.figs{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
+figure{margin:0;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;display:grid;gap:10px;min-width:0}
+figure.wide{grid-column:1/-1}
+figcaption{font-size:13.5px;color:var(--muted)}
+figcaption b{color:var(--fg)}
+svg{width:100%;height:auto;display:block}
+.svgtxt{font-family:var(--sans);fill:var(--fg)}
+.tips{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px 24px;margin:0;padding:0;list-style:none}
+.tips li{padding-left:16px;position:relative;font-size:14px}
+.tips li::before{content:"";position:absolute;left:0;top:.62em;width:7px;height:7px;border-radius:2px;background:var(--violet)}
+.tips b{color:var(--lilac);font-weight:600}
+.groups{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+.group{border:1px solid var(--line);border-radius:14px;padding:14px 16px;display:grid;gap:8px;align-content:start;min-width:0}
+.group h3{margin:0;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--lilac);font-weight:700}
+.cmd{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:4px 12px;align-items:baseline;padding-top:7px;border-top:1px solid var(--line)}
+.cmd:first-of-type{border-top:0;padding-top:0}
+.say{font-weight:700;font-size:14.5px}
+.say small{font-weight:500;color:var(--muted)}
+.say .clap{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.06em;color:#100C2A;background:var(--orange);border-radius:4px;padding:1px 5px;margin-right:4px;vertical-align:1px}
+.what{font-size:13px;color:var(--muted)}
+.what strong{color:var(--fg);font-weight:600}
+.rule{font-size:13.5px;border:1px dashed var(--orange);border-radius:12px;padding:10px 14px}
+.rule b{color:var(--orange)}
+.foot{font-size:12.5px;color:var(--muted)}
+.back{color:var(--lilac);font-weight:600;text-decoration:none}
+.back:hover{text-decoration:underline}
+@media print{.back{display:none}}
+@media (max-width:520px){.cmd{grid-template-columns:1fr}}
+@media print{
+  :root{--bg:#fff;--bg2:#fff;--fg:#14102b;--muted:#4a4566;--lilac:#6b3fa0;--card:#fff;--line:#c9bde0;--frame:#f3eefc;--skin:#cfc3ea;color-scheme:light}
+  body{background:#fff;font-size:12px}
+  .wrap{padding:0;gap:0;max-width:none}
+  .sheet{break-after:page;gap:12px}
+  .sheet:last-child{break-after:auto}
+  figure,.group{break-inside:avoid}
+  .groups{grid-template-columns:1fr 1fr;gap:8px}
+  .group{padding:8px 10px;gap:4px}
+  .say{font-size:12.5px}.what{font-size:11px}
+  h1{font-size:24px}
+  .figs{grid-template-columns:1fr 1fr 1fr;gap:10px}
+  figure.wide{grid-column:1/-1}
+  figure{padding:8px}
+}
+</style>
+</head>
+<body style="margin:0">
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="pessoa" viewBox="0 0 200 300">
+      <path d="M12 300 L22 172 C30 142 60 128 100 128 C140 128 170 142 178 172 L188 300 Z" fill="var(--skin)"/>
+      <rect x="86" y="100" width="28" height="34" rx="8" fill="var(--skin)"/>
+      <ellipse cx="100" cy="70" rx="35" ry="43" fill="var(--skin)"/>
+      <path d="M64 62 C64 25 136 25 136 62 C136 42 120 32 100 32 C80 32 64 42 64 62Z" fill="var(--violet)" opacity=".55"/>
+      <circle cx="87" cy="70" r="3.4" fill="var(--fg)"/><circle cx="113" cy="70" r="3.4" fill="var(--fg)"/>
+      <path d="M90 92 Q100 96 110 92" stroke="var(--fg)" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+    </symbol>
+  </defs>
+</svg>
+
+<div class="wrap">
+
+<section class="sheet">
+  <div>
+    <div class="brand"><i>meu</i> locus · estúdio</div>
+    <h1>Como <em>montar</em> a mesa e enquadrar</h1>
+    <p class="lead">Três câmeras: a principal de frente e as duas eMeet C960 Ultra (4K) de lado e no alto. O monitor com a trilha fica logo atrás da câmera A. Assim, até quando você lê a questão, o rosto sai de frente.</p>
+  </div>
+
+  <div class="figs">
+    <figure class="wide">
+      <svg viewBox="0 0 640 420" role="img" aria-label="Planta da mesa vista de cima com as três câmeras, monitor, softbox, bastões RGB e microfone">
+        <rect x="0" y="0" width="640" height="420" rx="12" fill="var(--frame)"/>
+        <!-- parede do fundo + bastões RGB -->
+        <line x1="20" y1="404" x2="620" y2="404" stroke="var(--line)" stroke-width="3"/>
+        <text x="620" y="396" class="svgtxt" font-size="10.5" text-anchor="end" opacity=".6">parede atrás de você (fundo do vídeo)</text>
+        <ellipse cx="170" cy="400" rx="95" ry="14" fill="#3A5BD0" opacity=".45"/>
+        <rect x="130" y="382" width="80" height="8" rx="4" fill="#3A5BD0"/>
+        <line x1="300" y1="318" x2="300" y2="398" stroke="var(--fg)" stroke-width="1.2" opacity=".6"/>
+        <path d="M295 324 L300 316 L305 324 M295 392 L300 400 L305 392" stroke="var(--fg)" stroke-width="1.2" fill="none" opacity=".6"/>
+        <text x="308" y="362" class="svgtxt" font-size="11" font-weight="700">1–1,5 m</text>
+        <g transform="translate(560 262) rotate(-70)"><rect x="-30" y="-4" width="60" height="8" rx="2" fill="#F4F0FF"/></g>
+        <text x="508" y="214" class="svgtxt" font-size="12" font-weight="700">rebatedor</text>
+        <text x="508" y="229" class="svgtxt" font-size="11" opacity=".75">isopor branco, lado</text>
+        <text x="508" y="243" class="svgtxt" font-size="11" opacity=".75">da sombra, fora do quadro</text>
+        <text x="40" y="352" class="svgtxt" font-size="12" font-weight="700">bastão RGB 2 · fundo</text>
+        <text x="40" y="367" class="svgtxt" font-size="11" opacity=".75">azul lavando a parede, fraco</text>
+        <ellipse cx="440" cy="328" rx="40" ry="18" fill="#A860D8" opacity=".35"/>
+        <g transform="translate(462 344) rotate(-35)"><rect x="-36" y="-4" width="72" height="8" rx="4" fill="#A860D8"/></g>
+        <line x1="448" y1="334" x2="372" y2="298" stroke="#A860D8" stroke-width="1.5" stroke-dasharray="2 5"/>
+        <text x="500" y="338" class="svgtxt" font-size="12" font-weight="700">bastão RGB 1 · recorte</text>
+        <text x="500" y="353" class="svgtxt" font-size="11" opacity=".75">atrás-direita, lilás</text>
+        <text x="500" y="368" class="svgtxt" font-size="11" opacity=".75">no ombro e cabelo</text>
+        <!-- mesa -->
+        <rect x="150" y="120" width="340" height="110" rx="10" fill="none" stroke="var(--line)" stroke-width="2"/>
+        <text x="160" y="222" class="svgtxt" font-size="11" opacity=".6">mesa</text>
+        <!-- monitor -->
+        <rect x="235" y="78" width="170" height="12" rx="3" fill="var(--blue)"/>
+        <text x="320" y="68" class="svgtxt" font-size="12" text-anchor="middle">monitor com a trilha (PDF aberto)</text>
+        <!-- linhas de visão -->
+        <line x1="320" y1="138" x2="320" y2="262" stroke="var(--lilac)" stroke-width="1.5" stroke-dasharray="5 4"/>
+        <line x1="175" y1="180" x2="306" y2="268" stroke="var(--lilac)" stroke-width="1.5" stroke-dasharray="5 4"/>
+        <line x1="470" y1="140" x2="336" y2="262" stroke="var(--lilac)" stroke-width="1.5" stroke-dasharray="5 4"/>
+        <!-- pessoa vista de cima -->
+        <ellipse cx="320" cy="292" rx="58" ry="20" fill="var(--skin)"/>
+        <circle cx="320" cy="278" r="20" fill="var(--violet)" opacity=".8"/>
+        <text x="320" y="324" class="svgtxt" font-size="12" text-anchor="middle" font-weight="700">você</text>
+        <!-- camera A -->
+        <g transform="translate(320 128)"><rect x="-14" y="-9" width="28" height="18" rx="4" fill="var(--lilac)"/><circle cx="0" cy="0" r="5" fill="var(--frame)"/></g>
+        <text x="330" y="162" class="svgtxt" font-size="13" font-weight="800">A · principal</text>
+        <text x="330" y="177" class="svgtxt" font-size="11" opacity=".75">de frente</text>
+        <!-- camera B -->
+        <g transform="translate(168 176) rotate(56)"><rect x="-14" y="-9" width="28" height="18" rx="4" fill="var(--lilac)"/><circle cx="0" cy="0" r="5" fill="var(--frame)"/></g>
+        <text x="16" y="218" class="svgtxt" font-size="13" font-weight="800">B · C960 Ultra</text>
+        <text x="16" y="234" class="svgtxt" font-size="11" opacity=".75">lado, ~45°</text>
+        <text x="16" y="249" class="svgtxt" font-size="11" opacity=".75">altura dos olhos</text>
+        <!-- camera C -->
+        <g transform="translate(476 134) rotate(-48)"><rect x="-14" y="-9" width="28" height="18" rx="4" fill="var(--lilac)"/><circle cx="0" cy="0" r="5" fill="var(--frame)"/></g>
+        <text x="500" y="112" class="svgtxt" font-size="13" font-weight="800">C · C960 Ultra</text>
+        <text x="500" y="128" class="svgtxt" font-size="11" opacity=".75">no alto, ~60° de cima</text>
+        <text x="500" y="143" class="svgtxt" font-size="11" opacity=".75">pega mesa e caderno</text>
+        <!-- luz -->
+        <circle cx="120" cy="60" r="22" fill="var(--orange)" opacity=".85"/>
+        <path d="M138 74 L268 250" stroke="var(--orange)" stroke-width="1.5" stroke-dasharray="2 5" opacity=".9"/>
+        <text x="150" y="28" class="svgtxt" font-size="12" font-weight="700">Godox SL60W + softbox 60×60</text>
+        <text x="150" y="43" class="svgtxt" font-size="11" opacity=".75">frente-esquerda, ~45° e um pouco acima</text>
+        <!-- mic -->
+        <rect x="354" y="252" width="10" height="22" rx="5" fill="var(--blue)"/>
+        <text x="372" y="258" class="svgtxt" font-size="11" font-weight="700">Fifine K688 no braço</text>
+        <text x="372" y="272" class="svgtxt" font-size="11" opacity=".75">5–10 cm da boca</text>
+      </svg>
+      <figcaption><b>Planta vista de cima.</b> A câmera A fica na frente do monitor, um pouco abaixo do centro da tela. B e C dão variação de ângulo e não substituem a A. <b>Luz:</b> o Godox é a luz principal. O bastão lilás fica atrás de você, recortando ombro e cabelo do fundo, e o azul só tinge a parede. Os dois ficam fracos, bem abaixo do Godox, e nunca batem de frente no rosto. Luz do teto e luminária apagadas. O rebatedor do lado direito clareia a sombra do rosto, e a distância de 1–1,5 m da parede faz o fundo desfocar. <b>Som:</b> o K688 é dinâmico e só capta bem de perto, então fica no braço, abaixo da boca e fora do quadro da A. É o áudio que vai ao ar. O som das webcams serve só pra sincronizar.</figcaption>
+    </figure>
+
+    <figure>
+      <svg viewBox="0 0 330 500" role="img" aria-label="Quadro vertical da câmera A com guias de enquadramento">
+        <rect x="10" y="10" width="270" height="480" rx="10" fill="var(--frame)" stroke="var(--line)" stroke-width="2"/>
+        <line x1="10" y1="170" x2="280" y2="170" stroke="var(--line)" stroke-dasharray="4 4"/>
+        <line x1="10" y1="330" x2="280" y2="330" stroke="var(--line)" stroke-dasharray="4 4"/>
+        <line x1="100" y1="10" x2="100" y2="490" stroke="var(--line)" stroke-dasharray="4 4"/>
+        <line x1="190" y1="10" x2="190" y2="490" stroke="var(--line)" stroke-dasharray="4 4"/>
+        <use href="#pessoa" x="25" y="85" width="240" height="360"/>
+        <rect x="10" y="440" width="270" height="50" rx="0" fill="var(--blue)" opacity=".35"/>
+        <text x="145" y="470" class="svgtxt" font-size="11" text-anchor="middle">mesa</text>
+        <!-- headroom -->
+        <path d="M288 10 L296 10 L296 119 L288 119" stroke="var(--orange)" fill="none" stroke-width="2"/>
+        <text x="300" y="58" class="svgtxt" font-size="11" fill="var(--orange)">um</text>
+        <text x="300" y="72" class="svgtxt" font-size="11">palmo</text>
+        <line x1="10" y1="167" x2="280" y2="167" stroke="var(--lilac)" stroke-width="2"/>
+        <text x="300" y="171" class="svgtxt" font-size="11" fill="var(--lilac)">olhos</text>
+        <text x="145" y="30" class="svgtxt" font-size="11" text-anchor="middle" opacity=".7">nada colado no topo</text>
+      </svg>
+      <figcaption><b>Câmera A em pé (9:16).</b> Olhos na linha de cima (1/3), um palmo de espaço acima da cabeça, ombros e um pedaço da mesa no quadro, você no centro. Zoom e enquadramento automáticos desligados.</figcaption>
+    </figure>
+
+    <figure>
+      <svg viewBox="0 0 330 500" role="img" aria-label="Como a gravação vira o short na estética V4">
+        <defs><clipPath id="win"><rect x="30" y="250" width="230" height="175" rx="16"/></clipPath>
+          <linearGradient id="g4" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#100C2A"/><stop offset="1" stop-color="#0B0820"/></linearGradient></defs>
+        <rect x="10" y="10" width="270" height="480" rx="10" fill="url(#g4)" stroke="var(--line)" stroke-width="2"/>
+        <circle cx="230" cy="70" r="90" fill="#A860D8" opacity=".18"/>
+        <rect x="10" y="10" width="270" height="45" fill="var(--orange)" opacity=".12"/>
+        <rect x="10" y="440" width="270" height="50" fill="var(--orange)" opacity=".12"/>
+        <rect x="250" y="250" width="30" height="180" fill="var(--orange)" opacity=".12"/>
+        <rect x="30" y="68" width="210" height="160" rx="14" fill="rgba(160,96,216,.12)" stroke="rgba(216,184,255,.35)"/>
+        <text x="44" y="96" font-family="Playfair Display,Georgia,serif" font-size="17" font-weight="800" fill="#EDE6FF">Questão <tspan font-style="italic" fill="#D9B8FF">16</tspan></text>
+        <rect x="44" y="110" width="180" height="6" rx="3" fill="#EDE6FF" opacity=".55"/>
+        <rect x="44" y="122" width="160" height="6" rx="3" fill="#EDE6FF" opacity=".55"/>
+        <g fill="none" stroke="#D9B8FF"><circle cx="52" cy="148" r="6"/><circle cx="52" cy="168" r="6"/><circle cx="52" cy="188" r="6"/><circle cx="52" cy="208" r="6"/></g>
+        <g fill="#EDE6FF" opacity=".4"><rect x="66" y="145" width="140" height="5" rx="2.5"/><rect x="66" y="165" width="120" height="5" rx="2.5"/><rect x="66" y="185" width="150" height="5" rx="2.5"/><rect x="66" y="205" width="110" height="5" rx="2.5"/></g>
+        <rect x="27" y="247" width="236" height="181" rx="18" fill="none" stroke="#D9B8FF" stroke-width="2.5"/>
+        <g clip-path="url(#win)"><rect x="30" y="250" width="230" height="175" fill="#1a1440"/><use href="#pessoa" x="65" y="262" width="160" height="240"/></g>
+        <rect x="40" y="392" width="210" height="22" rx="6" fill="#0B0820" opacity=".7"/>
+        <text x="145" y="407" font-family="Inter,sans-serif" font-size="10" fill="#EDE6FF" text-anchor="middle">Legenda pontuada, em 2 linhas no máximo.</text>
+        <text x="145" y="36" font-family="Inter,sans-serif" font-size="10" fill="#FB923C" text-anchor="middle">zona dos botões do app</text>
+        <text x="145" y="470" font-family="Inter,sans-serif" font-size="10" fill="#FB923C" text-anchor="middle">zona da descrição</text>
+        <text x="296" y="160" class="svgtxt" font-size="11">card</text>
+        <text x="296" y="338" class="svgtxt" font-size="11">você</text>
+      </svg>
+      <figcaption><b>Como vira o short V4.</b> O card da questão vai em cima (texto do PDF) e você embaixo, quase sem zoom e com o anel lilás. As faixas laranja ficam livres por causa dos botões do app. Por isso o enquadramento da gravação precisa de folga em volta da cabeça.</figcaption>
+    </figure>
+
+    <figure>
+      <svg viewBox="0 0 330 500" role="img" aria-label="Quadro 4K deitado da C960 Ultra com áreas de recorte vertical e quadrado">
+        <rect x="10" y="130" width="310" height="174" rx="8" fill="var(--frame)" stroke="var(--line)" stroke-width="2"/>
+        <use href="#pessoa" x="113" y="154" width="104" height="156"/>
+        <rect x="116" y="130" width="98" height="174" fill="none" stroke="var(--lilac)" stroke-width="2"/>
+        <rect x="78" y="130" width="174" height="174" fill="none" stroke="var(--orange)" stroke-width="2" stroke-dasharray="6 4"/>
+        <text x="165" y="120" class="svgtxt" font-size="11" text-anchor="middle">4K deitado · 3840×2160</text>
+        <rect x="20" y="330" width="12" height="12" rx="2" fill="var(--lilac)"/>
+        <text x="40" y="341" class="svgtxt" font-size="11.5">vertical 9:16 → 1215×2160</text>
+        <text x="40" y="357" class="svgtxt" font-size="11" opacity=".7">dá um short inteiro sem perder nitidez</text>
+        <rect x="20" y="374" width="12" height="12" rx="2" fill="none" stroke="var(--orange)" stroke-width="2"/>
+        <text x="40" y="385" class="svgtxt" font-size="11.5">quadrado → 2160×2160</text>
+        <text x="40" y="401" class="svgtxt" font-size="11" opacity=".7">a janela de baixo do layout V4</text>
+        <text x="20" y="440" class="svgtxt" font-size="11" opacity=".85">Você no centro do quadro. As laterais</text>
+        <text x="20" y="455" class="svgtxt" font-size="11" opacity=".85">sobram, então pode deixar a webcam deitada.</text>
+      </svg>
+      <figcaption><b>C960 Ultra (B e C).</b> Grave em 4K 30 fps, com você no centro. Desligue o enquadramento automático ou o "seguir rosto" no app da eMeet. Ligue cada webcam numa porta USB diferente do PC.</figcaption>
+    </figure>
+  </div>
+
+  <ul class="tips">
+    <li><b>Antes de gravar:</b> salvar o PDF da trilha e mandar junto, com o nome <code>trilha.pdf</code>.</li>
+    <li><b>Arquivos:</b> mesmo prefixo pros três, <code>data_A</code>, <code>data_B</code> e <code>data_C</code>.</li>
+    <li><b>Áudio:</b> ganho com pico entre −12 e −6 dB no OBS quando você fala.</li>
+    <li><b>Cor:</b> balanço de branco fixo em 5600 K nas 3 câmeras, que é a cor do Godox.</li>
+    <li><b>Cena limpa:</b> nada de comida, embalagem de remédio, papel ou tela com senha.</li>
+  </ul>
+</section>
+
+<section class="sheet">
+  <div>
+    <div class="brand"><i>meu</i> locus · antes de apertar REC</div>
+    <h1>Pra ficar <em>profissa</em></h1>
+    <p class="lead">Quase tudo usa o equipamento que você já tem. Está em ordem do que mais muda o resultado.</p>
+  </div>
+  <div class="groups">
+    <div class="group">
+      <h3>1 · Set sempre igual</h3>
+      <ul class="tips" style="grid-template-columns:1fr">
+        <li><b>Fita no chão e na mesa</b> marcando a cadeira, o tripé do Godox e as 3 câmeras.</li>
+        <li>Todo vídeo sai com a mesma cara, e a cor do canal funciona igual em todos.</li>
+      </ul>
+    </div>
+    <div class="group">
+      <h3>2 · Profundidade no fundo</h3>
+      <ul class="tips" style="grid-template-columns:1fr">
+        <li><b>1–1,5 m da parede.</b> O fundo desfoca e o recorte lilás aparece.</li>
+        <li>Fundo com os livros e os cadernos de capa de arte, com o bastão azul atrás.</li>
+        <li><b>Grid na softbox</b>, pra a luz ficar em você e não no fundo.</li>
+      </ul>
+    </div>
+    <div class="group">
+      <h3>3 · Rosto sem lado escuro</h3>
+      <ul class="tips" style="grid-template-columns:1fr">
+        <li><b>Rebatedor ou isopor branco</b> do lado direito, fora do quadro. Ele suaviza a sombra sem precisar de outra luz.</li>
+      </ul>
+    </div>
+    <div class="group">
+      <h3>4 · Câmeras travadas</h3>
+      <ul class="tips" style="grid-template-columns:1fr">
+        <li><b>30 fps fixos nas 3</b>, sem taxa variável, pra sincronia não escorregar.</li>
+        <li>Foco, exposição e balanço de branco (5600 K) travados.</li>
+        <li><b>Anti-flicker em 60 Hz</b> nas webcams, pro LED não piscar.</li>
+        <li>Celular como câmera A: <b>traseira, 1x, 4K30, modo Pro</b>.</li>
+      </ul>
+    </div>
+    <div class="group">
+      <h3>5 · Som do quarto</h3>
+      <ul class="tips" style="grid-template-columns:1fr">
+        <li>Cortina, tapete, cobertor ou almofadas perto de você cortam o eco.</li>
+        <li><b>"Editor, silêncio"</b> no começo: 5 s calada pro editor tirar o ruído de fundo.</li>
+        <li>Ventilador desligado na fala. Ligue nas pausas.</li>
+      </ul>
+    </div>
+    <div class="group">
+      <h3>6 · Roupa (e calor)</h3>
+      <ul class="tips" style="grid-template-columns:1fr">
+        <li><b>Linho, algodão ou viscose, cor lisa</b>, sem estampa e sem logo. Pode ser sem manga ou de alça larga.</li>
+        <li><b>Funciona:</b> azul royal, lilás, vinho, rosa queimado, azul-marinho médio.</li>
+        <li><b>Evite:</b> preto (some no fundo), branco (estoura), listra fina (tremula), verde-limão e laranja (brigam com os bastões).</li>
+        <li>No calor, o azul royal do cachecol vira blusa ou detalhe (brinco, presilha, faixa).</li>
+      </ul>
+    </div>
+    <div class="group">
+      <h3>Calor no set</h3>
+      <ul class="tips" style="grid-template-columns:1fr">
+        <li><b>Pó translúcido ou papel matificante</b>: o suor vira brilho com luz forte. Retoque entre as questões.</li>
+        <li>O Godox esquenta e tem ventoinha. Se ela aparecer no áudio, afaste um pouco o Godox.</li>
+        <li>Cabelo preso: refresca e o recorte lilás desenha o contorno.</li>
+        <li>Água gelada perto, fora do quadro.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="sheet">
+  <div>
+    <div class="brand"><i>meu</i> locus · cola pra imprimir</div>
+    <h1>Marcações <em>faladas</em></h1>
+    <p class="lead">É o sistema que eu uso pra editar com IA: falo os comandos durante a gravação e o editor (IA ou gente) corta e monta pelo que ouve na transcrição. Toda marcação começa com <b>"Editor,"</b>. Fale claro, faça uma pausa curta antes e depois e siga gravando. A marcação e a palma saem do vídeo e da legenda.</p>
+  </div>
+
+  <div class="groups">
+    <div class="group">
+      <h3>Estrutura</h3>
+      <div class="cmd"><div class="say"><span class="clap">PALMA</span>Editor, valendo</div><div class="what"><strong>Começo de verdade.</strong> Tudo antes sai. Sincroniza as 3 câmeras.</div></div>
+      <div class="cmd"><div class="say">Editor, silêncio</div><div class="what">Fique <strong>5 s calada e parada</strong>. O editor usa pra tirar o ruído de fundo.</div></div>
+      <div class="cmd"><div class="say">Editor, questão 16</div><div class="what">Começa a questão 16 <strong>do PDF</strong>. O número tem que bater.</div></div>
+      <div class="cmd"><div class="say">Editor, fim da questão</div><div class="what">Fecha o trecho. O short termina aqui.</div></div>
+      <div class="cmd"><div class="say">Editor, pausa <small>…</small> Editor, voltei</div><div class="what">Interrupção (água, porta, celular). Tudo entre os dois sai.</div></div>
+      <div class="cmd"><div class="say"><span class="clap">PALMA</span>Editor, encerrando</div><div class="what">Fim da gravação. Segunda sincronia.</div></div>
+    </div>
+
+    <div class="group">
+      <h3>Corte</h3>
+      <div class="cmd"><div class="say">Editor, de novo</div><div class="what">Errou: <strong>repita a frase inteira</strong>. Fica a última tomada.</div></div>
+      <div class="cmd"><div class="say">Editor, corta daqui <small>…</small> Editor, até aqui</div><div class="what">Tudo entre os dois sai.</div></div>
+      <div class="cmd"><div class="say">Editor, privado daqui <small>…</small> Editor, até aqui</div><div class="what">Não vai ao ar em nenhum corte (pessoal, terceiros, marca, remédio).</div></div>
+      <div class="cmd"><div class="say">Editor, corrigindo</div><div class="what"><strong>Autocorreção.</strong> Nunca é cortada e pode virar card.</div></div>
+      <div class="cmd"><div class="say">Editor, conferir</div><div class="what">Ficou em dúvida no que disse. Vai pra lista do que conferir, com o tempo.</div></div>
+    </div>
+
+    <div class="group">
+      <h3>Conteúdo e gráficos</h3>
+      <div class="cmd"><div class="say">Editor, gancho</div><div class="what">A próxima frase é a abertura. Pode falar 2 ou 3 versões.</div></div>
+      <div class="cmd"><div class="say">Editor, destaque</div><div class="what">A próxima frase vira card "Pra levar".</div></div>
+      <div class="cmd"><div class="say">Editor, pegadinha</div><div class="what">Caixa tracejada laranja.</div></div>
+      <div class="cmd"><div class="say">Editor, cai na prova</div><div class="what">Selo laranja "CAI NA PROVA".</div></div>
+      <div class="cmd"><div class="say">Editor, gabarito</div><div class="what">Mostra o gabarito do PDF (a correta em lilás ✓).</div></div>
+      <div class="cmd"><div class="say">Editor, short</div><div class="what">Esse trecho rende um short sozinho. Prioridade.</div></div>
+      <div class="cmd"><div class="say">Editor, só legenda</div><div class="what">Relato: sem card nem efeito, só você e a legenda.</div></div>
+    </div>
+
+    <div class="group">
+      <h3>Câmera e capa</h3>
+      <div class="cmd"><div class="say">Editor, câmera frente</div><div class="what">Usa a A daqui pra frente.</div></div>
+      <div class="cmd"><div class="say">Editor, câmera lado</div><div class="what">Usa a B (lateral).</div></div>
+      <div class="cmd"><div class="say">Editor, câmera mesa</div><div class="what">Usa a C (de cima).</div></div>
+      <div class="cmd"><div class="say">Editor, mostra a mesa</div><div class="what">Vou mostrar ou escrever algo no caderno.</div></div>
+      <div class="cmd"><div class="say">Editor, capa</div><div class="what"><strong>Depois fique 2 s olhando a câmera A</strong>, de boca fechada e parada. Esse é o frame da capa.</div></div>
+      <div class="cmd"><div class="say">Editor, CTA</div><div class="what">Em seguida você grava o "siga, comente e curta" falado.</div></div>
+    </div>
+  </div>
+
+  <div class="rule"><b>Começo:</b> palma + Editor, valendo → Editor, silêncio (5 s). <b>Cada questão:</b> Editor, questão N → leitura e raciocínio → Editor, gabarito → explicação → Editor, capa (2 s parada) → Editor, fim da questão.</div>
+  <p class="foot">Sem "Editor," o editor trata a frase como fala normal. Se o Whisper ouvir errado e o comando ficar ambíguo, ele escolhe a opção mais segura (não cortar) e avisa no resumo.</p>
+</section>
+
+<a class="back" href="./">← cupons &amp; indicações</a>
+<footer class="foot">© Fernanda Damasceno de Souza · Meu Locus</footer>
+</div>
+</body>
+</html>
