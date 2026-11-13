@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="Sódio em 5 conceitos, com calculadora de osmolaridade e gap osmolar.">
+<meta name="color-scheme" content="dark">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<title>Sódio em 5 Conceitos · meu locus</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+</head>
+<body>
+<div class="ml-top"><a class="ml-back" href="./">← cupons &amp; indicações</a><span class="ml-brand"><i>meu</i> locus</span></div>
+<div class="ml-note"><span>Material de estudo feito por uma estudante de medicina. Não substitui diretriz, protocolo ou avaliação médica: confira sempre na fonte oficial.</span></div>
+<style>
+/* Layout: single reading column, sticky concept index, calculator and quiz as the two interactive blocks */
+:root{
+  --bg:#f2f6f8; --surface:#ffffff; --fg:#14232b; --muted:#546a75; --line:#d5e0e6;
+  --accent:#0d6e77;      /* plasma / água */
+  --accent-soft:#dcf0f1;
+  --amber:#b86e00;       /* urina concentrada */
+  --amber-soft:#fbecd0;
+  --danger:#b3261e; --danger-soft:#fbe3e1; --ok:#1e7a45; --ok-soft:#dff3e6;
+  --f-display:'Playfair Display','Segoe UI',system-ui,sans-serif;
+  --f-body:Inter,'Segoe UI',system-ui,sans-serif;
+  --f-mono:'IBM Plex Mono',ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0e1a20; --surface:#152630; --fg:#e6eff3; --muted:#93a9b4; --line:#26404d;
+  --accent:#4fc3cc; --accent-soft:#12363c; --amber:#f0b04a; --amber-soft:#3a2a0d;
+  --danger:#ff8f86; --danger-soft:#3d1a18; --ok:#6fd39a; --ok-soft:#153323; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0e1a20; --surface:#152630; --fg:#e6eff3; --muted:#93a9b4; --line:#26404d;
+  --accent:#4fc3cc; --accent-soft:#12363c; --amber:#f0b04a; --amber-soft:#3a2a0d;
+  --danger:#ff8f86; --danger-soft:#3d1a18; --ok:#6fd39a; --ok-soft:#153323; color-scheme:dark}
+
+body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:16px;line-height:1.6;padding-inline:16px}
+*{box-sizing:border-box}
+.wrap{max-width:860px;margin-inline:auto;padding-block:32px 72px;display:flex;flex-direction:column;gap:40px}
+h1,h2,h3{font-family:var(--f-display);line-height:1.15;text-wrap:balance;margin:0}
+h1{font-size:clamp(2rem,6vw,3.2rem);font-weight:700;letter-spacing:-.02em}
+h2{font-size:1.6rem;font-weight:700;letter-spacing:-.01em}
+h3{font-size:1.15rem;font-weight:500}
+p{margin:0}
+.eyebrow{font-family:var(--f-mono);font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.mono{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+header{display:flex;flex-direction:column;gap:14px}
+.lede{font-size:1.1rem;color:var(--muted);max-width:62ch}
+.meta{display:flex;flex-wrap:wrap;gap:8px 16px;font-size:.85rem;color:var(--muted)}
+.meta span{font-family:var(--f-mono)}
+
+nav.idx{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-block:1px solid var(--line);display:flex;gap:6px;overflow-x:auto;padding:8px 0;margin-inline:-16px;padding-inline:16px}
+nav.idx a{flex:none;text-decoration:none;color:var(--fg);font-size:.85rem;padding:4px 12px;border:1px solid var(--line);border-radius:99px;background:var(--surface)}
+nav.idx a:hover,nav.idx a:focus-visible{border-color:var(--accent);color:var(--accent);outline:none}
+
+section{display:flex;flex-direction:column;gap:16px;scroll-margin-top:64px}
+.tag{display:inline-flex;align-items:center;gap:10px}
+.tag b{font-family:var(--f-mono);font-weight:500;font-size:.8rem;background:var(--accent);color:var(--bg);border-radius:6px;padding:2px 8px}
+.key{background:var(--accent-soft);border-radius:10px;padding:14px 16px;font-weight:500}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
+.formula{font-family:var(--f-mono);font-size:1.05rem;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px;overflow-x:auto;white-space:nowrap}
+.formula em{font-style:normal;color:var(--accent)}
+.warn{background:var(--amber-soft);border-radius:10px;padding:12px 16px;font-size:.92rem}
+.warn strong{color:var(--amber)}
+ul{margin:0;padding-left:1.2em;display:flex;flex-direction:column;gap:4px}
+.tw{overflow-x:auto}
+table{border-collapse:collapse;width:100%;min-width:520px;font-size:.92rem}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-family:var(--f-mono);font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:500}
+.up{color:var(--danger);font-weight:600}.down{color:var(--accent);font-weight:600}
+
+/* Fluxo do ADH */
+.flow{display:flex;flex-wrap:wrap;gap:8px;align-items:stretch}
+.flow div{flex:1 1 130px;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 12px;font-size:.88rem;position:relative}
+.flow div small{display:block;font-family:var(--f-mono);font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.flow div:not(:last-child)::after{content:"→";position:absolute;right:-13px;top:50%;transform:translateY(-50%);color:var(--accent);font-weight:700;z-index:1}
+@media(max-width:560px){.flow div:not(:last-child)::after{content:"↓";right:auto;left:50%;top:auto;bottom:-16px;transform:translateX(-50%)}.flow{gap:16px}}
+
+/* Calculadora */
+.calc{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+label{display:flex;flex-direction:column;gap:4px;font-size:.8rem;color:var(--muted)}
+input{font:inherit;font-family:var(--f-mono);font-size:1rem;color:var(--fg);background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:8px 10px;width:100%;min-width:0}
+input:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.res{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+.res div{background:var(--bg);border-radius:10px;padding:12px}
+.res small{display:block;font-size:.72rem;font-family:var(--f-mono);text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.res strong{font-family:var(--f-mono);font-size:1.5rem;font-weight:500}
+.verdict{border-radius:10px;padding:12px 16px;font-weight:500}
+.verdict.ok{background:var(--ok-soft);color:var(--ok)}.verdict.bad{background:var(--danger-soft);color:var(--danger)}.verdict.neutral{background:var(--accent-soft)}
+
+/* Quiz */
+.q{display:flex;flex-direction:column;gap:12px}
+.q .stem{font-size:1rem}
+.opts{display:flex;flex-direction:column;gap:8px}
+button{font:inherit;cursor:pointer}
+.opt{text-align:left;background:var(--bg);color:var(--fg);border:1px solid var(--line);border-radius:8px;padding:10px 12px}
+.opt:hover{border-color:var(--accent)}
+.opt.right{background:var(--ok-soft);border-color:var(--ok)}.opt.wrong{background:var(--danger-soft);border-color:var(--danger)}
+.expl{display:none;background:var(--accent-soft);border-radius:10px;padding:12px 16px;font-size:.93rem}
+.expl.show{display:block}
+.btn{align-self:flex-start;background:var(--accent);color:var(--bg);border:0;border-radius:8px;padding:8px 16px;font-weight:600}
+
+footer{font-size:.82rem;color:var(--muted);border-top:1px solid var(--line);padding-top:16px;display:flex;flex-direction:column;gap:6px}
+@media(prefers-reduced-motion:no-preference){.opt,nav.idx a{transition:border-color .15s,background .15s}}
+</style>
+
+<div class="wrap">
+<header>
+  <span class="eyebrow">Clínica Médica · Nefrologia · Distúrbios hidroeletrolíticos</span>
+  <h1>Sódio em 5 conceitos</h1>
+  <p class="lede">Distúrbio de sódio é distúrbio de água. Com estes cinco conceitos você raciocina o resto sem improvisar no plantão.</p>
+</header>
+
+<nav class="idx" aria-label="Índice">
+  <a href="#c1">1 Valor normal</a><a href="#c2">2 Osmolaridade</a><a href="#c3">3 Gap osmolar</a><a href="#c4">4 Água e ADH</a><a href="#c5">5 Cérebro</a><a href="#calc">Calculadora</a><a href="#quiz">Questões</a>
+</nav>
+
+<section>
+  <div class="warn"><strong>Por que não improvisar.</strong> Sódio baixo não significa "repor sódio": em vários pacientes isso causa sequela irreversível. Potássio de 10 corrigido sem critério pode matar por arritmia antes de chegar ao alvo. A base de conceitos evita os dois erros.</div>
+</section>
+
+<section id="c1">
+  <div class="tag"><b>1</b><h2>Valor normal e localização</h2></div>
+  <div class="grid">
+    <div class="card"><span class="eyebrow">Sódio plasmático</span><div class="mono" style="font-size:1.8rem">135 – 145 <span style="font-size:1rem">mEq/L</span></div><p><span class="down">&lt; 135</span> hiponatremia · <span class="up">&gt; 145</span> hipernatremia</p></div>
+    <div class="card"><span class="eyebrow">Onde ele mora</span><p>Concentração alta no plasma: o sódio é o cátion do <b>meio extracelular</b>. O potássio faz o inverso (fica dentro da célula).</p></div>
+  </div>
+</section>
+
+<section id="c2">
+  <div class="tag"><b>2</b><h2>Sódio manda na osmolaridade</h2></div>
+  <p>A água vai para onde o sódio está. Como o sódio é osmoticamente ativo, ele define se a célula incha ou desidrata.</p>
+  <div class="formula">Osm = 2 × <em>Na</em> + <em>glicose</em>/18 + <em>ureia</em>/6 &nbsp;≈ 290 mOsm/kg</div>
+  <div class="grid">
+    <div class="card"><h3>Ureia quase não conta</h3><p>Ela atravessa as membranas e não arrasta água. Os dois determinantes reais são <b>sódio</b> (principal) e <b>glicose</b>.</p></div>
+    <div class="card"><h3>Osmolaridade efetiva = tonicidade</h3><p class="mono">2 × Na + glicose/18</p><p>Sem a ureia. Se a questão pedir "efetiva" ou "tonicidade", use esta.</p></div>
+  </div>
+  <p class="key">Nefrologia é uma disciplina matemática. Fórmulas que vêm aí: ânion gap, resposta compensatória, clearance de creatinina.</p>
+</section>
+
+<section id="c3">
+  <div class="tag"><b>3</b><h2>Gap osmolar</h2></div>
+  <p>O osmômetro mede todos os solutos do soro. A fórmula só conta três. A diferença entre os dois é o gap.</p>
+  <div class="formula">Gap osmolar = Osm <em>medida</em> − Osm <em>calculada</em></div>
+  <p class="key">Gap &gt; 10 mOsm/kg: soluto que a fórmula não vê, sugere intoxicação exógena (metanol, etilenoglicol). O detalhe aparece no capítulo de equilíbrio acidobásico.</p>
+  <p>Uso prático: paciente que chega com rebaixamento de consciência, oligúria e vômitos, sem causa clara. Se o examinador dá osmolaridade medida e calculada na mesma questão, ele quer que você calcule o gap.</p>
+</section>
+
+<section id="c4">
+  <div class="tag"><b>4</b><h2>O distúrbio do sódio é distúrbio da água</h2></div>
+  <p><b>Hiponatremia</b>: água demais diluindo o sódio. <b>Hipernatremia</b>: pouca água para o sódio. Quem controla a água controla o sódio, em dois níveis:</p>
+  <div class="grid">
+    <div class="card"><h3>Centro da sede</h3><p>Sangue concentrado gera sede e você bebe. Só funciona se o paciente tem acesso e capacidade de beber.</p></div>
+    <div class="card"><h3>ADH (vasopressina)</h3><p>Age mesmo sem acesso à água. Nome mnemônico: <i>anti-diurético</i>, contra o xixi.</p></div>
+  </div>
+  <div class="flow" role="img" aria-label="Fluxo do ADH">
+    <div><small>Estímulo</small>Plasma concentrado</div>
+    <div><small>Produção</small>Hipotálamo</div>
+    <div><small>Armazém</small>Neuro-hipófise</div>
+    <div><small>Alvo</small>Túbulo coletor (néfron distal)</div>
+    <div><small>Efeito</small>Aquaporinas: reabsorve água, urina concentrada</div>
+  </div>
+  <div class="tw"><table>
+    <thead><tr><th>Situação</th><th>ADH</th><th>Urina</th><th>Sódio</th></tr></thead>
+    <tbody>
+      <tr><td><b>Diabetes insípido</b> (poliúria + polidipsia, não é diabetes mellitus)</td><td>ausente ou sem efeito</td><td>clara, água pura</td><td class="up">↑ tende a hipernatremia</td></tr>
+      <tr><td><b>SIADH</b> (secreção inapropriada de ADH)</td><td>em excesso</td><td>concentrada, amarela</td><td class="down">↓ hiponatremia (água livre retida)</td></tr>
+    </tbody></table></div>
+  <p class="key">Regra de bolso: sódio alterado, pense em ADH. Cada eletrólito tem seu hormônio: sódio → ADH, cálcio → PTH.</p>
+</section>
+
+<section id="c5">
+  <div class="tag"><b>5</b><h2>O neurônio é quem sofre</h2></div>
+  <p>Se o sódio é distúrbio de água, as células incham ou desidratam. A célula mais sensível é o neurônio, por isso o manejo do neurocrítico exige natremia normal.</p>
+  <div class="grid">
+    <div class="card"><h3>Clínica do sódio</h3><p>Cefaleia, crise convulsiva, rebaixamento até coma.</p><p><b>Rebaixou a consciência? Dose o sódio</b>, não o potássio.</p></div>
+    <div class="card"><h3>Clínica do potássio (prévia)</h3><p>Arritmia cardíaca.</p><p><b>Arritmia? Pense em potássio</b>, o sódio não ajuda.</p></div>
+  </div>
+</section>
+
+<section id="calc">
+  <h2>Calculadora de osmolaridade</h2>
+  <div class="card">
+    <div class="calc">
+      <label for="na">Sódio (mEq/L)<input id="na" type="number" inputmode="decimal" value="136"></label>
+      <label for="gl">Glicose (mg/dL)<input id="gl" type="number" inputmode="decimal" value="100"></label>
+      <label for="ur">Ureia (mg/dL)<input id="ur" type="number" inputmode="decimal" value="40"></label>
+      <label for="om">Osm medida (opcional)<input id="om" type="number" inputmode="decimal" placeholder="ex.: 375"></label>
+    </div>
+    <div class="res">
+      <div><small>Osm calculada</small><strong id="r1">–</strong></div>
+      <div><small>Osm efetiva</small><strong id="r2">–</strong></div>
+      <div><small>Gap osmolar</small><strong id="r3">–</strong></div>
+    </div>
+    <div id="v" class="verdict neutral"></div>
+    <p style="font-size:.8rem;color:var(--muted)">Valores iniciais são um exemplo, não um caso real.</p>
+  </div>
+</section>
+
+<section id="quiz">
+  <h2>Questões para treinar</h2>
+  <div class="card q" data-ans="1">
+    <span class="eyebrow">Questão 1 · cálculo</span>
+    <p class="stem">Paciente internado em unidade pediátrica com sódio 136, cloro 104 e outros exames. A osmolaridade é aproximadamente:</p>
+    <div class="opts"></div>
+    <div class="expl">A questão não pede osmolaridade efetiva, então usa a fórmula completa: 2 × Na + glicose/18 + ureia/6. O valor mais próximo é <b>284</b>. Confira na calculadora com glicose ~100 e ureia ~40.</div>
+  </div>
+  <div class="card q" data-ans="2">
+    <span class="eyebrow">Questão 2 · já caiu em outras bancas</span>
+    <p class="stem">Mulher de 25 anos, torporosa e desidratada, glicemia 100, hematócrito 45. Osmolaridade medida 375 e calculada 314 mOsm/kg. O que o examinador quer que você conclua?</p>
+    <div class="opts"></div>
+    <div class="expl">Gap = 375 − 314 = <b>61</b>. Acima de 10, indica soluto extra: <b>intoxicação exógena</b> (metanol ou etilenoglicol, a definir no capítulo acidobásico). Hematócrito e glicemia são distratores.</div>
+  </div>
+</section>
+
+<footer><span>Resumo de estudo de distúrbios do sódio a partir de conceitos de fisiologia renal de uso corrente. Faixas de referência e limiar de gap osmolar podem variar entre laboratórios e referências.</span></footer>
+</div>
+
+<script>
+(function(){
+  var $=function(i){return document.getElementById(i)};
+  function calc(){
+    var na=parseFloat($('na').value),gl=parseFloat($('gl').value),ur=parseFloat($('ur').value),om=parseFloat($('om').value);
+    var v=$('v');
+    if(isNaN(na)||isNaN(gl)||isNaN(ur)){['r1','r2','r3'].forEach(function(i){$(i).textContent='–'});v.className='verdict neutral';v.textContent='Preencha sódio, glicose e ureia.';return}
+    var c=2*na+gl/18+ur/6, e=2*na+gl/18;
+    $('r1').textContent=c.toFixed(0);$('r2').textContent=e.toFixed(0);
+    if(isNaN(om)){$('r3').textContent='–';v.className='verdict neutral';v.textContent='Osmolaridade calculada ≈ '+c.toFixed(0)+' mOsm/kg (normal por volta de 290). Informe a medida para ver o gap.';return}
+    var g=om-c;$('r3').textContent=g.toFixed(0);
+    if(g>10){v.className='verdict bad';v.textContent='Gap acima de 10: pense em intoxicação exógena (metanol, etilenoglicol).'}
+    else{v.className='verdict ok';v.textContent='Gap até 10: sem sinal de soluto não medido pela fórmula.'}
+  }
+  ['na','gl','ur','om'].forEach(function(i){$(i).addEventListener('input',calc)});calc();
+
+  var sets={1:['260','272','284','300'],2:['Hiponatremia por SIADH','Intoxicação exógena (gap osmolar 61)','Diabetes insípido','Cetoacidose diabética']};
+  document.querySelectorAll('.q').forEach(function(q){
+    var n=q.getAttribute('data-ans'),ans=n==='1'?2:1,box=q.querySelector('.opts');
+    sets[n].forEach(function(t,i){
+      var b=document.createElement('button');b.type='button';b.className='opt';b.textContent=String.fromCharCode(65+i)+') '+t;
+      b.addEventListener('click',function(){
+        box.querySelectorAll('.opt').forEach(function(x,j){x.disabled=true;if(j===ans)x.classList.add('right')});
+        if(i!==ans)b.classList.add('wrong');
+        q.querySelector('.expl').classList.add('show');
+      });
+      box.appendChild(b);
+    });
+  });
+})();
+</script>
+
+
+
+<style id="v4-meu-locus">
+/* V4 meu locus: sobrescreve os tokens e as fontes do material original */
+:root{color-scheme:dark;--accent:#D9B8FF!important;--accent-soft:#2E2160!important;--amber:#FBBF6A!important;--amber-soft:#3A2A14!important;--bg:#100C2A!important;--danger:#FF8FA3!important;--danger-soft:#3A1838!important;--fg:#EDE6FF!important;--line:#3A2F66!important;--muted:#B9AED6!important;--ok:#7DDBA8!important;--ok-soft:#15302A!important;--surface:rgba(26,20,64,.88)!important;}
+html{background:#0B0820}
+body{background:url("padrao-lilas.png") 0 0/620px auto repeat,
+  radial-gradient(760px 460px at 50% -6%,rgba(168,96,216,.34) 0%,rgba(168,96,216,0) 62%),
+  radial-gradient(600px 420px at 100% 100%,rgba(58,91,208,.18) 0%,rgba(58,91,208,0) 60%),
+  linear-gradient(180deg,#100C2A 0%,#0B0820 100%)!important;background-attachment:fixed!important;background-color:#100C2A!important;color:#EDE6FF!important;
+  font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;margin:0}
+h1,h2{font-family:"Playfair Display",Georgia,serif!important;letter-spacing:-.01em}
+h1{font-weight:800!important}
+a{color:#D9B8FF}
+::selection{background:#A860D8;color:#fff}
+.ml-top{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
+  max-width:1100px;margin:0 auto;padding:14px 16px 0;font-family:Inter,system-ui,sans-serif}
+.ml-back{color:#D9B8FF;text-decoration:none;font-size:.9rem;font-weight:600;border:1px solid rgba(216,184,255,.26);
+  border-radius:99px;padding:6px 14px;background:rgba(160,96,216,.10)}
+.ml-back:hover,.ml-back:focus-visible{background:rgba(160,96,216,.22);outline:none}
+.ml-brand{font-family:"Playfair Display",Georgia,serif;font-weight:800;font-size:1.15rem;color:#EDE6FF;letter-spacing:-.01em}
+.ml-brand i{font-style:italic;background:linear-gradient(90deg,#3A5BD0,#A860D8);-webkit-background-clip:text;background-clip:text;color:transparent;padding-right:.08em}
+.ml-note{max-width:1100px;margin:10px auto 0;padding:0 16px;font-family:Inter,system-ui,sans-serif;font-size:.82rem;color:#B9AED6}
+.ml-note span{display:block;border:1px solid rgba(216,184,255,.26);border-left:3px solid #A860D8;border-radius:8px;padding:8px 12px;background:rgba(160,96,216,.08)}
+.ml-warn{position:sticky;top:0;z-index:60;background:#2A0F2E;border-bottom:1px solid #FB923C;color:#FFE4CC;
+  font-family:Inter,system-ui,sans-serif;font-size:.85rem;line-height:1.4;padding:8px 16px;text-align:center}
+.ml-warn b{color:#FB923C}
+@media print{.ml-top,.ml-note,.ml-warn{display:none}}
+</style>
+</body>
+</html>

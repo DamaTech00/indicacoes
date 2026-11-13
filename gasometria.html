@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="Gasometria em 4 passos: mapa mental, interpretador que mostra cada conta e fórmulas de compensação.">
+<meta name="color-scheme" content="dark">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<title>Gasometria em 4 Passos · meu locus</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+</head>
+<body>
+<div class="ml-top"><a class="ml-back" href="./">← cupons &amp; indicações</a><span class="ml-brand"><i>meu</i> locus</span></div>
+<div class="ml-note"><span>Material de estudo feito por uma estudante de medicina. Não substitui diretriz, protocolo ou avaliação médica: confira sempre na fonte oficial.</span></div>
+<style>
+/* Layout: sticky tab bar (mapa, interpretador, casos, fórmulas); one reading column; same UTI tokens as the sódio page */
+:root{
+  --bg:#f2f6f8; --surface:#ffffff; --fg:#14232b; --muted:#546a75; --line:#d5e0e6;
+  --accent:#0d6e77; --accent-soft:#dcf0f1;
+  --acid:#b3261e; --acid-soft:#fbe3e1;      /* acidose */
+  --base:#5b3fa6; --base-soft:#ece6f8;      /* alcalose */
+  --amber:#b86e00; --amber-soft:#fbecd0; --ok:#1e7a45; --ok-soft:#dff3e6;
+  --f-display:'Playfair Display','Segoe UI',system-ui,sans-serif;
+  --f-body:Inter,'Segoe UI',system-ui,sans-serif;
+  --f-mono:'IBM Plex Mono',ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0e1a20; --surface:#152630; --fg:#e6eff3; --muted:#93a9b4; --line:#26404d;
+  --accent:#4fc3cc; --accent-soft:#12363c; --acid:#ff8f86; --acid-soft:#3d1a18;
+  --base:#b9a3f5; --base-soft:#2a2143; --amber:#f0b04a; --amber-soft:#3a2a0d; --ok:#6fd39a; --ok-soft:#153323; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0e1a20; --surface:#152630; --fg:#e6eff3; --muted:#93a9b4; --line:#26404d;
+  --accent:#4fc3cc; --accent-soft:#12363c; --acid:#ff8f86; --acid-soft:#3d1a18;
+  --base:#b9a3f5; --base-soft:#2a2143; --amber:#f0b04a; --amber-soft:#3a2a0d; --ok:#6fd39a; --ok-soft:#153323; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:16px;line-height:1.55;padding-inline:16px}
+.wrap{max-width:960px;margin-inline:auto;padding-block:32px 72px;display:flex;flex-direction:column;gap:28px}
+h1,h2,h3{font-family:var(--f-display);line-height:1.15;text-wrap:balance;margin:0}
+h1{font-size:clamp(2rem,6vw,3.1rem);font-weight:700;letter-spacing:-.02em}
+h2{font-size:1.5rem;font-weight:700}h3{font-size:1.05rem;font-weight:500}
+p{margin:0}
+.eyebrow{font-family:var(--f-mono);font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.mono{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+header{display:flex;flex-direction:column;gap:12px}
+.lede{color:var(--muted);max-width:62ch;font-size:1.05rem}
+.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-block:1px solid var(--line);display:flex;gap:6px;overflow-x:auto;padding:8px 0;margin-inline:-16px;padding-inline:16px}
+.tabs button{flex:none;font:inherit;font-size:.9rem;color:var(--fg);background:var(--surface);border:1px solid var(--line);border-radius:99px;padding:6px 16px;cursor:pointer}
+.tabs button[aria-selected="true"]{background:var(--accent);color:var(--bg);border-color:var(--accent);font-weight:600}
+button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.panel[hidden]{display:none}
+.panel{display:flex;flex-direction:column;gap:20px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+.key{background:var(--accent-soft);border-radius:10px;padding:12px 16px;font-weight:500}
+.tw{overflow-x:auto}
+table{border-collapse:collapse;width:100%;min-width:480px;font-size:.92rem}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:500}
+.f{font-family:var(--f-mono);font-size:.9rem}
+.chip{display:inline-block;font-family:var(--f-mono);font-size:.75rem;border-radius:6px;padding:1px 8px}
+.chip.a{background:var(--acid-soft);color:var(--acid)}.chip.b{background:var(--base-soft);color:var(--base)}.chip.n{background:var(--accent-soft);color:var(--accent)}
+
+/* Mapa mental */
+.mm{display:grid;grid-template-columns:minmax(150px,200px) 1fr;gap:20px;align-items:center}
+.mm-root{background:var(--accent);color:var(--bg);border-radius:16px;padding:20px 16px;text-align:center;font-family:var(--f-display);font-weight:700;font-size:1.3rem;line-height:1.2;position:sticky;top:64px}
+.mm-root small{display:block;font-family:var(--f-mono);font-weight:400;font-size:.7rem;margin-top:8px;opacity:.85}
+.mm-branches{display:flex;flex-direction:column;gap:12px;position:relative;padding-left:22px;border-left:2px solid var(--line)}
+.br{position:relative;background:var(--surface);border:1px solid var(--line);border-left:5px solid var(--c);border-radius:10px;padding:12px 14px}
+.br::before{content:"";position:absolute;left:-24px;top:26px;width:22px;height:2px;background:var(--line)}
+.br h3{color:var(--c);margin-bottom:6px;font-size:1rem}
+.br ul{margin:0;padding-left:1.1em;display:flex;flex-direction:column;gap:3px;font-size:.9rem}
+.br li::marker{color:var(--c)}
+@media(max-width:640px){.mm{grid-template-columns:1fr}.mm-root{position:static}.mm-branches{padding-left:12px}.br::before{left:-14px;width:12px}}
+
+/* Interpretador */
+.form{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px}
+label{display:flex;flex-direction:column;gap:3px;font-size:.78rem;color:var(--muted)}
+input,select{font:inherit;font-family:var(--f-mono);font-size:1rem;color:var(--fg);background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:7px 9px;width:100%;min-width:0}
+.steps{display:flex;flex-direction:column;gap:10px}
+.step{display:grid;grid-template-columns:34px 1fr;gap:12px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.step .n{width:30px;height:30px;border-radius:50%;background:var(--accent);color:var(--bg);display:grid;place-items:center;font-family:var(--f-mono);font-weight:500}
+.step b{display:block;font-family:var(--f-display);font-weight:500;margin-bottom:2px}
+.step p{font-size:.92rem}
+.step .sub{color:var(--muted);font-size:.85rem;font-family:var(--f-mono)}
+.verdict{border-radius:10px;padding:12px 16px;font-weight:600;font-size:1.02rem}
+.verdict.acid{background:var(--acid-soft);color:var(--acid)}.verdict.base{background:var(--base-soft);color:var(--base)}.verdict.ok{background:var(--ok-soft);color:var(--ok)}.verdict.mix{background:var(--amber-soft);color:var(--amber)}
+
+/* Casos */
+.cases{display:flex;flex-wrap:wrap;gap:6px}
+.cases button{font:inherit;font-family:var(--f-mono);font-size:.85rem;min-width:40px;padding:6px 10px;border-radius:8px;border:1px solid var(--line);background:var(--surface);color:var(--fg);cursor:pointer}
+.cases button[aria-pressed="true"]{background:var(--accent);color:var(--bg);border-color:var(--accent)}
+.reveal{align-self:flex-start;font:inherit;font-weight:600;background:var(--accent);color:var(--bg);border:0;border-radius:8px;padding:8px 16px;cursor:pointer}
+.gab{display:none;background:var(--accent-soft);border-radius:10px;padding:12px 16px;font-size:.93rem}
+.gab.show{display:block}
+footer{font-size:.82rem;color:var(--muted);border-top:1px solid var(--line);padding-top:14px}
+</style>
+
+<div class="wrap">
+<header>
+  <span class="eyebrow">Internato UTI · Urgência e Emergência · IRespA e Gasometria</span>
+  <h1>Gasometria em 4 passos</h1>
+  <p class="lede">Do pH ao diagnóstico misto. Mapa mental, um interpretador que mostra cada conta e a tabela de fórmulas de compensação.</p>
+</header>
+
+<div class="tabs" role="tablist" aria-label="Seções">
+  <button role="tab" aria-selected="true" data-p="mapa">Mapa mental</button>
+  <button role="tab" aria-selected="false" data-p="interp">Interpretador</button>
+  <button role="tab" aria-selected="false" data-p="form">Fórmulas</button>
+</div>
+
+<!-- MAPA -->
+<section class="panel" id="p-mapa">
+  <div class="mm">
+    <div class="mm-root">Gasometria arterial<small>pH · pCO₂ · HCO₃⁻ · compensação</small></div>
+    <div class="mm-branches">
+      <div class="br" style="--c:var(--accent)"><h3>Valores de referência</h3><ul>
+        <li>pH arterial 7,35 a 7,45 (venoso 7,31 a 7,41)</li>
+        <li>pCO₂ 35 a 45 · pO₂ 80 a 100 · HCO₃⁻ 22 a 26 · BE −3 a +3</li>
+        <li>PaO₂ ideal = 109 − (0,43 × idade)</li>
+        <li>pH = 6,1 + log [HCO₃⁻] / (0,03 × pCO₂): rim no numerador (dias), pulmão no denominador (minutos)</li></ul></div>
+      <div class="br" style="--c:var(--ok)"><h3>Roteiro de 4 passos</h3><ul>
+        <li><b>1</b> pH: acidemia &lt; 7,35, alcalemia &gt; 7,45</li>
+        <li><b>2</b> pCO₂ e HCO₃⁻: quem acompanha o pH é o distúrbio primário</li>
+        <li><b>3</b> Compensação esperada: a medida bate com a fórmula?</li>
+        <li><b>4</b> Ânion gap, albumina e delta-delta se acidose metabólica</li></ul></div>
+      <div class="br" style="--c:var(--acid)"><h3>Acidose e alcalose metabólicas</h3><ul>
+        <li>Acidose: PaCO₂ esperada = 1,5 × HCO₃⁻ + 8 (± 2), fórmula de Winter</li>
+        <li>Alcalose: PaCO₂ ≈ HCO₃⁻ + 15 (ou 40 + 0,7 × (HCO₃⁻ − 24))</li>
+        <li>Compensação respiratória começa em minutos, máximo em 24 h</li></ul></div>
+      <div class="br" style="--c:var(--base)"><h3>Acidose e alcalose respiratórias</h3><ul>
+        <li>Acidose aguda: HCO₃⁻ sobe 1 a cada +10 de pCO₂ · crônica: sobe 4</li>
+        <li>Alcalose aguda: HCO₃⁻ cai 2 a cada −10 de pCO₂ · crônica: cai 5</li>
+        <li>Compensação renal começa em 6 a 12 h, máximo em 3 a 4 dias</li></ul></div>
+      <div class="br" style="--c:var(--amber)"><h3>Ânion gap</h3><ul>
+        <li>AG = Na⁺ − (Cl⁻ + HCO₃⁻), normal 8 a 16 mEq/L</li>
+        <li>Albumina baixa esconde o AG: AG corrigido = AG + 2,5 × (4,0 − albumina)</li>
+        <li>Δ/Δ = (AG − 12) / (24 − HCO₃⁻): &lt; 1 acidose hiperclorêmica associada, 1 a 2 puro, &gt; 2 alcalose metabólica oculta</li></ul></div>
+      <div class="br" style="--c:var(--accent)"><h3>Hipoxemia e SDRA</h3><ul>
+        <li>Passo a passo: via aérea superior, pulmão ou pleura, resposta ao O₂, gradiente A-a</li>
+        <li>Gradiente A-a = 150 − PaO₂ − 1,25 × PaCO₂ (ar ambiente); normal ≈ idade/4 + 4</li>
+        <li>A-a normal: hipoventilação ou baixa FiO₂ · aumentado: V/Q, shunt, difusão</li>
+        <li>SDRA por PaO₂/FiO₂ com PEEP ≥ 5: leve 201-300, moderada 101-200, grave ≤ 100</li></ul></div>
+      <div class="br" style="--c:var(--acid)"><h3>Coleta e tipos de IRpA</h3><ul>
+        <li>Tipo I hipoxêmica: PaO₂ &lt; 60 · Tipo II hipercápnica: PaCO₂ &gt; 45</li>
+        <li>Radial, teste de Allen, 1 a 2 mL, sem bolhas, agulha 23 a 25 G, processar em até 30 min</li>
+        <li>PaCO₂ sobe 3 a 10 mmHg por hora em amostra parada</li></ul></div>
+      <div class="br" style="--c:var(--ok)"><h3>4 regras de ouro do plantão</h3><ul>
+        <li>O aparelho não mede o bicarbonato, ele calcula</li>
+        <li>A roda do pH quebra o pânico: setas nunca mentem</li>
+        <li>Albumina baixa esconde o caos: corrija o AG</li>
+        <li>Trate o paciente, não o exame</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- INTERPRETADOR -->
+<section class="panel" id="p-interp" hidden>
+  <div class="card">
+    <div class="form">
+      <label for="ph">pH<input id="ph" type="number" step="0.01" inputmode="decimal"></label>
+      <label for="pco2">pCO₂ (mmHg)<input id="pco2" type="number" step="0.1" inputmode="decimal"></label>
+      <label for="hco3">HCO₃⁻ (mEq/L)<input id="hco3" type="number" step="0.1" inputmode="decimal"></label>
+      <label for="na">Na⁺ (opcional)<input id="na" type="number" step="0.1" inputmode="decimal"></label>
+      <label for="cl">Cl⁻ (opcional)<input id="cl" type="number" step="0.1" inputmode="decimal"></label>
+      <label for="alb">Albumina g/dL (opc.)<input id="alb" type="number" step="0.1" inputmode="decimal"></label>
+    </div>
+    <p style="font-size:.82rem;color:var(--muted)">Margem de compensação: ±2 mmHg na fórmula de Winter, ±5 na alcalose metabólica, ±1,5 mEq/L de HCO₃⁻ nos distúrbios respiratórios. Regras aproximadas; some sempre a clínica.</p>
+  </div>
+  <div id="caseinfo"></div>
+  <div id="out" class="steps"></div>
+</section>
+
+<!-- FORMULAS -->
+<section class="panel" id="p-form" hidden>
+  <div class="tw"><table>
+    <thead><tr><th>Distúrbio primário</th><th>Resposta esperada</th></tr></thead>
+    <tbody>
+      <tr><td><span class="chip a">Acidose metabólica</span></td><td class="f">PaCO₂ = 1,5 × HCO₃⁻ + 8 (± 2)</td></tr>
+      <tr><td><span class="chip b">Alcalose metabólica</span></td><td class="f">PaCO₂ = 40 + 0,7 × (HCO₃⁻ − 24) (± 5), ou ≈ HCO₃⁻ + 15</td></tr>
+      <tr><td><span class="chip a">Acidose respiratória aguda</span></td><td class="f">HCO₃⁻ = 24 + (PaCO₂ − 40) / 10</td></tr>
+      <tr><td><span class="chip a">Acidose respiratória crônica</span></td><td class="f">HCO₃⁻ = 24 + 4 × (PaCO₂ − 40) / 10</td></tr>
+      <tr><td><span class="chip b">Alcalose respiratória aguda</span></td><td class="f">HCO₃⁻ = 24 − 2 × (40 − PaCO₂) / 10</td></tr>
+      <tr><td><span class="chip b">Alcalose respiratória crônica</span></td><td class="f">HCO₃⁻ = 24 − 5 × (40 − PaCO₂) / 10</td></tr>
+    </tbody></table></div>
+  <div class="grid">
+    <div class="card"><h3>Ânion gap</h3><p class="f">AG = Na⁺ − (Cl⁻ + HCO₃⁻)</p><p class="f">AG corrigido = AG + 2,5 × (4,0 − alb)</p><p>Referência 8 a 16 mEq/L.</p></div>
+    <div class="card"><h3>Delta-delta</h3><p class="f">Δ/Δ = (AG − 12) / (24 − HCO₃⁻)</p><p><span class="chip a">&lt; 1</span> acidose hiperclorêmica associada · <span class="chip n">1 a 2</span> puro · <span class="chip b">&gt; 2</span> alcalose metabólica oculta.</p></div>
+    <div class="card"><h3>Gradiente A-a</h3><p class="f">A-a = 150 − PaO₂ − 1,25 × PaCO₂</p><p>Esperado ≈ idade/4 + 4 mmHg (ar ambiente).</p></div>
+    <div class="card"><h3>Bicarbonato na acidose</h3><p class="f">Déficit = 0,5 × peso × (22 − HCO₃⁻)</p><p>Reposição só se AG normal, ou pH &lt; 7,2 com HCO₃⁻ &lt; 10. Monitorar K⁺, Na⁺, Ca²⁺.</p></div>
+  </div>
+</section>
+
+<footer>Fontes: regras de compensação de uso corrente em equilíbrio acidobásico (fórmula de Winter, regras de 1-4 e 2-5 para distúrbios respiratórios, ânion gap corrigido pela albumina e delta-delta). Margens aproximadas: interprete sempre com a clínica.</footer>
+</div>
+
+<script>
+(function(){
+var $=function(i){return document.getElementById(i)};
+/* tabs */
+var tabs=document.querySelectorAll('.tabs button');
+function show(p){tabs.forEach(function(b){b.setAttribute('aria-selected',b.dataset.p===p)});document.querySelectorAll('.panel').forEach(function(s){s.hidden=s.id!=='p-'+p});}
+tabs.forEach(function(b){b.addEventListener('click',function(){show(b.dataset.p)})});
+
+/* interpretador */
+function n(id){var v=parseFloat($(id).value);return isNaN(v)?null:v}
+function r(x,d){return x.toFixed(d===undefined?1:d)}
+function interpret(){
+  var ph=n('ph'),pc=n('pco2'),hc=n('hco3'),na=n('na'),cl=n('cl'),alb=n('alb'),out=$('out');
+  if(ph===null||pc===null||hc===null){out.innerHTML='<div class="card">Preencha pH, pCO₂ e HCO₃⁻.</div>';return}
+  var s=[],verdict='',cls='ok',assoc=[];
+  var ac=ph<7.35, al=ph>7.45;
+  s.push(['pH '+r(ph,2),ac?'Acidemia (pH &lt; 7,35).':al?'Alcalemia (pH &gt; 7,45).':'pH na faixa normal. Isso não exclui distúrbio: se pCO₂ ou HCO₃⁻ estiverem alterados, pense em compensação completa ou distúrbio misto.']);
+  var prim=null;
+  if(ac){ if(hc<22) prim='ma'; if(pc>45) prim=(prim==='ma')?'mix2':'ra'; }
+  else if(al){ if(hc>26) prim='mk'; if(pc<35) prim=(prim==='mk')?'mix2':'rk'; }
+  else { if((pc<35||pc>45)||(hc<22||hc>26)) prim='norm-alt'; }
+  var names={ma:'Acidose metabólica',ra:'Acidose respiratória',mk:'Alcalose metabólica',rk:'Alcalose respiratória'};
+  if(prim==='mix2'){ s.push(['pCO₂ '+r(pc,0)+' e HCO₃⁻ '+r(hc),'Os dois componentes empurram o pH no mesmo sentido: distúrbio misto do mesmo lado.']); verdict=(ac?'Acidose mista (metabólica + respiratória)':'Alcalose mista (metabólica + respiratória)');cls=ac?'acid':'base';}
+  else if(prim==='norm-alt'){ s.push(['pCO₂ '+r(pc,0)+' · HCO₃⁻ '+r(hc),'Valores alterados com pH normal: possível distúrbio misto de sentidos opostos ou compensação completa. Interprete com a clínica.']); verdict='pH normal com distúrbio provável (misto ou compensado)';cls='mix';}
+  else if(prim===null){ s.push(['pCO₂ '+r(pc,0)+' · HCO₃⁻ '+r(hc),'Dentro da referência.']); verdict='Sem distúrbio ácido-base evidente';cls='ok';}
+  else {
+    s.push(['pCO₂ '+r(pc,0)+' · HCO₃⁻ '+r(hc),'Distúrbio primário: <b>'+names[prim]+'</b> (o componente que acompanha o pH).']);
+    var txt='',ok=null,cs='';
+    if(prim==='ma'){var e=1.5*hc+8; cs='PaCO₂ esperada = 1,5 × '+r(hc)+' + 8 = '+r(e)+' (± 2)'; if(pc>e+2){ok=false;assoc.push('acidose respiratória associada')} else if(pc<e-2){ok=false;assoc.push('alcalose respiratória associada')} else ok=true;}
+    if(prim==='mk'){var e2=40+0.7*(hc-24); cs='PaCO₂ esperada = 40 + 0,7 × ('+r(hc)+' − 24) = '+r(e2)+' (± 5)'; if(pc>e2+5){ok=false;assoc.push('acidose respiratória associada')} else if(pc<e2-5){ok=false;assoc.push('alcalose respiratória associada')} else ok=true;}
+    if(prim==='ra'){var ea=24+(pc-40)/10, ec=24+4*(pc-40)/10; cs='HCO₃⁻ esperado: aguda '+r(ea)+' · crônica '+r(ec);
+      if(hc>ec+1.5){ok=false;assoc.push('alcalose metabólica associada')} else if(hc<ea-1.5){ok=false;assoc.push('acidose metabólica associada')} else {ok=true; cs+=(hc>ea+1.5?' → medido próximo da crônica (ou aguda sobre crônica)':' → medido compatível com aguda')}}
+    if(prim==='rk'){var ea2=24-2*(40-pc)/10, ec2=24-5*(40-pc)/10; cs='HCO₃⁻ esperado: aguda '+r(ea2)+' · crônica '+r(ec2);
+      if(hc>ea2+1.5){ok=false;assoc.push('alcalose metabólica associada')} else if(hc<ec2-1.5){ok=false;assoc.push('acidose metabólica associada')} else {ok=true; cs+=(hc<ea2-1.5?' → medido próximo da crônica':' → medido compatível com aguda')}}
+    s.push(['Compensação esperada',cs+'<br><span class="sub">'+(ok?'Compensação adequada: distúrbio simples.':'Compensação inadequada: '+assoc.join(', ')+'.')+'</span>']);
+    verdict=names[prim]+(ok?' simples, compensada':' com '+assoc.join(' e '));
+    cls=(prim==='ma'||prim==='ra')?'acid':'base'; if(!ok)cls='mix';
+  }
+  if(na!==null&&cl!==null&&(prim==='ma'||prim==='mix2'||prim==='norm-alt'||ac)){
+    var ag=na-(cl+hc),agc=ag, t='AG = '+r(na,0)+' − ('+r(cl,0)+' + '+r(hc)+') = <b>'+r(ag)+'</b> (normal 8 a 16).';
+    if(alb!==null){agc=ag+2.5*(4-alb); t+=' Corrigido pela albumina '+r(alb)+': <b>'+r(agc)+'</b>.'}
+    var hi=agc>16; t+=' '+(hi?'Acidose com AG aumentado: busque causa (lactato, cetoácidos, uremia, tóxicos).':'AG normal: acidose hiperclorêmica (perda de bicarbonato, diarreia, acidose tubular renal).');
+    s.push(['Ânion gap',t]);
+    if(hi&&hc<24){var dd=(agc-12)/(24-hc); var m=dd<1?'menor que 1: acidose hiperclorêmica associada':dd>2?'maior que 2: alcalose metabólica oculta associada':'entre 1 e 2: distúrbio puro'; s.push(['Delta-delta','Δ/Δ = ('+r(agc)+' − 12) / (24 − '+r(hc)+') = <b>'+r(dd,2)+'</b>, '+m+'.']); if(dd>2){verdict+=' + alcalose metabólica oculta';cls='mix'} if(dd<1){verdict+=' + acidose hiperclorêmica';cls='mix'}}
+  } else if((prim==='ma')&&(na===null||cl===null)) s.push(['Ânion gap','Informe Na⁺ e Cl⁻ para calcular AG e delta-delta.']);
+  var h='<div class="verdict '+cls+'">'+verdict+'</div>';
+  s.forEach(function(x,i){h+='<div class="step"><span class="n">'+(i+1)+'</span><div><b>'+x[0]+'</b><p>'+x[1]+'</p></div></div>'});
+  out.innerHTML=h;
+}
+['ph','pco2','hco3','na','cl','alb'].forEach(function(i){$(i).addEventListener('input',function(){$('caseinfo').innerHTML='';interpret()})});
+
+interpret();
+})();
+</script>
+
+
+
+<style id="v4-meu-locus">
+/* V4 meu locus: sobrescreve os tokens e as fontes do material original */
+:root{color-scheme:dark;--accent:#D9B8FF!important;--accent-soft:#2E2160!important;--acid:#FF8FA3!important;--acid-soft:#3A1838!important;--amber:#FBBF6A!important;--amber-soft:#3A2A14!important;--base:#A8B4FF!important;--base-soft:#1E2458!important;--bg:#100C2A!important;--fg:#EDE6FF!important;--line:#3A2F66!important;--muted:#B9AED6!important;--ok:#7DDBA8!important;--ok-soft:#15302A!important;--surface:rgba(26,20,64,.88)!important;}
+html{background:#0B0820}
+body{background:url("padrao-lilas.png") 0 0/620px auto repeat,
+  radial-gradient(760px 460px at 50% -6%,rgba(168,96,216,.34) 0%,rgba(168,96,216,0) 62%),
+  radial-gradient(600px 420px at 100% 100%,rgba(58,91,208,.18) 0%,rgba(58,91,208,0) 60%),
+  linear-gradient(180deg,#100C2A 0%,#0B0820 100%)!important;background-attachment:fixed!important;background-color:#100C2A!important;color:#EDE6FF!important;
+  font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;margin:0}
+h1,h2{font-family:"Playfair Display",Georgia,serif!important;letter-spacing:-.01em}
+h1{font-weight:800!important}
+a{color:#D9B8FF}
+::selection{background:#A860D8;color:#fff}
+.ml-top{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
+  max-width:1100px;margin:0 auto;padding:14px 16px 0;font-family:Inter,system-ui,sans-serif}
+.ml-back{color:#D9B8FF;text-decoration:none;font-size:.9rem;font-weight:600;border:1px solid rgba(216,184,255,.26);
+  border-radius:99px;padding:6px 14px;background:rgba(160,96,216,.10)}
+.ml-back:hover,.ml-back:focus-visible{background:rgba(160,96,216,.22);outline:none}
+.ml-brand{font-family:"Playfair Display",Georgia,serif;font-weight:800;font-size:1.15rem;color:#EDE6FF;letter-spacing:-.01em}
+.ml-brand i{font-style:italic;background:linear-gradient(90deg,#3A5BD0,#A860D8);-webkit-background-clip:text;background-clip:text;color:transparent;padding-right:.08em}
+.ml-note{max-width:1100px;margin:10px auto 0;padding:0 16px;font-family:Inter,system-ui,sans-serif;font-size:.82rem;color:#B9AED6}
+.ml-note span{display:block;border:1px solid rgba(216,184,255,.26);border-left:3px solid #A860D8;border-radius:8px;padding:8px 12px;background:rgba(160,96,216,.08)}
+.ml-warn{position:sticky;top:0;z-index:60;background:#2A0F2E;border-bottom:1px solid #FB923C;color:#FFE4CC;
+  font-family:Inter,system-ui,sans-serif;font-size:.85rem;line-height:1.4;padding:8px 16px;text-align:center}
+.ml-warn b{color:#FB923C}
+@media print{.ml-top,.ml-note,.ml-warn{display:none}}
+</style>
+</body>
+</html>

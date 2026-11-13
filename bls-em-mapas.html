@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="BLS em mapas: fluxogramas de SBV, mapa mental e tabela adulto × criança × lactente (AHA 2020).">
+<meta name="color-scheme" content="dark">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<title>BLS em Mapas · meu locus</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+</head>
+<body>
+<div class="ml-top"><a class="ml-back" href="./">← cupons &amp; indicações</a><span class="ml-brand"><i>meu</i> locus</span></div>
+<div class="ml-note"><span>Material de estudo feito por uma estudante de medicina. Não substitui diretriz, protocolo ou avaliação médica: confira sempre na fonte oficial.</span></div>
+<style>
+/* Layout: sticky tabs (mapa, fluxogramas, adulto x criança x lactente, lista) in one reading column; same UTI tokens, crimson accent for resuscitation */
+:root{
+  --bg:#f2f6f8; --surface:#ffffff; --fg:#14232b; --muted:#546a75; --line:#d5e0e6;
+  --accent:#b3261e; --accent-soft:#fbe3e1; --teal:#0d6e77; --teal-soft:#dcf0f1; --amber:#b86e00; --amber-soft:#fbecd0; --ok:#1e7a45; --ok-soft:#dff3e6;
+  --f-display:'Playfair Display','Segoe UI',system-ui,sans-serif;
+  --f-body:Inter,'Segoe UI',system-ui,sans-serif;
+  --f-mono:'IBM Plex Mono',ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0e1a20; --surface:#152630; --fg:#e6eff3; --muted:#93a9b4; --line:#26404d;
+  --accent:#ff8f86; --accent-soft:#3d1a18; --teal:#4fc3cc; --teal-soft:#12363c; --amber:#f0b04a; --amber-soft:#3a2a0d; --ok:#6fd39a; --ok-soft:#153323; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0e1a20; --surface:#152630; --fg:#e6eff3; --muted:#93a9b4; --line:#26404d;
+  --accent:#ff8f86; --accent-soft:#3d1a18; --teal:#4fc3cc; --teal-soft:#12363c; --amber:#f0b04a; --amber-soft:#3a2a0d; --ok:#6fd39a; --ok-soft:#153323; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:16px;line-height:1.55;padding-inline:16px}
+.wrap{max-width:960px;margin-inline:auto;padding-block:32px 72px;display:flex;flex-direction:column;gap:24px}
+h1,h2,h3{font-family:var(--f-display);line-height:1.15;text-wrap:balance;margin:0}
+h1{font-size:clamp(2rem,6vw,3.1rem);font-weight:700;letter-spacing:-.02em}
+h2{font-size:1.4rem;font-weight:700}h3{font-size:1.02rem;font-weight:500}
+p{margin:0}
+.eyebrow{font-family:var(--f-mono);font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.lede{color:var(--muted);max-width:64ch}
+.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-block:1px solid var(--line);display:flex;gap:6px;overflow-x:auto;padding:8px 0;margin-inline:-16px;padding-inline:16px}
+.tabs button{flex:none;font:inherit;font-size:.9rem;color:var(--fg);background:var(--surface);border:1px solid var(--line);border-radius:99px;padding:6px 16px;cursor:pointer}
+.tabs button[aria-selected="true"]{background:var(--accent);color:var(--bg);border-color:var(--accent);font-weight:600}
+button:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.panel[hidden]{display:none}.panel{display:flex;flex-direction:column;gap:18px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px}
+.key{background:var(--accent-soft);border-radius:10px;padding:12px 16px;font-weight:500}
+.note{background:var(--amber-soft);border-radius:10px;padding:10px 14px;font-size:.88rem}
+.conf{display:inline-block;font-family:var(--f-mono);font-size:.68rem;border-radius:5px;padding:1px 6px;margin-left:6px;vertical-align:middle;white-space:nowrap}
+.conf.d{background:var(--ok-soft);color:var(--ok)}
+.conf.m{background:var(--amber-soft);color:var(--amber)}
+.tw{overflow-x:auto}
+table{border-collapse:collapse;width:100%;min-width:560px;font-size:.92rem}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:500}
+.mm{display:grid;grid-template-columns:minmax(150px,200px) 1fr;gap:20px;align-items:center}
+.mm-root{background:var(--accent);color:var(--bg);border-radius:16px;padding:20px 16px;text-align:center;font-family:var(--f-display);font-weight:700;font-size:1.3rem;line-height:1.2;position:sticky;top:64px}
+.mm-root small{display:block;font-family:var(--f-mono);font-weight:400;font-size:.7rem;margin-top:8px;opacity:.9}
+.mm-branches{display:flex;flex-direction:column;gap:12px;padding-left:22px;border-left:2px solid var(--line)}
+.br{position:relative;background:var(--surface);border:1px solid var(--line);border-left:5px solid var(--c);border-radius:10px;padding:12px 14px}
+.br::before{content:"";position:absolute;left:-24px;top:26px;width:22px;height:2px;background:var(--line)}
+.br h3{color:var(--c);margin-bottom:6px}
+.br ul{margin:0;padding-left:1.1em;display:flex;flex-direction:column;gap:3px;font-size:.9rem}
+@media(max-width:640px){.mm{grid-template-columns:1fr}.mm-root{position:static}.mm-branches{padding-left:12px}.br::before{left:-14px;width:12px}}
+.flow{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px;overflow-x:auto}
+.checks{display:flex;flex-direction:column;gap:6px}
+.checks label{display:flex;gap:10px;align-items:flex-start;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 12px;cursor:pointer}
+.checks input{margin-top:4px;accent-color:var(--accent);width:18px;height:18px;flex:none}
+.checks input:checked + span{color:var(--muted);text-decoration:line-through}
+.grp{font-family:var(--f-mono);font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);margin-top:10px}
+.bar{height:8px;background:var(--line);border-radius:99px;overflow:hidden}.bar i{display:block;height:100%;background:var(--ok);width:0}
+footer{font-size:.82rem;color:var(--muted);border-top:1px solid var(--line);padding-top:14px}
+</style>
+
+<div class="wrap">
+<header>
+  <span class="eyebrow">Suporte Básico de Vida · AHA 2020</span>
+  <h1>BLS em mapas</h1>
+  <p class="lede">Mapa mental, fluxogramas de conduta e a lista do que lembrar para a prova. Cada número tem uma etiqueta: confirmado nas fontes lidas ou de memória do padrão AHA, para conferir no manual do curso.</p>
+</header>
+
+<div class="tabs" role="tablist" aria-label="Seções">
+  <button role="tab" aria-selected="true" data-p="fluxo">Fluxogramas</button>
+  <button role="tab" aria-selected="false" data-p="mapa">Mapa mental</button>
+  <button role="tab" aria-selected="false" data-p="faixas">Adulto × criança × lactente</button>
+  <button role="tab" aria-selected="false" data-p="curso">Do curso</button>
+  <button role="tab" aria-selected="false" data-p="lista">Lista para lembrar</button>
+</div>
+
+<section class="panel" id="p-mapa" hidden>
+  <div class="mm">
+    <div class="mm-root">BLS<small>reconhecer · comprimir · desfibrilar</small></div>
+    <div class="mm-branches">
+      <div class="br" style="--c:var(--accent)"><h3>Cadeia de sobrevivência (6 elos)</h3><ul>
+        <li>Intra-hospitalar: reconhecimento e prevenção precoces, acionar emergência, RCP de alta qualidade, desfibrilação, cuidados pós-PCR, <b>recuperação</b> <span class="conf d">diretriz 2020</span></li>
+        <li>Extra-hospitalar: acionar emergência, RCP, desfibrilação, ressuscitação avançada, pós-PCR, <b>recuperação</b> <span class="conf d">diretriz 2020</span></li>
+        <li>O 6º elo, recuperação, é novidade de 2020</li></ul></div>
+      <div class="br" style="--c:var(--teal)"><h3>Reconhecer a PCR</h3><ul>
+        <li>Cena segura, tocar os ombros e chamar em voz alta</li>
+        <li>Pedir ajuda, acionar o serviço de emergência, buscar DEA</li>
+        <li>Checar respiração e pulso ao mesmo tempo, por 5 a 10 segundos <span class="conf d">cards ACLS</span></li>
+        <li>Sem respiração normal (ou só gasping) e sem pulso: iniciar RCP</li>
+        <li>Leigo: se há dúvida, iniciar RCP, o risco de dano é baixo <span class="conf d">diretriz 2020</span></li></ul></div>
+      <div class="br" style="--c:var(--accent)"><h3>RCP de alta qualidade</h3><ul>
+        <li>Frequência 100 a 120/min <span class="conf d">diretriz 2020</span></li>
+        <li>Profundidade ≥ 5 cm no adulto <span class="conf d">diretriz 2020</span></li>
+        <li>Retorno total do tórax a cada compressão</li>
+        <li>Minimizar interrupções: fração de compressões &gt; 80% <span class="conf d">checklist SAVC</span>, pausas ≤ 10 s</li>
+        <li>Evitar ventilação excessiva</li>
+        <li>Revezar o compressor a cada 2 min ou antes, se cansado <span class="conf d">diretriz 2020</span></li>
+        <li>Feedback audiovisual em tempo real pode ser usado <span class="conf d">diretriz 2020</span></li></ul></div>
+      <div class="br" style="--c:var(--amber)"><h3>Ventilação</h3><ul>
+        <li>Sem via aérea avançada: 30 compressões : 2 ventilações <span class="conf d">cards ACLS</span></li>
+        <li>Com via aérea avançada: 1 ventilação a cada 6 s (10/min), compressões contínuas <span class="conf d">diretriz 2020</span></li>
+        <li>Com pulso e sem respiração: 1 ventilação a cada 6 s, reavaliar o pulso a cada 2 min <span class="conf m">padrão AHA, conferir</span></li>
+        <li>Cada ventilação em ~1 s, com elevação visível do tórax <span class="conf m">conferir</span></li></ul></div>
+      <div class="br" style="--c:var(--teal)"><h3>DEA</h3><ul>
+        <li>Usar assim que chegar: ligar, colocar as pás, analisar, afastar todos, chocar se indicado</li>
+        <li>Voltar à RCP imediatamente após o choque, por 2 min <span class="conf m">conferir</span></li>
+        <li>Menos de 12% dos adultos recebem DEA antes do SME <span class="conf d">diretriz 2020</span></li></ul></div>
+      <div class="br" style="--c:var(--accent)"><h3>Emergência associada a opioides</h3><ul>
+        <li>Suspeita: checar resposta, pedir ajuda, acionar emergência, buscar naloxona e DEA <span class="conf d">diretriz 2020</span></li>
+        <li>Respira normalmente: evitar a deterioração, reposicionar, considerar naloxona, reavaliar</li>
+        <li>Não respira e há pulso (≤ 10 s): abrir via aérea, ventilar, dar naloxona</li>
+        <li>Sem pulso: RCP, DEA, considerar naloxona</li></ul></div>
+      <div class="br" style="--c:var(--amber)"><h3>Faixas etárias</h3><ul>
+        <li>Adulto, criança e lactente diferem em razão, profundidade, técnica e pás do DEA</li>
+        <li>Veja a aba Adulto × criança × lactente</li></ul></div>
+      <div class="br" style="--c:var(--teal)"><h3>Obstrução de via aérea (engasgo)</h3><ul>
+        <li>Adulto e criança: compressões abdominais <span class="conf m">conferir</span></li>
+        <li>Lactente: 5 golpes nas costas e 5 compressões torácicas <span class="conf m">conferir</span></li>
+        <li>Se perde a consciência: iniciar RCP <span class="conf m">conferir</span></li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section class="panel" id="p-fluxo">
+  <div class="note">Os fluxogramas de opioides e da cadeia vêm da figura 3 e 6 das Diretrizes AHA 2020. O fluxograma do adulto segue o algoritmo padrão de SBV para profissional de saúde, com os números marcados nos cards ACLS e nas diretrizes; confira detalhes no manual do seu curso.</div>
+  <h2>SBV do adulto, profissional de saúde</h2>
+  <div class="flow"><pre class="mermaid">
+flowchart TD
+  A["Cena segura?"] --> B["Vítima não responde: tocar os ombros e chamar"]
+  B --> C["Pedir ajuda, acionar emergência, buscar DEA"]
+  C --> D["Checar respiração e pulso ao mesmo tempo (5 a 10 s)"]
+  D -->|"sem respiração normal e sem pulso"| E["Iniciar RCP 30 compressões : 2 ventilações"]
+  D -->|"respira e tem pulso"| F["Monitorar e reavaliar"]
+  D -->|"tem pulso, sem respiração normal"| G["Ventilação de resgate 1 a cada 6 s reavaliar o pulso a cada 2 min"]
+  E --> H["DEA disponível?"]
+  H -->|"sim"| I["Ligar, colocar pás, analisar"]
+  I -->|"choque indicado"| J["Afastar todos, chocar e retomar a RCP por 2 min"]
+  I -->|"sem choque"| K["Retomar a RCP por 2 min"]
+  J --> L["Reavaliar o ritmo a cada 2 min"]
+  K --> L
+  H -->|"não"| M["Continuar a RCP revezar o compressor a cada 2 min"]
+  </pre></div>
+  <h2>Emergência associada a opioides, profissional de saúde</h2>
+  <div class="flow"><pre class="mermaid">
+flowchart TD
+  A["Suspeita de intoxicação por opioide checar resposta, pedir ajuda, acionar emergência, buscar naloxona e DEA"] --> B{"Respira normalmente?"}
+  B -->|"sim"| C["Evitar a deterioração tocar os ombros, abrir a via aérea, considerar naloxona, transportar"]
+  C --> D["Avaliação contínua de resposta e respiração"]
+  B -->|"não"| E{"Há pulso? (avaliar por ≤ 10 s)"}
+  E -->|"sim"| F["Ventilação de suporte abrir via aérea, ventilar com bolsa-válvula-máscara, administrar naloxona"]
+  E -->|"não"| G["Iniciar RCP usar DEA, considerar naloxona, seguir o algoritmo de SBV/PCR"]
+  </pre></div>
+  <h2>Cadeias de sobrevivência 2020</h2>
+  <div class="flow"><pre class="mermaid">
+flowchart LR
+  subgraph IH["PCR intra-hospitalar"]
+    direction LR
+    a1["Reconhecimento e prevenção precoces"] --> a2["Acionar serviço de emergência"] --> a3["RCP de alta qualidade"] --> a4["Desfibrilação"] --> a5["Cuidados pós-PCR"] --> a6["Recuperação"]
+  end
+  subgraph EH["PCR extra-hospitalar"]
+    direction LR
+    b1["Acionar serviço de emergência"] --> b2["RCP de alta qualidade"] --> b3["Desfibrilação"] --> b4["Ressuscitação avançada"] --> b5["Cuidados pós-PCR"] --> b6["Recuperação"]
+  end
+  </pre></div>
+  <h2>RCE, sinais de retorno da circulação</h2>
+  <div class="grid">
+    <div class="card"><h3>3 sinais <span class="conf d">diretriz 2020</span></h3><p>Pulso e pressão arterial presentes. Aumento abrupto e prolongado da PETCO₂ (tipicamente ≥ 40 mmHg). Ondas de pressão arterial espontâneas no monitoramento intra-arterial.</p></div>
+  </div>
+</section>
+
+<section class="panel" id="p-faixas" hidden>
+  <div class="note">Só a razão 30:2 do adulto sem via aérea, os 5 a 10 s, a profundidade do adulto e a frequência estão confirmados nas fontes que li. O restante da tabela é o padrão AHA de memória: confirme no manual do curso antes de confiar na prova.</div>
+  <div class="tw"><table>
+    <thead><tr><th>Item</th><th>Adulto</th><th>Criança (1 ano à puberdade)</th><th>Lactente (&lt; 1 ano)</th></tr></thead>
+    <tbody>
+      <tr><td>Frequência</td><td>100 a 120/min <span class="conf d">confirmado</span></td><td colspan="2">100 a 120/min <span class="conf m">conferir</span></td></tr>
+      <tr><td>Profundidade</td><td>≥ 5 cm <span class="conf d">confirmado</span></td><td>≈ 1/3 do diâmetro do tórax, ~5 cm <span class="conf m">conferir</span></td><td>≈ 1/3 do diâmetro, ~4 cm <span class="conf m">conferir</span></td></tr>
+      <tr><td>Razão, 1 socorrista</td><td>30:2 <span class="conf d">confirmado</span></td><td colspan="2">30:2 <span class="conf m">conferir</span></td></tr>
+      <tr><td>Razão, 2 socorristas</td><td>30:2</td><td colspan="2">15:2 <span class="conf m">conferir</span></td></tr>
+      <tr><td>Técnica de compressão</td><td>2 mãos, metade inferior do esterno</td><td>1 ou 2 mãos <span class="conf m">conferir</span></td><td>2 dedos (1 socorrista) ou 2 polegares com as mãos envolvendo o tórax (2 socorristas) <span class="conf m">conferir</span></td></tr>
+      <tr><td>Pulso</td><td>Carotídeo (ou femoral)</td><td>Carotídeo ou femoral <span class="conf m">conferir</span></td><td>Braquial <span class="conf m">conferir</span></td></tr>
+      <tr><td>Ventilação com pulso</td><td>1 a cada 6 s <span class="conf d">diretriz</span></td><td colspan="2">1 a cada 2 a 3 s <span class="conf m">conferir</span></td></tr>
+      <tr><td>Via aérea avançada</td><td colspan="3">1 ventilação a cada 6 s (10/min) com compressões contínuas <span class="conf d">diretriz 2020</span></td></tr>
+      <tr><td>Pás do DEA</td><td>Pás de adulto</td><td colspan="2">Pás pediátricas, se disponíveis (&lt; 8 anos); senão as de adulto <span class="conf m">conferir</span></td></tr>
+      <tr><td>Engasgo</td><td>Compressões abdominais</td><td>Compressões abdominais</td><td>5 golpes nas costas + 5 compressões torácicas <span class="conf m">conferir</span></td></tr>
+    </tbody></table></div>
+</section>
+
+<section class="panel" id="p-curso" hidden>
+  <div class="note">Pontos anotados durante o curso de BLS, guardados como conteúdo para lembrar.</div>
+  <div class="grid">
+    <div class="card"><h3>Ventilação com bolsa-máscara ideal <span class="conf d">curso</span></h3><ul style="margin:0;padding-left:1.1em"><li>Inclinação da cabeça e elevação do queixo para abrir a via aérea</li><li>Apertar a bolsa até o tórax subir</li><li>Vedar bem a máscara no rosto</li><li>Usar oxigênio suplementar quando disponível</li></ul></div>
+    <div class="card"><h3>Quando o DEA está disponível <span class="conf d">curso</span></h3><p>O primeiro passo é ligar o DEA e seguir as instruções do aparelho.</p></div>
+    <div class="card"><h3>Pás do DEA, colocação anterolateral <span class="conf d">curso</span></h3><ul style="margin:0;padding-left:1.1em"><li>Adulto e criança com 8 anos ou mais</li><li>Uma pá na parte superior direita do tórax, logo abaixo da clavícula, na vertical</li><li>Outra nas costelas laterais esquerdas, na horizontal, centralizada na linha médio-axilar</li></ul><p><span class="conf m">conferir</span> Menores de 8 anos: pás pediátricas, em geral anteroposterior.</p></div>
+    <div class="card"><h3>Máscara de bolso <span class="conf d">curso</span></h3><p>Com 1 socorrista, posicionar-se ao lado da vítima, para ventilar e comprimir sem se mover.</p></div>
+    <div class="card"><h3>Cadeia de sobrevivência <span class="conf d">curso</span></h3><p>A desfibrilação é um dos elos da cadeia.</p></div>
+  </div>
+</section>
+
+<section class="panel" id="p-lista" hidden>
+  <p>Marque conforme fixa. O progresso fica só neste navegador.</p>
+  <div class="bar" aria-hidden="true"><i id="bar"></i></div>
+  <p id="cnt" class="eyebrow"></p>
+  <div class="checks" id="checks"></div>
+</section>
+
+<footer>Fontes: Destaques das Diretrizes de RCP e ACE 2020 da AHA (figuras 3, 4, 6 e 7) e baralho Anki AHA::ACLS 2020. As etiquetas "conferir" marcam informação do padrão AHA que não estava nas fontes lidas: valide no manual do provedor de BLS. Material de estudo.</footer>
+</div>
+
+<script>
+(function(){
+var $=function(i){return document.getElementById(i)};
+var tabs=document.querySelectorAll('.tabs button');
+function show(p){tabs.forEach(function(b){b.setAttribute('aria-selected',b.dataset.p===p)});document.querySelectorAll('.panel').forEach(function(s){s.hidden=s.id!=='p-'+p})}
+tabs.forEach(function(b){b.addEventListener('click',function(){show(b.dataset.p)})});
+var L=[
+['Cadeia de sobrevivência',['A desfibrilação é um elo da cadeia','Os 6 elos intra-hospitalares, na ordem','Os 6 elos extra-hospitalares, na ordem','O 6º elo é a recuperação (novo em 2020)']],
+['Reconhecimento',['Sequência: cena segura, tocar os ombros, pedir ajuda, acionar emergência, buscar DEA','Checar respiração e pulso juntos por 5 a 10 s','Gasping não é respiração normal','Leigo com dúvida: iniciar RCP']],
+['RCP de alta qualidade',['Frequência 100 a 120/min','Profundidade ≥ 5 cm no adulto, sem passar de ~6 cm','Retorno total do tórax','Fração de compressões > 80% e pausas ≤ 10 s','Revezar o compressor a cada 2 min','Evitar ventilação excessiva','Superfície firme']],
+['Ventilação e via aérea',['BVM ideal: inclinar a cabeça e elevar o queixo, apertar até o tórax subir, vedar a máscara, O₂ suplementar','Máscara de bolso com 1 socorrista: ficar ao lado da vítima','30:2 sem via aérea avançada','1 ventilação a cada 6 s com via aérea avançada, compressões contínuas','Ventilação de resgate com pulso: 1 a cada 6 s no adulto','Elevação visível do tórax, ~1 s por ventilação']],
+['DEA',['Ao chegar: ligar o DEA e seguir as instruções','Colocação anterolateral: direita superior abaixo da clavícula (vertical) e esquerda lateral, linha médio-axilar (horizontal)','Passos: ligar, colocar pás, analisar, afastar, chocar','Voltar à RCP logo após o choque, 2 min','Pás pediátricas em criança pequena e lactente']],
+['Faixas etárias',['Razão 15:2 com 2 socorristas em criança e lactente','Profundidade da criança e do lactente (~1/3 do tórax)','Técnica no lactente: 2 dedos ou 2 polegares','Pulso braquial no lactente']],
+['Opioides',['Fluxograma do profissional de saúde: respira? tem pulso?','Naloxona: quando considerar','Sem pulso: RCP + DEA, naloxona não substitui a RCP']],
+['Engasgo',['Adulto e criança: compressões abdominais','Lactente: 5 golpes nas costas + 5 compressões torácicas','Perdeu a consciência: RCP']],
+['Equipe e pós-PCR',['Papéis da equipe e comunicação em alça fechada','RCE: pulso e PA, PETCO₂ ≥ 40 subindo, ondas arteriais','Pós-PCR: SpO₂ 92 a 98%, PAS > 90, PaCO₂ 35 a 45']]
+];
+var st={};try{st=JSON.parse(localStorage.getItem('bls-lista')||'{}')}catch(e){}
+var h='',n=0,tot=0;
+L.forEach(function(g){h+='<div class="grp">'+g[0]+'</div>';g[1].forEach(function(t){var k=g[0]+'|'+t;tot++;h+='<label><input type="checkbox" data-k="'+k.replace(/"/g,'&quot;')+'"'+(st[k]?' checked':'')+'><span>'+t+'</span></label>'})});
+$('checks').innerHTML=h;
+function upd(){var c=0;document.querySelectorAll('#checks input').forEach(function(i){if(i.checked)c++});$('bar').style.width=(c/tot*100)+'%';$('cnt').textContent=c+' de '+tot+' itens fixados'}
+$('checks').addEventListener('change',function(e){st[e.target.getAttribute('data-k')]=e.target.checked;try{localStorage.setItem('bls-lista',JSON.stringify(st))}catch(x){}upd()});
+upd();
+})();
+</script>
+
+<!--claude-mermaid-runtime-begin:3477-->
+<style>.mermaid-diagram{margin-block:4px}.mermaid-diagram svg{display:block;margin:0 auto;max-width:100%;height:auto}</style>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@11.12.0/dist/mermaid.min.js"></script>
+<script>(function(){
+var CFG={"palettes":{"light":{"surface":"#1A1440","text":"#EDE6FF","line":"#B9AED6","border":"#A860D8","bg":"#100C2A"},"dark":{"surface":"#1A1440","text":"#EDE6FF","line":"#B9AED6","border":"#A860D8","bg":"#100C2A"}}};
+if(typeof mermaid==='undefined')return;
+var pres=Array.prototype.slice.call(document.querySelectorAll('pre.mermaid')).filter(function(p){if(p.hasAttribute('data-claude-mermaid-claimed'))return false;p.setAttribute('data-claude-mermaid-claimed','1');return true;});
+if(!pres.length)return;
+var mq=window.matchMedia?window.matchMedia('(prefers-color-scheme: dark)'):null;
+var root=document.documentElement;
+var items=pres.map(function(pre){
+var mount=document.createElement('div');mount.className='mermaid-diagram';
+return {pre:pre,mount:mount,src:pre.textContent||''};
+});
+var seq=0;
+var renderGen=0;
+var lastKey='';
+function pageBg(fallback){
+var els=[document.body,document.documentElement];
+for(var i=0;i<els.length;i++){
+var c=els[i]&&getComputedStyle(els[i]).backgroundColor;
+if(c&&c!=='transparent'&&c!=='rgba(0, 0, 0, 0)')return c;
+}
+return fallback;
+}
+function render(){
+var theme=root.getAttribute('data-theme');
+var dark=theme==='dark'||(!!(mq&&mq.matches)&&theme!=='light');
+var pal=dark?CFG.palettes.dark:CFG.palettes.light;
+var bg=pageBg(pal.bg);
+var key=(dark?'d':'l')+'|'+bg;
+if(key===lastKey)return;
+lastKey=key;
+var gen=++renderGen;
+var font=getComputedStyle(document.body).fontFamily||'sans-serif';
+var nat={useMaxWidth:false};
+mermaid.initialize({
+startOnLoad:false,securityLevel:'strict',theme:'base',
+flowchart:nat,sequence:nat,er:nat,state:nat,class:nat,pie:nat,
+gantt:nat,journey:nat,timeline:nat,gitGraph:nat,mindmap:nat,xyChart:nat,
+quadrantChart:nat,sankey:nat,c4:nat,requirement:nat,block:nat,
+packet:nat,kanban:nat,architecture:nat,radar:nat,
+themeVariables:{background:bg,mainBkg:pal.surface,primaryColor:pal.surface,
+primaryTextColor:pal.text,lineColor:pal.line,primaryBorderColor:pal.border,
+nodeBorder:pal.border,clusterBorder:pal.border,edgeLabelBackground:bg,
+clusterBkg:'rgba(127,127,127,0.07)',titleColor:pal.text,
+darkMode:dark,rowOdd:bg,rowEven:'rgba(127,127,127,0.07)',
+attributeBackgroundColorOdd:bg,attributeBackgroundColorEven:'rgba(127,127,127,0.07)',
+fontSize:'16px',fontFamily:font},
+themeCSS:'.node rect, .node circle, .node polygon, .node path, .cluster rect { stroke-width: 2px; }'
+});
+items.forEach(function(it){
+var id='claude-mermaid-'+seq++;
+mermaid.render(id,it.src).then(function(r){
+if(gen!==renderGen)return;
+var prev=it.pre.previousElementSibling;
+if(prev&&prev.className==='mermaid-diagram'&&prev!==it.mount)return;
+it.mount.innerHTML=r.svg;
+if(!it.mount.parentNode)it.pre.parentNode.insertBefore(it.mount,it.pre);
+it.pre.style.display='none';
+},function(){
+var scratch=document.getElementById(id);
+if(scratch)scratch.parentNode.removeChild(scratch);
+scratch=document.getElementById('d'+id);
+if(scratch)scratch.parentNode.removeChild(scratch);
+if(gen!==renderGen)return;
+if(it.mount.parentNode)it.mount.parentNode.removeChild(it.mount);
+it.pre.style.display='';
+});
+});
+}
+(document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(render);
+if(mq&&mq.addEventListener)mq.addEventListener('change',render);
+if(typeof MutationObserver!=='undefined')new MutationObserver(render).observe(root,{attributes:true,attributeFilter:['data-theme']});
+})();</script>
+<!--claude-mermaid-runtime-end-->
+
+<style>.mermaid-diagram .edgeLabel,.mermaid-diagram .edgeLabel p,.mermaid-diagram .labelBkg{background:#1A1440!important;color:#EDE6FF!important}.mermaid-diagram .edgeLabel rect{fill:#1A1440!important}</style>
+
+<style id="v4-meu-locus">
+/* V4 meu locus: sobrescreve os tokens e as fontes do material original */
+:root{color-scheme:dark;--accent:#D9B8FF!important;--accent-soft:#2E2160!important;--amber:#FBBF6A!important;--amber-soft:#3A2A14!important;--bg:#100C2A!important;--fg:#EDE6FF!important;--line:#3A2F66!important;--muted:#B9AED6!important;--ok:#7DDBA8!important;--ok-soft:#15302A!important;--surface:rgba(26,20,64,.88)!important;--teal:#7FD4E0!important;--teal-soft:#12304A!important;}
+html{background:#0B0820}
+body{background:url("padrao-lilas.png") 0 0/620px auto repeat,
+  radial-gradient(760px 460px at 50% -6%,rgba(168,96,216,.34) 0%,rgba(168,96,216,0) 62%),
+  radial-gradient(600px 420px at 100% 100%,rgba(58,91,208,.18) 0%,rgba(58,91,208,0) 60%),
+  linear-gradient(180deg,#100C2A 0%,#0B0820 100%)!important;background-attachment:fixed!important;background-color:#100C2A!important;color:#EDE6FF!important;
+  font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;margin:0}
+h1,h2{font-family:"Playfair Display",Georgia,serif!important;letter-spacing:-.01em}
+h1{font-weight:800!important}
+a{color:#D9B8FF}
+::selection{background:#A860D8;color:#fff}
+.ml-top{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
+  max-width:1100px;margin:0 auto;padding:14px 16px 0;font-family:Inter,system-ui,sans-serif}
+.ml-back{color:#D9B8FF;text-decoration:none;font-size:.9rem;font-weight:600;border:1px solid rgba(216,184,255,.26);
+  border-radius:99px;padding:6px 14px;background:rgba(160,96,216,.10)}
+.ml-back:hover,.ml-back:focus-visible{background:rgba(160,96,216,.22);outline:none}
+.ml-brand{font-family:"Playfair Display",Georgia,serif;font-weight:800;font-size:1.15rem;color:#EDE6FF;letter-spacing:-.01em}
+.ml-brand i{font-style:italic;background:linear-gradient(90deg,#3A5BD0,#A860D8);-webkit-background-clip:text;background-clip:text;color:transparent;padding-right:.08em}
+.ml-note{max-width:1100px;margin:10px auto 0;padding:0 16px;font-family:Inter,system-ui,sans-serif;font-size:.82rem;color:#B9AED6}
+.ml-note span{display:block;border:1px solid rgba(216,184,255,.26);border-left:3px solid #A860D8;border-radius:8px;padding:8px 12px;background:rgba(160,96,216,.08)}
+.ml-warn{position:sticky;top:0;z-index:60;background:#2A0F2E;border-bottom:1px solid #FB923C;color:#FFE4CC;
+  font-family:Inter,system-ui,sans-serif;font-size:.85rem;line-height:1.4;padding:8px 16px;text-align:center}
+.ml-warn b{color:#FB923C}
+@media print{.ml-top,.ml-note,.ml-warn{display:none}}
+</style>
+</body>
+</html>

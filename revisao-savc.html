@@ -1,0 +1,935 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="Guia de revisão do SAVC: pontos de atenção, fluxogramas, doses e ECGs para praticar.">
+<meta name="color-scheme" content="dark">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<title>Guia de Revisão SAVC · meu locus</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+</head>
+<body>
+<div class="ml-top"><a class="ml-back" href="./">← cupons &amp; indicações</a><span class="ml-brand"><i>meu</i> locus</span></div>
+<div class="ml-note"><span>Material de estudo feito por uma estudante de medicina. Não substitui diretriz, protocolo ou avaliação médica: confira sempre na fonte oficial.</span></div>
+<style>
+  :root {
+    color-scheme: light;
+    --bg: #f5f7f4;
+    --surface: #ffffff;
+    --surface-2: #eef2ee;
+    --text: #182420;
+    --text-muted: #56685f;
+    --border: #d9e2dc;
+    --accent: #0d6b57;
+    --accent-soft: #e2f2ec;
+    --alert: #ae3626;
+    --alert-soft: #fbe6e2;
+    --warn: #a5701a;
+    --warn-soft: #fbeed9;
+    --good: #2f7a45;
+    --good-soft: #e5f3e8;
+    --grid-line: #d9e2dc;
+    --shadow: 0 1px 2px rgba(24,36,32,0.06), 0 6px 20px rgba(24,36,32,0.05);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --bg: #0a100c;
+      --surface: #101a14;
+      --surface-2: #15211a;
+      --text: #d9f5e6;
+      --text-muted: #7fa692;
+      --border: #1e2f26;
+      --accent: #35e0a8;
+      --accent-soft: #123528;
+      --alert: #ff7a68;
+      --alert-soft: #3a1712;
+      --warn: #f0b23c;
+      --warn-soft: #3a2a0f;
+      --good: #4ade80;
+      --good-soft: #113322;
+      --grid-line: #1c2b22;
+      --shadow: 0 1px 2px rgba(0,0,0,0.4), 0 10px 30px rgba(0,0,0,0.35);
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --bg: #0a100c;
+    --surface: #101a14;
+    --surface-2: #15211a;
+    --text: #d9f5e6;
+    --text-muted: #7fa692;
+    --border: #1e2f26;
+    --accent: #35e0a8;
+    --accent-soft: #123528;
+    --alert: #ff7a68;
+    --alert-soft: #3a1712;
+    --warn: #f0b23c;
+    --warn-soft: #3a2a0f;
+    --good: #4ade80;
+    --good-soft: #113322;
+    --grid-line: #1c2b22;
+    --shadow: 0 1px 2px rgba(0,0,0,0.4), 0 10px 30px rgba(0,0,0,0.35);
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: Inter, system-ui, sans-serif;
+    padding-inline: 16px;
+    padding-block: 28px 64px;
+  }
+  .wrap { max-width: 920px; margin: 0 auto; }
+  h1, h2, h3 { font-family: 'Playfair Display', system-ui, sans-serif; text-wrap: balance; margin: 0; }
+  p { line-height: 1.55; color: var(--text); }
+  .muted { color: var(--text-muted); }
+  .mono { font-family: 'IBM Plex Mono', ui-monospace, monospace; font-variant-numeric: tabular-nums; }
+
+  header.hero {
+    display: flex; flex-direction: column; gap: 6px;
+    padding-block: 4px 8px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 28px;
+  }
+  .eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--accent);
+  }
+  h1 { font-size: clamp(28px, 5vw, 38px); font-weight: 700; }
+  header.hero p { max-width: 60ch; font-size: 15px; }
+
+  section { margin-block: 36px; }
+  .section-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 14px; flex-wrap: wrap; }
+  .section-head h2 { font-size: 21px; font-weight: 600; }
+  .section-head .tag { font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; color: var(--text-muted); }
+
+  /* ---- score dashboard ---- */
+  .score-top {
+    display: grid; grid-template-columns: auto 1fr; gap: 22px; align-items: center;
+    background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
+    padding: 20px; box-shadow: var(--shadow);
+  }
+  .score-dial { position: relative; width: 104px; height: 104px; flex: none; }
+  .score-dial svg { width: 100%; height: 100%; }
+  .score-dial .num {
+    position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+    font-family: 'IBM Plex Mono', monospace; font-weight: 600; font-size: 22px;
+  }
+  .score-top .desc p { margin: 4px 0 0; font-size: 13.5px; }
+  .score-top .desc .goal { font-size: 12.5px; }
+
+  .area-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 12px; margin-top: 14px; }
+  .area-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; box-shadow: var(--shadow); }
+  .area-card .label { font-size: 13px; color: var(--text-muted); }
+  .area-card .pct { font-family: 'IBM Plex Mono', monospace; font-size: 24px; font-weight: 600; margin-top: 2px; }
+  .bar-track { height: 6px; border-radius: 4px; background: var(--surface-2); margin-top: 8px; overflow: hidden; }
+  .bar-fill { height: 100%; border-radius: 4px; }
+
+  /* breakdown table */
+  .breakdown-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin-top: 16px; }
+  .breakdown-col h3 { font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); font-weight: 600; margin-bottom: 8px; }
+  .breakdown-row {
+    display: flex; align-items: center; gap: 10px; justify-content: space-between;
+    padding: 7px 0; border-bottom: 1px solid var(--border); font-size: 13.5px;
+  }
+  .breakdown-row:last-child { border-bottom: none; }
+  .breakdown-row .name { flex: 1; }
+  .breakdown-row .frac { color: var(--text-muted); font-family: 'IBM Plex Mono', monospace; font-size: 12px; }
+  .chip { font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 600; padding: 2px 8px; border-radius: 20px; min-width: 42px; text-align: center; }
+  .chip.low { background: var(--alert-soft); color: var(--alert); }
+  .chip.mid { background: var(--warn-soft); color: var(--warn); }
+  .chip.high { background: var(--good-soft); color: var(--good); }
+
+  /* priorities */
+  .priority-list { display: grid; gap: 10px; }
+  .priority-item {
+    display: grid; grid-template-columns: auto 1fr; gap: 12px; align-items: start;
+    background: var(--surface); border: 1px solid var(--border); border-left: 3px solid var(--alert);
+    border-radius: 8px; padding: 12px 14px; box-shadow: var(--shadow);
+  }
+  .priority-item .pct { font-family: 'IBM Plex Mono', monospace; font-weight: 700; color: var(--alert); font-size: 15px; min-width: 40px; }
+  .priority-item h4 { margin: 0 0 2px; font-size: 14.5px; font-weight: 600; }
+  .priority-item p { margin: 0; font-size: 13px; color: var(--text-muted); }
+
+  /* deep-dive topics */
+  .deep-tabs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 14px; }
+  .deep-tab {
+    font-family: 'IBM Plex Mono', monospace; font-size: 12.5px; padding: 7px 12px; border-radius: 20px;
+    border: 1px solid var(--border); background: var(--surface); color: var(--text-muted); cursor: pointer;
+  }
+  .deep-tab .score { color: var(--alert); font-weight: 600; margin-left: 4px; }
+  .deep-tab.active { background: var(--alert); border-color: var(--alert); color: #fff; font-weight: 600; }
+  .deep-tab.active .score { color: #fff; }
+  .deep-panel { display: none; }
+  .deep-panel.active { display: block; }
+  .deep-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 20px 22px; box-shadow: var(--shadow); }
+  .deep-card-head { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; margin-bottom: 14px; flex-wrap: wrap; }
+  .deep-card-head h3 { font-size: 18px; font-weight: 600; }
+  .deep-card-head .chip { min-width: unset; }
+  .simple-box {
+    display: flex; gap: 12px; align-items: flex-start;
+    background: var(--accent-soft); border: 1px solid var(--accent); border-radius: 10px;
+    padding: 14px 16px; margin-bottom: 18px;
+  }
+  .simple-box .mark {
+    flex: none; width: 26px; height: 26px; border-radius: 50%; background: var(--accent); color: var(--bg);
+    display: flex; align-items: center; justify-content: center; font-family: 'IBM Plex Mono', monospace;
+    font-weight: 700; font-size: 13px;
+  }
+  .simple-box .body .eyebrow2 { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); display:block; margin-bottom: 4px; }
+  .simple-box .body p { margin: 0; font-size: 14px; line-height: 1.6; }
+  .deep-body h4 { font-size: 12.5px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); font-weight: 600; margin: 18px 0 6px; }
+  .deep-body h4:first-child { margin-top: 0; }
+  .deep-body p { font-size: 14px; margin: 0 0 8px; }
+  .deep-body .warn-box {
+    background: var(--alert-soft); border: 1px solid var(--alert); border-radius: 8px; padding: 10px 14px; margin-top: 10px;
+  }
+  .deep-body .warn-box p { margin: 0; font-size: 13.5px; }
+  .deep-body .warn-box .eyebrow2 { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--alert); display:block; margin-bottom: 4px; font-weight: 600; }
+
+  /* flowcharts */
+  .flow-tabs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 14px; }
+  .flow-tab {
+    font-family: 'IBM Plex Mono', monospace; font-size: 12.5px; padding: 7px 12px; border-radius: 20px;
+    border: 1px solid var(--border); background: var(--surface); color: var(--text-muted); cursor: pointer;
+  }
+  .flow-tab.active { background: var(--accent); border-color: var(--accent); color: var(--bg); font-weight: 600; }
+  .flow-panel { display: none; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 18px; box-shadow: var(--shadow); overflow-x: auto; }
+  .flow-panel.active { display: block; }
+  .flow-panel svg { display: block; margin: 0 auto; max-width: 100%; height: auto; }
+  .flow-note { font-size: 12.5px; color: var(--text-muted); margin-top: 10px; }
+
+  /* ecg practice */
+  .ecg-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
+  .ecg-card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 10px; overflow: hidden;
+    box-shadow: var(--shadow); cursor: pointer; -webkit-tap-highlight-color: transparent;
+  }
+  .ecg-strip-wrap { background: #0a0f0c; padding: 10px; }
+  .ecg-card canvas { display: block; width: 100%; height: 84px; }
+  .ecg-info { padding: 12px 14px; }
+  .ecg-info .q { font-size: 12px; color: var(--text-muted); }
+  .ecg-info .ans { display: none; margin-top: 6px; }
+  .ecg-card.revealed .ans { display: block; }
+  .ecg-info .ans .name { font-weight: 600; font-size: 14px; }
+  .ecg-info .ans .feat { font-size: 12.5px; color: var(--text-muted); margin-top: 3px; }
+  .ecg-info .hint { font-size: 11.5px; color: var(--text-muted); margin-top: 6px; font-style: italic; }
+  .ecg-card.revealed .hint { display: none; }
+
+  /* dose sheet */
+  table.dose { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+  table.dose th { text-align: left; font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-muted); border-bottom: 1px solid var(--border); padding: 6px 8px; }
+  table.dose td { padding: 9px 8px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  table.dose tr:last-child td { border-bottom: none; }
+  table.dose td.drug { font-weight: 600; white-space: nowrap; }
+  .dose-wrap { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 6px 12px; box-shadow: var(--shadow); overflow-x: auto; }
+
+  footer { margin-top: 44px; padding-top: 18px; border-top: 1px solid var(--border); font-size: 12px; color: var(--text-muted); }
+
+  @media (max-width: 520px) {
+    .score-top { grid-template-columns: 1fr; text-align: center; }
+    .score-dial { margin: 0 auto; }
+  }
+</style>
+
+<div class="wrap">
+
+  <header class="hero">
+    <span class="eyebrow">SAVC · ACLS · guia de revisão</span>
+    <h1>Guia de revisão SAVC</h1>
+    <p class="muted">Material de estudo para a prova do SAVC: pontos de atenção, fluxogramas dos algoritmos, tabela de doses e traçados esquemáticos de ECG para praticar reconhecimento de ritmo.</p>
+  </header>
+
+  <section id="prioridades">
+    <div class="section-head">
+      <h2>Pontos de atenção</h2>
+      <span class="tag">o que mais confunde</span>
+    </div>
+    <div class="priority-list" id="priorityList"></div>
+  </section>
+
+  <section id="aprofundamento">
+    <div class="section-head">
+      <h2>Para aprofundar</h2>
+      <span class="tag">temas que pegam</span>
+    </div>
+    <div class="deep-tabs" id="deepTabs"></div>
+    <div id="deepPanels"></div>
+  </section>
+
+  <section id="fluxogramas">
+    <div class="section-head">
+      <h2>Fluxogramas de conduta</h2>
+      <span class="tag">algoritmos SAVC</span>
+    </div>
+    <div class="flow-tabs" id="flowTabs"></div>
+    <div id="flowPanels"></div>
+  </section>
+
+  <section id="doses">
+    <div class="section-head">
+      <h2>Doses — foco nas medicações mais fracas</h2>
+      <span class="tag">Atropina e amiodarona: doses que confundem</span>
+    </div>
+    <div class="dose-wrap">
+      <table class="dose" id="doseTable"></table>
+    </div>
+  </section>
+
+  <section id="ecgs">
+    <div class="section-head">
+      <h2>ECGs de prática</h2>
+      <span class="tag">toque para revelar</span>
+    </div>
+    <p class="muted" style="margin-top:-6px; font-size:13px;">Traçados esquemáticos simplificados, gerados para praticar reconhecimento de padrão — não são imagens da prova. Priorizados os ritmos com mais erros: bradicardia, AESP/assistolia, TSV/taquicardia e bloqueios AV.</p>
+    <div class="ecg-grid" id="ecgGrid"></div>
+  </section>
+
+  <footer>
+    Baseado no relatório de resultados da autoavaliação pré-curso de SAVC (AHA), seção "Pontuação em Diagnóstico / Algoritmos / Medicações". Guia de estudo pessoal — não substitui o Manual do Provedor de SAVC.
+  </footer>
+</div>
+
+<script>
+(function(){
+  // ---------- theme dial ----------
+  var arc = document.getElementById('dialArc');
+  var pct = 45, circumference = 276.5;
+  if(arc)arc.style.strokeDashoffset = circumference - (circumference * pct/100);
+
+  // ---------- breakdown data ----------
+  var breakdown = {
+    "Diagnóstico": [
+      ["FV/TVSP tratado com SBV de alta qualidade","5/6",83],
+      ["Assístole","3/4",75],
+      ["Manejo de via aérea","3/4",75],
+      ["FV/TVSP","6/13",46],
+      ["Taquicardia estável","2/5",40],
+      ["Taquicardia","2/6",33],
+      ["SCA","1/3",33],
+      ["Bradicardia","3/11",27],
+      ["AESP","1/4",25],
+      ["Taquicardia instável","0/1",0],
+      ["AVC","0/2",0]
+    ],
+    "Algoritmos": [
+      ["PCR","15/27",56],
+      ["Taquicardia","4/12",33],
+      ["SCA","1/3",33],
+      ["Bradicardia","3/11",27],
+      ["AVC","0/2",0]
+    ],
+    "Medicações": [
+      ["Farmacologia geral","3/5",60],
+      ["Epinefrina","3/7",43],
+      ["Adenosina","1/3",33],
+      ["Atropina","0/2",0],
+      ["Amiodarona","0/2",0],
+      ["Aspirina","0/2",0],
+      ["Aspirina e fibrinolíticos","0/1",0],
+      ["Nitroglicerina","0/1",0]
+    ]
+  };
+  function chipClass(p){ return p < 35 ? 'low' : (p < 60 ? 'mid' : 'high'); }
+  var bg = document.getElementById('breakdownGrid'); if(bg)
+  Object.keys(breakdown).forEach(function(col){
+    var div = document.createElement('div');
+    div.className = 'breakdown-col';
+    var h = document.createElement('h3'); h.textContent = col; div.appendChild(h);
+    breakdown[col].forEach(function(row){
+      var r = document.createElement('div'); r.className = 'breakdown-row';
+      r.innerHTML = '<span class="name">'+row[0]+'</span><span class="frac">'+row[1]+'</span><span class="chip '+chipClass(row[2])+'">'+row[2]+'%</span>';
+      div.appendChild(r);
+    });
+    bg.appendChild(div);
+  });
+
+  // ---------- priorities ----------
+  var priorities = [
+    ["AVC agudo","0%","Janela de rtPA/alteplase, contraindicações, aspirina só após excluir hemorragia na TC."],
+    ["Atropina","0%","Dose (1 mg IV, repetir até 3 mg) e quando NÃO usar — BAV de 3º grau/Mobitz II com QRS largo responde mal."],
+    ["Amiodarona","0%","300 mg bolus na PCR (FV/TV sem pulso) vs 150 mg em taquicardia estável com pulso — são doses diferentes."],
+    ["Aspirina / fibrinolíticos","0%","162–325 mg mastigada no IAMST; contraindicações a fibrinolítico (AVC hemorrágico prévio, sangramento ativo)."],
+    ["Nitroglicerina","0%","Contraindicada com inibidor de fosfodiesterase (sildenafila) nas últimas 24–48h e em IAM de VD."],
+    ["Taquicardia instável","0%","Sinais de instabilidade (hipotensão, dor torácica, alteração de consciência) → cardioversão sincronizada, não adenosina."],
+    ["AESP","25%","Ritmo organizado no monitor SEM pulso — tratar como PCR não chocável: RCP + epinefrina + buscar causa (H's e T's)."],
+    ["Bradicardia sintomática","27%","Só tratar se sintomática/hipotensa; sequência atropina → estimulação transcutânea/dopamina → epinefrina."],
+    ["SCA / IAMST","33%","Sequência MONA-B adaptada e via de reperfusão (fibrinólise vs. ICP primária) conforme tempo porta-balão."],
+    ["Taquicardia (geral)","33%","Fluxo estável (QRS estreito vs. largo) x instável — decidir antes de escolher droga ou choque."]
+  ];
+  var pl = document.getElementById('priorityList');
+  priorities.forEach(function(p){
+    var d = document.createElement('div'); d.className = 'priority-item';
+    d.innerHTML = '<div><h4>'+p[0]+'</h4><p>'+p[2]+'</p></div>';
+    pl.appendChild(d);
+  });
+
+  // ---------- dose sheet ----------
+  var doses = [
+    ["Atropina","1 mg IV/IO em bolus, repetir a cada 3–5 min (máx. 3 mg)","Bradicardia sintomática","Pouco eficaz em BAV Mobitz II / 3º grau infra-His (QRS largo) — não atrasar marca-passo"],
+    ["Amiodarona (PCR)","300 mg IV/IO em bolus; 2ª dose 150 mg","FV/TV sem pulso refratária a choque","—"],
+    ["Amiodarona (com pulso)","150 mg IV em 10 min","Taquicardia estável refratária","Cuidado com hipotensão na infusão rápida"],
+    ["Adenosina","6 mg IV rápido (flush); 2ª dose 12 mg","TSV estável reentrante","Avisar sensação de \"parada\"; evitar em taquicardia irregular/pré-excitada"],
+    ["Epinefrina (PCR)","1 mg IV/IO a cada 3–5 min","Todo ritmo de PCR (chocável ou não)","—"],
+    ["Epinefrina (bradicardia)","2–10 mcg/min em infusão","Bradicardia refratária a atropina","Titular pela resposta"],
+    ["Aspirina","162–325 mg mastigada, via oral","Dor torácica sugestiva de SCA","Alergia real a AAS"],
+    ["Nitroglicerina","0,3–0,4 mg SL, repetir a cada 5 min (máx. 3 doses)","Dor torácica isquêmica, PAS > 90","Uso de sildenafila/tadalafila recente; IAM de VD; hipotensão"]
+  ];
+  var dt = document.getElementById('doseTable');
+  dt.innerHTML = '<tr><th>Medicação</th><th>Dose</th><th>Indicação</th><th>Atenção</th></tr>' +
+    doses.map(function(r){ return '<tr><td class="drug">'+r[0]+'</td><td>'+r[1]+'</td><td>'+r[2]+'</td><td>'+r[3]+'</td></tr>'; }).join('');
+
+  // ================= APROFUNDAMENTO =================
+  var deepTopics = [
+    {
+      key: 'avc', label: 'AVC', score: '',
+      simple: 'Pensa no cérebro como uma cidade cheia de fiozinhos de luz (os neurônios) ligados numa usina de energia (o sangue). Se um cano que leva energia entope — é o AVC isquêmico — as luzes daquele bairro começam a apagar rapidinho. Só que ainda dá tempo de salvar boa parte delas se a gente desentupir o cano bem rápido, por isso todo mundo grita "tempo é cérebro". Só não pode usar o remédio de desentupir (a alteplase) se, em vez de entupido, o cano tiver estourado (AVC hemorrágico) — porque aí o remédio faria o sangramento piorar. Por isso a primeira coisa é sempre uma tomografia, pra saber se é entupimento ou vazamento antes de fazer qualquer coisa.',
+      body: [
+        ['O que avaliar primeiro', '<p>ABC, glicemia capilar imediata (hipoglicemia é a grande mimetizadora de AVC e é a primeira coisa a descartar) e a hora exata do início dos sintomas — ou o "last known well", o último horário em que a pessoa foi vista normal. Essa hora é o dado mais importante de toda a avaliação, porque define se ela ainda está dentro da janela terapêutica.</p><p>Use o FAST (Face, Arm, Speech, Time) ou a escala de Cincinnati para o rastreio rápido pré-hospitalar. Na chegada, a meta é TC de crânio sem contraste em até 25 minutos e interpretação em até 45 minutos.</p>'],
+        ['A bifurcação que decide tudo', '<p>A TC sem contraste não mostra a isquemia cedo — ela serve para excluir sangramento. Sangramento presente = via hemorrágica (neurocirurgia/UTI, sem trombólise). Sem sangramento = segue para avaliar elegibilidade para alteplase (rtPA).</p>'],
+        ['Janela e critérios de alteplase', '<p>Janela clássica: até 3 horas do início dos sintomas. Estendida até 4,5 horas em pacientes selecionados, com critérios mais restritos nesse intervalo adicional (idade &lt; 80 anos, sem uso de anticoagulante oral, NIHSS ≤ 25, sem a combinação de AVC prévio + diabetes).</p><p>Antes de trombolisar, a pressão precisa estar controlada: alvo &lt; 185/110 mmHg. Depois de dar alteplase, evita-se aspirina e qualquer outro antitrombótico nas primeiras 24 horas, pelo risco de sangramento.</p><p>Para oclusão de grandes vasos, a trombectomia mecânica pode estender a janela de reperfusão até 24h em pacientes bem selecionados por imagem — mesmo fora do prazo do trombolítico.</p>'],
+      ],
+      warn: 'Contraindicações centrais a rtPA: sangramento ativo ou AVC hemorrágico prévio, cirurgia de grande porte recente, plaquetopenia importante, INR elevado, glicemia muito baixa ou muito alta, e PA não controlada acima de 185/110.'
+    },
+    {
+      key: 'atropina', label: 'Atropina', score: '',
+      simple: 'O coração tem um "freio" natural chamado nervo vago que, quando pisado com força demais, deixa o coração bater devagar. A atropina é como tirar o pé desse freio: ela bloqueia a ação do vago, e o coração volta a acelerar. Mas se o problema não é o freio, e sim um fio quebrado mais embaixo no sistema elétrico do coração (um bloqueio bem baixo, perto do feixe de His), tirar o pé do freio não conserta o fio — por isso a atropina não funciona bem nesses casos, e o próximo passo já é o marca-passo.',
+      body: [
+        ['Mecanismo', '<p>Antagonista muscarínico (anticolinérgico): bloqueia competitivamente a ação vagal no nó sinusal e no nó AV, acelerando o disparo e a condução.</p>'],
+        ['Indicação e dose', '<p>Primeira linha no algoritmo de bradicardia <em>sintomática</em> — hipotensão, alteração do nível de consciência, sinais de choque, dor torácica isquêmica ou insuficiência cardíaca aguda. Dose: 1 mg IV/IO em bolus, repetida a cada 3–5 min, até dose cumulativa máxima de 3 mg (a dose que promove bloqueio vagal completo).</p>'],
+        ['Onde ela não resolve', '<p>Em bloqueios infra-nodais — Mobitz II e BAV de 3º grau com QRS largo — o problema elétrico está abaixo do nó AV, fora do alcance da inervação vagal que a atropina bloqueia. Nesses casos, não vale a pena insistir: parte-se direto para estimulação transcutânea (ou dopamina/epinefrina em infusão) enquanto se prepara o marca-passo transvenoso.</p><p>Em coração transplantado (desnervado), a atropina simplesmente não tem o que bloquear — não funciona.</p>'],
+      ],
+      warn: 'Mudança de diretriz importante: atropina foi retirada do algoritmo de PCR — não é mais usada rotineiramente em assistolia/AESP. O uso dela hoje é só para bradicardia sintomática com pulso.'
+    },
+    {
+      key: 'amiodarona', label: 'Amiodarona', score: '',
+      simple: 'Pensa no coração como uma banda em que todo mundo tem que tocar no mesmo compasso. Numa bagunça elétrica grande (fibrilação ou taquicardia ventricular), é como se cada músico tocasse uma música diferente ao mesmo tempo. A amiodarona é tipo um maestro que entra gritando "calma, todo mundo no meu compasso" — ela deixa as células elétricas mais devagar e organizadas. O detalhe é que o "grito" muda de intensidade conforme a situação: coração já parado (parada cardíaca) leva o grito mais forte, 300 mg; coração ainda batendo, só desorganizado, leva o grito mais suave, 150 mg — porque um grito forte demais num coração que ainda está bombeando pode derrubar a pressão da pessoa.',
+      body: [
+        ['Classe e mecanismo', '<p>Antiarrítmico de classe III (bloqueia canais de potássio, prolongando a repolarização e o período refratário), mas na prática tem características das quatro classes — inclui bloqueio leve de canal de sódio, efeito beta-bloqueador e bloqueio de canal de cálcio.</p>'],
+        ['Duas doses, dois contextos', '<p><strong>PCR (FV/TV sem pulso refratária a choque):</strong> 300 mg IV/IO em bolus, tipicamente após o 3º choque, na sequência RCP → choque → droga. Pode repetir 150 mg se persistir refratária.</p><p><strong>Taquicardia estável com pulso</strong> (QRS largo regular monomórfica, ou controle de FA/flutter): 150 mg IV em infusão lenta, ao longo de cerca de 10 minutos — infundir rápido demais aqui pode causar hipotensão significativa.</p>'],
+        ['Por que a dose muda', '<p>Durante a PCR já não há pressão/perfusão para "cair" da mesma forma preocupante, então prioriza-se a ação rápida do antiarrítmico. Com pulso presente, o risco de hipotensão sintomática limita a velocidade — por isso a infusão lenta.</p>'],
+      ],
+      warn: 'Não confundir as duas doses: 300 mg é dose de PCR (bolus rápido); 150 mg é dose com pulso presente (infusão lenta em ~10 min). Foi exatamente essa troca que caiu na sua prova.'
+    },
+    {
+      key: 'nitro', label: 'Nitroglicerina', score: '',
+      simple: 'Pensa nos vasos sanguíneos como mangueiras de jardim. Quando o coração sofre porque uma mangueira ficou meio entupida (angina/isquemia), a nitroglicerina afrouxa essa mangueira e as vizinhas, deixando o sangue passar mais fácil e aliviando a dor. Só que se a pessoa já tomou recentemente outro remédio de "afrouxar mangueira" — tipo os remédios para disfunção erétil (sildenafila e parecidos) — as duas mangueiras afrouxam juntas demais, a pressão despenca e a pessoa pode desmaiar ou passar muito mal. Por isso sempre se pergunta sobre esse tipo de remédio antes de dar nitroglicerina.',
+      body: [
+        ['Mecanismo', '<p>Doador de óxido nítrico: causa vasodilatação predominantemente venosa (reduz a pré-carga) e, em doses maiores, também arterial/coronariana — alivia a isquemia reduzindo o trabalho cardíaco e melhorando o fluxo coronariano.</p>'],
+        ['Dose', '<p>0,3–0,4 mg sublingual, repetida a cada 5 minutos até 3 doses, desde que a PAS se mantenha acima de 90 mmHg.</p>'],
+        ['As contraindicações que mais caem', '<p>Uso de inibidor de fosfodiesterase-5 — sildenafila/vardenafila nas últimas 24h, tadalafila nas últimas 48h (meia-vida mais longa) — pelo risco de hipotensão profunda e refratária. Hipotensão (PAS ≤ 90 ou queda ≥ 30 mmHg da basal). Infarto de ventrículo direito, porque esses pacientes dependem de pré-carga — vasodilatar piora drasticamente o débito cardíaco. Bradicardia ou taquicardia extrema.</p>'],
+      ],
+      warn: 'IAM de VD costuma ser inferior no ECG (D2, D3, aVF) com supra em V4R — esse é o sinal de alerta clássico para NÃO dar nitrato.'
+    },
+    {
+      key: 'aas', label: 'Aspirina / fibrinolíticos', score: '',
+      simple: 'Quando um vaso do coração entope de repente (infarto), é porque uma "casquinha" de gordura na parede do vaso racha, e o corpo, tentando consertar o rasgo, forma um coágulo ali — só que o coágulo acaba tampando o vaso inteiro. A aspirina impede que as plaquetas (as "primeiras socorristas" que grudam para formar o coágulo) grudem umas nas outras, evitando que ele cresça mais. Já os fibrinolíticos são como um "solvente" que dissolve o coágulo que já se formou — só que esse solvente não sabe separar coágulo bom (que estanca sangramento em outro lugar do corpo) de coágulo ruim (que entupiu o coração). Por isso, se a pessoa tiver um sangramento escondido — tipo um AVC hemorrágico recente — o solvente pode piorar muito esse sangramento, e por isso sempre se pergunta sobre histórico de sangramento antes de usar.',
+      body: [
+        ['Aspirina no SCA', '<p>Antiagregante plaquetário: inibe irreversivelmente a COX-1, bloqueando a produção de tromboxano A2. Reduz mortalidade no IAM de forma robusta e comprovada. Dose de 162–325 mg <strong>mastigada</strong> (mastigar acelera a absorção), administrada assim que houver suspeita de SCA — não espera o ECG ou a troponina.</p><p>A única contraindicação real é alergia verdadeira ao AAS. "Gastrite" ou "úlcera antiga" isoladas são motivo de cautela, não contraindicação absoluta no IAM agudo — a menos que haja sangramento ativo.</p>'],
+        ['Fibrinolíticos no IAMST', '<p>Indicados quando a ICP primária (angioplastia) não está disponível em tempo hábil — meta de porta-agulha de cerca de 30 minutos quando essa é a via escolhida.</p>'],
+      ],
+      warn: 'Contraindicações absolutas a fibrinolítico: qualquer sangramento intracraniano prévio, AVC isquêmico nos últimos 3 meses, malformação vascular cerebral ou neoplasia intracraniana conhecida, sangramento ativo, suspeita de dissecção de aorta, trauma craniano/facial significativo recente. É a mesma lógica da pergunta de AVC — por isso os dois temas se cobram de forma parecida.'
+    },
+    {
+      key: 'taqui-instavel', label: 'Taquicardia instável', score: '',
+      simple: 'Imagina o coração batendo tão rápido que ele nem consegue mais "encher direito" entre um batimento e outro — como tentar encher um copo d\'água debaixo de uma torneira que já fecha antes do copo ficar cheio. Quando isso deixa a pessoa mal — pressão caindo, desmaiando, dor forte no peito, ou o coração começando a falhar — não dá tempo de esperar remédio fazer efeito: precisa de um "reset" elétrico imediato, um choque sincronizado com o próprio batimento do coração (diferente do choque de parada cardíaca, que é disparado a qualquer momento do ciclo).',
+      body: [
+        ['Os sinais de alarme que mudam a conduta', '<p>Hipotensão, alteração aguda do estado mental, sinais de choque (pele fria, enchimento capilar lento), dor torácica isquêmica e sinais de insuficiência cardíaca aguda (dispneia, estertores, ortopneia). Presente qualquer um desses com taquicardia — a conduta muda na hora.</p>'],
+        ['Instável → cardioversão sincronizada, já', '<p>Não é adenosina, não é droga antiarrítmica como primeira conduta, e não se espera acesso venoso se a situação for grave. Cardioversão sincronizada dispara o choque no pico da onda R, evitando cair no período vulnerável da onda T (que poderia induzir uma FV). Isso é diferente da desfibrilação usada em FV/TV sem pulso, que é assíncrona — porque ali não existe onda R organizada para sincronizar.</p>'],
+        ['Quando muda de algoritmo', '<p>Se o paciente instável perder o pulso durante a avaliação ou o preparo do choque, a conduta muda imediatamente para o algoritmo de PCR (desfibrilação assíncrona), não mais cardioversão sincronizada.</p>'],
+      ],
+      warn: 'Exceção prática: em taquicardia de complexo estreito regular instável, pode-se tentar adenosina rapidamente enquanto se prepara a cardioversão — mas só se isso não atrasar o tratamento definitivo. A prioridade em instabilidade continua sendo o choque.'
+    }
+  ];
+
+  var dTabs = document.getElementById('deepTabs');
+  var dPanels = document.getElementById('deepPanels');
+  deepTopics.forEach(function(topic, i){
+    var tab = document.createElement('button');
+    tab.className = 'deep-tab' + (i===0 ? ' active' : '');
+    tab.innerHTML = topic.label + '';
+    tab.onclick = function(){
+      document.querySelectorAll('.deep-tab').forEach(function(t){t.classList.remove('active');});
+      document.querySelectorAll('.deep-panel').forEach(function(p){p.classList.remove('active');});
+      tab.classList.add('active');
+      document.getElementById('deep-'+topic.key).classList.add('active');
+    };
+    dTabs.appendChild(tab);
+
+    var panel = document.createElement('div');
+    panel.className = 'deep-panel' + (i===0 ? ' active' : '');
+    panel.id = 'deep-'+topic.key;
+    var bodyHtml = topic.body.map(function(sec){ return '<h4>'+sec[0]+'</h4>'+sec[1]; }).join('');
+    panel.innerHTML =
+      '<div class="deep-card">' +
+        '<div class="deep-card-head"><h3>'+topic.label+'</h3></div>' +
+        '<div class="simple-box"><div class="mark">10</div><div class="body"><span class="eyebrow2">Em palavras simples</span><p>'+topic.simple+'</p></div></div>' +
+        '<div class="deep-body">'+bodyHtml+
+          '<div class="warn-box"><span class="eyebrow2">Atenção</span><p>'+topic.warn+'</p></div>' +
+        '</div>' +
+      '</div>';
+    dPanels.appendChild(panel);
+  });
+
+  // ================= FLOWCHARTS =================
+  var NS = 'http://www.w3.org/2000/svg';
+  function svgEl(tag, attrs){
+    var el = document.createElementNS(NS, tag);
+    for (var k in attrs) el.setAttribute(k, attrs[k]);
+    return el;
+  }
+  function box(svg, x, y, w, h, text, opts){
+    opts = opts || {};
+    var g = svgEl('g', {});
+    var rx = opts.rx != null ? opts.rx : 8;
+    var fill = opts.fill || 'var(--surface-2)';
+    var stroke = opts.stroke || 'var(--border)';
+    var r = svgEl('rect', {x:x, y:y, width:w, height:h, rx:rx, fill:fill, stroke:stroke, 'stroke-width': opts.sw || 1.5});
+    g.appendChild(r);
+    var lines = Array.isArray(text) ? text : [text];
+    var fs = opts.fs || 12.5;
+    var lh = fs + 4;
+    var totalH = lines.length * lh;
+    var startY = y + h/2 - totalH/2 + fs*0.8;
+    lines.forEach(function(line, i){
+      var t = svgEl('text', {x: x+w/2, y: startY + i*lh, 'text-anchor':'middle', 'font-size': fs,
+        'font-family':"Inter, sans-serif", 'font-weight': opts.bold ? 600 : 400, fill: opts.color || 'var(--text)'});
+      t.textContent = line;
+      g.appendChild(t);
+    });
+    svg.appendChild(g);
+    return {x:x,y:y,w:w,h:h};
+  }
+  function label(svg, x, y, text, opts){
+    opts = opts || {};
+    var t = svgEl('text', {x:x, y:y, 'text-anchor': opts.anchor || 'middle', 'font-size': opts.fs || 11,
+      'font-family':"'IBM Plex Mono', monospace", fill: opts.color || 'var(--text-muted)', 'font-weight': opts.bold?600:400});
+    t.textContent = text;
+    svg.appendChild(t);
+  }
+  function arrow(svg, x1, y1, x2, y2, opts){
+    opts = opts || {};
+    var color = opts.color || 'var(--text-muted)';
+    var markerId = 'arrow-' + Math.round(Math.random()*1e6);
+    var defs = svg.querySelector('defs') || svg.insertBefore(svgEl('defs',{}), svg.firstChild);
+    var marker = svgEl('marker', {id: markerId, markerWidth:8, markerHeight:8, refX:6, refY:3, orient:'auto', markerUnits:'strokeWidth'});
+    var path = svgEl('path', {d:'M0,0 L0,6 L7,3 z', fill: color});
+    marker.appendChild(path); defs.appendChild(marker);
+    var line = svgEl(opts.path ? 'path' : 'line', opts.path ?
+      {d: opts.path, fill:'none', stroke: color, 'stroke-width': opts.sw||1.6, 'marker-end':'url(#'+markerId+')'} :
+      {x1:x1,y1:y1,x2:x2,y2:y2, stroke: color, 'stroke-width': opts.sw||1.6, 'marker-end':'url(#'+markerId+')'});
+    svg.appendChild(line);
+    if (opts.text) label(svg, opts.tx != null ? opts.tx : (x1+x2)/2, opts.ty != null ? opts.ty : (y1+y2)/2 - 5, opts.text, {color: opts.tcolor || color, bold:true});
+  }
+
+  var flows = {};
+
+  // ---- 1. PCR ----
+  flows['pcr'] = {
+    title: 'PCR sem pulso',
+    note: 'Verificar pulso/ritmo a cada 2 min, sem interromper compressões por mais de 10s. Buscar H\'s e T\'s em toda parada.',
+    build: function(svg){
+      svg.setAttribute('viewBox','0 0 640 520');
+      box(svg,220,10,200,42,['RCP de alta qualidade','+ monitor/desfibrilador'],{bold:true});
+      arrow(svg,320,52,320,80);
+      box(svg,220,80,200,40,'Checar ritmo',{});
+      arrow(svg,240,120,140,160,{});
+      arrow(svg,400,120,500,160,{});
+      label(svg,190,145,'chocável',{color:'var(--alert)',bold:true,anchor:'end'});
+      label(svg,450,145,'não chocável',{color:'var(--accent)',bold:true,anchor:'start'});
+
+      box(svg,40,160,200,40,'FV / TV sem pulso',{stroke:'var(--alert)'});
+      box(svg,400,160,200,40,'AESP / Assistolia',{stroke:'var(--accent)'});
+
+      arrow(svg,140,200,140,232);
+      box(svg,40,232,200,36,'1 choque',{fill:'var(--alert-soft)',stroke:'var(--alert)'});
+      arrow(svg,140,268,140,300);
+      box(svg,40,300,200,40,['RCP 2 min','acesso IV/IO'],{});
+
+      arrow(svg,500,200,500,232);
+      box(svg,400,232,200,40,['RCP 2 min','acesso IV/IO'],{});
+      arrow(svg,500,272,500,300);
+      box(svg,400,300,200,36,'Epinefrina 1 mg a cada 3–5 min',{fill:'var(--accent-soft)',stroke:'var(--accent)',fs:11.5});
+
+      arrow(svg,140,340,140,372);
+      box(svg,40,372,200,44,['Persiste chocável?','Epinefrina 1mg + choque'],{fs:11.5});
+      arrow(svg,140,416,140,448);
+      box(svg,40,448,200,44,['Ainda refratário:','Amiodarona 300→150mg'],{fill:'var(--alert-soft)',stroke:'var(--alert)',fs:11.5});
+
+      arrow(svg,500,336,500,372);
+      box(svg,400,372,200,44,['Checar ritmo/pulso','a cada 2 min'],{fs:11.5});
+      arrow(svg,500,416,500,448);
+      box(svg,400,448,200,44,['Buscar causa:','H\'s e T\'s'],{fill:'var(--accent-soft)',stroke:'var(--accent)',fs:11.5});
+
+      arrow(svg,240,392,400,392,{path:'M240,392 C 320,392 320,392 400,392', color:'var(--text-muted)'});
+      label(svg,320,382,'ritmo organizado + pulso →',{fs:10});
+      label(svg,320,398,'cuidados pós-PCR',{fs:10,bold:true,color:'var(--good)'});
+    }
+  };
+
+  // ---- 2. Bradicardia ----
+  flows['bradi'] = {
+    title: 'Bradicardia',
+    note: 'FC < 50/min. Tratar a causa se assintomático; agir apenas se sintomático (hipotensão, alteração de consciência, dor torácica, sinais de choque).',
+    build: function(svg){
+      svg.setAttribute('viewBox','0 0 640 400');
+      box(svg,220,10,200,40,'FC < 50/min',{bold:true});
+      arrow(svg,320,50,320,78);
+      box(svg,220,78,200,44,['Sintomático?','(hipotensão / choque / dor / consciência ↓)'],{fs:11});
+      arrow(svg,240,122,140,156);
+      arrow(svg,400,122,500,156);
+      label(svg,190,142,'não',{anchor:'end'});
+      label(svg,450,142,'sim',{anchor:'start',bold:true,color:'var(--alert)'});
+
+      box(svg,40,156,200,40,['Observar,','monitorar'],{fill:'var(--good-soft)',stroke:'var(--good)'});
+
+      box(svg,400,156,200,36,'Atropina 1 mg IV/IO',{fill:'var(--alert-soft)',stroke:'var(--alert)'});
+      arrow(svg,500,192,500,224);
+      label(svg,500,214,'repetir até 3 mg / máx.',{fs:10});
+      box(svg,400,224,200,44,['Persiste sintomático?','considerar causa (Mobitz II/BAVT)'],{fs:11});
+      arrow(svg,500,268,500,300);
+      box(svg,400,300,200,48,['Estimulação transcutânea','ou dopamina 5–20 mcg/kg/min','ou epinefrina 2–10 mcg/min'],{fs:11,fill:'var(--accent-soft)',stroke:'var(--accent)'});
+    }
+  };
+
+  // ---- 3. Taquicardia ----
+  flows['taqui'] = {
+    title: 'Taquicardia',
+    note: 'Instabilidade = hipotensão, alteração de consciência, sinais de choque, dor torácica isquêmica, insuficiência cardíaca aguda.',
+    build: function(svg){
+      svg.setAttribute('viewBox','0 0 640 440');
+      box(svg,220,10,200,40,'FC > 150/min',{bold:true});
+      arrow(svg,320,50,320,78);
+      box(svg,220,78,200,40,'Instável?',{fs:12});
+      arrow(svg,240,118,140,152);
+      arrow(svg,400,118,500,152);
+      label(svg,190,138,'não',{anchor:'end'});
+      label(svg,450,138,'sim',{anchor:'start',bold:true,color:'var(--alert)'});
+
+      box(svg,400,152,200,44,['Cardioversão','sincronizada'],{fill:'var(--alert-soft)',stroke:'var(--alert)',bold:true});
+      arrow(svg,500,196,500,228);
+      label(svg,500,220,'sem pulso/deteriora →',{fs:9.5});
+      box(svg,400,228,200,36,'tratar como PCR (desfibrilar)',{fill:'var(--alert-soft)',stroke:'var(--alert)',fs:10.5});
+
+      box(svg,40,152,200,40,'QRS estreito ou largo?',{fs:11.5});
+      arrow(svg,100,192,100,224);
+      arrow(svg,180,192,180,224);
+      label(svg,100,214,'estreito',{fs:10,anchor:'middle'});
+      label(svg,180,214,'largo',{fs:10,anchor:'middle'});
+
+      box(svg,20,224,140,56,['Manobra vagal','↓ Adenosina 6→12 mg','(se regular)'],{fs:10.5});
+      box(svg,180,224,160,56,['Considerar','Amiodarona 150mg IV','(se regular, monomórfica)'],{fs:10.5});
+
+      arrow(svg,90,280,90,312);
+      arrow(svg,260,280,260,312);
+      box(svg,20,312,140,40,['Persiste?','avaliar especialista'],{fs:10.5});
+      box(svg,180,312,160,40,['Persiste?','avaliar especialista'],{fs:10.5});
+    }
+  };
+
+  // ---- 4. SCA ----
+  flows['sca'] = {
+    title: 'SCA / IAMST',
+    note: 'Meta: ECG de 12 derivações em até 10 min da chegada. Tempo porta-balão idealmente < 90 min.',
+    build: function(svg){
+      svg.setAttribute('viewBox','0 0 640 400');
+      box(svg,200,10,240,40,'Dor torácica sugestiva de SCA',{bold:true});
+      arrow(svg,320,50,320,78);
+      box(svg,200,78,240,52,['O2 se SatO2<90%, AAS 162–325mg mastigada,','Nitroglicerina SL (se PAS>90, sem PDE-5i),','Morfina se dor refratária'],{fs:10.5});
+      arrow(svg,320,130,320,158);
+      box(svg,200,158,240,36,'ECG de 12 derivações ≤ 10 min',{fs:11});
+      arrow(svg,240,194,140,226);
+      arrow(svg,400,194,500,226);
+      label(svg,190,214,'sem supra',{anchor:'end',fs:10.5});
+      label(svg,450,214,'IAMST (supra ST)',{anchor:'start',fs:10.5,bold:true,color:'var(--alert)'});
+
+      box(svg,20,226,220,44,['Estratificar risco,','heparina/anticoagulação conforme protocolo'],{fs:10.5});
+      box(svg,400,226,200,44,['Ativar equipe de reperfusão'],{fs:11,fill:'var(--alert-soft)',stroke:'var(--alert)',bold:true});
+      arrow(svg,500,270,500,302);
+      box(svg,400,302,200,44,['ICP primária (preferível)','ou fibrinólise se sem acesso a ICP'],{fs:10,fill:'var(--accent-soft)',stroke:'var(--accent)'});
+    }
+  };
+
+  // ---- 5. AVC ----
+  flows['avc'] = {
+    title: 'AVC agudo',
+    note: 'Janela para alteplase/rtPA: até 3–4,5h do início dos sintomas em candidatos elegíveis. "Tempo é cérebro."',
+    build: function(svg){
+      svg.setAttribute('viewBox','0 0 640 420');
+      box(svg,200,10,240,40,'Sinais de AVC (FAST)',{bold:true});
+      arrow(svg,320,50,320,78);
+      box(svg,200,78,240,40,'Glicemia + TC de crânio sem contraste',{fs:11});
+      arrow(svg,320,118,320,146);
+      box(svg,200,146,240,40,'Hemorragia na TC?',{fs:11.5});
+      arrow(svg,240,186,140,220);
+      arrow(svg,400,186,500,220);
+      label(svg,190,206,'não',{anchor:'end',fs:10.5});
+      label(svg,450,206,'sim',{anchor:'start',fs:10.5,bold:true,color:'var(--alert)'});
+
+      box(svg,400,220,200,44,['AVC hemorrágico:','via neurocirurgia/UTI'],{fs:10.5,fill:'var(--alert-soft)',stroke:'var(--alert)'});
+
+      box(svg,20,220,240,40,'Dentro da janela (≤ 3–4,5h) e elegível?',{fs:10.5});
+      arrow(svg,80,260,80,292);
+      arrow(svg,200,260,200,292);
+      label(svg,80,282,'sim',{fs:10,bold:true,color:'var(--accent)'});
+      label(svg,200,282,'não / contraindicado',{fs:9.5,anchor:'middle'});
+
+      box(svg,0,292,150,44,['Alteplase (rtPA) IV','após checar contraindicações'],{fs:9.8,fill:'var(--accent-soft)',stroke:'var(--accent)'});
+      box(svg,160,292,150,44,['Cuidados de suporte,','considerar trombectomia'],{fs:9.8});
+    }
+  };
+
+  var tabsEl = document.getElementById('flowTabs');
+  var panelsEl = document.getElementById('flowPanels');
+  var order = ['pcr','bradi','taqui','sca','avc'];
+  order.forEach(function(key, i){
+    var f = flows[key];
+    var tab = document.createElement('button');
+    tab.className = 'flow-tab' + (i===0 ? ' active' : '');
+    tab.textContent = f.title;
+    tab.onclick = function(){
+      document.querySelectorAll('.flow-tab').forEach(function(t){t.classList.remove('active');});
+      document.querySelectorAll('.flow-panel').forEach(function(p){p.classList.remove('active');});
+      tab.classList.add('active');
+      document.getElementById('panel-'+key).classList.add('active');
+    };
+    tabsEl.appendChild(tab);
+
+    var panel = document.createElement('div');
+    panel.className = 'flow-panel' + (i===0 ? ' active' : '');
+    panel.id = 'panel-'+key;
+    var svg = svgEl('svg', {});
+    f.build(svg);
+    panel.appendChild(svg);
+    var note = document.createElement('p');
+    note.className = 'flow-note';
+    note.textContent = f.note;
+    panel.appendChild(note);
+    panelsEl.appendChild(panel);
+  });
+
+  // ================= ECG GENERATOR =================
+  function drawBeat(ctx, x0, baseY, amp, opts){
+    opts = opts || {};
+    var w = opts.width || 70;
+    ctx.beginPath();
+    ctx.moveTo(x0, baseY);
+    if (opts.pWave !== false) {
+      ctx.lineTo(x0 + w*0.10, baseY);
+      ctx.quadraticCurveTo(x0 + w*0.15, baseY - amp*0.12, x0 + w*0.20, baseY);
+    } else {
+      ctx.lineTo(x0 + w*0.20, baseY);
+    }
+    var qrsX = x0 + w*(opts.prLong ? 0.42 : 0.28);
+    ctx.lineTo(qrsX, baseY);
+    var qw = opts.qrsWide ? w*0.14 : w*0.05;
+    ctx.lineTo(qrsX + qw*0.3, baseY + amp*0.08);
+    ctx.lineTo(qrsX + qw*0.6, baseY - amp*(opts.qrsAmp!=null?opts.qrsAmp:1));
+    ctx.lineTo(qrsX + qw, baseY + amp*0.28);
+    ctx.lineTo(qrsX + qw*1.3, baseY);
+    var tX = qrsX + qw*1.3 + w*0.16;
+    ctx.lineTo(tX, baseY);
+    if (opts.tWave !== false) {
+      ctx.quadraticCurveTo(tX + w*0.10, baseY - amp*0.28, tX + w*0.20, baseY);
+    }
+    ctx.lineTo(x0 + w, baseY);
+    ctx.stroke();
+  }
+
+  function drawECG(canvas, type){
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    var w = canvas.clientWidth, h = canvas.clientHeight;
+    canvas.width = w*dpr; canvas.height = h*dpr;
+    var ctx = canvas.getContext('2d');
+    ctx.scale(dpr,dpr);
+    ctx.clearRect(0,0,w,h);
+    // grid
+    ctx.strokeStyle = 'rgba(53,224,168,0.12)';
+    ctx.lineWidth = 1;
+    for (var gx=0; gx<w; gx+=10){ ctx.beginPath(); ctx.moveTo(gx,0); ctx.lineTo(gx,h); ctx.stroke(); }
+    for (var gy=0; gy<h; gy+=10){ ctx.beginPath(); ctx.moveTo(0,gy); ctx.lineTo(w,gy); ctx.stroke(); }
+
+    ctx.strokeStyle = '#35e0a8';
+    ctx.lineWidth = 1.8;
+    ctx.lineJoin = 'round';
+    var baseY = h*0.55, amp = h*0.34;
+    var x = -10;
+
+    function beat(o){ drawBeat(ctx, x, baseY, amp, o); x += o.width || 70; }
+
+    switch(type){
+      case 'sinus_normal':
+        while (x < w) beat({width:64});
+        break;
+      case 'sinus_brady':
+        while (x < w) beat({width:100});
+        break;
+      case 'sinus_tach':
+        while (x < w) beat({width:40, qrsAmp:0.9});
+        break;
+      case 'svt':
+        while (x < w) beat({width:30, pWave:false, qrsAmp:0.95});
+        break;
+      case 'vtach':
+        while (x < w) beat({width:36, pWave:false, tWave:false, qrsWide:true, qrsAmp:1.15});
+        break;
+      case 'vfib':
+        ctx.beginPath(); ctx.moveTo(0, baseY);
+        for (var i=0;i<w;i+=4){ ctx.lineTo(i, baseY + (Math.random()-0.5)*amp*1.6); }
+        ctx.stroke();
+        break;
+      case 'torsades':
+        var env = 0, envDir=1;
+        while (x < w) {
+          env += envDir*0.18; if (env>1||env<-1) envDir*=-1;
+          beat({width:34, pWave:false, tWave:false, qrsWide:true, qrsAmp: 0.5+Math.abs(env)*0.8});
+        }
+        break;
+      case 'asystole':
+        ctx.beginPath(); ctx.moveTo(0, baseY);
+        for (var j=0;j<w;j+=6){ ctx.lineTo(j, baseY + (Math.random()-0.5)*3); }
+        ctx.stroke();
+        break;
+      case 'aesp':
+        while (x < w) beat({width:74, qrsAmp:0.8});
+        break;
+      case 'afib':
+        ctx.beginPath(); ctx.moveTo(0, baseY);
+        var xx=0;
+        while (xx < w){
+          var seg = 36 + Math.random()*30;
+          ctx.lineTo(xx+seg*0.2, baseY + (Math.random()-0.5)*amp*0.15);
+          ctx.lineTo(xx+seg*0.3, baseY);
+          ctx.lineTo(xx+seg*0.34, baseY + amp*0.1);
+          ctx.lineTo(xx+seg*0.4, baseY - amp*0.95);
+          ctx.lineTo(xx+seg*0.46, baseY + amp*0.2);
+          ctx.lineTo(xx+seg, baseY);
+          xx += seg;
+        }
+        ctx.stroke();
+        break;
+      case 'aflutter':
+        ctx.beginPath(); ctx.moveTo(0, baseY);
+        var xf=0, beatCount=0;
+        while (xf < w){
+          for (var f=0; f<3; f++){
+            ctx.lineTo(xf+6, baseY - amp*0.22);
+            ctx.lineTo(xf+12, baseY + amp*0.05);
+            xf += 12;
+          }
+          ctx.lineTo(xf+4, baseY+amp*0.08);
+          ctx.lineTo(xf+7, baseY - amp*0.9);
+          ctx.lineTo(xf+10, baseY+amp*0.25);
+          ctx.lineTo(xf+16, baseY);
+          xf += 20;
+        }
+        ctx.stroke();
+        break;
+      case 'mobitz1':
+        var pr = 0.18;
+        while (x < w){
+          var drop = pr > 0.5;
+          beat({width: drop? 34:70, prLong: pr>0.32, pWave:true, qrsAmp: drop?0:1, tWave: !drop});
+          if (drop){ pr = 0.18; } else { pr += 0.14; }
+        }
+        break;
+      case 'mobitz2':
+        var c2=0;
+        while (x < w){
+          c2++;
+          var drop2 = (c2%3===0);
+          beat({width: drop2? 34:66, qrsAmp: drop2?0:1, tWave: !drop2});
+        }
+        break;
+      case 'thirddegree':
+        // independent P and QRS rates: draw QRS complexes slow-regular, P waves faster-regular, overlaid
+        ctx.strokeStyle = 'rgba(53,224,168,0.55)';
+        var xp=6;
+        while (xp<w){ ctx.beginPath(); ctx.moveTo(xp,baseY); ctx.lineTo(xp+6,baseY);
+          ctx.quadraticCurveTo(xp+9, baseY-amp*0.14, xp+12, baseY); ctx.lineTo(xp+40,baseY); ctx.stroke(); xp+=46; }
+        ctx.strokeStyle = '#35e0a8';
+        var xq=20;
+        while (xq<w){
+          ctx.beginPath(); ctx.moveTo(xq-14,baseY);
+          ctx.lineTo(xq, baseY); ctx.lineTo(xq+4,baseY+amp*0.1); ctx.lineTo(xq+8,baseY-amp*1.1);
+          ctx.lineTo(xq+12,baseY+amp*0.3); ctx.lineTo(xq+16,baseY); ctx.lineTo(xq+95,baseY); ctx.stroke();
+          xq += 95;
+        }
+        break;
+    }
+  }
+
+  var ecgList = [
+    {type:'aesp', name:'AESP (Atividade Elétrica sem Pulso)', feat:'Ritmo organizado no monitor, mas sem pulso palpável — o diagnóstico é clínico, não pelo traçado. Tratar como PCR não chocável.'},
+    {type:'asystole', name:'Assistolia', feat:'Ausência de atividade elétrica organizada — confirmar em outra derivação ("linha reta" pode ser cabo solto).'},
+    {type:'sinus_brady', name:'Bradicardia sinusal', feat:'FC < 60/min, P-QRS-T normais e regulares. Tratar só se sintomática.'},
+    {type:'mobitz1', name:'BAV 2º grau Mobitz I (Wenckebach)', feat:'PR aumenta progressivamente até uma onda P não conduzir (bloqueia). Geralmente benigno.'},
+    {type:'mobitz2', name:'BAV 2º grau Mobitz II', feat:'PR constante com batimentos bloqueados subitamente — maior risco de progredir para BAVT.'},
+    {type:'thirddegree', name:'BAV de 3º grau (total)', feat:'P e QRS completamente dissociados, cada um no seu próprio ritmo. Geralmente precisa de marca-passo.'},
+    {type:'svt', name:'Taquicardia supraventricular', feat:'QRS estreito, regular, muito rápida, sem P visível. 1ª conduta se estável: manobra vagal → adenosina.'},
+    {type:'sinus_tach', name:'Taquicardia sinusal', feat:'QRS estreito e regular, mas com P normal antes de cada QRS — costuma ter causa secundária (dor, febre, hipovolemia).'},
+    {type:'aflutter', name:'Flutter atrial', feat:'Ondas em "dente de serra" (F) regulares, geralmente condução 2:1 ou 4:1.'},
+    {type:'afib', name:'Fibrilação atrial', feat:'Linha de base irregular sem P definido, QRS irregularmente irregular.'},
+    {type:'vtach', name:'TV monomórfica', feat:'QRS largo, regular, rápido, todos os complexos com a mesma morfologia.'},
+    {type:'torsades', name:'TV polimórfica (Torsades)', feat:'QRS largo com amplitude que "gira" em torno da linha de base — associar a QT longo.'},
+    {type:'vfib', name:'Fibrilação ventricular', feat:'Traçado caótico, sem QRS identificável — chocável, iniciar RCP + desfibrilação imediata.'}
+  ];
+
+  var grid = document.getElementById('ecgGrid');
+  ecgList.forEach(function(item, idx){
+    var card = document.createElement('div');
+    card.className = 'ecg-card';
+    card.innerHTML =
+      '<div class="ecg-strip-wrap"><canvas></canvas></div>' +
+      '<div class="ecg-info">' +
+        '<div class="q mono">Ritmo #'+(idx+1)+'</div>' +
+        '<div class="hint">toque para ver o nome e as características</div>' +
+        '<div class="ans"><div class="name">'+item.name+'</div><div class="feat">'+item.feat+'</div></div>' +
+      '</div>';
+    grid.appendChild(card);
+    card.addEventListener('click', function(){ card.classList.toggle('revealed'); });
+    var canvas = card.querySelector('canvas');
+    requestAnimationFrame(function(){ drawECG(canvas, item.type); });
+    window.addEventListener('resize', function(){ drawECG(canvas, item.type); });
+  });
+
+})();
+</script>
+
+
+
+<style id="v4-meu-locus">
+/* V4 meu locus: sobrescreve os tokens e as fontes do material original */
+:root{color-scheme:dark;--accent:#D9B8FF!important;--accent-soft:#2E2160!important;--alert:#FF8FA3!important;--alert-soft:#3A1838!important;--bg:#100C2A!important;--border:#3A2F66!important;--good:#7DDBA8!important;--good-soft:#15302A!important;--grid-line:#2C2356!important;--shadow:0 1px 2px rgba(0,0,0,.45)!important;--surface:rgba(26,20,64,.88)!important;--surface-2:rgba(40,30,86,.88)!important;--text:#EDE6FF!important;--text-muted:#B9AED6!important;--warn:#FBBF6A!important;--warn-soft:#3A2A14!important;}
+html{background:#0B0820}
+body{background:url("padrao-lilas.png") 0 0/620px auto repeat,
+  radial-gradient(760px 460px at 50% -6%,rgba(168,96,216,.34) 0%,rgba(168,96,216,0) 62%),
+  radial-gradient(600px 420px at 100% 100%,rgba(58,91,208,.18) 0%,rgba(58,91,208,0) 60%),
+  linear-gradient(180deg,#100C2A 0%,#0B0820 100%)!important;background-attachment:fixed!important;background-color:#100C2A!important;color:#EDE6FF!important;
+  font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;margin:0}
+h1,h2{font-family:"Playfair Display",Georgia,serif!important;letter-spacing:-.01em}
+h1{font-weight:800!important}
+a{color:#D9B8FF}
+::selection{background:#A860D8;color:#fff}
+.ml-top{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
+  max-width:1100px;margin:0 auto;padding:14px 16px 0;font-family:Inter,system-ui,sans-serif}
+.ml-back{color:#D9B8FF;text-decoration:none;font-size:.9rem;font-weight:600;border:1px solid rgba(216,184,255,.26);
+  border-radius:99px;padding:6px 14px;background:rgba(160,96,216,.10)}
+.ml-back:hover,.ml-back:focus-visible{background:rgba(160,96,216,.22);outline:none}
+.ml-brand{font-family:"Playfair Display",Georgia,serif;font-weight:800;font-size:1.15rem;color:#EDE6FF;letter-spacing:-.01em}
+.ml-brand i{font-style:italic;background:linear-gradient(90deg,#3A5BD0,#A860D8);-webkit-background-clip:text;background-clip:text;color:transparent;padding-right:.08em}
+.ml-note{max-width:1100px;margin:10px auto 0;padding:0 16px;font-family:Inter,system-ui,sans-serif;font-size:.82rem;color:#B9AED6}
+.ml-note span{display:block;border:1px solid rgba(216,184,255,.26);border-left:3px solid #A860D8;border-radius:8px;padding:8px 12px;background:rgba(160,96,216,.08)}
+.ml-warn{position:sticky;top:0;z-index:60;background:#2A0F2E;border-bottom:1px solid #FB923C;color:#FFE4CC;
+  font-family:Inter,system-ui,sans-serif;font-size:.85rem;line-height:1.4;padding:8px 16px;text-align:center}
+.ml-warn b{color:#FB923C}
+@media print{.ml-top,.ml-note,.ml-warn{display:none}}
+</style>
+</body>
+</html>

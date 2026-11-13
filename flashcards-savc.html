@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="53 flashcards de SAVC/ACLS 2020 para revisar no navegador.">
+<meta name="color-scheme" content="dark">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<title>Flashcards de SAVC · meu locus</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+</head>
+<body>
+<div class="ml-top"><a class="ml-back" href="./">← cupons &amp; indicações</a><span class="ml-brand"><i>meu</i> locus</span></div>
+<div class="ml-note"><span>Material de estudo feito por uma estudante de medicina. Não substitui diretriz, protocolo ou avaliação médica: confira sempre na fonte oficial.</span></div>
+<style>
+/* Layout: header, topic filter chips, one large flip card, progress; list view as second mode */
+:root{
+  --bg:#f2f6f8; --surface:#ffffff; --fg:#14232b; --muted:#546a75; --line:#d5e0e6;
+  --accent:#b3261e; --accent-soft:#fbe3e1; --ok:#1e7a45; --ok-soft:#dff3e6; --bad:#b3261e; --bad-soft:#fbe3e1;
+  --f-display:'Playfair Display','Segoe UI',system-ui,sans-serif;
+  --f-body:Inter,'Segoe UI',system-ui,sans-serif;
+  --f-mono:'IBM Plex Mono',ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0e1a20; --surface:#152630; --fg:#e6eff3; --muted:#93a9b4; --line:#26404d;
+  --accent:#ff8f86; --accent-soft:#3d1a18; --ok:#6fd39a; --ok-soft:#153323; --bad:#ff8f86; --bad-soft:#3d1a18; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0e1a20; --surface:#152630; --fg:#e6eff3; --muted:#93a9b4; --line:#26404d;
+  --accent:#ff8f86; --accent-soft:#3d1a18; --ok:#6fd39a; --ok-soft:#153323; --bad:#ff8f86; --bad-soft:#3d1a18; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:16px;line-height:1.55;padding-inline:16px}
+.wrap{max-width:760px;margin-inline:auto;padding-block:28px 64px;display:flex;flex-direction:column;gap:20px}
+h1{font-family:var(--f-display);font-size:clamp(1.9rem,6vw,2.8rem);line-height:1.1;letter-spacing:-.02em;margin:0;text-wrap:balance}
+.eyebrow{font-family:var(--f-mono);font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.lede{color:var(--muted);margin:0}
+.bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.chips{display:flex;gap:6px;overflow-x:auto;padding-bottom:4px}
+.chip{flex:none;font:inherit;font-size:.85rem;color:var(--fg);background:var(--surface);border:1px solid var(--line);border-radius:99px;padding:5px 12px;cursor:pointer;white-space:nowrap}
+.chip[aria-pressed="true"]{background:var(--accent);color:var(--bg);border-color:var(--accent);font-weight:600}
+.chip small{font-family:var(--f-mono);opacity:.75;margin-left:4px}
+button:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.tools{display:flex;flex-wrap:wrap;gap:8px}
+.tool{font:inherit;font-size:.85rem;color:var(--fg);background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:6px 12px;cursor:pointer}
+.tool[aria-pressed="true"]{border-color:var(--accent);color:var(--accent);font-weight:600}
+.prog{height:8px;background:var(--line);border-radius:99px;overflow:hidden;display:flex}
+.prog i{display:block;height:100%}
+.prog .g{background:var(--ok)}.prog .r{background:var(--bad)}
+.stats{display:flex;flex-wrap:wrap;gap:6px 16px;font-family:var(--f-mono);font-size:.78rem;color:var(--muted)}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;min-height:260px;padding:24px;display:flex;flex-direction:column;gap:14px;cursor:pointer;user-select:none;text-align:left;font:inherit;color:inherit;width:100%}
+.card .tag{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
+.card .txt{font-size:1.15rem;line-height:1.5;flex:1;display:flex;align-items:center}
+.card .txt div{width:100%}
+.card.back{border-color:var(--accent);background:var(--accent-soft)}
+.card .hint{font-size:.78rem;color:var(--muted)}
+.actions{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.actions button{font:inherit;font-weight:600;border:0;border-radius:10px;padding:12px;cursor:pointer}
+.b-no{background:var(--bad-soft);color:var(--bad)}.b-yes{background:var(--ok-soft);color:var(--ok)}
+.nav{display:flex;justify-content:space-between;gap:10px}
+.nav button{font:inherit;background:transparent;border:1px solid var(--line);color:var(--fg);border-radius:8px;padding:8px 14px;cursor:pointer}
+.list{display:flex;flex-direction:column;gap:8px}
+.list input{font:inherit;color:var(--fg);background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 12px;width:100%}
+.li{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 14px}
+.li summary{cursor:pointer;font-weight:500}
+.li p{margin:8px 0 0;color:var(--muted)}
+.empty{padding:28px;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:12px}
+footer{font-size:.8rem;color:var(--muted);border-top:1px solid var(--line);padding-top:12px}
+[hidden]{display:none!important}
+</style>
+
+<div class="wrap">
+  <header>
+    <span class="eyebrow">SAVC · ACLS 2020</span>
+    <h1>Flashcards de SAVC</h1>
+    <p class="lede">53 cards do curso de SAVC: farmacologia, PCR, taquicardia, bradicardia, pós-PCR e checklists de habilidades.</p>
+  </header>
+
+  <div class="chips" id="chips" role="group" aria-label="Filtrar por tema"></div>
+
+  <div class="tools">
+    <button class="tool" id="mode" type="button" aria-pressed="false">Modo lista</button>
+    <button class="tool" id="shuf" type="button" aria-pressed="false">Embaralhar</button>
+    <button class="tool" id="onlyerr" type="button" aria-pressed="false">Só os que errei</button>
+    <button class="tool" id="reset" type="button">Zerar progresso</button>
+  </div>
+
+  <div class="prog" aria-hidden="true"><i class="g" id="pg"></i><i class="r" id="pr"></i></div>
+  <div class="stats"><span id="s1"></span><span id="s2"></span><span id="s3"></span></div>
+
+  <section id="study">
+    <button class="card" id="card" type="button" aria-live="polite"></button>
+    <div class="actions" id="act" hidden style="margin-top:12px">
+      <button class="b-no" id="no" type="button">Errei</button>
+      <button class="b-yes" id="yes" type="button">Acertei</button>
+    </div>
+    <div class="nav" style="margin-top:12px"><button id="prev" type="button">Anterior</button><button id="next" type="button">Próximo</button></div>
+  </section>
+
+  <section id="listv" class="list" hidden>
+    <input id="q" type="search" placeholder="Buscar no baralho" aria-label="Buscar">
+    <div id="items" class="list"></div>
+  </section>
+
+  <footer>Baralho próprio de estudo. O progresso fica salvo só neste navegador.</footer>
+</div>
+
+<script>
+(function(){
+var DATA=[{"id": "1789411061437", "g": "Vias aéreas", "f": "No teste de habilidades de manejo de via aérea do SAVC, como se verifica a resposta do paciente?", "b": "Toca no ombro e pergunta em voz alta \"Você está bem?\""}, {"id": "1789411061442", "g": "SBV", "f": "Por quanto tempo se verifica a respiração e o pulso na avaliação de SBV do SAVC?", "b": "5 a 10 segundos cada (podem ser verificados simultaneamente); se há pulso, não inicia compressões nem liga o DEA"}, {"id": "1789411061447", "g": "Vias aéreas", "f": "No teste de manejo de via aérea, com que frequência e em quanto tempo se administra cada ventilação com bolsa-máscara por 1 minuto?", "b": "1 vez a cada 6 segundos, em 1 segundo, com ~metade do volume da bolsa"}, {"id": "1789411061452", "g": "Megacode", "f": "Quais os 5 componentes avaliados como \"RCP de alta qualidade\" nas checklists de Megacode do SAVC?", "b": "Frequência de compressão 100-120/min; profundidade ≥5cm; fração de compressões torácicas >80%; retorno do tórax (opcional); ventilação (opcional)"}, {"id": "1789411061457", "g": "Megacode", "f": "Na checklist de líder de equipe do Megacode, quais são as 2 responsabilidades centrais além de atribuir funções?", "b": "Garantir RCP de alta qualidade todas as vezes e garantir boa comunicação entre os membros da equipe"}, {"id": "1789411061462", "g": "PCR", "f": "No algoritmo de PCR por FV/TVSP, o que se faz imediatamente após reconhecer um ritmo chocável?", "b": "Aplica um choque (pede para as pessoas se afastarem antes da análise e do choque)"}, {"id": "1789411061466", "g": "PCR", "f": "Depois do 1º choque em FV/TVSP, o que se faz nos 2 minutos seguintes de RCP?", "b": "RCP por 2 min + obter acesso IV/IO"}, {"id": "1789411061471", "g": "PCR", "f": "Após o 2º choque no algoritmo de FV/TVSP, quais condutas se somam na RCP de 2 min?", "b": "Epinefrina a cada 3-5 min + considerar via aérea avançada e capnografia"}, {"id": "1789411061476", "g": "PCR", "f": "Após o 3º choque no algoritmo de FV/TVSP, quais medicamentos se somam na RCP de 2 min?", "b": "Amiodarona ou lidocaína + tratar causas reversíveis"}, {"id": "1789411061481", "g": "Farmacologia", "f": "Qual a dose IV/IO de epinefrina na PCR e com que frequência é repetida?", "b": "1 mg a cada 3 a 5 minutos"}, {"id": "1789411061486", "g": "Farmacologia", "f": "Quais as doses de amiodarona (1ª e 2ª) na PCR por FV/TVSP refratária ao choque?", "b": "1ª dose: bolus IV/IO 300 mg; 2ª dose: 150 mg"}, {"id": "1789411061491", "g": "Farmacologia", "f": "Quais as doses de lidocaína (1ª e 2ª) na PCR por FV/TVSP?", "b": "1ª dose: 1 a 1,5 mg/kg; 2ª dose: 0,5 a 0,75 mg/kg"}, {"id": "1789411061496", "g": "PCR", "f": "Qual a carga de choque bifásica na desfibrilação quando a dose do fabricante é desconhecida?", "b": "Usar o máximo disponível (dose inicial geralmente 120-200 J); 2ª dose e subsequentes equivalentes ou mais altas"}, {"id": "1789411061502", "g": "PCR", "f": "Qual a carga de choque monofásica padrão para desfibrilação?", "b": "360 J"}, {"id": "1789411061507", "g": "SBV", "f": "Sem via aérea avançada, qual a relação compressão-ventilação na RCP do adulto?", "b": "30:2"}, {"id": "1789411061512", "g": "PCR", "f": "Com via aérea avançada, qual a frequência de ventilação durante a RCP contínua?", "b": "1 ventilação a cada 6 segundos (10/min), com compressões torácicas contínuas"}, {"id": "1789411061518", "g": "PCR", "f": "No algoritmo de assistolia/AESP, o que se administra imediatamente ao entrar na via (diferente de FV/TVSP)?", "b": "Epinefrina imediatamente (ritmo não chocável, não há choque)"}, {"id": "1789411061524", "g": "Causas reversíveis", "f": "Quais são as causas reversíveis de PCR representadas pelos \"Hs\"?", "b": "Hipovolemia, Hipóxia, Hidrogênio (acidemia), Hipo/hipercalemia, Hipotermia"}, {"id": "1789411061530", "g": "Causas reversíveis", "f": "Quais são as causas reversíveis de PCR representadas pelos \"Ts\"?", "b": "pneumoTórax hipertensivo, Tamponamento cardíaco, Toxinas, Trombose pulmonar, Trombose coronária"}, {"id": "1789411061536", "g": "PCR", "f": "Quais são os 3 sinais/critérios de retorno da circulação espontânea (RCE)?", "b": "Pulso e pressão arterial presentes; aumento abrupto e prolongado da PETCO2 (tipicamente ≥40 mmHg); ondas de pressão arterial espontâneas no monitoramento intra-arterial"}, {"id": "1789411061541", "g": "Bradicardia", "f": "No algoritmo de bradicardia do SAVC, que frequência cardíaca é tipicamente considerada bradiarritmia?", "b": "<50/min"}, {"id": "1789411061547", "g": "Bradicardia", "f": "Quais os 5 sinais de \"bradiarritmia persistente causando\" instabilidade que indicam tratamento imediato (etapa 3 do algoritmo)?", "b": "Hipotensão; alteração aguda do estado mental; sinais de choque; desconforto torácico isquêmico; insuficiência cardíaca aguda"}, {"id": "1789411061553", "g": "Farmacologia", "f": "Qual a dose IV inicial de atropina para bradicardia sintomática, intervalo de repetição e dose máxima?", "b": "1 mg em bolus, repetido a cada 3 a 5 min, até dose máxima total de 3 mg"}, {"id": "1789411061559", "g": "Bradicardia", "f": "Se a atropina for ineficaz na bradicardia sintomática, quais 3 opções de segunda linha o algoritmo do SAVC propõe?", "b": "Estimulação transcutânea e/ou infusão de dopamina ou infusão de epinefrina"}, {"id": "1789411061565", "g": "Farmacologia", "f": "Qual a velocidade de infusão de dopamina no tratamento da bradicardia?", "b": "5 a 20 mcg/kg por minuto, titulada conforme resposta"}, {"id": "1789411061571", "g": "Farmacologia", "f": "Qual a velocidade de infusão de epinefrina no tratamento da bradicardia?", "b": "2 a 10 mcg por minuto, titulada conforme resposta"}, {"id": "1789411061577", "g": "Taquicardia", "f": "No algoritmo de taquicardia do SAVC, que frequência cardíaca é tipicamente considerada taquiarritmia?", "b": "≥150/min"}, {"id": "1789411061583", "g": "Taquicardia", "f": "Na taquicardia instável (hipotensão, alteração do estado mental, choque, dor torácica isquêmica ou IC aguda), qual a conduta imediata?", "b": "Cardioversão sincronizada (considerar sedação; se complexo estreito e regular, considerar adenosina)"}, {"id": "1789411061589", "g": "Farmacologia", "f": "Quais a 1ª e 2ª dose IV de adenosina e como administrar?", "b": "1ª dose: 6 mg IV push rápido seguido de flush salino; 2ª dose: 12 mg, se necessário"}, {"id": "1789411061595", "g": "Taquicardia", "f": "Na taquicardia estável com QRS largo (≥0,12s), quais 3 condutas o algoritmo do SAVC propõe?", "b": "Adenosina somente se regular e monomórfico; infusão antiarrítmica; consultar especialista"}, {"id": "1789411061601", "g": "Taquicardia", "f": "Na taquicardia estável com QRS estreito (não largo), quais condutas o algoritmo do SAVC propõe?", "b": "Manobras vagais (se regular); adenosina (se regular); β-bloqueadores ou bloqueadores de canais de cálcio"}, {"id": "1789411061607", "g": "Farmacologia", "f": "Qual a dose de amiodarona para taquicardia estável com QRS largo?", "b": "1ª dose: 150 mg IV em 10 min (repetir se recorrer); manutenção 1 mg/min pelas primeiras 6h"}, {"id": "1789411061613", "g": "Farmacologia", "f": "Qual a dose de procainamida para taquicardia com QRS largo estável e quando interromper a infusão?", "b": "20 a 50 mg/min até supressão da arritmia, hipotensão, aumento do QRS >50%, ou dose máxima de 17 mg/kg; manutenção 1-4 mg/min; evitar se QT prolongado ou ICC"}, {"id": "1789411061619", "g": "Farmacologia", "f": "Qual a dose de sotalol para taquicardia estável com QRS largo e principal contraindicação?", "b": "100 mg (1,5 mg/kg) em 5 min; evitar se QT prolongado"}, {"id": "1789411061625", "g": "Pós-PCR", "f": "Quais as metas de PA e SpO2 na fase de estabilização inicial pós-PCR?", "b": "PA sistólica >90 mmHg (ou PAM >65 mmHg); SpO2 entre 92-98%; PaCO2 35-45 mmHg"}, {"id": "1789411061631", "g": "Pós-PCR", "f": "Qual a frequência inicial de ventilação nos cuidados pós-PCR?", "b": "10 ventilações por minuto, titulando depois para as metas de SpO2/PaCO2"}, {"id": "1789411061637", "g": "Pós-PCR", "f": "Quando indicar controle direcionado de temperatura (CDT) pós-PCR e em qual faixa?", "b": "Se o paciente estiver comatoso (não atende a comandos); manter entre 32°C e 36°C por 24h com dispositivo de resfriamento com ciclo de feedback"}, {"id": "1789411061643", "g": "PCR na gravidez", "f": "Na PCR materna, qual medida deve ser mantida continuamente para alívio da compressão aortocaval?", "b": "Deslocamento uterino lateral contínuo"}, {"id": "1789411061649", "g": "PCR na gravidez", "f": "Se não houver RCE em 5 minutos de PCR materna, o que deve ser considerado e realizado idealmente em quanto tempo?", "b": "Cesariana de emergência imediata, idealmente realizada em até 5 minutos"}, {"id": "1789411061655", "g": "PCR na gravidez", "f": "Qual o mnemônico (A-H) das possíveis etiologias de PCR materna?", "b": "A-Anestésicas; B-Hemorragia; C-Cardiovascular; D-Medicamentos; E-Embolia; F-Febre; G-causas não obstétricas gerais (Hs e Ts); H-Hipertensão"}, {"id": "1789411061661", "g": "DEA", "f": "No algoritmo de dispositivo de auxílio ventricular (DAVE) com perfusão inadequada e o DAVE funcionando, quais 2 parâmetros decidem sobre executar compressões torácicas externas?", "b": "PAM >50 mmHg e/ou PETCO2 >20 mmHg (limite de PETCO2 só vale com tubo ET/traqueostomia, não com via aérea supraglótica)"}, {"id": "1789411061667", "g": "Farmacologia", "f": "Qual a dose cumulativa máxima de amiodarona IV em 24h?", "b": "2,2 g"}, {"id": "1789411061672", "g": "Farmacologia", "f": "Qual a dose de sulfato de magnésio para torsades de pointes com pulso e hipomagnesemia?", "b": "1 a 2 g diluídos em 50-100 mL, IV/IO, em 5 a 60 minutos"}, {"id": "1789411061678", "g": "Atualizações", "f": "O que mudou na dose de atropina para bradicardia entre as diretrizes de 2015 e 2020?", "b": "2015: 0,5 mg → 2020: 1 mg"}, {"id": "1789411061684", "g": "Atualizações", "f": "O que mudou na meta de saturação de O2 pós-PCR entre 2015 e 2020?", "b": "2015: ≥94% → 2020: 92% a 98%"}, {"id": "1789411061690", "g": "Atualizações", "f": "O que foi adicionado à cadeia de sobrevivência do adulto em 2020?", "b": "Um 6º elo, \"recuperação\", ao final das duas cadeias (PCRIH e PCREH), que antes tinham 5 elos"}, {"id": "1789411061696", "g": "Atualizações", "f": "Em 2020, qual passou a ser a via de acesso preferida na PCR, IV ou IO?", "b": "IV é preferido; IO só se houver falha no acesso IV (em 2015 eram equivalentes)"}, {"id": "1789411061702", "g": "Atualizações", "f": "O que mudou na dosagem de dopamina para bradicardia entre 2015 e 2020?", "b": "2015: 2 a 20 mcg/kg/min → 2020: 5 a 20 mcg/kg/min"}, {"id": "1789411061708", "g": "Curso", "f": "Quem limita a inscrição no curso de SAVC (ACLS) e a quem?", "b": "A American Heart Association (AHA) limita a profissionais da saúde que dirigem ou participam de ressuscitação e têm conhecimento/habilidades para participar ativamente"}, {"id": "1789411061715", "g": "Curso", "f": "Qual a pontuação mínima exigida na autoavaliação pré-curso do SAVC?", "b": "70%"}, {"id": "1789411061721", "g": "Curso", "f": "O que é avaliado na estação de Megacode ao final do curso de SAVC?", "b": "Integração de materiais/habilidades, aplicação de algoritmos, interpretação de arritmias, uso adequado de medicamentos e desempenho como líder de equipe de alto desempenho"}, {"id": "1789411061727", "g": "Glossário", "f": "Diferença entre choque sincronizado e não sincronizado?", "b": "Sincronizado: choque sincronizado ao pico do complexo QRS (usado na cardioversão). Não sincronizado: pode ocorrer em qualquer ponto do ciclo cardíaco (usado na desfibrilação)"}, {"id": "1789411061732", "g": "Glossário", "f": "Classificação de hipotermia por temperatura corporal (leve/moderada/grave)?", "b": "Leve: 34-36°C; Moderada: 30-34°C; Grave: <30°C"}];
+var KEY='fc-savc';
+var st={}; try{st=JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){st={}}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}}
+var $=function(i){return document.getElementById(i)};
+var groups=[]; DATA.forEach(function(c){if(groups.indexOf(c.g)<0)groups.push(c.g)});
+var sel='__all', order=[], pos=0, flipped=false, shuffled=false, onlyerr=false;
+function clean(h){return String(h).replace(/<script[\s\S]*?<\/script>/gi,'').replace(/ on\w+="[^"]*"/gi,'')}
+function pool(){return DATA.filter(function(c){return (sel==='__all'||c.g===sel)&&(!onlyerr||st[c.id]==='n')})}
+function build(){order=pool().map(function(c){return c.id}); if(shuffled){for(var i=order.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=order[i];order[i]=order[j];order[j]=t}} pos=0;flipped=false;render();list()}
+function byId(id){return DATA.filter(function(c){return c.id===id})[0]}
+function chips(){var h='<button class="chip" data-g="__all" aria-pressed="'+(sel==='__all')+'">Todos<small>'+DATA.length+'</small></button>';
+  groups.forEach(function(g){var n=DATA.filter(function(c){return c.g===g}).length;h+='<button class="chip" data-g="'+g.replace(/"/g,'&quot;')+'" aria-pressed="'+(sel===g)+'">'+g+'<small>'+n+'</small></button>'});
+  $('chips').innerHTML=h;
+  $('chips').querySelectorAll('.chip').forEach(function(b){b.addEventListener('click',function(){sel=b.getAttribute('data-g');chips();build()})})}
+function stats(){var scope=DATA.filter(function(c){return sel==='__all'||c.g===sel});var g=0,r=0;scope.forEach(function(c){if(st[c.id]==='y')g++;else if(st[c.id]==='n')r++});
+  $('pg').style.width=(g/scope.length*100)+'%';$('pr').style.width=(r/scope.length*100)+'%';
+  $('s1').textContent=scope.length+' cards no tema';$('s2').textContent=g+' acertos';$('s3').textContent=r+' erros · '+(scope.length-g-r)+' novos'}
+function render(){stats();var c=$('card');
+  if(!order.length){c.className='card';c.innerHTML='<div class="txt"><div>'+(onlyerr?'Nenhum erro neste tema. Bom trabalho.':'Sem cards neste filtro.')+'</div></div>';$('act').hidden=true;return}
+  var k=byId(order[pos]);c.className='card'+(flipped?' back':'');
+  c.innerHTML='<span class="tag">'+k.g+' · '+(pos+1)+' de '+order.length+'</span><div class="txt"><div>'+clean(flipped?k.b:k.f)+'</div></div><span class="hint">'+(flipped?'Você acertou?':'Toque para ver a resposta')+'</span>';
+  $('act').hidden=!flipped}
+function go(d){if(!order.length)return;pos=(pos+d+order.length)%order.length;flipped=false;render()}
+function mark(v){var id=order[pos];st[id]=v;save();if(onlyerr&&v==='y'){order.splice(pos,1);if(pos>=order.length)pos=0;flipped=false;render();return}go(1)}
+$('card').addEventListener('click',function(){if(!order.length)return;flipped=!flipped;render()});
+$('yes').addEventListener('click',function(){mark('y')});$('no').addEventListener('click',function(){mark('n')});
+$('next').addEventListener('click',function(){go(1)});$('prev').addEventListener('click',function(){go(-1)});
+$('shuf').addEventListener('click',function(){shuffled=!shuffled;this.setAttribute('aria-pressed',shuffled);build()});
+$('onlyerr').addEventListener('click',function(){onlyerr=!onlyerr;this.setAttribute('aria-pressed',onlyerr);build()});
+$('reset').addEventListener('click',function(){if(this.dataset.armed){st={};save();delete this.dataset.armed;this.textContent='Zerar progresso';build()}else{this.dataset.armed=1;this.textContent='Toque de novo para confirmar';var b=this;setTimeout(function(){delete b.dataset.armed;b.textContent='Zerar progresso'},3000)}});
+$('mode').addEventListener('click',function(){var l=$('listv').hidden;$('listv').hidden=!l;$('study').hidden=l;this.setAttribute('aria-pressed',l);this.textContent=l?'Modo estudo':'Modo lista'});
+function list(){var q=($('q').value||'').toLowerCase();var h='';DATA.filter(function(c){return(sel==='__all'||c.g===sel)&&(!q||(c.f+' '+c.b).toLowerCase().indexOf(q)>=0)}).forEach(function(c){h+='<details class="li"><summary>'+clean(c.f)+'</summary><p>'+clean(c.b)+'</p></details>'});
+  $('items').innerHTML=h||'<div class="empty">Nada encontrado.</div>'}
+$('q').addEventListener('input',list);
+document.addEventListener('keydown',function(e){if(e.target.tagName==='INPUT')return;if(e.key===' '||e.key==='Enter'){if(document.activeElement===$('card'))return;e.preventDefault();$('card').click()}else if(e.key==='ArrowRight')go(1);else if(e.key==='ArrowLeft')go(-1)});
+chips();build();
+})();
+</script>
+
+
+
+<style id="v4-meu-locus">
+/* V4 meu locus: sobrescreve os tokens e as fontes do material original */
+:root{color-scheme:dark;--accent:#D9B8FF!important;--accent-soft:#2E2160!important;--bad:#FF8FA3!important;--bad-soft:#3A1838!important;--bg:#100C2A!important;--fg:#EDE6FF!important;--line:#3A2F66!important;--muted:#B9AED6!important;--ok:#7DDBA8!important;--ok-soft:#15302A!important;--surface:rgba(26,20,64,.88)!important;}
+html{background:#0B0820}
+body{background:url("padrao-lilas.png") 0 0/620px auto repeat,
+  radial-gradient(760px 460px at 50% -6%,rgba(168,96,216,.34) 0%,rgba(168,96,216,0) 62%),
+  radial-gradient(600px 420px at 100% 100%,rgba(58,91,208,.18) 0%,rgba(58,91,208,0) 60%),
+  linear-gradient(180deg,#100C2A 0%,#0B0820 100%)!important;background-attachment:fixed!important;background-color:#100C2A!important;color:#EDE6FF!important;
+  font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;margin:0}
+h1,h2{font-family:"Playfair Display",Georgia,serif!important;letter-spacing:-.01em}
+h1{font-weight:800!important}
+a{color:#D9B8FF}
+::selection{background:#A860D8;color:#fff}
+.ml-top{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
+  max-width:1100px;margin:0 auto;padding:14px 16px 0;font-family:Inter,system-ui,sans-serif}
+.ml-back{color:#D9B8FF;text-decoration:none;font-size:.9rem;font-weight:600;border:1px solid rgba(216,184,255,.26);
+  border-radius:99px;padding:6px 14px;background:rgba(160,96,216,.10)}
+.ml-back:hover,.ml-back:focus-visible{background:rgba(160,96,216,.22);outline:none}
+.ml-brand{font-family:"Playfair Display",Georgia,serif;font-weight:800;font-size:1.15rem;color:#EDE6FF;letter-spacing:-.01em}
+.ml-brand i{font-style:italic;background:linear-gradient(90deg,#3A5BD0,#A860D8);-webkit-background-clip:text;background-clip:text;color:transparent;padding-right:.08em}
+.ml-note{max-width:1100px;margin:10px auto 0;padding:0 16px;font-family:Inter,system-ui,sans-serif;font-size:.82rem;color:#B9AED6}
+.ml-note span{display:block;border:1px solid rgba(216,184,255,.26);border-left:3px solid #A860D8;border-radius:8px;padding:8px 12px;background:rgba(160,96,216,.08)}
+.ml-warn{position:sticky;top:0;z-index:60;background:#2A0F2E;border-bottom:1px solid #FB923C;color:#FFE4CC;
+  font-family:Inter,system-ui,sans-serif;font-size:.85rem;line-height:1.4;padding:8px 16px;text-align:center}
+.ml-warn b{color:#FB923C}
+@media print{.ml-top,.ml-note,.ml-warn{display:none}}
+</style>
+</body>
+</html>

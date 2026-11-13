@@ -1,0 +1,1552 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="GO geral: fluxogramas de mecânica do parto, abdome agudo ginecológico, DMG, hipertensão e mais.">
+<meta name="color-scheme" content="dark">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<title>GO Geral — Fluxogramas · meu locus</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+</head>
+<body>
+<div class="ml-top"><a class="ml-back" href="./">← cupons &amp; indicações</a><span class="ml-brand"><i>meu</i> locus</span></div>
+<div class="ml-note"><span>Material de estudo feito por uma estudante de medicina. Não substitui diretriz, protocolo ou avaliação médica: confira sempre na fonte oficial.</span></div>
+<!doctype html>
+<style>
+:root{
+  --bg:#F5F4EF;
+  --surface:#FFFFFF;
+  --surface-2:#EFEDE6;
+  --ink:#221F1C;
+  --ink-soft:#5A554E;
+  --ink-faint:#8B8579;
+  --line:#DEDAD0;
+  --line-strong:#C7C2B5;
+  --accent:#2F5D57;
+  --accent-soft:#DCEAE6;
+  --accent-ink:#1F433E;
+  --teal:#2F5D57;
+  --teal-soft:#DCEAE6;
+  --amber:#A2661E;
+  --amber-soft:#F3E3C8;
+  --indigo:#3D5A80;
+  --indigo-soft:#DEE6EF;
+  --slate:#5B6472;
+  --slate-soft:#E4E6EA;
+  --wine:#7A1F33;
+  --wine-soft:#F1DEE1;
+  --danger:#8C2A2A;
+  --shadow: 0 1px 2px rgba(30,25,20,.06), 0 6px 16px -8px rgba(30,25,20,.12);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#1B1917; --surface:#242220; --surface-2:#2C2A26;
+    --ink:#EFEBE3; --ink-soft:#C2BCAF; --ink-faint:#8C8579;
+    --line:#3A362F; --line-strong:#4A453C;
+    --accent:#7FBFB2; --accent-soft:#213330; --accent-ink:#9FD3C8;
+    --teal:#7FBFB2; --teal-soft:#213330;
+    --amber:#D9A254; --amber-soft:#3A2E18;
+    --indigo:#9BB3D4; --indigo-soft:#232B38;
+    --slate:#B7BCC4; --slate-soft:#2B2D31;
+    --wine:#E08A9C; --wine-soft:#3A2229;
+    --danger:#E19292;
+    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 20px -10px rgba(0,0,0,.5);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#1B1917; --surface:#242220; --surface-2:#2C2A26;
+  --ink:#EFEBE3; --ink-soft:#C2BCAF; --ink-faint:#8C8579;
+  --line:#3A362F; --line-strong:#4A453C;
+  --accent:#7FBFB2; --accent-soft:#213330; --accent-ink:#9FD3C8;
+  --teal:#7FBFB2; --teal-soft:#213330;
+  --amber:#D9A254; --amber-soft:#3A2E18;
+  --indigo:#9BB3D4; --indigo-soft:#232B38;
+  --slate:#B7BCC4; --slate-soft:#2B2D31;
+  --wine:#E08A9C; --wine-soft:#3A2229;
+  --danger:#E19292;
+  --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 20px -10px rgba(0,0,0,.5);
+}
+*{box-sizing:border-box}
+body{background:var(--bg); color:var(--ink); font-family:Inter, -apple-system, "Segoe UI", sans-serif; font-size:15px; line-height:1.5}
+h1,h2,h3,.display{font-family:'Playfair Display', Georgia, serif; text-wrap:balance}
+.mono,.val{font-family:"IBM Plex Mono", ui-monospace, monospace; font-variant-numeric: tabular-nums}
+a{color:var(--accent)}
+
+.shell{display:grid; grid-template-columns:240px 1fr; min-height:100vh}
+@media (max-width:860px){ .shell{grid-template-columns:1fr} }
+
+header.top{grid-column:1/-1; padding:22px clamp(16px,4vw,40px) 16px; border-bottom:1px solid var(--line); display:flex; align-items:baseline; justify-content:space-between; gap:16px; flex-wrap:wrap}
+header.top .brand-eyebrow{font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); font-weight:600}
+header.top h1{font-size:26px; margin:2px 0 2px; font-weight:600; color:var(--ink)}
+header.top p{margin:0; color:var(--ink-soft); font-size:13.5px; max-width:56ch}
+header.top .src{font-size:11.5px; color:var(--ink-faint)}
+
+nav.topics{border-right:1px solid var(--line); padding:18px 12px; position:sticky; top:0; align-self:start; height:100vh; overflow-y:auto}
+@media (max-width:860px){ nav.topics{position:static; height:auto; border-right:none; border-bottom:1px solid var(--line); display:flex; gap:8px; overflow-x:auto; padding:12px 16px} }
+nav.topics .nav-label{font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-faint); padding:0 10px 8px; display:block}
+@media (max-width:860px){ nav.topics .nav-label{display:none} }
+.topic-btn{display:flex; align-items:center; gap:10px; width:100%; text-align:left; padding:10px 10px; margin-bottom:2px; border:1px solid transparent; border-radius:8px; background:transparent; color:var(--ink-soft); font:inherit; font-size:13.5px; cursor:pointer; white-space:nowrap}
+@media (max-width:860px){ .topic-btn{width:auto; flex:0 0 auto} }
+.topic-btn .dot{width:9px; height:9px; border-radius:50%; flex:0 0 auto; background:var(--line-strong)}
+.topic-btn:hover{background:var(--surface-2); color:var(--ink)}
+.topic-btn[aria-selected="true"]{background:var(--surface); border-color:var(--line); color:var(--ink); font-weight:600; box-shadow:var(--shadow)}
+.topic-btn[aria-selected="true"] .dot{background:var(--accent)}
+
+main{padding:28px clamp(16px,4vw,40px) 80px; max-width:920px}
+.panel[hidden]{display:none}
+.panel-head{margin-bottom:22px}
+.panel-head .kicker{font-size:11.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-faint)}
+.panel-head h2{font-size:28px; margin:4px 0 8px; font-weight:600}
+.panel-head .lede{color:var(--ink-soft); font-size:14.5px; max-width:70ch}
+.stat-row{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px}
+.stat{background:var(--surface); border:1px solid var(--line); border-radius:9px; padding:8px 12px; font-size:12.5px; color:var(--ink-soft)}
+.stat b{display:block; font-family:'Playfair Display',serif; font-size:16px; color:var(--ink); font-weight:600}
+
+.section{margin:34px 0}
+.section-head{display:flex; align-items:center; gap:10px; margin-bottom:14px}
+.section-num{font-family:"IBM Plex Mono",monospace; font-size:11px; font-weight:600; width:22px; height:22px; border-radius:6px; display:flex; align-items:center; justify-content:center; flex:0 0 auto}
+.section-head h3{font-size:16px; margin:0; font-weight:600; letter-spacing:.01em}
+.section-head .sub{font-size:12px; color:var(--ink-faint); margin-left:auto}
+.c1 .section-num{background:var(--slate-soft); color:var(--slate)}
+.c2 .section-num{background:var(--teal-soft); color:var(--teal)}
+.c3 .section-num{background:var(--amber-soft); color:var(--amber)}
+.c4 .section-num{background:var(--indigo-soft); color:var(--indigo)}
+.c5 .section-num{background:var(--wine-soft); color:var(--wine)}
+
+.chain{display:flex; flex-direction:column; align-items:stretch; gap:0; max-width:640px}
+.chain-item{background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:11px 14px; font-size:13.5px}
+.chain-item b{font-weight:600}
+.chain-item .note{display:block; color:var(--ink-soft); font-size:12.5px; margin-top:2px}
+.chain-arrow{display:flex; justify-content:center; padding:3px 0; color:var(--ink-faint); font-size:13px; line-height:1}
+
+.card-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:10px}
+.card{background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:12px 13px; font-size:13px}
+.card .t{font-weight:600; font-size:13.5px; display:block; margin-bottom:3px}
+.card .v{color:var(--ink-soft)}
+.card .rr{display:inline-block; margin-top:6px; font-family:"IBM Plex Mono",monospace; font-size:11.5px; background:var(--surface-2); padding:2px 6px; border-radius:5px; color:var(--ink-soft)}
+
+.pills{display:flex; flex-wrap:wrap; gap:7px}
+.pill{background:var(--surface-2); border:1px solid var(--line); border-radius:999px; padding:5px 11px; font-size:12.5px; color:var(--ink-soft)}
+.pill.on{background:var(--wine-soft); color:var(--wine); border-color:transparent; font-weight:600}
+
+.decision-wrap{margin:8px 0 4px}
+.decision-box{max-width:520px; margin:0 auto 0; text-align:center; background:var(--surface-2); border:1px solid var(--line-strong); border-radius:10px; padding:10px 16px; font-size:13.5px; font-weight:600}
+.branches{display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:18px; margin-top:34px; padding-top:20px; border-top:2px solid var(--line-strong); position:relative}
+.branches::before{content:""; position:absolute; top:-20px; left:50%; width:2px; height:20px; background:var(--line-strong); transform:translateX(-50%)}
+.branch{position:relative}
+.branch::before{content:""; position:absolute; top:-20px; left:50%; width:2px; height:20px; background:var(--line-strong); transform:translateX(-50%)}
+.branch-label{text-align:center; font-size:11.5px; font-weight:700; letter-spacing:.02em; color:var(--wine); background:var(--wine-soft); border-radius:7px; padding:5px 8px; margin-bottom:8px}
+.branch-body{background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:11px 12px; font-size:12.8px; color:var(--ink-soft)}
+.branch-body li{margin:3px 0}
+.branch-body ul{margin:4px 0 0; padding-left:16px}
+
+.dose{background:var(--surface); border:1px solid var(--line); border-left:3px solid var(--wine); border-radius:8px; padding:9px 13px; font-size:13px; margin:6px 0}
+.dose .drug{font-weight:700; margin-right:6px}
+.dose .amt{font-family:"IBM Plex Mono",monospace; color:var(--ink-soft)}
+
+.callout{border:1px solid var(--line); border-left:4px solid var(--amber); background:var(--amber-soft); border-radius:8px; padding:12px 14px; font-size:13px; color:var(--ink)}
+.callout.danger{border-left-color:var(--danger); background:var(--wine-soft)}
+.callout b{display:block; margin-bottom:3px; font-size:12px; text-transform:uppercase; letter-spacing:.06em}
+
+figure.diagram{margin:0; padding:16px; background:var(--surface); border:1px solid var(--line); border-radius:12px; overflow-x:auto}
+figure.diagram svg{display:block; margin:0 auto; max-width:100%; height:auto; color:var(--ink-soft)}
+figure.diagram figcaption{font-size:12px; color:var(--ink-faint); margin-top:10px; text-align:center}
+.svg-accent{color:var(--wine)}
+.svg-teal{color:var(--teal)}
+.svg-amber{color:var(--amber)}
+
+table.tbl{width:100%; border-collapse:collapse; font-size:12.5px; background:var(--surface); border:1px solid var(--line); border-radius:10px; overflow:hidden}
+table.tbl th{background:var(--surface-2); text-align:left; padding:7px 10px; font-weight:600; font-size:11px; text-transform:uppercase; letter-spacing:.03em; color:var(--ink-soft)}
+table.tbl td{padding:7px 10px; border-top:1px solid var(--line); color:var(--ink-soft); vertical-align:top}
+table.tbl tr:first-child td{border-top:none}
+.tbl-wrap{overflow-x:auto}
+
+footer.page{padding:30px clamp(16px,4vw,40px) 60px; color:var(--ink-faint); font-size:12px; border-top:1px solid var(--line); margin-top:20px}
+
+.two-col{display:grid; grid-template-columns:1fr 1fr; gap:14px}
+@media (max-width:600px){ .two-col{grid-template-columns:1fr} }
+
+/* case-card: fisiopatologia / quadro / diagnóstico / conduta mini-grid */
+.case-card{background:var(--surface); border:1px solid var(--line); border-radius:12px; padding:14px 16px; margin-bottom:14px}
+.case-card h4{margin:0 0 10px; font-size:14.5px; font-weight:700; font-family:'Playfair Display',serif}
+.case-card h4 .flag{font-size:10.5px; font-weight:600; text-transform:uppercase; letter-spacing:.04em; color:var(--wine); background:var(--wine-soft); border-radius:5px; padding:2px 7px; margin-left:8px; vertical-align:middle}
+.case-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:10px}
+@media (max-width:760px){ .case-grid{grid-template-columns:1fr 1fr} }
+.case-field{font-size:12.3px}
+.case-field .lbl{display:block; font-size:10px; text-transform:uppercase; letter-spacing:.05em; color:var(--ink-faint); margin-bottom:3px}
+.case-field .txt{color:var(--ink-soft)}
+</style>
+<div class="shell">
+  <header class="top">
+    <div>
+      <span class="brand-eyebrow">Obstetrícia & Ginecologia · Geral</span>
+      <h1>Fluxogramas de GO Geral</h1>
+      <p>Mecânica do parto, período expulsivo, abdome agudo ginecológico, sangramento uterino anormal agudo, leiomioma uterino, diabetes gestacional, hipertensão na gestação, dopplerfluxometria e marcadores de aneuploidia.</p>
+    </div>
+    <div class="src">Resumo de estudo de GO alinhado às diretrizes do Ministério da Saúde e da FEBRASGO · revisão 2026</div>
+  </header>
+
+  <nav class="topics" id="topicNav">
+    <span class="nav-label">Temas</span>
+    <button class="topic-btn" data-panel="aag" aria-selected="true"><span class="dot"></span>Abdome Agudo em Ginecologia</button>
+    <button class="topic-btn" data-panel="sua" aria-selected="false"><span class="dot"></span>Sangramento Uterino Anormal Agudo</button>
+    <button class="topic-btn" data-panel="mioma" aria-selected="false"><span class="dot"></span>Leiomioma Uterino (Mioma)</button>
+    <button class="topic-btn" data-panel="part" aria-selected="false"><span class="dot"></span>Partograma & Mecânica do Parto</button>
+    <button class="topic-btn" data-panel="pex" aria-selected="false"><span class="dot"></span>Assistência no Período Expulsivo</button>
+    <button class="topic-btn" data-panel="dheg" aria-selected="false"><span class="dot"></span>Hipertensão na Gestação & Puerpério</button>
+    <button class="topic-btn" data-panel="dmg" aria-selected="false"><span class="dot"></span>Diabetes Mellitus Gestacional</button>
+    <button class="topic-btn" data-panel="dop" aria-selected="false"><span class="dot"></span>Dopplerfluxometria</button>
+    <button class="topic-btn" data-panel="aneu" aria-selected="false"><span class="dot"></span>Marcadores de Aneuploidia</button>
+    <button class="topic-btn" data-panel="puerp" aria-selected="false"><span class="dot"></span>Puerpério Normal &amp; Patológico</button>
+    <button class="topic-btn" data-panel="vsex" aria-selected="false"><span class="dot"></span>Violência Sexual no PS</button>
+  </nav>
+
+  <main id="main">
+
+  <!-- ================= ABDOME AGUDO GINECOLÓGICO ================= -->
+  <section class="panel" id="panel-aag" hidden>
+    <div class="panel-head">
+      <span class="kicker">Emergência ginecológica · internato</span>
+      <h2>Abdome Agudo em Ginecologia</h2>
+      <p class="lede">Abordagem diagnóstica, estratificação de risco e conduta inicial. Toda mulher em idade fértil com dor pélvica está grávida e é gravidez ectópica até que se prove o contrário.</p>
+    </div>
+
+    <div class="section c1">
+      <div class="section-head"><span class="section-num">1</span><h3>As 4 Grandes Síndromes</h3></div>
+      <div class="card-grid">
+        <div class="card"><span class="t">Hemorrágico</span><span class="v">Gravidez ectópica rota · rotura de cisto hemorrágico<span class="note" style="display:block;margin-top:5px;font-weight:600;color:var(--wine)">Marca: instabilidade hemodinâmica + irritação peritoneal</span></span></div>
+        <div class="card"><span class="t">Inflamatório / Infeccioso</span><span class="v">DIP · abscesso tubo-ovariano (ATO)<span class="note" style="display:block;margin-top:5px;font-weight:600;color:var(--wine)">Marca: quadro insidioso, febre e leucocitose</span></span></div>
+        <div class="card"><span class="t">Isquêmico</span><span class="v">Torção anexial (ovário/tuba)<span class="note" style="display:block;margin-top:5px;font-weight:600;color:var(--wine)">Marca: dor súbita com vômitos intensos</span></span></div>
+        <div class="card"><span class="t">Obstrutivo / Compressivo</span><span class="v">Endometriose profunda · miomas · causas oncológicas<span class="note" style="display:block;margin-top:5px;font-weight:600;color:var(--wine)">Marca: tenesmo, dor pélvica acentuada recorrente</span></span></div>
+      </div>
+    </div>
+
+    <div class="section c2">
+      <div class="section-head"><span class="section-num">2</span><h3>Quadros Específicos</h3><span class="sub">fisiopatologia → quadro → diagnóstico → conduta</span></div>
+
+      <div class="case-card">
+        <h4>Gravidez Ectópica</h4>
+        <div class="case-grid">
+          <div class="case-field"><span class="lbl">Fisiopatologia</span><span class="txt">Implantação do blastocisto fora da cavidade uterina — 95% na trompa (a região ampular é a mais comum e a de maior chance de viabilidade tubária); mais raramente no corno uterino, no colo ou na cavidade peritoneal.</span></div>
+          <div class="case-field"><span class="lbl">Quadro</span><span class="txt">Tríade clássica (~50%): dor pélvica + amenorreia + sangramento em "borra de café".</span></div>
+          <div class="case-field"><span class="lbl">Se rota</span><span class="txt">Dor abdominal súbita/difusa + choque hipovolêmico. Sinal de Proust (dor à mobilização do colo — "grito do Douglas"). Sinal de Lafont (dor referida no ombro — irritação frênica).</span></div>
+          <div class="case-field"><span class="lbl">Diagnóstico</span><span class="txt">β-hCG positivo + USTV (útero vazio + massa anexial / líquido livre).</span></div>
+        </div>
+        <div class="decision-wrap" style="margin-top:18px">
+          <div class="decision-box">Estabilidade da paciente</div>
+          <div class="branches">
+            <div class="branch">
+              <div class="branch-label">Rota / instável</div>
+              <div class="branch-body">Cirurgia de urgência imediata: laparotomia ou laparoscopia (conforme estabilidade e equipe). Objetivo: hemostasia imediata + ressuscitação volêmica e transfusional vigorosa.
+                <div class="callout danger" style="margin-top:8px"><b>Contraindicado</b>Qualquer tratamento clínico ou conservador.</div>
+              </div>
+            </div>
+            <div class="branch">
+              <div class="branch-label">Íntegra / estável</div>
+              <div class="branch-body"><b>Cirúrgico:</b> laparoscopia (salpingostomia, se preservação tubária, ou salpingectomia).<br><br><b>Clínico com metotrexato (MTX)</b> apenas se todos presentes:
+                <ul><li>β-hCG &lt; 5.000 UI/L</li><li>Massa anexial &lt; 3,5 cm</li><li>Ausência de BCF (atividade cardíaca)</li><li>Paciente colaborativa para seguimento semanal</li></ul>
+                <p style="font-size:11.5px;color:var(--ink-faint);margin:8px 0 0">Seguimento: β-hCG semanal até negativar e a imagem anexial desaparecer por completo.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <h4>Rotura de Cisto Hemorrágico</h4>
+        <div class="case-grid">
+          <div class="case-field"><span class="lbl">Fisiopatologia</span><span class="txt">Acidente vascular em cisto lúteo, 2ª fase do ciclo menstrual — comumente desencadeado por coito ou esforço físico.</span></div>
+          <div class="case-field"><span class="lbl">Quadro</span><span class="txt">Dor súbita e aguda no meio ou final do ciclo. Sem febre. β-hCG estritamente negativo.</span></div>
+          <div class="case-field"><span class="lbl">Diagnóstico</span><span class="txt">USTV: cisto com aspecto de "teia de aranha" (retículo fibrinoso) + quantidade variável de líquido livre na cavidade.</span></div>
+          <div class="case-field"><span class="lbl">Conduta</span><span class="txt">Preferencial: conservadora (analgesia + repouso + reavaliação laboratorial). Cirurgia só se instabilidade hemodinâmica.</span></div>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <h4>Torção Anexial</h4>
+        <div class="case-grid">
+          <div class="case-field"><span class="lbl">Fisiopatologia</span><span class="txt">Rotação parcial/completa do ovário/tuba sobre o pedículo. Oclusão venosa/linfática inicial com edema severo, progredindo para isquemia arterial e necrose.</span></div>
+          <div class="case-field"><span class="lbl">Fator de risco</span><span class="txt">Massas ovarianas de 5–10 cm, especialmente teratomas/cistos dermoides — cistos maiores tendem a ficar presos pelas estruturas pélvicas vizinhas e não giram; cistos menores não têm peso suficiente para girar o ovário no próprio eixo. Também descrita em ovário hiperestimulado (reprodução assistida).</span></div>
+          <div class="case-field"><span class="lbl">Quadro</span><span class="txt">Dor pélvica abrupta, unilateral, intensa, quase sempre com náuseas e vômitos. Costuma ser intermitente — a paciente busca uma posição de algum alívio, que reflete uma distorção parcial momentânea.</span></div>
+          <div class="case-field"><span class="lbl">Diagnóstico &amp; conduta</span><span class="txt">USTV com Doppler — <b>ausência</b> de fluxo confirma torção; a <b>presença</b> de fluxo não exclui (pode haver perfusão residual dependendo da posição do exame). Emergência cirúrgica para destorção. Diferente da torção testicular, o ovário tem mais reserva vascular — pode-se aguardar alguns minutos após destorcer para ver se recupera a coloração antes de decidir por ooforectomia, reservada a necrose inequívoca.</span></div>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <h4>Outras causas isquêmicas — mioma</h4>
+        <div class="case-grid">
+          <div class="case-field"><span class="lbl">Degeneração rubra</span><span class="txt">Necrose asséptica frequente na gestação (crescimento rápido impulsionado pelo estrogênio → isquemia central do mioma). Dor intensa bem localizada, febre baixa, leucocitose. Manejo <b>estritamente clínico</b>: analgesia potente + AINEs + repouso — cirurgia contraindicada na gestação.</span></div>
+          <div class="case-field"><span class="lbl">Mioma torcido</span><span class="txt">Pediculado subseroso que sofre torção → isquemia aguda. Conduta: laparoscopia / laparotomia.</span></div>
+          <div class="case-field"><span class="lbl">Mioma parido</span><span class="txt">Submucoso exteriorizado pelo orifício cervical → cólica intensa, sangramento, eventual infecção. Conduta: miomectomia via vaginal.</span></div>
+          <div class="case-field"><span class="lbl">—</span><span class="txt"></span></div>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <h4>Doença Inflamatória Pélvica (DIP)</h4>
+        <p style="font-size:12.8px;color:var(--ink-soft);margin:0 0 12px">IST → processo infeccioso/inflamatório dos órgãos pélvicos femininos, pela propagação de micro-organismos da vagina e do colo para endométrio, tubas, peritônio e estruturas adjacentes.</p>
+        <p style="font-size:12.5px;color:var(--ink-faint);margin:0 0 8px">Critérios diagnósticos (questão clássica de prova):</p>
+        <div class="tbl-wrap" style="margin-bottom:12px">
+        <table class="tbl" style="font-size:12px">
+          <tr><th>Critérios maiores</th><th>Critérios menores</th><th>Critério elaborado</th></tr>
+          <tr><td>Precisa dos <b>3</b>: dor pélvica/hipogástrica espontânea · dor à palpação anexial · dor à mobilização do colo</td><td>Precisa de <b>≥1</b>: T &gt; 38,3°C · secreção vaginal/cervical anormal · VHS/PCR elevados · leucocitose · isolamento de gonococo/clamídia na endocérvice</td><td><b>Qualquer um</b> confirma: imagem sugestiva de ATO (USG/RM) · biópsia com endometrite · laparoscopia com achados de DIP</td></tr>
+        </table>
+        </div>
+        <div class="tbl-wrap">
+        <table class="tbl">
+          <tr><th>Estágio</th><th>Descrição clínica</th><th>Conduta</th></tr>
+          <tr><td>I</td><td>DIP não complicada, sem peritonite pélvica</td><td>Ambulatorial: ceftriaxona 1g IM (dose única) + doxiciclina 100mg VO 12/12h (14d) + metronidazol 500mg VO 12/12h (14d)</td></tr>
+          <tr><td>II</td><td>DIP com peritonite pélvica</td><td>Internação: ATB venoso (ceftriaxona IV + doxiciclina VO/IV + metronidazol IV)</td></tr>
+          <tr><td>III</td><td>DIP com abscesso tubo-ovariano (ATO) íntegro</td><td>Internação + ATB IV; considerar drenagem cirúrgica ou guiada por USG/TC se sem resposta em 48–72h e/ou volume grande — cirurgia "no cardápio", melhor operar antes que rompa do que depois</td></tr>
+          <tr><td>IV</td><td>ATO roto ou sepse pélvica grave</td><td>Verdadeira emergência: laparotomia/laparoscopia para lavagem abundante, drenagem + ATB IV de amplo espectro</td></tr>
+        </table>
+        </div>
+        <p style="font-size:11.5px;color:var(--ink-faint);margin-top:10px">DIP × apendicite: apendicite tende a cursar com hiporexia/anorexia franca; na dúvida diagnóstica, muitas vezes a conduta prática é a mesma — abrir e resolver. DIP <b>aumenta significativamente o risco de gravidez ectópica futura</b> — o processo inflamatório destrói os cílios tubários que carregam o embrião até o útero, favorecendo implantação tubária.</p>
+      </div>
+
+      <div class="case-card">
+        <h4>Síndromes Obstrutivas</h4>
+        <div class="two-col">
+          <div>
+            <p style="font-size:12.8px;font-weight:600;margin:0 0 6px">Hematocolpos / Hematometra</p>
+            <p style="font-size:12.5px;color:var(--ink-soft);margin:0">Obstrução congênita ao fluxo menstrual — hímen imperfurado ou septo vaginal transverso, em adolescentes jovens. Quadro: amenorreia primária + dor pélvica cíclica mensal + massa palpável no hipogástrio / abaulamento vaginal translúcido-azulado. Diagnóstico: exame físico minucioso + USTV/pélvico. Conduta: himenotomia em "X" ou ressecção cirúrgica do septo.</p>
+          </div>
+          <div>
+            <p style="font-size:12.8px;font-weight:600;margin:0 0 6px">Crise Aguda de Endometriose</p>
+            <p style="font-size:12.5px;color:var(--ink-soft);margin:0">Rotura de endometrioma ovariano → vazamento de conteúdo achocolatado altamente irritativo à cavidade peritoneal, simulando peritonite aguda. Quadro: dor pélvica súbita e intensa, com histórico de dismenorreia secundária grave e dispareunia. Pode haver acometimento obstrutivo por aderências em alça intestinal ou ureter (suboclusão). Conduta: analgesia potente; laparoscopia se peritonite grave ou obstrução.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section c4">
+      <div class="section-head"><span class="section-num">4</span><h3>Resumo Comparativo &amp; Anamnese</h3></div>
+      <div class="tbl-wrap">
+      <table class="tbl" style="font-size:11.8px">
+        <tr><th>Patologia</th><th>Início da dor</th><th>Febre</th><th>β-hCG</th><th>Achado USG principal</th><th>Conduta principal</th></tr>
+        <tr><td>GE rota</td><td>Súbito</td><td>Ausente</td><td>Positivo</td><td>Útero vazio + massa / hemoperitônio</td><td>Cirurgia de emergência</td></tr>
+        <tr><td>Torção anexial</td><td>Súbito + vômitos</td><td>Ausente / tardia</td><td>Negativo</td><td>Ovário edemaciado + folículos periféricos</td><td>Laparoscopia (destorção)</td></tr>
+        <tr><td>DIP / ATO</td><td>Insidioso</td><td>Presente</td><td>Negativo</td><td>Espessamento tubário / coleção pélvica</td><td>ATB / cirurgia se roto</td></tr>
+        <tr><td>Cisto hemorrágico (lútea)</td><td>Súbito</td><td>Ausente</td><td>Negativo</td><td>Cisto "teia de aranha" + líquido livre</td><td>Manejo conservador (cirurgia se instável)</td></tr>
+        <tr><td>Degeneração rubra</td><td>Focal / súbito</td><td>Febrícula</td><td>Positivo (gestante)</td><td>Mioma com alteração ecogênica central</td><td>Tratamento clínico (analgesia + AINEs)</td></tr>
+        <tr><td>Hematocolpos</td><td>Cíclico mensal</td><td>Ausente</td><td>Negativo</td><td>Coleção anecoica/densa na vagina e útero</td><td>Himenotomia cirúrgica</td></tr>
+      </table>
+      </div>
+
+      <p style="font-size:12.5px;color:var(--ink-faint);margin:18px 0 8px">Anamnese direcionada:</p>
+      <div class="callout" style="margin-bottom:12px"><b>Regra de ouro</b>Em mulher em idade fértil com dor pélvica, o β-hCG é obrigatório. "Toda mulher que chega no PS com dor está grávida e é gravidez ectópica até que se prove o contrário."</div>
+      <div class="card-grid">
+        <div class="card"><span class="t">Cronologia da dor</span><span class="v">Início fulminante/súbito → torção, rotura ou hemorragia. Início insidioso e progressivo → processo infeccioso (DIP).</span></div>
+        <div class="card"><span class="t">Sintomas acompanhantes</span><span class="v">Febre/febrícula → inflamatório. Náusea/vômito súbito → tração do pedículo (torção). Síncope → choque hipovolêmico.</span></div>
+        <div class="card"><span class="t">Fatores de risco prévios</span><span class="v">DIP prévia, uso recente de DIU, cirurgias pélvicas (aderências), tratamentos para infertilidade (cistos ovarianos induzidos).</span></div>
+      </div>
+    </div>
+
+    <div class="section c5">
+      <div class="section-head"><span class="section-num">5</span><h3>Roteiro Prático no Plantão</h3></div>
+      <div class="chain">
+        <div class="chain-item"><b>Estabilização &amp; triagem</b> — protocolo ABCDE na sala amarela/vermelha; 2 acessos venosos calibrosos; se instável, hidratação com cristaloide 30 mL/kg na 1ª hora + analgesia (ex. tramadol) + <b>já peça sangue O negativo</b>, sem esperar a tipagem específica sair do banco</div>
+        <div class="chain-arrow">↓</div>
+        <div class="chain-item"><b>Exames de urgência</b> — β-hCG <b>qualitativo</b> (positivo/negativo, resultado imediato — é o que orienta a conduta na emergência), hemograma, PCR e ultrassom transvaginal imediato. O β-hCG <b>quantitativo</b> demora horas e serve para seguimento (ex. curva de MTX), não para a decisão aguda.</div>
+        <div class="chain-arrow">↓</div>
+        <div class="chain-item"><b>Definição do cuidado</b> — encaminhar para cirurgia se: choque (GE rota), suspeita de torção, ou abscesso roto. Abdome agudo hemorrágico é sempre cirúrgico, independente da causa final.</div>
+      </div>
+      <div class="callout" style="margin-top:16px"><b>Regra prática</b>Toda mulher em idade fértil com dor abdominal recebe β-hCG — mesmo que ela jure ser impossível estar grávida. Tomografia tem prioridade baixa nessas emergências: USTV é mais rápida, mais sensível para achados ginecológicos e não atrasa a decisão cirúrgica. Culdocentese (punção do fundo de saco posterior para verificar sangue não coagulado) é técnica histórica, hoje substituída pela USTV.</div>
+    </div>
+  </section>
+
+  <!-- ================= SUA AGUDO ================= -->
+  <section class="panel" id="panel-sua" hidden>
+    <div class="panel-head">
+      <span class="kicker">Emergência ginecológica · manejo do sangramento</span>
+      <h2>Sangramento Uterino Anormal Agudo (SUAa)</h2>
+      <p class="lede">Sangramento vaginal abundante na urgência: estabilizar primeiro, investigar depois. A ressuscitação volêmica precede qualquer investigação etiológica detalhada.</p>
+    </div>
+
+    <div class="section c1">
+      <div class="section-head"><span class="section-num">1</span><h3>Estabilização Inicial</h3></div>
+      <div class="card-grid">
+        <div class="card"><span class="t">Sinais de alarme</span><span class="v">Choque hipovolêmico (classe III/IV): taquicardia, hipotensão, palidez mucocutânea grave, alteração sensorial — identificar imediatamente</span></div>
+        <div class="card"><span class="t">Acesso e volemia</span><span class="v">2 acessos venosos periféricos de grosso calibre (14G/16G) + SVD. Cristaloides aquecidos, com parcimônia — evitar hemodiluição excessiva</span></div>
+        <div class="card"><span class="t">Exames de urgência</span><span class="v">No 1º acesso: β-hCG rápido, hemograma completo, tipagem sanguínea/Rh, coagulograma + fibrinogênio. Função renal se alta probabilidade de transfusão</span></div>
+      </div>
+      <div class="callout" style="margin-top:14px"><b>Divisor de águas — β-hCG rápido</b>É o teste que direciona toda a conduta na emergência ginecológica. <b>Positivo</b> → pensar em sangramento gestacional (abortamento, ectópica, mola). <b>Negativo</b> → define o quadro como SUAa (sangramento uterino anormal agudo) ou trauma genital.</div>
+    </div>
+
+    <div class="section c2">
+      <div class="section-head"><span class="section-num">2</span><h3>Metas Transfusionais</h3></div>
+      <div class="card-grid">
+        <div class="card"><span class="t">Gatilho de transfusão imediata</span><span class="v">Hb &lt; 7 g/dL — indicação absoluta de concentrado de hemácias na emergência (ou Hb &lt; 9 g/dL se instabilidade persistente ou cardiopatia grave)</span></div>
+        <div class="card"><span class="t">Protocolo de transfusão maciça</span><span class="v">Em choque classe III/IV, ativar protocolo e manter proporção equilibrada no suporte transfusional (hemácias : plasma : plaquetas)</span></div>
+      </div>
+    </div>
+
+    <div class="section c3">
+      <div class="section-head"><span class="section-num">3</span><h3>Anamnese Dirigida (β-hCG negativo)</h3></div>
+      <div class="card-grid" style="margin-bottom:10px">
+        <div class="card"><span class="t">1 · Quantificação e gravidade</span><span class="v">Volume/ritmo (absorventes trocados em 24h, troca a cada &lt;1–2h, encharca roupa), presença e tamanho de coágulos, tempo de evolução, sintomas de hipovolemia (tontura postural, visão escura, palpitação, falta de ar), histórico de transfusão prévia por sangramento menstrual</span></div>
+        <div class="card"><span class="t">2 · Padrão menstrual / ginecológico</span><span class="v">Menarca? DUM e regularidade do ciclo? Atraso menstrual/risco de gravidez (pedir β-hCG sempre, independente da resposta)? Vida sexual ativa, trauma vaginal recente? Dor pélvica/cólica intensa, febre, corrimento fétido, disúria?</span></div>
+        <div class="card"><span class="t">3 · Triagem de coagulopatia (PALM-COEIN)</span><span class="v">Sangramento fácil ao escovar dentes/passar fio dental, equimoses fáceis, epistaxe frequente, sangramento prolongado após cortes/extração dentária/cirurgias. História familiar de menstruação muito abundante, anemia grave ou distúrbio de coagulação</span></div>
+        <div class="card"><span class="t">4 · Medicamentos e comorbidades</span><span class="v">Uso de hormônios (pílula, DIU, pílula do dia seguinte, esquecimento de dose), anticoagulantes/AINEs/AAS/anticonvulsivantes/psicotrópicos, hipotireoidismo, doença hepática/renal, SOP</span></div>
+      </div>
+      <p style="font-size:12.5px;color:var(--ink-faint);margin:14px 0 8px">Exame após estabilização: USG transvaginal/pélvico — rápido, fácil, barato.</p>
+    </div>
+
+    <div class="section c4">
+      <div class="section-head"><span class="section-num">4</span><h3>Etiologia — PALM-COEIN + Trauma</h3></div>
+      <div class="two-col">
+        <div class="card"><span class="t">Estrutural (PALM)</span><span class="v">Mioma parido/submucoso — vascularização volumosa, sangramento ativo no colo uterino. Pólipos/tumores — lesões ulceradas/vascularizadas do trato genital inferior</span></div>
+        <div class="card"><span class="t">Não estrutural (COEIN) e trauma</span><span class="v">SUA anovulatório agudo — descompensação hormonal disfuncional grave. Coagulopatia/iatrogênica — anticoagulantes, discrasias. Trauma/laceração — lesões vaginais/vulvares pós-coito ou trauma</span></div>
+      </div>
+    </div>
+
+    <div class="section c5">
+      <div class="section-head"><span class="section-num">5</span><h3>Tratamento</h3></div>
+      <p style="font-size:12.5px;color:var(--ink-faint);margin:0 0 8px">Antes de qualquer coisa — terapia antifibrinolítica universal:</p>
+      <div class="dose"><span class="drug">Ácido tranexâmico (1ª linha universal)</span><span class="amt">1g IV lento (10 min) 8/8h, ou 1,5g VO 8/8h — máx. 4–5 dias</span></div>
+      <div class="callout" style="margin-bottom:14px"><b>Segurança imediata</b>Pode ser administrado na admissão, antes mesmo do resultado de exames laboratoriais ou USG. Inibe reversivelmente a conversão de plasminogênio em plasmina, prevenindo a degradação da fibrina no miométrio/endométrio. Reduz em até 50% o volume da perda sanguínea aguda nas primeiras horas.</div>
+
+      <p style="font-size:12.5px;color:var(--ink-faint);margin:18px 0 8px">Esquemas por causa — anovulação (adolescentes/perimenopausa):</p>
+      <div class="tbl-wrap" style="margin-bottom:14px">
+      <table class="tbl" style="font-size:11.5px">
+        <tr><th>Fármaco / esquema</th><th>Ataque (dia 1–2)</th><th>Manutenção / regressão</th><th>Indicação principal</th></tr>
+        <tr><td>AOC monofásico (EE 30mcg)</td><td>1 cp VO 8/8h por 24–48h</td><td>1 cp 12/12h por 2 dias → 1 cp/dia até 21 dias</td><td>SUA anovulatório sem risco trombótico</td></tr>
+        <tr><td>Acetato de medroxiprogesterona</td><td>20 mg VO 8/8h por 3 dias</td><td>20 mg/dia por mais 7–10 dias</td><td>Contraindicação a estrogênio / anovulação</td></tr>
+        <tr><td>Noretisterona</td><td>10 mg VO 8/8h por 3 dias</td><td>5–10 mg/dia por mais 7 dias</td><td>Opção progestagênica de alta potência</td></tr>
+        <tr><td>Ácido tranexâmico</td><td colspan="2">1g IV lento (10 min) 8/8h ou 1,5g VO 8/8h — máx. 4–5 dias</td><td>1ª linha adjuvante universal no PS</td></tr>
+      </table>
+      </div>
+      <p style="font-size:11.5px;color:var(--ink-faint);margin-top:-6px">Progestágeno isolado indicado se contraindicação formal a estrogênios (história de TVP/TEP, enxaqueca com aura, HAS grave).</p>
+
+      <p style="font-size:12.5px;color:var(--ink-faint);margin:18px 0 8px">Conduta por etiologia estrutural:</p>
+      <div class="card-grid" style="margin-bottom:14px">
+        <div class="card"><span class="t">Pólipo cervical sangrante</span><span class="v">Apreensão com pinça de Cheron/Heartman e torção no próprio eixo, no espéculo</span></div>
+        <div class="card"><span class="t">Pólipo endometrial exsanguinante</span><span class="v">Hemostasia farmacológica temporária (ácido tranexâmico) + agendamento de histeroscopia cirúrgica ambulatorial. Curetagem uterina na urgência é conduta de exceção — considerar apenas sem melhora, sangramento importante e risco real</span></div>
+        <div class="card"><span class="t">Adenomiose</span><span class="v">Ataque: ácido tranexâmico IV/VO + terapia progestagênica contínua ou AOC de alta dose. Manutenção: DIU-LNG ou análogos do GnRH após cessar a crise aguda</span></div>
+        <div class="card"><span class="t">Mioma parido (submucoso ejetado)</span><span class="v">Pinçamento e ressecção por torção ou bisturi na urgência, se pedículo acessível no colo. Mioma intramural/submucoso sangrante: ácido tranexâmico (1g IV 8/8h) + resgate hormonal; se refratário, embolização de artérias uterinas ou histeroscopia</span></div>
+        <div class="card"><span class="t">Malignidade</span><span class="v">Tamponamento direto (gaze vaselinada, ou Albothyl/Albocresil-formalina, ou sonda de Foley endouterina insuflada) + ácido tranexâmico IV. Evitar estrogênio se suspeita de neoplasia endometrial sem estadiamento. Radioterapia de hemostasia ou embolização arterial se refratário</span></div>
+        <div class="card"><span class="t">Traumas e corpos estranhos</span><span class="v">Laceração vaginal/fórnice: sutura cirúrgica sob anestesia com fio absorvível + hemostasia por revisão de canal. Corpo estranho: remoção cuidadosa + lavagem abundante + cobertura ATB se vaginite severa. Suspeita de violência sexual: acolhimento humanizado, coleta profilática de vestígios, profilaxia de IST/HIV, contracepção de emergência e notificação compulsória (ver painel de Violência Sexual)</span></div>
+      </div>
+
+      <p style="font-size:12.5px;color:var(--ink-faint);margin:18px 0 8px">Coagulopatias:</p>
+      <div class="two-col" style="margin-bottom:14px">
+        <div class="card"><span class="t">Desconhecidas</span><span class="v">Ressuscitação hemodinâmica (hemácias + cristaloides) + ácido tranexâmico + hemostasia hormonal (estrogênio em altas doses ou progestágenos/ACO em doses de resgate). <b>Colher amostras antes</b> de tratamento hormonal/transfusional (Fator VIII, antígeno de von Willebrand, cofator de Ristocetina) para não falsear resultados futuros. Refratário/sem diagnóstico: acionar Hematologia para crioprecipitado ou complexo protrombínico/Fator VIII com FvW</span></div>
+        <div class="card"><span class="t">Conhecidas</span><span class="v">Doença de von Willebrand: DDAVP 0,3 mcg/kg IV/SC ou concentrado de Fator VIII com FvW. Trombocitopenia grave (&lt;20.000–50.000/mm³): transfusão de plaquetas + avaliar corticoterapia/imunoglobulina se etiologia imune (PTI). Anticoagulantes: suspender temporariamente + antídoto específico (vitamina K, complexo protrombínico, idarucizumabe, andexanet alfa) + ácido tranexâmico. Avaliação precoce da Hematologia na emergência</span></div>
+      </div>
+
+      <div class="callout danger"><b>Procedimentos de exceção</b>Em hemorragia refratária de causa uterina com risco iminente de morte, quando tudo falha: histerectomia (normalmente subtotal).</div>
+    </div>
+  </section>
+
+  <!-- ================= LEIOMIOMA UTERINO ================= -->
+  <section class="panel" id="panel-mioma" hidden>
+    <div class="panel-head">
+      <span class="kicker">Tumor pélvico benigno mais comum</span>
+      <h2>Leiomioma Uterino (Mioma)</h2>
+      <p class="lede">Tumor benigno estrogênio-dependente do miométrio — o mais comum na mulher. Degeneração sarcomatosa (maligna) é rara, &lt; 0,5% dos casos.</p>
+    </div>
+
+    <div class="section c1">
+      <div class="section-head"><span class="section-num">1</span><h3>Fatores de Risco</h3></div>
+      <div class="card-grid">
+        <div class="card"><span class="t">Raça</span><span class="v">Mulheres negras — maior prevalência; alteração de fatores endócrinos reprodutivos (resposta a estrogênio/progesterona)</span></div>
+        <div class="card"><span class="t">Paridade</span><span class="v">"Mulher que não pare filho, pare mioma" — maior paridade, menor risco; nuliparidade é fator de risco</span></div>
+        <div class="card"><span class="t">Menarca &amp; menopausa</span><span class="v">Menarca precoce associa-se a menopausa <b>tardia</b> (não precoce — confusão clássica de prova). No Brasil, menopausa costuma ocorrer aos 49–50 anos.</span></div>
+        <div class="card"><span class="t">Dieta &amp; hábitos</span><span class="v">Carne vermelha aumenta o risco; vegetais reduzem; álcool aumenta. Obesidade — estudos inconclusivos.</span></div>
+      </div>
+      <p style="font-size:12.5px;color:var(--ink-faint);margin:16px 0 0">Anticoncepção hormonal <b>não é contraindicada</b> — mulher com mioma pode engravidar normalmente.</p>
+    </div>
+
+    <div class="section c2">
+      <div class="section-head"><span class="section-num">2</span><h3>Quadro Clínico</h3></div>
+      <div class="card-grid">
+        <div class="card"><span class="t">Sangramento</span><span class="v">Aumento da quantidade e duração da menstruação (menorragia/metrorragia) — motivo mais comum de procura no PS</span></div>
+        <div class="card"><span class="t">Dor &amp; compressão</span><span class="v">Dor pélvica; sintomas urinários por compressão vesical; pode comprimir ureter em miomas volumosos — risco de fístula na cirurgia se não mapeado antes</span></div>
+        <div class="card"><span class="t">Reprodutivo</span><span class="v">Infertilidade e maior risco de abortamento — o mioma cresce na gestação por estímulo hormonal placentário</span></div>
+        <div class="card"><span class="t">Maioria assintomática</span><span class="v">A maior parte dos miomas não dá sintomas e não precisa de conduta ativa</span></div>
+      </div>
+    </div>
+
+    <div class="section c3">
+      <div class="section-head"><span class="section-num">3</span><h3>Classificação FIGO (localização)</h3></div>
+      <p style="font-size:12.5px;color:var(--ink-soft);max-width:660px;margin:0 0 10px">Define a via de acesso cirúrgico e o risco obstétrico futuro — o mioma pode invadir mais de uma camada ao mesmo tempo, e é isso que a FIGO captura (não basta decorar "submucoso/intramural/subseroso" isolados).</p>
+      <div class="tbl-wrap" style="margin-bottom:10px">
+      <table class="tbl" style="font-size:12px">
+        <tr><th>Tipo</th><th>Localização</th><th>Implicação</th></tr>
+        <tr><td>0</td><td>Submucoso, totalmente na cavidade (pediculado)</td><td>Histeroscopia — corta o pedúnculo, resolve</td></tr>
+        <tr><td>1</td><td>Submucoso, invade &lt; 50% do miométrio</td><td>Histeroscopia geralmente viável</td></tr>
+        <tr><td>2</td><td>Submucoso, invade ≥ 50% do miométrio</td><td>Cirurgia mais complexa — invasão miometrial relevante</td></tr>
+        <tr><td>3 – 4</td><td>Intramural (3: encosta no endométrio · 4: intramural puro)</td><td>—</td></tr>
+        <tr><td>5 – 7</td><td>Subseroso (5: ≥50% intramural · 6: &lt;50% intramural · 7: pediculado)</td><td>Via abdominal/laparoscópica</td></tr>
+        <tr><td>2–5 (híbrido)</td><td>Compromete endométrio e serosa simultaneamente</td><td>Radiologista precisa informar % de invasão miometrial para planejar a cirurgia</td></tr>
+      </table>
+      </div>
+      <div class="callout danger"><b>Miomectomia com invasão miometrial ≥ 50% (tipo 2)</b>Deixa cicatriz relevante no miométrio → risco de rotura em trabalho de parto futuro. Indicação formal de <b>cesárea</b> em gestação subsequente.</div>
+    </div>
+
+    <div class="section c4">
+      <div class="section-head"><span class="section-num">4</span><h3>Diagnóstico &amp; Diferencial</h3></div>
+      <div class="card-grid" style="margin-bottom:14px">
+        <div class="card"><span class="t">Exame físico</span><span class="v">Toque bimanual — útero aumentado, podendo alcançar sínfise púbica ou região umbilical em casos extremos. Volume uterino normal: 30–90 cm³ (até ~120 cm³ multípara)</span></div>
+        <div class="card"><span class="t">USG inicial</span><span class="v">Pélvico/transvaginal — avalia volume, mobilidade e número de miomas</span></div>
+        <div class="card"><span class="t">Histerossonografia</span><span class="v">Infusão de solução salina (via sonda de Foley) para distender a cavidade e definir a parede exata de um mioma submucoso</span></div>
+        <div class="card"><span class="t">Histeroscopia</span><span class="v">Diagnóstico + tratamento simultâneo de mioma submucoso ou pólipo</span></div>
+        <div class="card"><span class="t">RM / TC contrastada</span><span class="v">Reservada a miomas volumosos, para mapear o trajeto do ureter antes de indicar histerectomia — evita lesão ureteral/fístula</span></div>
+        <div class="card"><span class="t">Histerossalpingografia</span><span class="v">Investigação de infertilidade — avalia se o mioma obstrui as trompas</span></div>
+      </div>
+      <div class="callout danger" style="margin-bottom:14px"><b>Regra de segurança antes de qualquer histerectomia eletiva</b>Sempre descartar gravidez antes de operar — β-hCG + USG na noite anterior à cirurgia. Caso de aula: histerectomia marcada por "mioma volumoso" sem essa checagem — ao abrir o útero, encontraram um feto.</div>
+      <p style="font-size:12.5px;color:var(--ink-faint);margin:0 0 8px">Diagnóstico diferencial de sangramento uterino anormal — PALM-COEIN:</p>
+      <div class="pills" style="margin-bottom:10px">
+        <span class="pill">Pólipo</span><span class="pill">Adenomiose</span><span class="pill">Leiomioma</span><span class="pill">Malignidade / hiperplasia</span>
+        <span class="pill">Coagulopatia</span><span class="pill">Disfunção ovulatória</span><span class="pill">Endometrial</span><span class="pill">Iatrogênica</span><span class="pill">Não classificada</span>
+      </div>
+      <div class="callout"><b>Sangramento na pós-menopausa não é mioma</b>Mioma é estrogênio-dependente: na menopausa ele murcha e calcifica, não sangra. Sangramento pós-menopausa é câncer de endométrio até que se prove o contrário — investigar sempre.</div>
+    </div>
+
+    <div class="section c5">
+      <div class="section-head"><span class="section-num">5</span><h3>Conduta</h3></div>
+      <div class="decision-wrap">
+        <div class="decision-box">Desejo reprodutivo futuro</div>
+        <div class="branches">
+          <div class="branch">
+            <div class="branch-label">Deseja engravidar</div>
+            <div class="branch-body">Conduta conservadora: <b>miomectomia</b> (histeroscópica, laparoscópica ou laparotômica, conforme classificação FIGO) ou <b>embolização de artérias uterinas</b> (radiologia intervencionista/hemodinâmica)</div>
+          </div>
+          <div class="branch">
+            <div class="branch-label">Prole definida / sintomas graves</div>
+            <div class="branch-body"><b>Histerectomia</b> — indicada se anemia significativa, sangramento incapacitante ou compressão de órgãos vizinhos comprometendo o dia a dia</div>
+          </div>
+        </div>
+      </div>
+      <p style="font-size:12px;color:var(--ink-faint);margin:12px 0 0">Decisão pondera localização, tamanho, gravidade dos sintomas, comprometimento renal/ureteral e idade da paciente.</p>
+      <div class="callout danger" style="margin-top:14px"><b>Nunca operar mioma durante cesárea ou no pós-parto imediato</b>O mioma cresce na gestação por estímulo hormonal e sangra extremamente ao ser manipulado nesse contexto — risco real de choque hemorrágico. Conduta: deixar o mioma, fechar a cesárea; com a involução uterina no puerpério ele tende a regredir e, se ainda indicado, operar depois, eletivamente e com muito menos risco.</div>
+    </div>
+  </section>
+
+  <!-- ================= PARTOGRAMA ================= -->
+  <section class="panel" id="panel-part" hidden>
+    <div class="panel-head">
+      <span class="kicker">Vigilância do trabalho de parto</span>
+      <h2>Partograma &amp; Mecânica do Parto</h2>
+      <p class="lede">Trabalho de parto: sequência de contrações uterinas coordenadas e involuntárias que resultam no apagamento e dilatação do colo, simultaneamente à descida fetal — que, associadas aos puxos e contrações voluntárias da parede abdominal, expulsam os produtos da gestação.</p>
+      <div class="stat-row">
+        <div class="stat"><b>−50%</b>redução do TP em 18h (estudo OMS)</div>
+        <div class="stat"><b>5,2%→3,7%</b>redução de cesáreas com partograma</div>
+        <div class="stat"><b>99,5%</b>situação longitudinal</div>
+      </div>
+    </div>
+
+    <div class="section c1">
+      <div class="section-head"><span class="section-num">1</span><h3>Trajeto &amp; Pontos Controversos</h3></div>
+      <div class="card-grid" style="margin-bottom:14px">
+        <div class="card"><span class="t">Trajeto duro</span><span class="v">Ossos ilíacos, sacro e cóccix</span></div>
+        <div class="card"><span class="t">Trajeto mole</span><span class="v">Segmento inferior do útero, cérvice, vagina e região vulvoperineal</span></div>
+      </div>
+      <p style="font-size:12.5px;color:var(--ink-faint);margin:0 0 8px">Pontos controversos na assistência ao parto:</p>
+      <div class="pills"><span class="pill">Humanização</span><span class="pill">Local do parto</span><span class="pill">Episiotomia</span><span class="pill">Equipe multidisciplinar</span><span class="pill">Anestesia</span></div>
+    </div>
+
+    <div class="section c2">
+      <div class="section-head"><span class="section-num">2</span><h3>Mecânica do Parto</h3></div>
+      <p style="font-size:12.5px;color:var(--ink-faint);margin:0 0 8px">Tempos do parto:</p>
+      <div class="chain" style="max-width:420px; margin-bottom:18px">
+        <div class="chain-item">1 · Insinuação</div><div class="chain-arrow">↓</div>
+        <div class="chain-item">2 · Descida</div><div class="chain-arrow">↓</div>
+        <div class="chain-item">3 · Rotação interna da cabeça</div><div class="chain-arrow">↓</div>
+        <div class="chain-item">4 · Desprendimento da cabeça</div><div class="chain-arrow">↓</div>
+        <div class="chain-item">5 · Rotação externa da cabeça / interna das espáduas</div><div class="chain-arrow">↓</div>
+        <div class="chain-item">6 · Desprendimento das espáduas</div>
+      </div>
+
+      <div class="two-col">
+        <div class="card"><span class="t">Atitude / hábito fetal</span><span class="v">Relação entre as partes do feto entre si. O feto se aloja em flexão generalizada; forma ovoide com 2 polos (cefálico e pélvico); o polo cefálico é o menos redutível para adaptação ao trajeto.</span></div>
+        <div class="card"><span class="t">Situação</span><span class="v">Relação entre o maior eixo uterino e o maior eixo fetal: longitudinal (99,5%), transversa, ou oblíqua.</span></div>
+      </div>
+
+      <p style="font-size:12.5px;color:var(--ink-faint);margin:16px 0 8px">Apresentação:</p>
+      <div class="decision-wrap">
+        <div class="decision-box">Tipo de apresentação</div>
+        <div class="branches">
+          <div class="branch">
+            <div class="branch-label">Cefálica · 96,5%</div>
+            <div class="branch-body"><b>Fletida (95,5%)</b> — polo cefálico fletido ao mento, próximo à face anterior do tórax.<br><b>Defletida</b> — 1º grau: bregmática · 2º grau: fronte · 3º grau: face</div>
+          </div>
+          <div class="branch">
+            <div class="branch-label">Pélvica · 3–4%</div>
+            <div class="branch-body">Completa (pelvipodálica) · Incompleta · Agripina</div>
+          </div>
+          <div class="branch">
+            <div class="branch-label">Córmica · 0,5%</div>
+            <div class="branch-body">Situação transversa</div>
+          </div>
+        </div>
+      </div>
+
+      <p style="font-size:12.5px;color:var(--ink-faint);margin:20px 0 8px">Altura da apresentação: insinuação = passagem da maior circunferência da apresentação através do anel do estreito superior, avaliada em relação às espinhas ciáticas (De Lee).</p>
+
+      <div class="two-col">
+        <div>
+          <p style="font-size:12.5px;color:var(--ink-faint);margin:0 0 8px">Pontos de referência maternos</p>
+          <div class="pills"><span class="pill">Púbis</span><span class="pill">Eminência ileopectínea</span><span class="pill">Extremidade do diâmetro transverso</span><span class="pill">Sinostose sacroilíaca</span><span class="pill">Sacro</span></div>
+        </div>
+        <div>
+          <p style="font-size:12.5px;color:var(--ink-faint);margin:0 0 8px">Pontos de referência fetais</p>
+          <div class="tbl-wrap">
+          <table class="tbl" style="font-size:11.8px">
+            <tr><th>Apresentação</th><th>Ref. de flexão</th><th>Sutura</th></tr>
+            <tr><td>Cefálica fletida</td><td>Lambda</td><td>Sagital</td></tr>
+            <tr><td>Defletida 1º grau</td><td>Bregma</td><td>Sagital + metópica</td></tr>
+            <tr><td>Defletida 2º grau</td><td>Glabela</td><td>Metópica</td></tr>
+            <tr><td>Defletida 3º grau</td><td>Mento</td><td>Linha facial</td></tr>
+            <tr><td>Pélvica</td><td colspan="2">Sulco interglúteo</td></tr>
+            <tr><td>Córmica</td><td colspan="2">Gradeado costal</td></tr>
+          </table>
+          </div>
+        </div>
+      </div>
+      <p style="font-size:12px;color:var(--ink-faint);margin-top:10px">Nomenclatura obstétrica (3 letras): 1ª = apresentação · 2ª = posição · 3ª = referência na bacia materna. Ex.: OEA, SDP, ODP.</p>
+    </div>
+
+    <div class="section c4">
+      <div class="section-head"><span class="section-num">4</span><h3>Diagnóstico com o Partograma</h3></div>
+      <div class="card-grid" style="margin-bottom:14px">
+        <div class="card"><span class="t">Vantagens</span><span class="v">Mostra a evolução da dilatação do colo e da descida da apresentação; associa simplicidade e utilidade prática, superando a intuição; reconhece evolução normal e anormal do parto; corrige partos disfuncionais; diminui partos cesáreos.</span></div>
+        <div class="card"><span class="t">Evidência (OMS)</span><span class="v">Estudo multicêntrico (Indonésia, Tailândia, Malásia): eficaz e de baixo custo — reduz o TP em 18h (50%), reduz cesáreas (5,2%→3,7%) e reduz roturas e hemorragias.</span></div>
+      </div>
+      <div class="two-col" style="margin-bottom:14px">
+        <table class="tbl">
+          <tr><th colspan="2">Nomenclatura clássica × Friedman</th></tr>
+          <tr><td>Dilatação</td><td>Preparatório / dilatação</td></tr>
+          <tr><td>Expulsivo</td><td>Pélvica</td></tr>
+          <tr><td>Dequitação</td><td>Dequitação</td></tr>
+          <tr><td>4º período</td><td>4º período</td></tr>
+        </table>
+        <div class="card"><span class="t">Linhas do partograma</span><span class="v"><b>Linha de alerta</b> — traçada na hora seguinte ao início do registro.<br><b>Linha de ação</b> — traçada 4h após a linha de alerta.</span></div>
+      </div>
+
+      <div class="decision-wrap">
+        <div class="decision-box">Curva de dilatação</div>
+        <div class="branches">
+          <div class="branch">
+            <div class="branch-label">Parto funcional</div>
+            <div class="branch-body">A curva se mantém à esquerda da linha de alerta, ou com discreto desvio à direita. TP de primíparas difere do de multíparas.</div>
+          </div>
+          <div class="branch">
+            <div class="branch-label">Parto disfuncional</div>
+            <div class="branch-body"><ul><li>Fase prolongada de dilatação e descida</li><li>Parada secundária da dilatação ou descida</li><li>Fase curta de dilatação e descida</li></ul></div>
+          </div>
+        </div>
+      </div>
+      <div class="callout" style="margin-top:16px"><b>Parada secundária da dilatação</b>Mesma dilatação cervical em 2 toques sucessivos, com intervalo ≥ 2 horas, em fase ativa do trabalho de parto — ultrapassa a linha de alerta e, por vezes, a linha de ação.</div>
+    </div>
+
+    <div class="section c5">
+      <div class="section-head"><span class="section-num">5</span><h3>Manejo Ativo das Distocias Funcionais</h3></div>
+      <div class="pills">
+        <span class="pill on">Controle da atividade uterina</span>
+        <span class="pill on">Amniotomia</span>
+        <span class="pill on">Toques vaginais seriados</span>
+      </div>
+      <p style="font-size:12px;color:var(--ink-faint);margin-top:10px">Parada de contrações no partograma (dilatação e descida estagnadas, sem contração) → considerar amniotomia (rotura da bolsa aumenta a contratilidade uterina) e/ou ocitocina, com toques seriados de reavaliação.</p>
+    </div>
+
+    <div class="section c1">
+      <div class="section-head"><span class="section-num">1</span><h3>Distocia de Ombro &amp; Manobras Especiais</h3></div>
+      <div class="callout danger" style="margin-bottom:14px"><b>Distocia de ombro — a fratura de clavícula pode ser "boa notícia"</b>Em feto grande (macrossômico), se a espádua anterior fica presa após a cabeça nascer, uma fratura de clavícula em galho verde durante a manobra é preferível à alternativa: distensão do plexo braquial (paralisia de Erb, sequela permanente). A fratura consolida sozinha, sem tratamento específico.</div>
+      <div class="card-grid" style="margin-bottom:14px">
+        <div class="card"><span class="t">Manobra de liberação do ombro</span><span class="v">Nome de identificação incerta — tração em sentido contrário ao habitual para tentar liberar a espádua anterior presa.</span></div>
+        <div class="card"><span class="t">Hiperflexão das pernas maternas</span><span class="v">Fletir mais as pernas da mãe contra o abdômen para melhorar o ângulo pélvico — manobra prática citada como eficaz pelo professor (mecanismo equivalente ao da manobra de McRoberts).</span></div>
+      </div>
+
+      <p style="font-size:12.5px;color:var(--ink-faint);margin:0 0 8px">Parto pélvico (apresentação Agripina/pelvipodálica) — nunca sozinho, sempre com auxiliar:</p>
+      <div class="two-col" style="margin-bottom:14px">
+        <div class="card"><span class="t">Alça de cordão</span><span class="v">Auxiliar traciona delicadamente o cordão para fora enquanto o corpo desce, evitando compressão e anóxia</span></div>
+        <div class="card"><span class="t">Manobra de Bracht</span><span class="v">Ao nascer o corpo até as escápulas, apoiar o feto com uma compressa e rebater em bloco sobre o abdômen materno (nunca tracionar reto/para baixo) — é o movimento de rotação, não a tração, que desprende a cabeça derradeira</span></div>
+      </div>
+      <div class="callout" style="margin-bottom:14px"><b>Feto natimorto com desproporção intransponível</b>Cabeça derradeira muito grande, sem progressão (ex. óbito fetal com parada em plano de DeLee zero): <b>embriotomia de Smellie</b> — perfuração da calota craniana (via fontanela/bregma) para esvaziar a massa encefálica e reduzir o diâmetro cefálico, permitindo parto vaginal. Procedimento reservado exclusivamente a feto morto; sedação da mãe não é necessária nesse contexto.</div>
+
+      <p style="font-size:12.5px;color:var(--ink-faint);margin:0 0 8px">Parto instrumental — fórceps × vácuo-extrator:</p>
+      <div class="two-col">
+        <div class="card"><span class="t">Fórceps</span><span class="v">Não é "o problema" — o problema é a falta de experiência de quem aplica. Alguns modelos permitem força progressiva de tração; se mal indicado/mal aplicado, risco de lesão fetal (inclusive facial/ocular, em apresentações defletidas de face) e materna.</span></div>
+        <div class="card"><span class="t">Vácuo-extrator</span><span class="v">Dispositivos modernos são computadorizados — desligam automaticamente se a força de tração excede o limite seguro, funcionando como salvaguarda embutida.</span></div>
+      </div>
+      <p style="font-size:11.5px;color:var(--ink-faint);margin-top:8px">A escolha entre os dois depende essencialmente da experiência do operador com cada instrumento — não existe superioridade universal de um sobre o outro.</p>
+    </div>
+  </section>
+
+  <!-- ================= PERÍODO EXPULSIVO ================= -->
+  <section class="panel" id="panel-pex" hidden>
+    <div class="panel-head">
+      <span class="kicker">Boas práticas baseadas em evidência</span>
+      <h2>Assistência no Período Expulsivo</h2>
+      <p class="lede">Reflexão de partida: o avanço da obstetrícia concretizou um modelo que, por vezes, trata a gravidez, o parto e o nascimento como doenças — não como expressões de saúde. Altas taxas de intervenção deveriam ser parcimoniosas e reservadas a situações de necessidade, considerando também os aspectos emocionais, humanos e culturais: a experiência do parto deixa marcas indeléveis, positivas ou negativas, para o resto da vida da mulher.</p>
+    </div>
+
+    <div class="section c1">
+      <div class="section-head"><span class="section-num">1</span><h3>Fases do 2º Período</h3></div>
+      <div class="decision-wrap">
+        <div class="decision-box">2º período do trabalho de parto</div>
+        <div class="branches">
+          <div class="branch">
+            <div class="branch-label">Fase inicial / passiva</div>
+            <div class="branch-body">Dilatação total do colo, sem sensação de puxo involuntário (ou parturiente com analgesia), com a apresentação fetal ainda relativamente alta na pelve.</div>
+          </div>
+          <div class="branch">
+            <div class="branch-label">Fase ativa</div>
+            <div class="branch-body">Dilatação total do colo, cabeça fetal visível, contrações de expulsão ou esforço materno ativo após confirmação da dilatação completa (mesmo na ausência de contrações de expulsão).</div>
+          </div>
+        </div>
+      </div>
+      <p style="font-size:12.5px;color:var(--ink-faint);margin:20px 0 8px">Duração normal da fase ativa (Diretrizes Nacionais de Assistência ao Parto Normal, 2017):</p>
+      <div class="tbl-wrap">
+      <table class="tbl">
+        <tr><th></th><th>Sem peridural</th><th>Com peridural</th></tr>
+        <tr><td>Primíparas</td><td>0,5 – 2,5 horas</td><td>1 – 3 horas</td></tr>
+        <tr><td>Multíparas</td><td>até 1 hora</td><td>até 2 horas</td></tr>
+      </table>
+      </div>
+    </div>
+
+    <div class="section c2">
+      <div class="section-head"><span class="section-num">2</span><h3>Decisão Clínica Baseada em Evidência</h3></div>
+      <p style="font-size:12.8px;color:var(--ink-soft);max-width:640px;margin:0 0 10px">A decisão clínica / ciência da implementação nasce do cruzamento entre a <b>evidência</b> (dados do paciente, pesquisa básica/clínica/epidemiológica, ensaios randomizados, revisões sistemáticas, guias clínicos) e os <b>fatores ligados ao médico e à paciente</b> (valores pessoais e culturais, experiência individual, fatores educacionais e éticos) — sempre dentro das limitações reais do sistema: políticas de saúde, padrões comunitários, tempo e financiamento.</p>
+    </div>
+
+    <div class="section c3">
+      <div class="section-head"><span class="section-num">3</span><h3>Boas Práticas — Posição, Períneo, Puxos</h3></div>
+
+      <div class="callout danger" style="margin-bottom:14px"><b>Posição litotômica — riscos associados</b>Maior risco de trauma perineal · maior risco de incontinência urinária · menor mobilidade do sacro (dificulta a descida fetal) · relatos de experiências mais dolorosas · trabalhos de parto relativamente mais longos · alterações não tranquilizadoras do padrão de FCF · aumento de 35% na força total exigida no puxo em posição horizontal, pela falta de ação da gravidade.<span class="note" style="display:block;margin-top:6px;font-size:11px">Huang, Zang, Ren, Li &amp; Lu, 2019</span></div>
+
+      <div class="card-grid" style="margin-bottom:14px">
+        <div class="card"><span class="t">Episiotomia seletiva × rotina</span><span class="v">Cochrane (Jiang, Qian, Carroli, Garner — 8/fev/2017), 11 ECRs, 5.977 mulheres: episiotomia seletiva reduz em ~30% o risco de trauma perineal grave, comparada à episiotomia de rotina.</span></div>
+        <div class="card"><span class="t">Períneo</span><span class="v">Massagem perineal <b>não</b> é recomendada no 2º período. Spray de lidocaína pode reduzir a dor perineal. Técnica "mãos sobre" (proteger o períneo e flexionar a cabeça fetal) ou "mãos prontas" (mãos preparadas, sem tocar) — ambas aceitáveis para o parto espontâneo.</span></div>
+      </div>
+
+      <div class="chain" style="max-width:660px">
+        <div class="chain-item">Mulheres <b>sem analgesia</b>: apoiar a realização de puxos espontâneos + outras estratégias de suporte (mudança de posição, esvaziamento vesical, encorajamento)</div>
+        <div class="chain-arrow">·</div>
+        <div class="chain-item">Mulheres <b>com analgesia regional</b>: após confirmar dilatação completa, adiar o puxo por ≥ 1 hora (ou mais, se a mulher desejar) — exceto se ela quiser puxar ou a cabeça estiver visível; após 1h, incentivar ativamente o puxo durante as contrações</div>
+      </div>
+      <p style="font-size:11.5px;color:var(--ink-faint);margin-top:10px">Manobra de Kristeller é citada como tema de discussão no material — buscar a recomendação vigente antes de aplicar (ver lista de referências).</p>
+    </div>
+
+    <div class="section c5">
+      <div class="section-head"><span class="section-num">5</span><h3>Falha de Progresso no 2º Período</h3></div>
+      <div class="chain">
+        <div class="chain-item">Avaliar a necessidade de analgesia/anestesia</div>
+        <div class="chain-arrow">↓</div>
+        <div class="chain-item">Considerar uso de ocitocina — <b>um médico obstetra deve avaliar</b> a mulher com prolongamento confirmado do 2º período antes de iniciar ocitocina</div>
+        <div class="chain-arrow">↓</div>
+        <div class="chain-item">Parto instrumental (vácuo-extrator ou fórceps) + anestesia adequada</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= HIPERTENSÃO NA GESTAÇÃO ================= -->
+  <section class="panel" id="panel-dheg" hidden>
+    <div class="panel-head">
+      <span class="kicker">Síndromes hipertensivas · manejo farmacológico</span>
+      <h2>Hipertensão na Gestação &amp; Puerpério</h2>
+      <p class="lede">Diabetes mellitus e síndromes hipertensivas andam juntos na prova e na prática — sempre pensar nas duas em conjunto. O objetivo do tratamento não é "normalizar" a pressão, é reduzir o risco materno-fetal sem comprometer a perfusão uteroplacentária.</p>
+      <div class="stat-row">
+        <div class="stat"><b>≥140/90</b>limiar diagnóstico de hipertensão na gestação</div>
+        <div class="stat"><b>&lt;90 (~85)</b>meta de PA diastólica em tratamento</div>
+        <div class="stat"><b>15–25%</b>redução máxima da PA média por etapa, na emergência</div>
+      </div>
+    </div>
+
+    <div class="section c1">
+      <div class="section-head"><span class="section-num">1</span><h3>Por que tratar — evidência (Cochrane)</h3></div>
+      <p style="font-size:12.5px;color:var(--ink-soft);max-width:640px;margin:0 0 10px">Revisão sistemática Cochrane, tratar × não tratar hipertensão na gestação:</p>
+      <div class="card-grid">
+        <div class="card"><span class="t">Hipertensão grave a termo</span><span class="v">40% → 27% dos casos</span></div>
+        <div class="card"><span class="t">Plaquetopenia / HELLP</span><span class="v">Redução de ~4×</span></div>
+        <div class="card"><span class="t">Alteração de enzimas hepáticas</span><span class="v">Redução de ~2×</span></div>
+        <div class="card"><span class="t">Óbito fetal/neonatal &amp; complicações maternas</span><span class="v">Redução consistente com o tratamento</span></div>
+      </div>
+    </div>
+
+    <div class="section c2">
+      <div class="section-head"><span class="section-num">2</span><h3>Anti-hipertensivos na Gestação</h3></div>
+      <p style="font-size:12.5px;color:var(--ink-faint);margin:0 0 8px">Objetivo do tratamento — 2 metas descritas na literatura (RBEHG 2023 e CHIPS Trial):</p>
+      <div class="card-grid" style="margin-bottom:14px">
+        <div class="card"><span class="t">RBEHG 2023</span><span class="v">Manter PA abaixo de 140×90 mmHg</span></div>
+        <div class="card"><span class="t">CHIPS Trial</span><span class="v">Manter PA diastólica em torno de 85 mmHg</span></div>
+      </div>
+      <p style="font-size:12.5px;color:var(--ink-faint);margin:0 0 8px">Posologia recomendada para uso contínuo na gestação (RBEHG 2023):</p>
+      <div class="tbl-wrap" style="margin-bottom:14px">
+      <table class="tbl" style="font-size:11.8px">
+        <tr><th>Classe</th><th>Agente</th><th>Posologia</th></tr>
+        <tr><td rowspan="1">Simpatolítico central (α2-agonista)</td><td>Metildopa</td><td>750 – 2.000 mg/dia</td></tr>
+        <tr><td rowspan="3">Bloqueador de canal de cálcio</td><td>Nifedipino retard 20mg</td><td>20–100 mg/dia, 1–3x/dia</td></tr>
+        <tr><td>Nifedipino liberação rápida 10/20mg</td><td>20–60 mg/dia, 2–3x/dia</td></tr>
+        <tr><td>Anlodipino 2,5/5/10mg</td><td>5–20 mg/dia, 1–2x/dia</td></tr>
+        <tr><td>Vasodilatador periférico</td><td>Hidralazina 25/50mg</td><td>50–150 mg/dia, 2–3x/dia</td></tr>
+        <tr><td rowspan="2">Betabloqueador</td><td>Metoprolol 25/50/100mg</td><td>100–200 mg/dia, 1–2x/dia</td></tr>
+        <tr><td>Carvedilol 6,25/12,5mg</td><td>12,5–50 mg/dia, 1–2x/dia — manter 12,5 mg/dia por 2 dias e aumentar se necessário</td></tr>
+      </table>
+      </div>
+      <p style="font-size:11.5px;color:var(--ink-faint);margin:-6px 0 14px">Cochrane 2018 (58 ensaios, 5.909 mulheres): qualquer anti-hipertensivo vs. nenhum/placebo reduz o risco de hipertensão grave e a necessidade de medicamentos adicionais; efeito sobre desfechos fetais/neonatais totais permanece incerto, e a divulgação de efeitos colaterais nos estudos é escassa.</p>
+      <div class="callout" style="margin-bottom:14px"><b>Escolha do agente</b>Na ausência de superioridade comprovada entre classes, a escolha do anti-hipertensivo depende da experiência e familiaridade do médico com o medicamento. Nimodipina, sulfato de magnésio (indicado como anticonvulsivante na eclâmpsia, não como anti-hipertensivo de rotina), diazóxido e ketanserina são citados na literatura, mas provavelmente é melhor evitá-los fora de contextos específicos.</div>
+      <div class="callout danger" style="margin-bottom:14px"><b>Contraindicados na gestação — IECA / BRA</b>Captopril, enalapril (IECA) e valsartana, irbesartana (BRA/sartanos): bloqueiam o sistema renina-angiotensina-aldosterona fetal → síndrome de bloqueio do SRAA fetal — oligoidrâmnio, malformações crânio-faciais e ósseas, hipotensão fetal, persistência do canal arterial, restrição de crescimento intrauterino e óbito fetal. Suspender imediatamente se a paciente engravidar em uso crônico.</div>
+      <div class="tbl-wrap">
+      <table class="tbl" style="font-size:12px">
+        <tr><th>Droga</th><th>Efeitos a vigiar</th></tr>
+        <tr><td>Metildopa</td><td>Sonolência, distúrbio hepático, plaquetopenia, bradicardia — associada a maior risco de depressão pós-parto</td></tr>
+        <tr><td>Clonidina</td><td>Diminui frequência cardíaca e resistência vascular periférica/renal; efeito rebote na FC ao suspender</td></tr>
+        <tr><td>Nifedipina</td><td>Uso seguro na gestação e lactação; cefaleia e rubor facial descritos. Nunca amassar para uso sublingual; atenção ao uso concomitante com sulfato de magnésio</td></tr>
+        <tr><td>Hidralazina</td><td>Aumento reflexo de frequência cardíaca, volume de ejeção e débito cardíaco</td></tr>
+        <tr><td>Metoprolol / Carvedilol</td><td>Contraindicados em bradicardia, bloqueio atrioventricular, asma brônquica e broncoespasmo — usar metildopa ou bloqueador de canal de cálcio nessas pacientes</td></tr>
+        <tr><td>Diurético tiazídico</td><td>Uso compatível na gestação; <b>evitar no puerpério</b> — risco para o RN de pancreatite hemorrágica, plaquetopenia e depleção de sódio/potássio. Geralmente 3ª opção medicamentosa</td></tr>
+      </table>
+      </div>
+    </div>
+
+    <div class="section c3">
+      <div class="section-head"><span class="section-num">3</span><h3>Emergência Hipertensiva — Algoritmo</h3></div>
+      <div class="callout danger" style="margin-bottom:14px"><b>Nunca corrigir rápido demais</b>Queda abrupta da PA pode causar isquemia materna, coma, AVE, insuficiência renal aguda e óbito fetal. Meta: reduzir a PA média em 15–25% por etapa — nunca mais que isso de uma vez.</div>
+      <div class="chain" style="max-width:660px">
+        <div class="chain-item"><b>1ª linha</b> — Hidralazina 5 mg IV (repetível a cada ~20 min) <i>ou</i> nifedipina VO — reavaliar a cada 20 min; ao atingir 15–25% de redução, parar</div>
+        <div class="chain-arrow">↓ sem resposta em ~40 min</div>
+        <div class="chain-item"><b>2ª linha</b> — Labetalol IV</div>
+        <div class="chain-arrow">↓ sem resposta em ~30 min</div>
+        <div class="chain-item"><b>Reiniciar o ciclo</b> — voltar à hidralazina/nifedipina; se ainda sem resposta, escalar para suporte intensivo</div>
+      </div>
+      <p style="font-size:12.5px;color:var(--ink-faint);margin:14px 0 8px">Não há evidência de superioridade entre hidralazina e nifedipina como 1ª linha — a escolha varia por serviço; diazóxido e nitroprussiato de sódio existem, mas são pouco usados no dia a dia.</p>
+      <div class="callout" style="margin-bottom:10px"><b>Nunca insista na mesma droga que já falhou</b>O erro mais comum é repetir hidralazina indefinidamente. Se não respondeu no prazo, troque de classe — é isso que separa um atendimento rápido (referência: diagnóstico + tratamento completos em ~20 min em serviços de ponta) de uma emergência arrastada.</div>
+      <div class="callout danger"><b>Nunca amassar comprimido para dar sublingual</b>Furar nifedipina para absorção sublingual faz perder totalmente o controle da dose e da farmacocinética da droga.</div>
+    </div>
+
+    <div class="section c4">
+      <div class="section-head"><span class="section-num">4</span><h3>Puerpério &amp; Amamentação</h3></div>
+      <p style="font-size:12.5px;color:var(--ink-soft);max-width:640px;margin:0 0 10px">No pós-parto a prioridade muda: já não há risco de malformação fetal, então a escolha passa a ser guiada por <b>segurança no aleitamento</b>. IECA (captopril, enalapril) — proibidos na gestação — tornam-se opção de primeira linha, pois não passam de forma relevante para o leite.</p>
+      <div class="card-grid">
+        <div class="card"><span class="t">Preferência pós-parto</span><span class="v">Captopril ou enalapril (IECA) — seguros na amamentação, ao contrário da gestação</span></div>
+        <div class="card"><span class="t">Pode manter</span><span class="v">Nifedipina, hidralazina, metoprolol, atenolol, carvedilol — todos continuáveis no puerpério</span></div>
+        <div class="card"><span class="t">Metildopa</span><span class="v">Pode manter, mas pouco eficaz nesse cenário — droga essencialmente obstétrica</span></div>
+        <div class="card"><span class="t">Emergência hipertensiva puerperal</span><span class="v">Qualquer medicação pode ser usada — não há mais risco fetal a considerar</span></div>
+      </div>
+      <div class="callout" style="margin-top:14px"><b>Meta pressórica no puerpério</b>PAS &lt; 120 mmHg e PAD &lt; 90 mmHg (Diretriz de Hipertensão Arterial na Gestação, SBC/Ligas 2021) — mais rígida que a meta na gestação, já sem o limite imposto pela perfusão uteroplacentária.</div>
+      <div class="callout" style="margin-top:10px"><b>Cesárea programada em hipertensa</b>Meta: manter PA diastólica abaixo de 90 mmHg antes do procedimento — mesmo princípio da preparação para cesárea em DMG (painel de Diabetes).</div>
+    </div>
+  </section>
+
+  <!-- ================= DIABETES GESTACIONAL ================= -->
+  <section class="panel" id="panel-dmg" hidden>
+    <div class="panel-head">
+      <span class="kicker">Endocrinopatia da gestação</span>
+      <h2>Diabetes Mellitus Gestacional (DMG)</h2>
+      <p class="lede">Conjunto de distúrbios metabólicos caracterizados por hiperglicemia consequente à deficiência insulínica — por produção pancreática reduzida, liberação inadequada e/ou resistência periférica ao hormônio.</p>
+      <div class="stat-row">
+        <div class="stat"><b>415 milhões</b>adultos com DM no mundo</div>
+        <div class="stat"><b>4º</b>país do mundo em taxa de DM (Brasil, 14,3 mi de 20–79 anos)</div>
+        <div class="stat"><b>86%</b>não precisam de insulina intraparto</div>
+      </div>
+    </div>
+
+    <div class="section c1">
+      <div class="section-head"><span class="section-num">1</span><h3>Definição &amp; Diagnóstico</h3></div>
+      <div class="decision-wrap">
+        <div class="decision-box">Hiperglicemia detectada na gestação</div>
+        <div class="branches">
+          <div class="branch">
+            <div class="branch-label">DMG</div>
+            <div class="branch-body">Hiperglicemia detectada pela <b>primeira vez</b> durante a gravidez, com níveis glicêmicos que <b>não</b> atingem os critérios diagnósticos de DM fora da gestação.</div>
+          </div>
+          <div class="branch">
+            <div class="branch-label">DM diagnosticado na gestação (Overt Diabetes)</div>
+            <div class="branch-body">Mulher sem diagnóstico prévio de DM, com hiperglicemia na gravidez que <b>atinge</b> os critérios da OMS para DM fora da gestação.</div>
+          </div>
+        </div>
+      </div>
+      <p style="font-size:12.5px;color:var(--ink-faint);margin:20px 0 8px">Estratégia diagnóstica (OPAS/Ministério da Saúde/FEBRASGO/SBD, 2019):</p>
+      <div class="card-grid">
+        <div class="card"><span class="t">Fatores clínicos de risco isolados</span><span class="v">Não são estratégia ideal — baixa sensibilidade.</span></div>
+        <div class="card"><span class="t">Rastreio universal</span><span class="v">Depende de viabilidade financeira e disponibilidade técnica do teste — nem todo serviço no Brasil consegue fazer TOTG.</span></div>
+        <div class="card"><span class="t">Teste de escolha</span><span class="v">TOTG com 75g entre 24–28 semanas (idealmente na 24ª), valores propostos pela IADPSG e referendados pela OMS 2013 e FIGO 2015.</span></div>
+      </div>
+
+      <p style="font-size:12.5px;color:var(--ink-faint);margin:18px 0 8px">Pontos de corte — <b>basta 1 valor alterado</b> para fechar o diagnóstico de DMG:</p>
+      <div class="tbl-wrap" style="margin-bottom:10px">
+      <table class="tbl" style="font-size:12.5px">
+        <tr><th>Momento</th><th>Corte diagnóstico (DMG)</th></tr>
+        <tr><td>Jejum</td><td class="val">≥ 92 mg/dL</td></tr>
+        <tr><td>1ª hora</td><td class="val">≥ 180 mg/dL</td></tr>
+        <tr><td>2ª hora</td><td class="val">≥ 153 mg/dL</td></tr>
+      </table>
+      </div>
+      <div class="callout"><b>Questão clássica de prova</b>TOTG 75g com jejum normal e 1ª hora = 180 mg/dL (sem atingir critério de diabetes "overt"): já fecha diagnóstico de DMG — um único valor alterado, entre os três, é suficiente. Segundo o professor: "se você decorar esses valores, faz 100% da prova de residência nesse tema."</div>
+
+      <p style="font-size:12.5px;color:var(--ink-faint);margin:18px 0 8px">Quando o TOTG não está disponível — usa-se só a glicemia de jejum, com uma lógica de triagem diferente (adaptada dos critérios gerais de pré-diabetes/DM, não específica da IADPSG):</p>
+      <div class="tbl-wrap">
+      <table class="tbl" style="font-size:12.5px">
+        <tr><th>Glicemia de jejum isolada</th><th>Interpretação</th></tr>
+        <tr><td>&lt; 92 mg/dL</td><td>Normal</td></tr>
+        <tr><td>92 – 125 mg/dL</td><td>Glicemia de jejum alterada — segue investigação/seguimento, sem fechar diagnóstico isolado de DMG</td></tr>
+        <tr><td>≥ 126 mg/dL</td><td>Diabetes mellitus (overt, se antes de confirmação — repetir para validar)</td></tr>
+      </table>
+      </div>
+      <p style="font-size:11.5px;color:var(--ink-faint);margin-top:8px">Mesma lógica vale para reclassificação no pós-parto (~6 semanas): repete-se a glicemia de jejum usando os mesmos cortes gerais de pré-diabetes/DM (jejum &lt; 100 normal · 100–125 alterada · ≥ 126 diabetes; se TOTG disponível, 2ª hora &lt; 140 normal · 140–199 intolerância à glicose · ≥ 200 diabetes).</p>
+
+      <p style="font-size:12.5px;color:var(--ink-faint);margin:20px 0 8px">Fatores de risco para diabetes tipo 2 futuro (vigiar mais de perto no pós-parto):</p>
+      <div class="pills" style="margin-bottom:10px">
+        <span class="pill">Glicemia de jejum ≥ 100 mg/dL</span><span class="pill">Etnia não branca</span>
+        <span class="pill">Histórico familiar de DM em 1º grau (principalmente materno)</span>
+        <span class="pill">Ganho de peso excessivo / obesidade abdominal</span>
+        <span class="pill">Dieta hipercalórica</span><span class="pill">Sedentarismo</span>
+      </div>
+      <div class="callout"><b>Diagnóstico retrospectivo</b>Mesmo sem TOTG documentado na gestação, um recém-nascido macrossômico (ex.: 4,5 kg) já é motivo para investigar DMG materna não diagnosticada — repete-se a mesma lógica de corte (jejum &lt; 100 mg/dL) no puerpério.</div>
+      <p style="font-size:12.5px;color:var(--ink-faint);margin:16px 0 8px">A DMG é o principal fator de risco isolado para o desenvolvimento futuro de diabetes tipo 2 e síndrome metabólica.</p>
+    </div>
+
+    <div class="section c3">
+      <div class="section-head"><span class="section-num">3</span><h3>Repercussões</h3></div>
+      <div class="two-col">
+        <div class="card"><span class="t">Maternas — na gestação</span><span class="v">Desordens hipertensivas · polidrâmnio · maior taxa de primeira cesárea · atraso no início da amamentação. DMG diagnosticado na 1ª metade da gestação = subgrupo de maior risco de complicações obstétricas e clínicas.</span></div>
+        <div class="card"><span class="t">Maternas — longo prazo</span><span class="v">Maior chance de recorrência em gestações futuras · maior risco de DM2 ao longo da vida (ainda maior se obesidade ou necessidade de insulina na gestação). Adequação nutricional, exercício e medicamentos reduzem esse risco.</span></div>
+      </div>
+      <div class="two-col" style="margin-top:10px">
+        <div class="card"><span class="t">Fetais / neonatais</span><span class="v">Crescimento fetal excessivo (macrossomia) · síndrome do desconforto respiratório (a hiperinsulinemia fetal atrasa a produção de surfactante) · hipoglicemia e hiperbilirrubinemia · tocotraumatismo e maior taxa de cesárea.</span></div>
+        <div class="card"><span class="t">Longo prazo da prole</span><span class="v">Exposição intrauterina à DMG associada a maior risco futuro de obesidade, DM2 e doença cardiovascular.</span></div>
+      </div>
+      <p style="font-size:12.5px;color:var(--ink-faint);margin:16px 0 8px">Malformações fetais associadas (DM prévio / hiperglicemia periconcepcional — American Diabetes Association, 1995):</p>
+      <div class="pills">
+        <span class="pill">Situs inversus</span><span class="pill">Espinha bífida</span><span class="pill">Hidrocefalia</span>
+        <span class="pill">Anencefalia</span><span class="pill">Atresia ano-retal</span><span class="pill">Anomalias renais</span>
+        <span class="pill">Regressão caudal</span><span class="pill">Anomalias cardíacas</span>
+      </div>
+      <p style="font-size:11.5px;color:var(--ink-faint);margin-top:8px">Agenesia sacral, anomalias renais, regressão caudal e anomalias cardíacas são as únicas dessa lista com diagnóstico possível ainda intraútero — por isso toda gestante diabética faz <b>dois</b> USG morfológicos (1º e 2º trimestre) <b>+ ecocardiograma fetal</b>, idealmente com 24–28 semanas.</p>
+
+      <p style="font-size:12.5px;color:var(--ink-faint);margin:18px 0 8px">Mecanismo — do ambiente hiperglicêmico à malformação:</p>
+      <div class="chain" style="max-width:640px; margin-bottom:14px">
+        <div class="chain-item">Hiperglicemia materna crônica → ↑ ácidos graxos livres + ↑ aminoácidos circulantes no ambiente fetal</div>
+        <div class="chain-arrow">↓</div>
+        <div class="chain-item">Hiperinsulinemia fetal (resposta ao excesso de substrato) — motor de quase toda a repercussão fetal do DMG</div>
+        <div class="chain-arrow">↓</div>
+        <div class="chain-item">Malformação (teratogênese) · macrossomia · polidrâmnio (hiperglicemia/poliúria fetal aumenta o líquido amniótico)</div>
+      </div>
+
+      <div class="two-col" style="margin-bottom:10px">
+        <div class="card"><span class="t">Macrossomia → trauma de parto</span><span class="v">Fratura de clavícula "em galho verde" é achado comum e, paradoxalmente, <b>desejável</b> nesse contexto — evita a alternativa, que é a distensão/lesão do plexo braquial (paralisia de Erb, sequela permanente visível na infância). A fratura consolida espontaneamente sem tratamento específico.</span></div>
+        <div class="card"><span class="t">Hiperinsulinemia → atraso do surfactante</span><span class="v">A insulina fetal elevada atrasa especificamente a <b>2ª via</b> de produção de surfactante pulmonar (a que começa por volta de 35 semanas) — por isso síndrome do desconforto respiratório é mais comum em <b>termo</b> de mãe diabética do que seria esperado em RN a termo em geral, chegando a se comportar como um pré-termo respiratório.</span></div>
+      </div>
+      <div class="card"><span class="t">Policitemia &amp; hipóxia fetal crônica</span><span class="v">Hiperglicemia crônica → maior afinidade da hemoglobina fetal por O₂ e hemoglobina glicada alterada → hipóxia relativa → estímulo a policitemia, com risco de trombose (inclusive de adrenal).</span></div>
+    </div>
+
+    <div class="section c4">
+      <div class="section-head"><span class="section-num">4</span><h3>Vigilância da Vitalidade Fetal</h3></div>
+      <div class="chain" style="max-width:620px">
+        <div class="chain-item">Não existe teste ideal isolado — a <b>euglicemia materna</b> é o melhor preditor de saúde do produto conceptual</div>
+        <div class="chain-arrow">+</div>
+        <div class="chain-item">USG no 1º trimestre para datação da gravidez</div>
+        <div class="chain-arrow">+</div>
+        <div class="chain-item">Avaliações seriadas de vitalidade, individualizadas — mais frequentes quando o controle glicêmico não é satisfatório<span class="note">Hiperglicemia crônica aumenta o risco de óbito fetal no 3º trimestre — manter os níveis glicêmicos na normalidade é a melhor forma de proteger a vitalidade fetal.</span></div>
+      </div>
+    </div>
+
+    <div class="section c5">
+      <div class="section-head"><span class="section-num">5</span><h3>Conduta</h3></div>
+      <p style="font-size:12.5px;color:var(--ink-faint);margin:0 0 8px">Seguimento inicial: nutrição individualizada + atividade física (ACOG Committee Opinion 650). Metas glicêmicas de jejum, 1h e 2h pós-prandial — confirmar valores exatos no protocolo institucional (não constavam no slide de origem). Atividades aeróbicas de baixo impacto liberadas: caminhada, natação, ciclismo em bicicleta estacionária/cicloergômetro, yoga, pilates.</p>
+
+      <div class="callout" style="margin-bottom:14px"><b>Quando internar para ajuste</b>Se a paciente não atinge euglicemia com dieta/exercício, a conduta prática é internar e coletar glicemia seriada — jejum, pós-café, pós-almoço, pós-jantar e madrugada — para titular a dose de insulina antes de liberar para casa.</div>
+
+      <div class="two-col" style="margin-bottom:14px">
+        <div class="card"><span class="t">Insulina</span><span class="v">Indicada sempre que dieta + atividade física não atingem as metas. Mais usadas no SUS: NPH (intermediária) e Regular (rápida). Análogos asparte e lispro têm vantagens potenciais, mas custo mais alto — nem toda paciente aceita ou tem acesso à insulina.</span></div>
+        <div class="card"><span class="t">Metformina</span><span class="v">Não é 1ª escolha, mas considerada como monoterapia se inviabilidade de acesso/adesão à insulina, ou como adjuvante em hiperglicemia severa com necessidade de altas doses de insulina. Dose: <b>500 – 2.500 mg/dia</b>. Mecanismo: ↓ resistência periférica à insulina, ↑ transporte muscular/adipocitário de glicose, ↓ absorção intestinal de glicose, ↑ síntese de glicogênio, ↓ gliconeogênese hepática.</span></div>
+      </div>
+
+      <p style="font-size:12.5px;color:var(--ink-faint);margin:0 0 8px">Manejo glicêmico intraparto:</p>
+      <div class="chain" style="max-width:640px; margin-bottom:16px">
+        <div class="chain-item">Manter glicemia entre <b>70–120 mg/dL</b> (preferencialmente 100–120)</div>
+        <div class="chain-arrow">·</div>
+        <div class="chain-item">&lt; 70 mg/dL → corrigir com infusão contínua de glicose a 5% ou 10%</div>
+        <div class="chain-arrow">·</div>
+        <div class="chain-item">≥ 120 mg/dL → insulina regular (ação rápida) SC</div>
+      </div>
+      <div class="callout" style="margin-bottom:16px"><b>Cesárea programada</b>Jejum desde a noite anterior (mínimo 8h). Pela manhã, aplicar 1/3 a 1/2 da dose total diária de insulina basal (NPH) + iniciar glicemia capilar a cada 1–2h + infusão contínua de glicose 5% (125 mg/h) EV.</div>
+
+      <div class="decision-wrap">
+        <div class="decision-box">Via de parto</div>
+        <div class="branches">
+          <div class="branch">
+            <div class="branch-label">Parto espontâneo a termo (40 sem)</div>
+            <div class="branch-body">DMG sem complicações, bom controle glicêmico, feto adequado para a IG, boa vitalidade fetal. Não se permite pós-datismo em DMG.</div>
+          </div>
+          <div class="branch">
+            <div class="branch-label">Parto eletivo (37–38 sem)</div>
+            <div class="branch-body">Controle glicêmico irregular ou feto tendendo a grande para a IG (GIG). Macrossomia é fator importante de morte fetal intraútero — daí a antecipação.</div>
+          </div>
+        </div>
+      </div>
+      <div class="callout" style="margin-top:16px"><b>Pensar sempre em macrossomia</b>O diagnóstico de DMG <b>não</b> é, por si, indicação de cesárea. Sem macrossomia, a via vaginal é preferencial, com indução eletiva e vigilância extrema da vitalidade fetal do início ao parto.</div>
+    </div>
+
+    <div class="section c1">
+      <div class="section-head"><span class="section-num">1</span><h3>Situação-problema (do material)</h3></div>
+      <div class="card">
+        <span class="v">Paciente Vivien, 40 anos, IG0P, 2ª consulta de pré-natal na UBS, iniciou acompanhamento há 3 semanas, agora com 29 semanas.<br><br>
+        <b>Exame físico:</b> IMC elevado · PA 140/95 mmHg · AU 34 cm · BCF 142 bpm.<br>
+        <b>Laboratório:</b> glicemia de jejum 140 mg/dL, TOTG 75g (2h) 210 mg/dL, proteinúria presente.<br>
+        <b>Imagem:</b> USG com peso acima do percentil 90 de Hadlock (GIG) + polidrâmnio; ecografia com suspeita de malformação fetal.<br><br>
+        <i>Exercício do material original: como proceder no acompanhamento pré-natal? — combina DMG com sinais de pré-eclâmpsia sobreposta, útil para revisar os dois blocos em conjunto.</i></span>
+      </div>
+      <div class="callout danger" style="margin-top:12px"><b>Resolução discutida em aula</b>Glicemia de jejum 140 + TOTG 2h 210 → fecha DMG. PA 140/95 + proteinúria significativa → fecha pré-eclâmpsia associada. Conduta: <b>internar</b> para acerto simultâneo de insulina e anti-hipertensivo (ex. metildopa) — nunca manter em casa nesse cenário combinado. Se a paciente já vinha em losartana (IECA/BRA), <b>suspender imediatamente</b> (risco de malformação fetal — ver painel de Hipertensão na Gestação). Sulfato de magnésio <b>não</b> está indicado aqui: reservado a pré-eclâmpsia grave com sinais de iminência de eclâmpsia (cefaleia, escotomas) ou eclâmpsia estabelecida — esta paciente está apenas hipertensa/proteinúrica, sem esses sinais.</div>
+    </div>
+  </section>
+
+  <!-- ================= DOPPLERFLUXOMETRIA ================= -->
+  <section class="panel" id="panel-dop" hidden>
+    <div class="panel-head">
+      <span class="kicker">Técnica de imagem transversal</span>
+      <h2>Dopplerfluxometria em Obstetrícia &amp; Ginecologia</h2>
+      <p class="lede">A USG avalia a anatomia; o Doppler avalia a função — a complementaridade entre as duas é o que orienta a vigilância de gestações de risco e o estudo de doença ginecológica.</p>
+    </div>
+
+    <div class="section c1">
+      <div class="section-head"><span class="section-num">1</span><h3>Indicações Clínicas</h3></div>
+      <div class="card-grid">
+        <div class="card"><span class="t">1º trimestre</span><span class="v">Abortamento · prenhez ectópica · doença trofoblástica gestacional (DTG) · rastreamento de cromossomopatias · rastreamento de cardiopatias (via ducto venoso + frequência cardíaca)</span></div>
+        <div class="card"><span class="t">Obstétrico geral</span><span class="v">Fisiologia fetal · RCIU/DHEG · anemia fetal · ecocardiograma fetal · gestação múltipla · sofrimento fetal · Doppler materno</span></div>
+        <div class="card"><span class="t">Ginecológico</span><span class="v">Distúrbios ovulatórios · infertilidade · SOP · tumores anexiais</span></div>
+      </div>
+    </div>
+
+    <div class="section c2">
+      <div class="section-head"><span class="section-num">2</span><h3>Fisiopatologia da RCF/DHEG pelo Doppler</h3></div>
+      <p style="font-size:12.5px;color:var(--ink-faint);margin:0 0 8px">Etiopatogenia comum (ver também o painel de RCF no bloco Alto Risco):</p>
+      <div class="card-grid" style="margin-bottom:14px">
+        <div class="card"><span class="t">Fatores fetais</span><span class="v">Aneuploidias, malformações, doenças gênicas, infecções, gemelaridade</span></div>
+        <div class="card"><span class="t">Fatores placentários</span><span class="v">Anatômicos, cromossômicos, morfológicos</span></div>
+        <div class="card"><span class="t">Fatores maternos</span><span class="v">Doenças hipertensivas, autoimunes, trombofilias, medicamentos, desnutrição, hábitos</span></div>
+        <div class="card"><span class="t">Imunes / genéticos</span><span class="v">Reconhecimento imunológico anômalo materno-fetal</span></div>
+      </div>
+      <div class="chain" style="max-width:600px">
+        <div class="chain-item">Invasão trofoblástica deficiente → hipóxia + apoptose placentária → radicais livres/debris na circulação → resposta inflamatória + ativação plaquetária/endotelial</div>
+        <div class="chain-arrow">↓</div>
+        <div class="chain-item">Insuficiência placentária → déficit respiratório (↓pO₂) + déficit nutritivo → RCF</div>
+        <div class="chain-arrow">↓</div>
+        <div class="chain-item">Centralização da circulação fetal — "brain sparing" (cerebral) + "cardiac sparing" (cardíaco): proteção de SNC/coração/adrenal × isquemia renal e de outros órgãos</div>
+        <div class="chain-arrow">↓</div>
+        <div class="chain-item" style="border-color:var(--wine)">Se a hipóxia progride: descompensação hemodinâmica → alterações venosas + hipóxia/acidose + miocardiopatia isquêmica</div>
+      </div>
+    </div>
+
+    <div class="section c4">
+      <div class="section-head"><span class="section-num">4</span><h3>Vitalidade Fetal — Estadiamento pelo Doppler</h3></div>
+      <p style="font-size:12.5px;color:var(--ink-soft);max-width:660px;margin:0 0 10px">Cinco estágios evolutivos, definidos pelo padrão combinado de artéria uterina (Aut), artéria umbilical (AU), artéria cerebral média (ACM), perfil hemodinâmico fetal (PHF = IP ACM / IP AU — normal se &gt; 1, alterado se &lt; 1), índice de líquido amniótico (ILA) e cardiotocografia (CTG):</p>
+      <div class="tbl-wrap">
+      <table class="tbl" style="font-size:11.5px">
+        <tr><th>Estágio</th><th>Aut</th><th>AU</th><th>ACM</th><th>PHF</th><th>ILA / CTG</th></tr>
+        <tr><td><b>Pré-centralização</b></td><td>Limítrofe / alterada</td><td>Normal</td><td>Normal / vasodilatação inicial</td><td>Normal</td><td>ILA normal · CTG normal</td></tr>
+        <tr><td><b>Centralização hemodinâmica</b></td><td>Alterada</td><td>Limítrofe / anormal</td><td>Anormal (vasodilatação)</td><td>Alterado</td><td>ILA normal/↓ · CTG normal (normoxêmica)</td></tr>
+        <tr><td><b>Centralização clínica clássica</b></td><td>Alterada</td><td>Anormal (↑ IR — vasoconstrição)</td><td>Anormal (↓ IR — vasodilatação)</td><td>Alterado</td><td>CTG alterada</td></tr>
+        <tr><td><b>Centralização clínica máxima</b></td><td>Alterada</td><td>Anormal — diástole zero</td><td>Anormal</td><td>Alterado</td><td>ILA ↓ / oligoâmnio · CTG alterada</td></tr>
+        <tr><td><b>Descentralização</b></td><td>Alterada (IR ↑ / IPD)</td><td>Anormal — diástole reversa</td><td>Padrão paradoxal (↑ IR)</td><td>Alterado</td><td>Oligoâmnio · CTG alterada · padrão venoso terminal</td></tr>
+      </table>
+      </div>
+
+      <p style="font-size:12.5px;color:var(--ink-faint);margin:20px 0 8px">Interpretação do IP na artéria cerebral média:</p>
+      <div class="two-col">
+        <div class="card"><span class="t">IP diminuído</span><span class="v">Anemia severa · taquicardia fetal · pós-transfusão · hipoxemia com acidemia · insuficiência tricúspide · constrição do ducto</span></div>
+        <div class="card"><span class="t">IP aumentado</span><span class="v">Contrações uterinas · bradicardia fetal · compressão do polo cefálico · hipoxemia com acidemia persistente · hidranencefalia · uso de indometacina</span></div>
+      </div>
+
+      <p style="font-size:12.5px;color:var(--ink-faint);margin:16px 0 8px">Acurácia do ducto venoso na predição de comprometimento fetal grave:</p>
+      <div class="tbl-wrap" style="margin-bottom:10px">
+      <table class="tbl" style="font-size:11.5px">
+        <tr><th>Sensibilidade</th><th>Especificidade</th><th>VPP</th><th>VPN</th><th>RVP</th><th>RVN</th></tr>
+        <tr><td class="val">66,7%</td><td class="val">88,6%</td><td class="val">66,7%</td><td class="val">88,6%</td><td class="val">5,8</td><td class="val">0,4</td></tr>
+      </table>
+      </div>
+      <div class="callout danger"><b>Grave comprometimento fetal</b>Fluxo ausente ou reverso no ducto venoso + padrão pulsátil na veia umbilical.</div>
+    </div>
+
+    <div class="section c5">
+      <div class="section-head"><span class="section-num">5</span><h3>Conduta Obstétrica na RCF/PE</h3></div>
+      <div class="pills">
+        <span class="pill">CTG — marcador agudo</span><span class="pill">Perfil biofísico fetal — agudo</span>
+        <span class="pill">Doppler venoso — agudo</span><span class="pill">Doppler arterial — crônico</span>
+        <span class="pill">Avaliação da função cardíaca — crônico</span><span class="pill">Corticoterapia</span><span class="pill">Amnioinfusão</span>
+      </div>
+    </div>
+
+    <div class="section c4">
+      <div class="section-head"><span class="section-num">4</span><h3>Aplicações em Ginecologia</h3></div>
+      <div class="card-grid">
+        <div class="card"><span class="t">Ciclo ovulatório normal</span><span class="v">IR da artéria uterina cai após a ovulação, correlacionado ao estradiol plasmático; padrão vascular do corpo lúteo com baixa impedância e vasos agrupados quando funcionante.</span></div>
+        <div class="card"><span class="t">Infertilidade / FIV</span><span class="v">IP de artéria uterina &gt; 3,0 associado a taxa zero de sucesso na transferência embrionária (sensibilidade 35,2%, especificidade 100%, VPP 100%).</span></div>
+        <div class="card"><span class="t">Leiomioma / Adenomiose</span><span class="v">Hiperfluxo nas artérias uterinas; vascularização miometrial na miomatose, padrão linear na adenomiose, vasos periféricos e/ou internos nos miomas.</span></div>
+        <div class="card"><span class="t">Rastreio de câncer de ovário</span><span class="v">IR &lt; 0,4 prediz malignidade (sensibilidade 33%, especificidade 97,6%, VPP 83,3%, VPN 80%). Associado ao CA-125: sensibilidade 80%, especificidade 73,9%, VPN 91,9% — método sensível e específico para diferenciar neoplasias benignas de malignas.</span></div>
+        <div class="card"><span class="t">Síndrome de congestão pélvica</span><span class="v">Varizes pélvicas e tromboflebite pélvica, avaliadas nas artérias e veias ilíacas internas e ovarianas.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= ANEUPLOIDIAS ================= -->
+  <section class="panel" id="panel-aneu" hidden>
+    <div class="panel-head">
+      <span class="kicker">Rastreamento ultrassonográfico</span>
+      <h2>Marcadores de Aneuploidia</h2>
+      <p class="lede">Rastreamento estrutural dos anexos fetais e do embrião/feto no 1º trimestre, e do feto e seus anexos no 2º/3º trimestres, em busca de sinais indiretos de cromossomopatia.</p>
+    </div>
+
+    <div class="section c1">
+      <div class="section-head"><span class="section-num">1</span><h3>Marcadores do 1º Trimestre — Anexos Fetais</h3></div>
+      <div class="two-col">
+        <div class="card"><span class="t">Vesícula vitelina</span><span class="v">Fornece nutrientes e oxigênio. Baixo metabolismo → aumento de tamanho. Alterações associadas a aneuploidias e a óbito embrionário.</span></div>
+        <div class="card"><span class="t">Saco gestacional</span><span class="v">Visível à USTV com 4,5 sem de atraso menstrual; cresce 1,13 mm/dia; forma ovalada, anecoica, regular.</span></div>
+      </div>
+      <div class="card-grid" style="margin-top:10px">
+        <div class="card"><span class="t">SG pequeno/irregular</span><span class="v">Associado a 50% dos casos de aneuploidia; risco de recorrência 3x maior; indicação de cariótipo de rotina.</span></div>
+        <div class="card"><span class="t">SG &lt; IG esperada</span><span class="v">57% de anomalias cromossômicas (Tsuji et al., 1985)</span></div>
+        <div class="card"><span class="t">Abortamento precoce</span><span class="v">Associado a idade materna avançada</span></div>
+      </div>
+      <p style="font-size:12.5px;color:var(--ink-faint);margin:16px 0 8px">Evolução da gestação (Ferrazzi et al., 1988) — risco de anomalia cromossômica de ~50% quando presentes:</p>
+      <div class="pills"><span class="pill">SG pequeno/irregular — 30%</span><span class="pill">Ovo anembrionado — 27%</span><span class="pill">Atividade cardíaca ausente — 43%</span></div>
+      <p style="font-size:12.5px;color:var(--ink-faint);margin:16px 0 8px">Placenta: degeneração hidrópica, cistos &lt; 1 cm — sugerem triploidia. Embrião: análise da morfologia; atraso de crescimento (CCN &lt; IG) tem 28,5% de cariótipo anormal; avaliar atividade cardíaca embrionária e translucência nucal.</p>
+    </div>
+
+    <div class="section c1">
+      <div class="section-head"><span class="section-num">1</span><h3>Atividade Cardíaca Fetal</h3></div>
+      <div class="tbl-wrap" style="margin-bottom:10px">
+      <table class="tbl">
+        <tr><th>Grupo (IG)</th><th>Percentil 5</th><th>Mediana</th><th>Percentil 95</th></tr>
+        <tr><td>I (10 sem)</td><td class="val">157</td><td class="val">168</td><td class="val">176</td></tr>
+        <tr><td>II (11 sem)</td><td class="val">155</td><td class="val">166</td><td class="val">175</td></tr>
+        <tr><td>III (12 sem)</td><td class="val">152</td><td class="val">161</td><td class="val">171</td></tr>
+        <tr><td>IV (13 sem)</td><td class="val">149</td><td class="val">158</td><td class="val">169</td></tr>
+      </table>
+      </div>
+      <p style="font-size:11px;color:var(--ink-faint);margin:0 0 10px">Petersen e cols., RBGO 23(9);567, 2001.</p>
+      <div class="two-col">
+        <div class="card"><span class="t">FC aumentada</span><span class="v">Trissomia do 13 · Síndrome de Turner</span></div>
+        <div class="card"><span class="t">FC diminuída</span><span class="v">Trissomia do 21 · Trissomia do 18 · Triploidias</span></div>
+      </div>
+      <p style="font-size:12px;color:var(--ink-faint);margin-top:8px">FC + translucência nucal combinadas melhoram a sensibilidade em 5% (Nicolaides et al., Fetal Diagn Ther 7:123, 1992).</p>
+    </div>
+
+    <div class="section c2">
+      <div class="section-head"><span class="section-num">2</span><h3>Translucência Nucal (TN)</h3></div>
+      <div class="card-grid" style="margin-bottom:14px">
+        <div class="card"><span class="t">Janela</span><span class="v">10–14 semanas de gestação</span></div>
+        <div class="card"><span class="t">Ponto de corte</span><span class="v">2,5 – 4,0 mm</span></div>
+        <div class="card"><span class="t">Relação</span><span class="v">Quanto maior a TN, maior o risco de trissomias; a TN aumenta com o CCN</span></div>
+      </div>
+      <p style="font-size:12.5px;color:var(--ink-faint);margin:0 0 8px">Aplicações do rastreamento por TN além das trissomias: alterações cardiovasculares, alterações pulmonares, infecções congênitas, doenças metabólicas e hematológicas, doenças gênicas.</p>
+      <p style="font-size:12.5px;color:var(--ink-faint);margin:16px 0 8px">Mecanismos fisiológicos propostos:</p>
+      <div class="chain" style="max-width:560px">
+        <div class="chain-item">Alteração da drenagem linfática fetal <b>+</b> distúrbio hemodinâmico (disfunção cardíaca) — conexões deficientes entre sistema linfático e venoso, e transformação assimétrica do sistema vascular cardíaco fetal</div>
+        <div class="chain-arrow">↓</div>
+        <div class="chain-item">Estreitamento do istmo aórtico → diferencial de pressão entre aorta ascendente e descendente</div>
+        <div class="chain-arrow">↓</div>
+        <div class="chain-item">Aumento da perfusão na nuca e pescoço fetal → congestão e edema da nuca<span class="note">Via alternativa: alteração fisiológica/anatômica cardíaca → fluxo sanguíneo dificultado → sobrecarga de pré-carga → acúmulo de líquido cervical</span></div>
+      </div>
+      <p style="font-size:12.5px;color:var(--ink-faint);margin:18px 0 8px">Regras para mensuração da TN (Fetal Medicine Foundation):</p>
+      <div class="pills">
+        <span class="pill">1 · Secção sagital adequada do feto</span>
+        <span class="pill">2 · Concepto ocupando 3/4 do campo</span>
+        <span class="pill">3 · Distinguir pele fetal e âmnio</span>
+        <span class="pill">4 · Mais de uma medida, usar a maior</span>
+        <span class="pill">5 · Calibres no meio das linhas</span>
+      </div>
+      <p style="font-size:12.5px;color:var(--ink-faint);margin:16px 0 8px">Eficácia da TN isolada no rastreamento da trissomia do 21 (Becker et al., 2002):</p>
+      <div class="tbl-wrap">
+      <table class="tbl">
+        <tr><th>Centro</th><th>n</th><th>Detectados</th><th>Sensibilidade</th></tr>
+        <tr><td>King's College</td><td class="val">121.479</td><td class="val">427</td><td class="val">78%</td></tr>
+        <tr><td>Outros centros</td><td class="val">18.999</td><td class="val">48</td><td class="val">48%</td></tr>
+        <tr><td><b>Total</b></td><td class="val">140.478</td><td class="val">475</td><td class="val">75%</td></tr>
+      </table>
+      </div>
+      <p style="font-size:11px;color:var(--ink-faint);margin-top:6px">Taxa de falso positivo: 5%.</p>
+    </div>
+
+    <div class="section c3">
+      <div class="section-head"><span class="section-num">3</span><h3>Marcadores do 2º/3º Trimestre (Soft Markers)</h3></div>
+      <p style="font-size:12.5px;color:var(--ink-soft);max-width:640px;margin:0 0 10px">USG morfológico: sem alterações → risco de trissomia 21 cai para metade do risco conhecido; malformações graves → risco alto; malformações menores → o risco depende do fator específico. Revisão sistemática Cochrane (Neilson, 2001): USG precoce de rotina (&lt; 24 sem) melhora a avaliação de IG, detecta gestação múltipla mais cedo, reduz o diagnóstico de pós-termo e antecipa a detecção de anomalias — mas não reduz a mortalidade perinatal.</p>
+      <div class="tbl-wrap">
+      <table class="tbl">
+        <tr><th>Marcador</th><th>Risco relativo</th></tr>
+        <tr><td>Edema nucal</td><td class="val">10×</td></tr>
+        <tr><td>Intestino hiperecogênico</td><td class="val">5,5×</td></tr>
+        <tr><td>Fêmur curto</td><td class="val">2,5×</td></tr>
+        <tr><td>Pielectasia fetal (RR na trissomia 21)</td><td class="val">1,6×</td></tr>
+        <tr><td>Hidronefrose discreta</td><td class="val">1,5×</td></tr>
+        <tr><td>Cisto de plexo coroide isolado</td><td class="val">&gt; 1,5×</td></tr>
+        <tr><td>Cisto de plexo coroide + 1 anomalia</td><td class="val">&gt; 20×</td></tr>
+        <tr><td>Cisto de plexo coroide + 2 anomalias</td><td class="val">&gt; 1000×</td></tr>
+      </table>
+      </div>
+      <p style="font-size:11px;color:var(--ink-faint);margin:8px 0 14px">Snijders et al., 1994.</p>
+      <div class="card-grid">
+        <div class="card"><span class="t">Cisto de plexo coroide</span><span class="v">População geral: 1–3,5%. Presente em 50% da trissomia do 18.</span></div>
+        <div class="card"><span class="t">Artéria umbilical única</span><span class="v">1% em gestações normais; 7–14% em gemelares. Achado isolado tem baixo valor como marcador; associado a outras anomalias, eleva risco de trissomias.</span></div>
+        <div class="card"><span class="t">Líquido amniótico</span><span class="v">Alterações de LA: 3,7% de cromossomopatias. Polidrâmnio: 4,1%. Oligoidrâmnio + RCIU simétrico: 20–25% de cariótipo anormal.</span></div>
+        <div class="card"><span class="t">Foco ecogênico intracardíaco</span><span class="v">0,8% das gestações normais (Murta, 2000). Achado isolado tem valor incerto; risco aumenta se bilateral ou em ventrículo direito (Bromley et al., 1998).</span></div>
+      </div>
+    </div>
+
+    <div class="section c4">
+      <div class="section-head"><span class="section-num">4</span><h3>Achados Ecográficos por Síndrome</h3></div>
+      <div class="card-grid">
+        <div class="card"><span class="t">Trissomia do 21 (Down)</span><span class="v">Edema/prega nucal (&lt; 6mm, 14–20 sem) · braquicefalia · face plana · perfil característico · ventriculomegalia leve · atresia duodenal · hidronefrose leve · defeito do septo AV · higroma cístico · raiz nasal chata · osso nasal &lt; 5mm · intestino hiperecogênico · encurtamento de ossos longos · afastamento do hálux · clinodactilia · hipoplasia da falange média do 5º dedo · relação fêmur/pé 0,85 · protrusão de língua · Prune-Belly · anasarca · derrame pleural · onfalocele</span></div>
+        <div class="card"><span class="t">Trissomia do 18 (Edwards)</span><span class="v">Aplasia de rádio · sobreposição de dedos · pé torto / pé em "bota" · artéria umbilical única · rins em ferradura · displasia renal · espinha bífida · hipoplasia cerebelar · hérnia diafragmática · cabeça em "morango" · agenesia de corpo caloso · onfalocele · defeitos faciais · mielomeningocele · encurtamento de ossos · RCIU · criptorquidia constante · cisto de plexo coroide</span></div>
+        <div class="card"><span class="t">Trissomia do 13 (Patau)</span><span class="v">Microcefalia · hipotelorismo · fenda labiopalatina · polidactilia · hérnia diafragmática · RCIU · rins policísticos · artéria umbilical única · CIV/CIA</span></div>
+        <div class="card"><span class="t">Síndrome de Turner</span><span class="v">Higroma cístico · edema generalizado · derrame pleural · ascite · anomalias cardíacas</span></div>
+        <div class="card"><span class="t">Triploidias</span><span class="v">RCIU severo · ventriculomegalia leve · retrognatia · sindactilia · anomalias cardíacas · deformidade do hálux</span></div>
+      </div>
+    </div>
+
+    <div class="section c5">
+      <div class="section-head"><span class="section-num">5</span><h3>Conduta</h3></div>
+      <p style="font-size:12.8px;color:var(--ink-soft);max-width:640px">O material de origem não detalha o algoritmo de encaminhamento — na prática, o risco combinado (idade materna + TN + marcadores bioquímicos do 1º trimestre ± soft markers do 2º/3º) direciona para aconselhamento genético e, se indicado, propedêutica invasiva (biópsia de vilo corial ou amniocentese) para cariótipo/estudo cromossômico. Vale complementar este ponto com a diretriz vigente do rastreio combinado.</p>
+    </div>
+  </section>
+
+  <!-- ================= PUERPÉRIO ================= -->
+  <section class="panel" id="panel-puerp" hidden>
+    <div class="panel-head">
+      <span class="kicker">Pós-parto imediato e tardio</span>
+      <h2>Puerpério Normal &amp; Patológico</h2>
+      <p class="lede">A hora seguinte ao parto ("4º período de Greenberg") e as semanas que seguem concentram boa parte das complicações evitáveis — hemorrágicas, infecciosas e também psiquiátricas.</p>
+    </div>
+
+    <div class="section c1">
+      <div class="section-head"><span class="section-num">1</span><h3>Fisiologia do Puerpério Normal</h3></div>
+      <div class="chain" style="max-width:620px">
+        <div class="chain-item"><b>Lóquios</b> — evoluem de rubra (sanguinolenta) → serosa → alba (amarelada), ao longo de ~4 semanas<span class="note">Loquiação amarelada isolada, sem febre/dor/odor, é evolução normal — não tratar como infecção por si só.</span></div>
+        <div class="chain-arrow">·</div>
+        <div class="chain-item"><b>Lactação</b> — colostro nos primeiros dias; apojadura (descida do leite) em 3–5 dias. Todo RN sai da maternidade com peso menor que o de nascimento (perda fisiológica esperada).<span class="note">~20% das mulheres têm hipogalactia. Manejo: spray de ocitocina (facilita a ejeção do leite) ou metoclopramida (Plasil) — aumenta prolactina e estimula a lactação.</span></div>
+        <div class="chain-arrow">·</div>
+        <div class="chain-item"><b>Retorno da ovulação</b> — risco de nova gravidez é próximo de zero no 1º mês, aumentando progressivamente depois. Momento-chave para orientar planejamento familiar.</div>
+      </div>
+      <p style="font-size:12.5px;color:var(--ink-faint);margin:18px 0 8px">Revisão puerperal — o que examinar:</p>
+      <div class="pills">
+        <span class="pill">Sinais vitais</span><span class="pill">Mamas — ingurgitamento</span><span class="pill">Membros inferiores — TVP</span>
+        <span class="pill">Episiorrafia / lacerações — deiscência</span><span class="pill">Involução uterina</span><span class="pill">Status vacinal (ex. tríplice viral)</span>
+      </div>
+    </div>
+
+    <div class="section c3">
+      <div class="section-head"><span class="section-num">3</span><h3>Endometrite Puerperal</h3></div>
+      <p style="font-size:12.8px;color:var(--ink-soft);max-width:600px;margin:0 0 10px">Favorecida por manipulação inadequada, principalmente múltiplos toques vaginais durante o trabalho de parto.</p>
+      <div class="callout"><b>Tríade clássica (prova de residência)</b>Útero <b>pastoso</b> (consistência amolecida) + <b>doloroso</b> + <b>subinvoluído</b> (não regride ao tamanho esperado — ainda palpável acima da cicatriz umbilical quando já deveria estar abaixo).</div>
+    </div>
+
+    <div class="section c4">
+      <div class="section-head"><span class="section-num">4</span><h3>Complicações Psiquiátricas do Puerpério</h3></div>
+      <p style="font-size:12.5px;color:var(--ink-soft);max-width:640px;margin:0 0 10px">Tema pouco lembrado na rotina, mas de observação obrigatória — inclui do quadro mais comum e benigno ao mais raro e grave.</p>
+      <div class="decision-wrap">
+        <div class="decision-box">Quadro psíquico no puerpério</div>
+        <div class="branches">
+          <div class="branch">
+            <div class="branch-label">Blues puerperal · 30%</div>
+            <div class="branch-body">Início no <b>3º dia</b> pós-parto. Transtorno leve e transitório: choro fácil, labilidade emocional, fadiga, ansiedade, medo de não dar conta do bebê. Resolve em 1–2 semanas.<br><br><b>Conduta:</b> orientar a mãe e a família, vigiar evolução para depressão.</div>
+          </div>
+          <div class="branch">
+            <div class="branch-label">Depressão pós-parto · 10–15%</div>
+            <div class="branch-body">Início mais <b>insidioso</b>, geralmente na 2ª–3ª semana. A maioria das pacientes já tem história prévia de transtorno psiquiátrico. Tristeza profunda e persistente, distúrbio do sono, falta de interesse sexual — mais grave e duradoura que o blues.<br><br><b>Conduta:</b> avaliação e tratamento psiquiátrico especializado.</div>
+          </div>
+          <div class="branch">
+            <div class="branch-label">Psicose puerperal · rara</div>
+            <div class="branch-body">A mais grave. Confusão, alucinação, delírio, agitação, <b>pensamentos de machucar o bebê</b> (risco raro, porém real, de infanticídio).<br><br><b>Conduta:</b> <b>afastar o bebê da mãe imediatamente</b> até estabilização + internação psiquiátrica. Pode evoluir para depressão grave após a fase aguda — necessita seguimento contínuo.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= VIOLÊNCIA SEXUAL ================= -->
+  <section class="panel" id="panel-vsex" hidden>
+    <div class="panel-head">
+      <span class="kicker">Norma Técnica MS + conduta prática ensinada em aula por ginecologista de referência</span>
+      <h2>Violência Sexual no PS</h2>
+      <p class="lede">Fluxograma construído a partir do manual do Ministério da Saúde e complementado com a conduta prática de aula — acolhimento, exame e coleta, profilaxias, acompanhamento e as vias legais para a gravidez decorrente de estupro.</p>
+      <div class="stat-row">
+        <div class="stat"><b>≤ 72h</b>janela para iniciar PEP-HIV (idealmente nas 1ªs 24h)</div>
+        <div class="stat"><b>≤ 5 dias</b>janela para contracepção de emergência</div>
+        <div class="stat"><b>Sem B.O.</b>atendimento e aborto legal não dependem de boletim de ocorrência, laudo do IML ou autorização judicial</div>
+      </div>
+    </div>
+
+    <div class="section c1">
+      <div class="section-head"><span class="section-num">1</span><h3>Acolhimento &amp; Marco Legal</h3></div>
+      <div class="pills" style="margin-bottom:14px">
+        <span class="pill on">Ambiente reservado, prioridade no fluxo</span>
+        <span class="pill on">Sem julgamento, sigilo profissional</span>
+        <span class="pill on">Minimizar repetições do relato</span>
+        <span class="pill on">Autonomia — a vítima pode recusar qualquer etapa</span>
+        <span class="pill on">Apoio psicológico desde a 1ª consulta</span>
+      </div>
+      <div class="callout" style="margin-bottom:10px"><b>A palavra da mulher tem presunção de veracidade</b>O Código Penal não exige B.O., laudo do IML nem nenhum documento para o atendimento ou para o aborto legal — apenas o relato da vítima. Recusa de atendimento sem justificativa é omissão (art. 13, §2º CP) e pode gerar responsabilização civil e criminal.</div>
+      <div class="card-grid">
+        <div class="card"><span class="t">Lei Maria da Penha (11.340/2006)</span><span class="v">Garante acesso a AE, profilaxia de IST/Aids e demais procedimentos de saúde nos casos de violência</span></div>
+        <div class="card"><span class="t">Lei 12.015/2009</span><span class="v">Redefine estupro: constranger alguém, por violência ou grave ameaça, a praticar ou permitir conjunção carnal ou outro ato libidinoso — atinge qualquer gênero</span></div>
+        <div class="card"><span class="t">Notificação compulsória (Lei 10.778/2003)</span><span class="v">Ficha de Notificação/Investigação de Violência Doméstica, Sexual e Outras Violências (SINAN) — obrigatória, independente da vontade da vítima e da faixa etária</span></div>
+        <div class="card"><span class="t">Menores de 18 anos (ECA)</span><span class="v">Suspeita ou confirmação de abuso é comunicada <b>obrigatoriamente</b> ao Conselho Tutelar (ou Vara da Infância/Juventude)</span></div>
+      </div>
+
+      <p style="font-size:12.5px;color:var(--ink-faint);margin:20px 0 8px">Abordagem quando a paciente é menor de idade e chega acompanhada:</p>
+      <div class="pills" style="margin-bottom:10px">
+        <span class="pill">Sempre buscar um momento a sós com a adolescente — de forma tática, se necessário (ex.: pedir que o acompanhante preencha uma ficha em outra sala)</span>
+        <span class="pill">Você não pode obrigar o acompanhante a sair, se ele recusar e a paciente não se opuser</span>
+        <span class="pill">Profissional do mesmo sexo da vítima, sempre que possível (nem sempre viável no plantão)</span>
+        <span class="pill">Documentação sempre neutra — nunca uma palavra que sugira dúvida sobre o relato</span>
+      </div>
+      <div class="callout danger" style="margin-bottom:14px"><b>Recusar atendimento por "falta de estrutura" é ilegal</b>Relato real de aula: um residente se recusou a examinar uma adolescente numa UPA alegando não ter perícia/IML no local — isso é recusa de atendimento (omissão, art. 13 §2º CP), não uma alternativa válida. Falta de recurso especializado não dispensa o exame e a documentação possíveis — você faz o melhor que consegue com o que tem, e encaminha.</div>
+
+      <div class="card-grid">
+        <div class="card"><span class="t">Menor de 14 anos</span><span class="v">Classificada como "vulnerável" — notificação SINAN <b>e</b> comunicação ao Conselho Tutelar são obrigatórias, independente da vontade da mãe/responsável. B.O. continua opcional (é outra coisa, não confundir com a notificação).</span></div>
+        <div class="card"><span class="t">14–17 anos — representação</span><span class="v">Art. 34 do CPP: para formalizar a "representação" (queixa-crime) nessa faixa, precisa do representante legal — mas isso não afeta o atendimento médico, que nunca depende disso.</span></div>
+        <div class="card"><span class="t">Prescrição do crime</span><span class="v">Para crimes contra a dignidade sexual de menores, o prazo prescricional só começa a contar a partir do dia em que a vítima completa 18 anos — não da data do crime.</span></div>
+      </div>
+    </div>
+
+    <div class="section c3">
+      <div class="section-head"><span class="section-num">3</span><h3>Exame, Trauma &amp; Coleta de Vestígios</h3></div>
+      <div class="card-grid" style="margin-bottom:14px">
+        <div class="card"><span class="t">Registro na 1ª entrevista</span><span class="v">Local/dia/hora aproximada, tipo(s) de violência, forma de constrangimento, nº de autores, providências já tomadas (B.O., IML, Conselho Tutelar), acesso à rede de apoio</span></div>
+        <div class="card"><span class="t">Trauma físico</span><span class="v">Hematomas e lacerações genitais são os achados mais comuns. Lesão superficial sem sangramento → assepsia local. Com sangramento → sutura com fio delicado absorvível (geralmente sob anestesia local, técnica semelhante ao reparo de laceração de parto — sedação/geral reservada a crianças pequenas ou pacientes pouco colaborativas). Hematoma instável → pode precisar drenagem cirúrgica. Avaliar profilaxia antitetânica pelo status vacinal (indicada se lesão/escoriação profunda, não em lesão superficial).</span></div>
+        <div class="card"><span class="t">Documentação</span><span class="v">Descrever minuciosamente lesões em prontuário. Fotografar exige <b>consentimento assinado</b> à parte; sem isso (ou sem quem fotografe), usar desenho esquemático do corpo.</span></div>
+      </div>
+      <div class="callout" style="margin-bottom:14px"><b>Sangramento/laceração sempre vem primeiro</b>Caso de aula: paciente chegou sangrando, escondendo a causa real (autolesão com objeto), evoluiu para ruptura de fundo de saco de Douglas — quase morreu por demora no diagnóstico porque não deixava examinar direito. Regra prática: identificar e estabilizar sangramento/laceração é sempre prioridade sobre a coleta de evidências — a coleta espera, a hemorragia não.</div>
+      <p style="font-size:12.5px;color:var(--ink-faint);margin:0 0 8px">Coleta de vestígios (cadeia de custódia) — mesmo sem B.O. prévio, para uso posterior se a vítima decidir denunciar. Janela útil: <b>até 72h</b> (depois disso, material biológico geralmente não rende mais nada):</p>
+      <div class="pills">
+        <span class="pill">Swab estéril do conteúdo vaginal/oral/anal → papel filtro → envelope lacrado</span>
+        <span class="pill">Nunca sacos plásticos (retêm umidade) nem fixadores — álcool/formol desnaturam o DNA</span>
+        <span class="pill">2 lâminas de esfregaço sem fixador</span>
+        <span class="pill">Preservar roupas usadas no momento da violência</span>
+        <span class="pill">Pesquisar pelos do agressor e material sob as unhas da vítima</span>
+      </div>
+    </div>
+
+    <div class="section c4">
+      <div class="section-head"><span class="section-num">4</span><h3>Profilaxias</h3></div>
+
+      <p style="font-size:12.5px;color:var(--ink-faint);margin:0 0 8px">Contracepção de emergência — indicada a toda mulher pós-menarca/pré-menopausa com contato certo ou duvidoso com sêmen, independente da fase do ciclo (desnecessária se uso regular de método de alta eficácia):</p>
+      <div class="dose"><span class="drug">Levonorgestrel (1ª escolha)</span><span class="amt">1,5 mg VO dose única (ou 2 comp. de 0,75mg) — até 5 dias, eficácia maior quanto mais cedo</span></div>
+      <p style="font-size:11.5px;color:var(--ink-faint);margin:4px 0 14px">Método de Yuzpe é 2ª escolha (etinilestradiol + levonorgestrel, 2 doses 12/12h) — mais falha e mais efeito colateral; reservado para indisponibilidade do levonorgestrel. Contraindicação absoluta única: gravidez confirmada.</p>
+      <div class="callout" style="margin-bottom:14px"><b>Não espere "o dia seguinte"</b>Apesar do apelido popular ("pílula do dia seguinte"), dar assim que possível — no mesmo atendimento — muda a eficácia real. Prioridade preferencial é até 72h, mas a janela vai até 120h (5 dias) com eficácia caindo progressivamente.</div>
+
+      <p style="font-size:12.5px;color:var(--ink-faint);margin:0 0 8px">IST não virais — esquema preferencialmente parenteral, no 1º dia de atendimento:</p>
+      <div class="two-col" style="margin-bottom:14px">
+        <div>
+          <div class="dose"><span class="drug">Penicilina G benzatina</span><span class="amt">2,4 milhões UI IM (1,2 milhão em cada glúteo), dose única — sífilis</span></div>
+          <div class="dose"><span class="drug">Ceftriaxona</span><span class="amt">250 mg IM, dose única — gonorreia (gestante: usar ceftriaxona)</span></div>
+        </div>
+        <div>
+          <div class="dose"><span class="drug">Azitromicina</span><span class="amt">1g VO (2 comp. de 500mg), dose única — clamídia</span></div>
+          <div class="dose"><span class="drug">Metronidazol</span><span class="amt">facultativo/pode postergar — tricomoníase, baixo impacto clínico; evitar no 1º trimestre</span></div>
+        </div>
+      </div>
+      <p style="font-size:11.5px;color:var(--ink-faint);margin:-8px 0 14px"><b>Atenção ao alvo de cada droga</b>Ceftriaxona e azitromicina <b>não</b> cobrem tricomoníase — só o metronidazol cobre. Metronidazol pode reduzir um pouco a eficácia do anticoncepcional oral (interação leve) — na teoria, espaçar a AE do metronidazol; na prática, a maioria dos serviços não escalona por isso.</p>
+      <p style="font-size:11.5px;color:var(--ink-faint);margin:-8px 0 14px">Não indicada se exposição crônica ao mesmo agressor ou uso de preservativo durante todo o crime — mas romper o ciclo de violência continua sendo prioridade.</p>
+
+      <p style="font-size:12.5px;color:var(--ink-faint);margin:0 0 8px">HIV — profilaxia antirretroviral (critério do Quadro 9 da Norma Técnica):</p>
+      <div class="decision-wrap" style="margin-bottom:16px">
+        <div class="decision-box">Tipo de exposição</div>
+        <div class="branches">
+          <div class="branch">
+            <div class="branch-label">Recomendada</div>
+            <div class="branch-body">Penetração vaginal e/ou anal desprotegida, há menos de 72h — mesmo com sorologia do agressor desconhecida</div>
+          </div>
+          <div class="branch">
+            <div class="branch-label">Individualizar</div>
+            <div class="branch-body">Penetração oral (com ou sem ejaculação)</div>
+          </div>
+          <div class="branch">
+            <div class="branch-label">Não recomendada</div>
+            <div class="branch-body">Preservativo usado durante toda a agressão · agressor sabidamente HIV negativo · violência há mais de 72h · abuso crônico pelo mesmo agressor</div>
+          </div>
+        </div>
+      </div>
+      <div class="callout" style="margin-bottom:10px"><b>É uma emergência</b>Iniciar o quanto antes, idealmente nas 1ªs 24h, sempre dentro de 72h — manter por 4 semanas ininterruptas. A ausência de infectologista não justifica atraso; testar o agressor não deve atrasar o início da profilaxia.</div>
+      <div class="dose"><span class="drug">Esquema desta Norma Técnica</span><span class="amt">Zidovudina (AZT) 300mg + Lamivudina (3TC) 150mg, 1 comp. 12/12h + Lopinavir/ritonavir (LPV/r) 200/50mg, 2 comp. 12/12h — por 28 dias</span></div>
+      <div class="callout danger" style="margin-top:8px"><b>Atenção — esquema desatualizado nesta edição</b>Este AZT+3TC+LPV/r é o esquema desta edição do manual. O <b>PCDT vigente do MS para PEP</b> passou a recomendar <b>TDF/3TC + DTG</b> (tenofovir/lamivudina + dolutegravir) como esquema preferencial — confirme sempre a versão mais recente do protocolo antes de aplicar na prática ou em prova.</div>
+
+      <p style="font-size:12.5px;color:var(--ink-faint);margin:16px 0 8px">Hepatite B — decisão não depende de sorologia prévia:</p>
+      <div class="decision-wrap">
+        <div class="decision-box">Situação vacinal</div>
+        <div class="branches">
+          <div class="branch">
+            <div class="branch-label">Esquema vacinal completo</div>
+            <div class="branch-body">Não precisa de reforço nem de imunoglobulina</div>
+          </div>
+          <div class="branch">
+            <div class="branch-label">Incompleto / desconhecido / não vacinada</div>
+            <div class="branch-body">
+              <div class="dose" style="margin:4px 0"><span class="drug">Vacina</span><span class="amt">IM deltoide, 0-1-6 meses</span></div>
+              <div class="dose" style="margin:4px 0"><span class="drug">Imunoglobulina (IGHAHB)</span><span class="amt">0,06 mL/kg IM glúteo, dose única — até 14 dias, idealmente 48h</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p style="font-size:11.5px;color:var(--ink-faint);margin-top:8px">Não indicada se exposição crônica ao mesmo agressor, ou se o agressor é sabidamente vacinado, ou se houve uso de preservativo durante todo o crime.</p>
+      <div class="callout danger" style="margin-top:16px"><b>Hepatite C — não existe profilaxia específica</b>Não há vacina nem imunoglobulina para hepatite C. A conduta é exclusivamente <b>vigilância laboratorial seriada</b> (ver cronograma próprio abaixo) — o período de incubação médio é de 7 semanas (2 a 24 semanas) e mais de 75% dos casos agudos são assintomáticos, por isso a investigação depende inteiramente do exame.</div>
+    </div>
+
+    <div class="section c4">
+      <div class="section-head"><span class="section-num">4</span><h3>Acompanhamento Laboratorial</h3></div>
+      <div class="callout" style="margin-bottom:14px"><b>Retorno em 14 dias</b>Antes das sorologias — esse retorno é para checar tolerância/adesão à profilaxia (efeitos colaterais do PEP-HIV são comuns e fazem muita paciente abandonar o esquema) e oferecer avaliação psicológica, se disponível.</div>
+      <div class="tbl-wrap">
+      <table class="tbl" style="font-size:12px">
+        <tr><th></th><th>Admissão</th><th>2 sem</th><th>6 sem</th><th>3 meses</th><th>6 meses</th></tr>
+        <tr><td>Conteúdo vaginal</td><td>✓</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+        <tr><td>Sífilis (VDRL/RPR)</td><td>✓</td><td>—</td><td>✓</td><td>✓</td><td>✓</td></tr>
+        <tr><td>Anti-HIV</td><td>✓</td><td>—</td><td>✓</td><td>✓</td><td>✓</td></tr>
+        <tr><td>Hepatite B (HBsAg)</td><td>✓</td><td>—</td><td>✓</td><td>✓</td><td>✓</td></tr>
+        <tr><td>Hemograma + transaminases</td><td>✓ (se iniciar ARV)</td><td>✓</td><td>—</td><td>—</td><td>—</td></tr>
+      </table>
+      </div>
+      <p style="font-size:11px;color:var(--ink-faint);margin-top:8px">Excepcionalmente repetir sorologia em 12 meses se o agressor for coinfectado HIV/HCV ou a vítima for imunossuprimida.</p>
+
+      <p style="font-size:12.5px;color:var(--ink-faint);margin:20px 0 8px">Hepatite C — cronograma próprio (dias após a exposição, não semanas/meses):</p>
+      <div class="tbl-wrap">
+      <table class="tbl" style="font-size:12px">
+        <tr><th></th><th>D0</th><th>D45</th><th>D90</th><th>D180</th></tr>
+        <tr><td>ALT (bioquímica)</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
+        <tr><td>Anti-HCV (sorologia)</td><td>✓</td><td>—</td><td>✓</td><td>✓</td></tr>
+        <tr><td>HCV-RNA (PCR qualitativo)</td><td>—</td><td>—</td><td>✓</td><td>—</td></tr>
+      </table>
+      </div>
+    </div>
+
+    <div class="section c5">
+      <div class="section-head"><span class="section-num">5</span><h3>Gravidez Decorrente &amp; Aborto Legal</h3></div>
+      <div class="callout danger" style="margin-bottom:14px"><b>Aborto legal (Código Penal, art. 128, II)</b>Gestação decorrente de estupro pode ser interrompida em <b>qualquer idade gestacional</b>, apenas com o relato da vítima — <b>não</b> exige B.O., laudo do IML nem autorização judicial. Basta o consentimento da mulher; a decisão não depende de sentença judicial sobre o crime.</div>
+
+      <p style="font-size:12.5px;color:var(--ink-faint);margin:0 0 8px">O Brasil permite abortamento legal em <b>3 situações</b> (as outras duas, fora do escopo deste painel, para contexto de prova):</p>
+      <div class="pills" style="margin-bottom:16px">
+        <span class="pill on">Risco de vida para a mãe</span>
+        <span class="pill on">Anencefalia (única malformação com autorização direta — outras exigem via judicial)</span>
+        <span class="pill on">Estupro — única que dispensa qualquer autorização de terceiros; só a palavra da vítima</span>
+      </div>
+
+      <p style="font-size:12.5px;color:var(--ink-faint);margin:0 0 8px">5 termos exigidos pela Portaria MS/GM nº 1.508/2005:</p>
+      <div class="chain" style="max-width:660px">
+        <div class="chain-item">1 · <b>Termo de Consentimento Livre e Esclarecido</b> — escolha pela interrupção, ciente das alternativas e dos riscos</div>
+        <div class="chain-arrow">+</div>
+        <div class="chain-item">2 · <b>Termo de Responsabilidade</b> — declara a veracidade das informações, ciente dos crimes de falsidade ideológica e de aborto (arts. 299 e 214, CP)</div>
+        <div class="chain-arrow">+</div>
+        <div class="chain-item">3 · <b>Termo de Relato Circunstanciado</b> — data, horário, local, descrição do ocorrido e características do agressor</div>
+        <div class="chain-arrow">+</div>
+        <div class="chain-item">4 · <b>Parecer Técnico</b> (médico) — atesta compatibilidade entre a idade gestacional e a data da violência relatada</div>
+        <div class="chain-arrow">+</div>
+        <div class="chain-item">5 · <b>Termo de Aprovação</b> — assinado pela equipe multiprofissional e pela direção da instituição</div>
+      </div>
+
+      <p style="font-size:12.5px;color:var(--ink-faint);margin:20px 0 8px">Determinação da idade gestacional (IG) — decide o método e confirma a compatibilidade com o relato:</p>
+      <div class="pills" style="margin-bottom:16px">
+        <span class="pill">Exame bimanual detecta volume uterino a partir de 6–8 sem</span>
+        <span class="pill">USG é o método mais preciso — idealmente em local/horário diferente do pré-natal</span>
+        <span class="pill">Rotina: hemograma + tipagem sanguínea/Rh</span>
+      </div>
+
+      <p style="font-size:12.5px;color:var(--ink-faint);margin:0 0 8px">Modalidades por idade gestacional — conforme conduta ensinada em aula por ginecologista atuante em serviço de referência:</p>
+      <div class="decision-wrap">
+        <div class="decision-box">Idade gestacional</div>
+        <div class="branches">
+          <div class="branch">
+            <div class="branch-label">Até 12–14 semanas</div>
+            <div class="branch-body"><b>Método de escolha na prática: AMIU</b> (aspiração manual intrauterina) — "quase a última sinfonia": puxa e o conteúdo sai, resolve. Curetagem pós-AMIU só se necessário.
+              <div class="dose" style="margin-top:8px"><span class="drug">Preparo do colo (colo fechado)</span><span class="amt">Misoprostol 800 mcg vaginal, pode repetir 1x — aguardar 3–5h para amolecimento antes de instrumentar</span></div>
+              <p style="font-size:11.5px;color:var(--ink-faint);margin:8px 0 0">Evita-se dilatação manual do colo para não causar trauma. Pré-requisito: certeza da IG antes do AMIU — se houver ossificação fetal, risco de perfuração uterina.</p>
+            </div>
+          </div>
+          <div class="branch">
+            <div class="branch-label">13–22 semanas</div>
+            <div class="branch-body">Indução farmacológica <b>obrigatória</b> e prévia à instrumentação — dose menor que na faixa anterior, pelo maior risco de rotura uterina nesta IG:
+              <div class="dose" style="margin-top:4px"><span class="drug">Misoprostol</span><span class="amt">400 mcg vaginal/sublingual, a cada 4–6h, até expulsão fetal</span></div>
+              <p style="font-size:11.5px;color:var(--ink-faint);margin:8px 0 0">Expulso o feto, curetagem é <b>obrigatória</b> — não dá para dequitar uma placenta tão pequena sem deixar resto ovular.</p>
+            </div>
+          </div>
+          <div class="branch">
+            <div class="branch-label">Acima de 22 semanas</div>
+            <div class="branch-body">Injeção intracardíaca (ou intra-amniótica) de <b>KCl</b> — para parar o coração fetal <b>antes</b> da indução, evitando nascimento com vida. Conduzido em serviço de referência, com acompanhamento estruturado até a indução do parto.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout" style="margin-top:16px"><b>Mifepristona — nem sempre disponível</b>Um esquema medicamentoso combinando mifepristona 200mg VO + misoprostol 800mcg (24–48h depois, até 2x) é a diretriz internacional (OMS) e aparece em material teórico — mas, na prática relatada em aula, "na maioria dos lugares só tem misoprostol, não tem mifepristona." A mifepristona segue sem regulamentação pela ANVISA na maior parte dos serviços brasileiros — por isso a AMIU (com misoprostol só para preparo do colo) é o que efetivamente se faz no dia a dia.</div>
+
+      <div class="callout danger" style="margin-top:12px"><b>Feticídio com KCl — relato real de aula</b>Caso de um feto de 28 semanas: a 1ª injeção de KCl não parou o coração; foi feita uma 2ª injeção com 32 semanas, também sem sucesso; a equipe discutia o que fazer com 34 semanas quando a médica responsável pediu demissão, recusando-se a tentar de novo. O professor foi explícito: é sua opinião pessoal (não motivo religioso) que deveria haver algum limite de idade gestacional para esse procedimento — mas <b>a lei brasileira não estabelece limite</b> para o aborto por estupro. Situações assim ficam na zona cinzenta entre o texto da lei e a experiência clínica de quem executa o procedimento.</div>
+
+      <div class="callout" style="margin-top:12px"><b>Por que o acesso seguro importa</b>Contexto trazido em aula sobre tentativas de aborto inseguro vistas na residência: queimadura química grave por ducha caseira concentrada (necessitando reconstrução de neovagina), uso de cabide, e hemorragia fatal por misoprostol usado em casa sem suporte, evoluindo a insuficiência renal e diálise. Ilustra por que a via legal, gratuita e segura no SUS é a alternativa a esses desfechos.</div>
+
+      <p style="font-size:12.5px;color:var(--ink-faint);margin:20px 0 8px">Consentimento por idade:</p>
+      <div class="card-grid">
+        <div class="card"><span class="t">≥ 18 anos</span><span class="v">Consente sozinha</span></div>
+        <div class="card"><span class="t">&lt; 18 anos</span><span class="v">Necessita autorização de responsável/tutor para o procedimento (o atendimento em si nunca depende disso)</span></div>
+        <div class="card"><span class="t">&lt; 14 anos</span><span class="v">Adicionalmente: comunicação e acompanhamento do Conselho Tutelar</span></div>
+        <div class="card"><span class="t">Conflito adolescente × família</span><span class="v">Se a adolescente quer interromper e a família não permite (sem envolvimento na violência): via judicial pelo Conselho Tutelar ou Promotoria da Infância e Juventude</span></div>
+      </div>
+      <div class="callout" style="margin-top:14px"><b>Objeção de consciência</b>O médico pode recusar-se a realizar o aborto por consciência, mas deve garantir o atendimento por outro profissional/serviço — e <b>não pode</b> objetar em risco de morte, ausência de outro profissional, dano à saúde por omissão, ou complicações de aborto inseguro (são sempre urgência). Atenção: <b>empurrar a decisão com atraso deliberado</b> ("fingir demência", arrastar a conversa até a paciente desistir) também é falta ética — mencionado em aula como prática real que alguns profissionais usam para barrar o acesso sem recusar formalmente.</div>
+
+      <p style="font-size:12.5px;color:var(--ink-faint);margin:20px 0 8px">Encaminhamento e seguimento:</p>
+      <div class="pills">
+        <span class="pill">β-hCG de controle</span>
+        <span class="pill">Encaminhamento psicológico/psiquiátrico</span>
+        <span class="pill">Rede de proteção — Delegacia da Mulher, CREAS, Casa da Mulher Brasileira</span>
+        <span class="pill">Se optar por manter a gestação: pré-natal + orientação sobre adoção legal, se desejado</span>
+      </div>
+    </div>
+  </section>
+
+  </main>
+</div>
+
+<footer class="page">
+  Resumo de estudo. Doses, condutas e valores de corte condensados para revisão: confirme sempre no protocolo institucional vigente e nas diretrizes do Ministério da Saúde e da FEBRASGO antes de aplicar na prática. Nomes de manobras com identificação incerta estão sinalizados no texto.
+</footer>
+
+<script>
+const nav = document.getElementById('topicNav');
+function show(id){
+  document.querySelectorAll('.panel').forEach(p=>p.hidden = p.id!==('panel-'+id));
+  nav.querySelectorAll('.topic-btn').forEach(b=>b.setAttribute('aria-selected', b.dataset.panel===id ? 'true':'false'));
+  try{ localStorage.setItem('gogeral-tab', id); }catch(e){}
+}
+nav.addEventListener('click', e=>{
+  const btn = e.target.closest('.topic-btn');
+  if(!btn) return;
+  show(btn.dataset.panel);
+});
+let initial = 'aag';
+try{ const saved = localStorage.getItem('gogeral-tab'); if(saved) initial = saved; }catch(e){}
+document.addEventListener('DOMContentLoaded', ()=> show(document.getElementById('panel-'+initial) ? initial : 'aag'));
+</script>
+
+
+
+<style id="v4-meu-locus">
+/* V4 meu locus: sobrescreve os tokens e as fontes do material original */
+:root{color-scheme:dark;--accent:#D9B8FF!important;--accent-ink:#E9D8FF!important;--accent-soft:#2E2160!important;--amber:#FBBF6A!important;--amber-soft:#3A2A14!important;--bg:#100C2A!important;--danger:#FF8FA3!important;--indigo:#A8B4FF!important;--indigo-soft:#1E2458!important;--ink:#EDE6FF!important;--ink-faint:#8E83B0!important;--ink-soft:#B9AED6!important;--line:#3A2F66!important;--line-strong:#4F4285!important;--shadow:0 1px 2px rgba(0,0,0,.45)!important;--slate:#A9A3C9!important;--slate-soft:#241E48!important;--surface:rgba(26,20,64,.88)!important;--surface-2:rgba(40,30,86,.88)!important;--teal:#7FD4E0!important;--teal-soft:#12304A!important;--wine:#E39AD0!important;--wine-soft:#3A1A40!important;}
+html{background:#0B0820}
+body{background:url("padrao-lilas.png") 0 0/620px auto repeat,
+  radial-gradient(760px 460px at 50% -6%,rgba(168,96,216,.34) 0%,rgba(168,96,216,0) 62%),
+  radial-gradient(600px 420px at 100% 100%,rgba(58,91,208,.18) 0%,rgba(58,91,208,0) 60%),
+  linear-gradient(180deg,#100C2A 0%,#0B0820 100%)!important;background-attachment:fixed!important;background-color:#100C2A!important;color:#EDE6FF!important;
+  font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;margin:0}
+h1,h2{font-family:"Playfair Display",Georgia,serif!important;letter-spacing:-.01em}
+h1{font-weight:800!important}
+a{color:#D9B8FF}
+::selection{background:#A860D8;color:#fff}
+.ml-top{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
+  max-width:1100px;margin:0 auto;padding:14px 16px 0;font-family:Inter,system-ui,sans-serif}
+.ml-back{color:#D9B8FF;text-decoration:none;font-size:.9rem;font-weight:600;border:1px solid rgba(216,184,255,.26);
+  border-radius:99px;padding:6px 14px;background:rgba(160,96,216,.10)}
+.ml-back:hover,.ml-back:focus-visible{background:rgba(160,96,216,.22);outline:none}
+.ml-brand{font-family:"Playfair Display",Georgia,serif;font-weight:800;font-size:1.15rem;color:#EDE6FF;letter-spacing:-.01em}
+.ml-brand i{font-style:italic;background:linear-gradient(90deg,#3A5BD0,#A860D8);-webkit-background-clip:text;background-clip:text;color:transparent;padding-right:.08em}
+.ml-note{max-width:1100px;margin:10px auto 0;padding:0 16px;font-family:Inter,system-ui,sans-serif;font-size:.82rem;color:#B9AED6}
+.ml-note span{display:block;border:1px solid rgba(216,184,255,.26);border-left:3px solid #A860D8;border-radius:8px;padding:8px 12px;background:rgba(160,96,216,.08)}
+.ml-warn{position:sticky;top:0;z-index:60;background:#2A0F2E;border-bottom:1px solid #FB923C;color:#FFE4CC;
+  font-family:Inter,system-ui,sans-serif;font-size:.85rem;line-height:1.4;padding:8px 16px;text-align:center}
+.ml-warn b{color:#FB923C}
+@media print{.ml-top,.ml-note,.ml-warn{display:none}}
+</style>
+</body>
+</html>

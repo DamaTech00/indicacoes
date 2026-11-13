@@ -1,0 +1,1677 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="Fluxogramas de Obstetrícia: etiologia, clínica, diagnóstico e conduta.">
+<meta name="color-scheme" content="dark">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<title>Fluxogramas de Obstetrícia · meu locus</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+</head>
+<body>
+<div class="ml-top"><a class="ml-back" href="./">← cupons &amp; indicações</a><span class="ml-brand"><i>meu</i> locus</span></div>
+<div class="ml-note"><span>Material de estudo feito por uma estudante de medicina. Não substitui diretriz, protocolo ou avaliação médica: confira sempre na fonte oficial.</span></div>
+<!doctype html>
+<style>
+:root{
+  --bg:#F5F4EF;
+  --surface:#FFFFFF;
+  --surface-2:#EFEDE6;
+  --ink:#221F1C;
+  --ink-soft:#5A554E;
+  --ink-faint:#8B8579;
+  --line:#DEDAD0;
+  --line-strong:#C7C2B5;
+  --accent:#7A1F33;
+  --accent-soft:#F1DEE1;
+  --accent-ink:#5C1626;
+  --teal:#2F5D57;
+  --teal-soft:#DCEAE6;
+  --amber:#A2661E;
+  --amber-soft:#F3E3C8;
+  --indigo:#3D5A80;
+  --indigo-soft:#DEE6EF;
+  --slate:#5B6472;
+  --slate-soft:#E4E6EA;
+  --danger:#8C2A2A;
+  --shadow: 0 1px 2px rgba(30,25,20,.06), 0 6px 16px -8px rgba(30,25,20,.12);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#1B1917;
+    --surface:#242220;
+    --surface-2:#2C2A26;
+    --ink:#EFEBE3;
+    --ink-soft:#C2BCAF;
+    --ink-faint:#8C8579;
+    --line:#3A362F;
+    --line-strong:#4A453C;
+    --accent:#E08A9C;
+    --accent-soft:#3A2229;
+    --accent-ink:#F3C4CE;
+    --teal:#7FBFB2;
+    --teal-soft:#213330;
+    --amber:#D9A254;
+    --amber-soft:#3A2E18;
+    --indigo:#9BB3D4;
+    --indigo-soft:#232B38;
+    --slate:#B7BCC4;
+    --slate-soft:#2B2D31;
+    --danger:#E19292;
+    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 20px -10px rgba(0,0,0,.5);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#1B1917;
+  --surface:#242220;
+  --surface-2:#2C2A26;
+  --ink:#EFEBE3;
+  --ink-soft:#C2BCAF;
+  --ink-faint:#8C8579;
+  --line:#3A362F;
+  --line-strong:#4A453C;
+  --accent:#E08A9C;
+  --accent-soft:#3A2229;
+  --accent-ink:#F3C4CE;
+  --teal:#7FBFB2;
+  --teal-soft:#213330;
+  --amber:#D9A254;
+  --amber-soft:#3A2E18;
+  --indigo:#9BB3D4;
+  --indigo-soft:#232B38;
+  --slate:#B7BCC4;
+  --slate-soft:#2B2D31;
+  --danger:#E19292;
+  --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 20px -10px rgba(0,0,0,.5);
+}
+*{box-sizing:border-box}
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:Inter, -apple-system, "Segoe UI", sans-serif;
+  font-size:15px;
+  line-height:1.5;
+}
+h1,h2,h3,.display{
+  font-family:'Playfair Display', Georgia, serif;
+  text-wrap:balance;
+}
+.mono, .val{
+  font-family:"IBM Plex Mono", ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+}
+a{color:var(--accent)}
+
+/* ---------- layout shell ---------- */
+.shell{display:grid; grid-template-columns:240px 1fr; min-height:100vh}
+@media (max-width:860px){ .shell{grid-template-columns:1fr} }
+
+header.top{
+  grid-column:1/-1;
+  padding:22px clamp(16px,4vw,40px) 16px;
+  border-bottom:1px solid var(--line);
+  display:flex; align-items:baseline; justify-content:space-between; gap:16px; flex-wrap:wrap;
+}
+header.top .brand-eyebrow{
+  font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); font-weight:600;
+}
+header.top h1{font-size:26px; margin:2px 0 2px; font-weight:600; color:var(--ink)}
+header.top p{margin:0; color:var(--ink-soft); font-size:13.5px; max-width:56ch}
+header.top .src{font-size:11.5px; color:var(--ink-faint)}
+
+nav.topics{
+  border-right:1px solid var(--line);
+  padding:18px 12px;
+  position:sticky; top:0; align-self:start; height:100vh; overflow-y:auto;
+}
+@media (max-width:860px){
+  nav.topics{
+    position:static; height:auto; border-right:none; border-bottom:1px solid var(--line);
+    display:flex; gap:8px; overflow-x:auto; padding:12px 16px;
+  }
+}
+nav.topics .nav-label{font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-faint); padding:0 10px 8px; display:block}
+@media (max-width:860px){ nav.topics .nav-label{display:none} }
+.topic-btn{
+  display:flex; align-items:center; gap:10px;
+  width:100%; text-align:left;
+  padding:10px 10px; margin-bottom:2px;
+  border:1px solid transparent; border-radius:8px;
+  background:transparent; color:var(--ink-soft);
+  font:inherit; font-size:13.5px; cursor:pointer;
+  white-space:nowrap;
+}
+@media (max-width:860px){ .topic-btn{width:auto; flex:0 0 auto} }
+.topic-btn .dot{width:9px; height:9px; border-radius:50%; flex:0 0 auto; background:var(--line-strong)}
+.topic-btn:hover{background:var(--surface-2); color:var(--ink)}
+.topic-btn[aria-selected="true"]{background:var(--surface); border-color:var(--line); color:var(--ink); font-weight:600; box-shadow:var(--shadow)}
+.topic-btn[aria-selected="true"] .dot{background:var(--accent)}
+
+main{padding:28px clamp(16px,4vw,40px) 80px; max-width:920px}
+.panel[hidden]{display:none}
+
+.panel-head{margin-bottom:22px}
+.panel-head .kicker{font-size:11.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-faint)}
+.panel-head h2{font-size:28px; margin:4px 0 8px; font-weight:600}
+.panel-head .lede{color:var(--ink-soft); font-size:14.5px; max-width:70ch}
+.stat-row{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px}
+.stat{
+  background:var(--surface); border:1px solid var(--line); border-radius:9px;
+  padding:8px 12px; font-size:12.5px; color:var(--ink-soft);
+}
+.stat b{display:block; font-family:'Playfair Display',serif; font-size:16px; color:var(--ink); font-weight:600}
+
+/* ---------- section (etiologia/fisiopatologia/...) ---------- */
+.section{margin:34px 0}
+.section-head{display:flex; align-items:center; gap:10px; margin-bottom:14px}
+.section-num{
+  font-family:"IBM Plex Mono",monospace; font-size:11px; font-weight:600;
+  width:22px; height:22px; border-radius:6px; display:flex; align-items:center; justify-content:center;
+  flex:0 0 auto;
+}
+.section-head h3{font-size:16px; margin:0; font-weight:600; letter-spacing:.01em}
+.section-head .sub{font-size:12px; color:var(--ink-faint); margin-left:auto}
+
+.c1 .section-num{background:var(--slate-soft); color:var(--slate)}
+.c2 .section-num{background:var(--teal-soft); color:var(--teal)}
+.c3 .section-num{background:var(--amber-soft); color:var(--amber)}
+.c4 .section-num{background:var(--indigo-soft); color:var(--indigo)}
+.c5 .section-num{background:var(--accent-soft); color:var(--accent-ink)}
+:root:not([data-theme="light"]) .c5 .section-num{color:var(--accent)}
+
+/* linear chain */
+.chain{display:flex; flex-direction:column; align-items:stretch; gap:0; max-width:640px}
+.chain-item{
+  background:var(--surface); border:1px solid var(--line); border-radius:10px;
+  padding:11px 14px; font-size:13.5px;
+}
+.chain-item b{font-weight:600}
+.chain-item .note{display:block; color:var(--ink-soft); font-size:12.5px; margin-top:2px}
+.chain-arrow{display:flex; justify-content:center; padding:3px 0; color:var(--ink-faint); font-size:13px; line-height:1}
+
+/* card grid (parallel items, no sequence) */
+.card-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:10px}
+.card{background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:12px 13px; font-size:13px}
+.card .t{font-weight:600; font-size:13.5px; display:block; margin-bottom:3px}
+.card .v{color:var(--ink-soft)}
+.card .rr{display:inline-block; margin-top:6px; font-family:"IBM Plex Mono",monospace; font-size:11.5px; background:var(--surface-2); padding:2px 6px; border-radius:5px; color:var(--ink-soft)}
+
+/* pill list */
+.pills{display:flex; flex-wrap:wrap; gap:7px}
+.pill{background:var(--surface-2); border:1px solid var(--line); border-radius:999px; padding:5px 11px; font-size:12.5px; color:var(--ink-soft)}
+.pill.on{background:var(--accent-soft); color:var(--accent-ink); border-color:transparent; font-weight:600}
+:root:not([data-theme="light"]) .pill.on{color:var(--accent)}
+
+/* decision / branch flow */
+.decision-wrap{margin:8px 0 4px}
+.decision-box{
+  max-width:520px; margin:0 auto 0; text-align:center;
+  background:var(--surface-2); border:1px solid var(--line-strong); border-radius:10px;
+  padding:10px 16px; font-size:13.5px; font-weight:600;
+}
+.branches{
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:18px;
+  margin-top:34px; padding-top:20px; border-top:2px solid var(--line-strong); position:relative;
+}
+.branches::before{
+  content:""; position:absolute; top:-20px; left:50%; width:2px; height:20px;
+  background:var(--line-strong); transform:translateX(-50%);
+}
+.branch{position:relative}
+.branch::before{
+  content:""; position:absolute; top:-20px; left:50%; width:2px; height:20px;
+  background:var(--line-strong); transform:translateX(-50%);
+}
+.branch-label{
+  text-align:center; font-size:11.5px; font-weight:700; letter-spacing:.02em;
+  color:var(--accent-ink); background:var(--accent-soft); border-radius:7px; padding:5px 8px; margin-bottom:8px;
+}
+:root:not([data-theme="light"]) .branch-label{color:var(--accent)}
+.branch-body{
+  background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:11px 12px; font-size:12.8px; color:var(--ink-soft);
+}
+.branch-body li{margin:3px 0}
+.branch-body ul{margin:4px 0 0; padding-left:16px}
+
+/* drug / dose box */
+.dose{
+  background:var(--surface); border:1px solid var(--line); border-left:3px solid var(--accent);
+  border-radius:8px; padding:9px 13px; font-size:13px; margin:6px 0;
+}
+.dose .drug{font-weight:700; margin-right:6px}
+.dose .amt{font-family:"IBM Plex Mono",monospace; color:var(--ink-soft)}
+
+/* callout */
+.callout{
+  border:1px solid var(--line); border-left:4px solid var(--amber); background:var(--amber-soft);
+  border-radius:8px; padding:12px 14px; font-size:13px; color:var(--ink);
+}
+.callout.danger{border-left-color:var(--danger); background:var(--accent-soft)}
+.callout b{display:block; margin-bottom:3px; font-size:12px; text-transform:uppercase; letter-spacing:.06em}
+
+/* svg figures */
+figure.diagram{margin:0; padding:16px; background:var(--surface); border:1px solid var(--line); border-radius:12px; overflow-x:auto}
+figure.diagram svg{display:block; margin:0 auto; max-width:100%; height:auto; color:var(--ink-soft)}
+figure.diagram figcaption{font-size:12px; color:var(--ink-faint); margin-top:10px; text-align:center}
+.svg-accent{color:var(--accent)}
+.svg-teal{color:var(--teal)}
+.svg-amber{color:var(--amber)}
+
+table.tbl{width:100%; border-collapse:collapse; font-size:12.8px; background:var(--surface); border:1px solid var(--line); border-radius:10px; overflow:hidden}
+table.tbl th{background:var(--surface-2); text-align:left; padding:7px 10px; font-weight:600; font-size:11.5px; text-transform:uppercase; letter-spacing:.03em; color:var(--ink-soft)}
+table.tbl td{padding:7px 10px; border-top:1px solid var(--line); color:var(--ink-soft)}
+table.tbl tr:first-child td{border-top:none}
+
+footer.page{padding:30px clamp(16px,4vw,40px) 60px; color:var(--ink-faint); font-size:12px; border-top:1px solid var(--line); margin-top:20px}
+footer.page a{color:inherit; text-decoration:underline}
+
+.two-col{display:grid; grid-template-columns:1fr 1fr; gap:14px}
+@media (max-width:600px){ .two-col{grid-template-columns:1fr} }
+</style>
+<div class="shell">
+  <header class="top">
+    <div>
+      <span class="brand-eyebrow">Obstetrícia</span>
+      <h1>Fluxogramas de Obstetrícia</h1>
+      <p>Etiologia → fisiopatologia → apresentação clínica → diagnóstico → conduta, para temas de Obstetrícia (alto risco, assistência ao parto e ginecologia correlata).</p>
+    </div>
+    <div class="src">Resumo de estudo de GO alinhado às diretrizes do Ministério da Saúde e da FEBRASGO · revisão 2026</div>
+  </header>
+
+  <nav class="topics" id="topicNav">
+    <span class="nav-label">Temas</span>
+    <button class="topic-btn" data-panel="pe" aria-selected="true"><span class="dot"></span>Síndromes Hipertensivas · PE / Eclâmpsia / HELLP</button>
+    <button class="topic-btn" data-panel="rcf" aria-selected="false"><span class="dot"></span>Restrição de Crescimento Fetal</button>
+    <button class="topic-btn" data-panel="rpm" aria-selected="false"><span class="dot"></span>Rotura Prematura de Membranas</button>
+    <button class="topic-btn" data-panel="ppt" aria-selected="false"><span class="dot"></span>Prematuridade</button>
+    <button class="topic-btn" data-panel="hpp" aria-selected="false"><span class="dot"></span>Hemorragia Pós-Parto</button>
+    <button class="topic-btn" data-panel="drogas" aria-selected="false"><span class="dot"></span>Uso de Substâncias na Gestação</button>
+    <button class="topic-btn" data-panel="dmg" aria-selected="false"><span class="dot"></span>Diabetes Mellitus Gestacional</button>
+    <button class="topic-btn" data-panel="rastreio1tri" aria-selected="false"><span class="dot"></span>Rastreamento de Aneuploidias — 1º Trimestre</button>
+    <button class="topic-btn" data-panel="mecparto" aria-selected="false"><span class="dot"></span>Mecanismo de Parto &amp; Partograma</button>
+    <button class="topic-btn" data-panel="mioma" aria-selected="false"><span class="dot"></span>Leiomioma Uterino</button>
+  </nav>
+
+  <main id="main">
+
+  <!-- ================= PE / ECLAMPSIA / HELLP ================= -->
+  <section class="panel" id="panel-pe" hidden>
+    <div class="panel-head">
+      <span class="kicker">Distúrbios hipertensivos da gestação</span>
+      <h2>Pré-eclâmpsia, Eclâmpsia e Síndrome HELLP</h2>
+      <p class="lede">Espectro de uma mesma doença placentária: hipertensão gestacional → pré-eclâmpsia → eclâmpsia/HELLP, por gravidade crescente de disfunção endotelial.</p>
+      <div class="stat-row">
+        <div class="stat"><b>~50%</b>das mortes maternas no Brasil</div>
+        <div class="stat"><b>70.000</b>mortes maternas/ano no mundo</div>
+        <div class="stat"><b>10–20%</b>das PE grave evoluem para HELLP</div>
+        <div class="stat"><b>17%</b>redução de PE com AAS em baixa dose</div>
+      </div>
+    </div>
+
+    <div class="section c1">
+      <div class="section-head"><span class="section-num">1</span><h3>Etiologia &amp; Classificação</h3></div>
+      <div class="card-grid">
+        <div class="card"><span class="t">Hipertensão Gestacional</span><span class="v">PA elevada após 20 sem ("transitória"), <b>sem</b> proteinúria significativa.</span></div>
+        <div class="card"><span class="t">Pré-eclâmpsia (PE)</span><span class="v">Hipertensão <b>+</b> proteinúria, após 20 sem de gestação.</span></div>
+        <div class="card"><span class="t">Hipertensão Arterial Crônica</span><span class="v">Níveis pressóricos já elevados <b>antes</b> da gravidez.</span></div>
+        <div class="card"><span class="t">PE sobreposta</span><span class="v">Em hipertensa crônica, diagnóstico feito pelo <b>surgimento de proteinúria</b>.</span></div>
+      </div>
+      <p style="font-size:12.5px;color:var(--ink-faint);margin:10px 0 6px">Fatores de risco, por risco relativo (IC 95%):</p>
+      <div class="tbl-wrap">
+      <table class="tbl">
+        <tr><th>Característica</th><th>Risco relativo</th><th>IC 95%</th></tr>
+        <tr><td>Anticorpo antifosfolípide</td><td class="val">9,72</td><td class="val">4,34 – 21,75</td></tr>
+        <tr><td>História pregressa de PE</td><td class="val">7,19</td><td class="val">5,85 – 8,83</td></tr>
+        <tr><td>Diabete melito pré-existente</td><td class="val">3,56</td><td class="val">2,54 – 4,99</td></tr>
+        <tr><td>Gestação múltipla</td><td class="val">2,93</td><td class="val">2,04 – 4,21</td></tr>
+        <tr><td>Nuliparidade</td><td class="val">2,91</td><td class="val">1,28 – 6,61</td></tr>
+        <tr><td>História familiar de PE</td><td class="val">2,90</td><td class="val">1,70 – 4,93</td></tr>
+        <tr><td>IMC &gt; 35 na 1ª consulta</td><td class="val">2,12</td><td class="val">1,56 – 2,88</td></tr>
+        <tr><td>Idade &gt; 40 anos, multípara</td><td class="val">1,96</td><td class="val">1,34 – 2,87</td></tr>
+        <tr><td>Idade &gt; 40 anos, primípara</td><td class="val">1,69</td><td class="val">1,23 – 2,29</td></tr>
+        <tr><td>PAD 80–89 mmHg na 1ª consulta</td><td class="val">1,38</td><td class="val">1,01 – 1,87</td></tr>
+      </table>
+      </div>
+      <p style="font-size:12px;color:var(--ink-faint);margin-top:10px">Contexto epidemiológico: no Brasil as síndromes hipertensivas respondem por quase metade das mortes maternas; na América Latina são a 2ª causa de mortalidade materna; estimativa de ≥ 70.000 mortes maternas/ano no mundo (junto às síndromes hemorrágicas e infecciosas, concentradas em países em desenvolvimento).</p>
+    </div>
+
+    <div class="section c2">
+      <div class="section-head"><span class="section-num">2</span><h3>Fisiopatologia</h3></div>
+      <div class="chain">
+        <div class="chain-item">Invasão trofoblástica <b>inadequada e incompleta</b> — remodelação fica restrita à porção decidual dos vasos, sem se estender à porção intramiometrial<span class="note">forma precoce (&lt;28 sem) e forma tardia (&gt;28 sem)</span></div>
+        <div class="chain-arrow">↓</div>
+        <div class="chain-item">Vasos espiralados permanecem de <b>alta resistência</b>, não responsivos ao controle vasomotor materno (normalmente seriam convertidos em vasos de baixa resistência)</div>
+        <div class="chain-arrow">↓</div>
+        <div class="chain-item">Má adaptação placentária — modulada por fatores <b>genéticos, imunológicos e nutricionais</b> → anomalia da angiogênese feto-placentária</div>
+        <div class="chain-arrow">↓</div>
+        <div class="chain-item">Estresse oxidativo + citocinas + liberação de fator(es) endoteliais</div>
+        <div class="chain-arrow">↓</div>
+        <div class="chain-item"><b>Disfunção endotelial sistêmica</b></div>
+        <div class="chain-arrow">↓</div>
+        <div class="chain-item" style="border-color:var(--accent)"><b>Hipertensão arterial + proteinúria</b><span class="note">se progride: disfunção multiorgânica → eclâmpsia / síndrome HELLP</span></div>
+      </div>
+    </div>
+
+    <div class="section c3">
+      <div class="section-head"><span class="section-num">3</span><h3>Apresentação Clínica</h3></div>
+      <div class="decision-wrap">
+        <div class="decision-box">Gravidade do quadro</div>
+        <div class="branches">
+          <div class="branch">
+            <div class="branch-label">PE leve</div>
+            <div class="branch-body">Hipertensão + proteinúria isoladas, sem critérios de gravidade. Frequentemente assintomática.</div>
+          </div>
+          <div class="branch">
+            <div class="branch-label">PE grave</div>
+            <div class="branch-body"><ul>
+              <li>PA ≥ 160/110 mmHg</li>
+              <li>Proteinúria &gt; 2 g/24h</li>
+              <li>Creatinina &gt; 1,2 mg/dL</li>
+              <li>Plaquetas &lt; 100.000</li>
+              <li>Elevação de transaminases</li>
+              <li>Sintomas cerebrais / dor epigástrica</li>
+            </ul></div>
+          </div>
+          <div class="branch">
+            <div class="branch-label">Eclâmpsia</div>
+            <div class="branch-body">PE que evolui com <b>convulsões tônico-clônicas generalizadas e/ou coma</b>. Ocorre na gravidez, parto ou puerpério. Principal causa de prematuridade e de mortalidade perinatal.</div>
+          </div>
+          <div class="branch">
+            <div class="branch-label">Síndrome HELLP</div>
+            <div class="branch-body">Hemólise + elevação de enzimas hepáticas + plaquetopenia. Sintomas pobres e inespecíficos: mal-estar (50–90%), dor em hipocôndrio D/epigástrio (30–90%), náusea/cefaleia (20–50%).
+              <div class="callout" style="margin-top:8px"><b>Pérola</b>Trombocitopenia numa gestante com PE → pensar fortemente em HELLP.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section c4">
+      <div class="section-head"><span class="section-num">4</span><h3>Diagnóstico &amp; Vigilância</h3></div>
+      <div class="card-grid" style="margin-bottom:16px">
+        <div class="card"><span class="t">fullPIERS</span><span class="v">Modelo internacional (Canadá, Reino Unido, Nova Zelândia, Austrália) que integra dados clínicos e laboratoriais para estimar risco de desfecho materno adverso em 48h numa gestante com PE — von Dadelszen et al., Lancet 2011.</span></div>
+      </div>
+      <p style="font-size:12.5px;color:var(--ink-faint);margin:0 0 8px">Diagnóstico diferencial da eclâmpsia:</p>
+      <div class="pills">
+        <span class="pill">Epilepsia</span><span class="pill">Encefalite</span><span class="pill">Meningite</span>
+        <span class="pill">Tumor cerebral</span><span class="pill">Neurocisticercose</span><span class="pill">Aneurisma cerebral roto</span>
+      </div>
+      <p style="font-size:12.5px;color:var(--ink-faint);margin:16px 0 8px">Monitorização laboratorial seriada (a cada 6–24h conforme gravidade):</p>
+      <div class="pills">
+        <span class="pill">Oximetria de pulso</span><span class="pill">Hemograma / plaquetas</span>
+        <span class="pill">Creatinina sérica</span><span class="pill">TGO / DHL</span>
+      </div>
+      <p style="font-size:12.5px;color:var(--ink-faint);margin:16px 0 8px">Vitalidade fetal — conceitos usados na vigilância (USG avalia anatomia, Doppler avalia função):</p>
+      <div class="chain" style="max-width:600px">
+        <div class="chain-item">Resistência das artérias espiraladas ↑ → hipóxemia crônica e ↑ resistência placentária → <b>CIUR</b></div>
+        <div class="chain-arrow">·</div>
+        <div class="chain-item">Pressão intracotiledonária alterada → afeta produção de urina fetal e de líquido pulmonar</div>
+        <div class="chain-arrow">·</div>
+        <div class="chain-item">Insuficiência placentária → débito cardíaco combinado tenta manter-se estável → redistribuição do fluxo sanguíneo (centralização) → se progride, redução do débito cardíaco</div>
+      </div>
+      <p style="font-size:12.5px;color:var(--ink-faint);margin:16px 0 8px">Vigilância fetal — protocolo Glasgow Royal Maternity Hospital:</p>
+      <div class="decision-wrap">
+        <div class="decision-box">Estratificar risco</div>
+        <div class="branches">
+          <div class="branch">
+            <div class="branch-label">Baixo risco</div>
+            <div class="branch-body">&gt; 34 sem, sem proteinúria, crescimento e LA normais → ambulatorial: CTG semanal, USG de LA semanal, crescimento quinzenal.</div>
+          </div>
+          <div class="branch">
+            <div class="branch-label">Risco moderado</div>
+            <div class="branch-body">&lt; 34 sem, proteinúria presente, Doppler umbilical normal → internação: CTG diário, USG de LA semanal, Doppler semanal.</div>
+          </div>
+          <div class="branch">
+            <div class="branch-label">Alto risco</div>
+            <div class="branch-body">CTG não reativa com desacelerações, ou PBF &lt; 4 em 2 ocasiões com 4h de intervalo → corticoterapia e resolução da gestação.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section c5">
+      <div class="section-head"><span class="section-num">5</span><h3>Conduta</h3></div>
+      <p style="font-size:12.5px;color:var(--ink-faint);margin:0 0 8px">Prevenção (alto risco: PE/HELLP prévias, HAS crônica, nefropatia, doença autoimune, gemelaridade, obesidade) — iniciar antes da 20ª semana, segundo a OMS 2011:</p>
+      <div class="card-grid" style="margin-bottom:10px">
+        <div class="card"><span class="t">AAS baixa dose</span><span class="v">Cochrane 2012 — 17% de redução no risco de PE (46 estudos, 32.891 mulheres; RR 0,83; IC95% 0,77–0,89). Redução moderada (10%) mas consistente de desfechos maternos e fetais importantes. Sem diferença clara de benefício por subgrupo de risco. Aspirina é barata, segura e amplamente disponível.<span class="note">RCT Rolnik et al., NEJM 2017 — aspirina x placebo em gestações de alto risco para PE pré-termo.</span></span></div>
+        <div class="card"><span class="t">Cálcio</span><span class="v">Cochrane 2012 — reduz hipertensão em todos os grupos (12 estudos, 15.470 mulheres; RR 0,65; IC95% 0,53–0,81); efeito maior em alto risco (5 estudos, 587 mulheres; RR 0,22; IC95% 0,12–0,42) e em dieta pobre em cálcio (8 estudos, 10.678 mulheres; RR 0,36; IC95% 0,20–0,65). Reduz PE pela metade e reduz prematuridade.</span></div>
+      </div>
+      <div class="callout" style="margin-bottom:18px"><b>Não recomendado / controverso</b>Restrição de sal (é questão de preferência pessoal, Cochrane), vitamina D isolada, vitaminas C e E, diuréticos e repouso no leito não têm evidência de prevenir PE. Heparina <b>não é droga isenta de risco</b> — em investigação negativa para trombofilia, sem indicação de heparina; se houver trombofilia confirmada, uso precoce pode reduzir incidência de PE (enoxaparina 40–60 mg/dia ou dalteparina 5.000 UI/dia + AAS 100 mg/dia).</div>
+
+      <div class="decision-wrap">
+        <div class="decision-box">Tratamento por quadro</div>
+        <div class="branches">
+          <div class="branch">
+            <div class="branch-label">Leve / moderada</div>
+            <div class="branch-body">Cochrane (Abalos et al.) — evidência insuficiente de que hipotensor previna PE, reduza mortalidade perinatal ou altere RCF. Risco/benefício por classe:
+              <div class="tbl-wrap" style="margin-top:8px">
+              <table class="tbl" style="font-size:11.5px">
+                <tr><th>Classe</th><th>Benefício</th><th>Risco</th><th>Uso clínico</th></tr>
+                <tr><td>Metildopa</td><td>Insuficiente</td><td>Mãe: hepatite (1/100.000)</td><td>++++</td></tr>
+                <tr><td>β-bloqueadores</td><td>Insuficiente</td><td>Feto: CIUR (limitada)</td><td>++++ / +</td></tr>
+                <tr><td>Diuréticos</td><td>Insuficiente</td><td>—</td><td>++++</td></tr>
+                <tr><td>Bloqueador de Ca</td><td>Insuficiente</td><td>Segurança muito limitada</td><td>+</td></tr>
+                <tr><td>Hidralazina</td><td>Insuficiente</td><td>—</td><td>++</td></tr>
+                <tr><td>Inibidores da ECA</td><td>Ausente</td><td>IR fetal / oligoâmnio</td><td>+ (contraindicado)</td></tr>
+              </table>
+              </div>
+            </div>
+          </div>
+          <div class="branch">
+            <div class="branch-label">Crise hipertensiva</div>
+            <div class="branch-body">
+              <div class="dose"><span class="drug">Hidralazina EV</span><span class="amt">5 mg + 10 mg a cada 20–30 min até PAD &lt; 110</span></div>
+              <div class="dose"><span class="drug">Nifedipina VO/SL</span><span class="amt">5 mg a cada 20–30 min até PAD &lt; 110</span></div>
+              <div class="dose"><span class="drug">Labetalol EV</span><span class="amt">alternativa/2ª linha no protocolo escalonado</span></div>
+              <div class="dose"><span class="drug">Nitroprussiato EV</span><span class="amt">0,25 mg/kg/min, titulando</span></div>
+            </div>
+          </div>
+          <div class="branch">
+            <div class="branch-label">Eclâmpsia (convulsão)</div>
+            <div class="branch-body">Sulfato de magnésio é superior a diazepam e fenitoína — droga de escolha.
+              <div class="dose"><span class="drug">MgSO4 EV</span><span class="amt">ataque 4g em 10 min → manutenção 2g/h</span></div>
+              <div class="dose"><span class="drug">MgSO4 IM</span><span class="amt">ataque 4g EV + 10g IM → manutenção 5g IM 4/4h por 24h</span></div>
+              <div class="callout danger" style="margin-top:8px"><b>Toxicidade</b>Nível terapêutico 4–7 mEq/L · perda de reflexos 8–10 · risco de PCR &gt; 10 mEq/L. Antídoto: gluconato de cálcio 1g EV + O2.</div>
+            </div>
+          </div>
+          <div class="branch">
+            <div class="branch-label">Síndrome HELLP</div>
+            <div class="branch-body">Transfusão de plaquetas se &lt; 20.000 (mesmo sem sangramento) ou &lt; 50.000 se for à cesárea. Corticoide (dexametasona) é controverso — melhora contagem de plaquetas mas sem evidência robusta de benefício em desfechos clínicos maiores.
+              <div class="callout" style="margin-top:8px"><b>Tratamento definitivo</b>É o parto — retirada da placenta interrompe a fisiopatologia.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p style="font-size:12.5px;color:var(--ink-faint);margin:20px 0 8px">Atendimento inicial à crise convulsiva — meta: controle clínico (Souza FLP et al., Sogesp 2020):</p>
+      <div class="chain" style="max-width:640px">
+        <div class="chain-item">1–3 · Acomodação em local seguro → manter permeabilidade de vias aéreas → ministrar oxigênio por máscara ou cateter</div>
+        <div class="chain-arrow">↓</div>
+        <div class="chain-item">4–5 · Providenciar venóclise calibrosa → colher exames para síndrome HELLP e função renal</div>
+        <div class="chain-arrow">↓</div>
+        <div class="chain-item">6–7 · Infundir sulfato de magnésio → infundir hipotensor de ação rápida (se PAS ≥ 160 ou PAD ≥ 110 mmHg)</div>
+        <div class="chain-arrow">↓</div>
+        <div class="chain-item">8 · Planejar o parto <b>após</b> estabilização clínica — a eclâmpsia é indicação de interrupção da gestação, mas <b>não</b> de retirada fetal imediata</div>
+      </div>
+      <div class="callout" style="margin-top:14px"><b>Simulação — evidência para treinar a equipe</b>Treinamento em equipe multidisciplinar baseado em simulação, com cenários de iminência de eclâmpsia e eclâmpsia, associa-se a melhores cuidados oferecidos e resultados obstétricos (Martin Jr 2016; Bernstein et al. 2017). Princípios de uso: execução paralela por equipe treinada/briefada, ciclos de reavaliação curtos, comunicação em voz alta e registro de tempos críticos — exige prontidão de materiais, antídotos e metas simples, integrando-se a checklists e fluxogramas para reduzir omissões e variabilidade (Amorim MMR et al., Rev. Bras. Saúde Mater. Infant. 2025;25:e20250347).</div>
+      <div class="callout danger" style="margin-top:10px"><b>Abordagem ABCDEFG da crise — o "F" é de Feto, e vem depois da mãe</b>Mesmo com indicação de cesárea, a menos que seja urgência verdadeira (ex. DPPNI), sempre estabilizar a mãe primeiro (etapas A–E) antes de agir sobre o feto. Não precipitar cesárea com base em CTG alterado logo após a convulsão — a própria alteração de FCF costuma melhorar com a reanimação materna. Garantir reanimação materna completa antes de concluir que há sofrimento fetal sustentado. Registrar sempre os marcos temporais: tempo desde a convulsão, início e fim da bradicardia, medidas realizadas e resposta (Amorim MMR et al., 2025).</div>
+
+      <p style="font-size:12.5px;color:var(--ink-faint);margin:20px 0 8px">Protocolo escalonado da emergência hipertensiva (Sibai) — meta: reduzir a PA em 15–25% do valor inicial, nunca em bolus:</p>
+      <div class="chain" style="max-width:600px">
+        <div class="chain-item">Hidralazina EV (ou Nifedipina VO/SL) a cada 20–30 min</div>
+        <div class="chain-arrow">↓ sem melhora em ~40 min</div>
+        <div class="chain-item">Trocar para Labetalol EV</div>
+        <div class="chain-arrow">↓ sem melhora</div>
+        <div class="chain-item">Alternar de volta para Hidralazina ou Nifedipina — <b>não insistir na mesma droga indefinidamente</b>, alternar entre as classes</div>
+      </div>
+      <div class="callout" style="margin-top:10px"><b>Erros a evitar</b>Nunca esmagar o comprimido de nifedipina para dar sublingual — perde-se o controle da dose absorvida. Não empilhar doses em sequência rápida sem respeitar o intervalo. Queda de PA muito rápida/agressiva pode causar hipoperfusão útero-placentária, isquemia renal materna e sofrimento fetal agudo.</div>
+      <div class="two-col" style="margin-top:14px">
+        <div class="card"><span class="t">Puerpério / amamentação</span><span class="v">Metildopa raramente é mantida no puerpério (droga de uso quase exclusivo da gestação). Preferir <b>captopril</b> ou <b>enalapril</b> (IECA liberado após o parto, compatível com amamentação). Hidralazina, metoprolol e labetalol podem ser mantidos se já em uso e efetivos.</span></div>
+        <div class="card"><span class="t">Asma</span><span class="v">Evitar betabloqueadores (metoprolol, labetalol, carvedilol) — preferir metildopa ou bloqueador de canal de cálcio.</span></div>
+      </div>
+      <p style="font-size:12.5px;color:var(--ink-faint);margin:20px 0 8px">Atendimento sistemático à PE grave / HELLP (14 passos):</p>
+      <div class="chain">
+        <div class="chain-item">1–3 · Ter alta suspeita diagnóstica em toda gestante com PE → exames laboratoriais e diagnósticos diferenciais → avaliar condições materna e fetal</div>
+        <div class="chain-arrow">↓</div>
+        <div class="chain-item">4–5 · Controlar a pressão arterial → estabilizar o quadro: acesso venoso, sulfato de magnésio e anti-hipertensivos</div>
+        <div class="chain-arrow">↓</div>
+        <div class="chain-item">6–8 · Considerar corticoide para maturidade fetal → hemoterapia se necessário → avaliar necessidade de imagem hepática se houver epigastralgia</div>
+        <div class="chain-arrow">↓</div>
+        <div class="chain-item">9–11 · Definir técnica anestésica com o anestesista se cesárea → manejar ativamente o TP ou planejar a cesárea → planejar UTI materna/neonatal se necessário</div>
+        <div class="chain-arrow">↓</div>
+        <div class="chain-item">12–14 · Reavaliação laboratorial a cada 6–24h até estabilização → manter anti-hipertensivo e sulfato de magnésio no puerpério → aconselhamento para gestações futuras</div>
+      </div>
+      <p style="font-size:12.5px;color:var(--ink-faint);margin:20px 0 6px">Complicações da HELLP:</p>
+      <div class="pills">
+        <span class="pill">Oligúria 47%</span><span class="pill">Hemorragia 34%</span><span class="pill">Hemotransfusão 33%</span>
+        <span class="pill">IRA 20%</span><span class="pill">EAP 7%</span><span class="pill">Óbito materno 4%</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= RCF ================= -->
+  <section class="panel" id="panel-rcf" hidden>
+    <div class="panel-head">
+      <span class="kicker">Medicina fetal</span>
+      <h2>Restrição de Crescimento Fetal (RCF)</h2>
+      <p class="lede">Peso fetal abaixo do potencial genético de crescimento — não confundir com PIG (pequeno para a idade gestacional, mas constitucionalmente normal).</p>
+      <div class="stat-row">
+        <div class="stat"><b>P10 / P5 / P3</b>corte por ACOG / FMF / OMS</div>
+        <div class="stat"><b>75–80%</b>dos casos são Tipo II (tardio, assimétrico)</div>
+        <div class="stat"><b>&lt;1,08</b>relação cerebroplacentária = centralização</div>
+      </div>
+      <div class="callout" style="margin-top:14px;max-width:640px"><b>PIG × RCF verdadeira</b>RCF sugerida por: Doppler de uterinas alterado, IP de artéria umbilical &gt; P95, peso &lt; P3, oligoâmnio, maturidade placentária acelerada.</div>
+    </div>
+
+    <div class="section c1">
+      <div class="section-head"><span class="section-num">1</span><h3>Etiopatogenia</h3></div>
+      <div class="card-grid">
+        <div class="card"><span class="t">Fetais</span><span class="v">Aneuploidias, malformações, doenças gênicas, infecções congênitas, gemelaridade</span></div>
+        <div class="card"><span class="t">Placentários</span><span class="v">Alterações anatômicas, cromossômicas e morfológicas</span></div>
+        <div class="card"><span class="t">Maternos</span><span class="v">Doenças hipertensivas, doenças autoimunes, trombofilias, medicamentos, desnutrição, tabagismo/hábitos</span></div>
+        <div class="card"><span class="t">Imunológicos / genéticos</span><span class="v">Reconhecimento imunológico anômalo materno-fetal</span></div>
+      </div>
+      <p style="font-size:12px;color:var(--ink-faint);margin:12px 0 0">Mecanismo placentário da lesão (Burton et al., Reproduction 2009): alteração da velocidade do fluxo → pressão do jato lesa o vilo; alteração do volume sanguíneo → lesão por isquemia-reperfusão; comprometimento da circulação e troca gasosa.</p>
+      <div class="chain" style="margin-top:14px">
+        <div class="chain-item">Invasão trofoblástica deficiente</div>
+        <div class="chain-arrow">↓</div>
+        <div class="chain-item">Hipóxia placentária <span class="note">+ apoptose placentária, em paralelo</span></div>
+        <div class="chain-arrow">↓</div>
+        <div class="chain-item">Radicais livres + debris na circulação materna</div>
+        <div class="chain-arrow">↓</div>
+        <div class="chain-item">Resposta inflamatória + ativação plaquetária/endotelial</div>
+      </div>
+    </div>
+
+    <div class="section c2">
+      <div class="section-head"><span class="section-num">2</span><h3>Fisiopatologia</h3></div>
+      <figure class="diagram">
+        <svg viewBox="0 0 720 640" role="img" aria-label="Cascata fisiopatológica da RCF: insuficiência placentária leva a déficit respiratório e nutritivo, causando RCF; segue centralização da circulação fetal (sparing de SNC/coração/adrenal versus isquemia renal), gerando sofrimento fetal compensado e oligoâmnio; se a hipóxia progride, ocorre descompensação hemodinâmica com alterações venosas, hipóxia/acidose e miocardiopatia isquêmica, culminando em óbito.">
+          <defs>
+            <marker id="arH" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+              <path d="M0,0 L8,4 L0,8 Z" fill="currentColor"/>
+            </marker>
+          </defs>
+          <g font-family=Inter, sans-serif" font-size="12" fill="currentColor">
+            <!-- row1 -->
+            <rect x="220" y="14" width="280" height="38" rx="8" fill="none" stroke="currentColor"/>
+            <text x="360" y="38" text-anchor="middle" font-weight="600">Insuficiência Placentária</text>
+            <line x1="360" y1="52" x2="360" y2="70" stroke="currentColor"/>
+            <line x1="220" y1="70" x2="500" y2="70" stroke="currentColor"/>
+            <line x1="220" y1="70" x2="220" y2="86" stroke="currentColor" marker-end="url(#arH)"/>
+            <line x1="500" y1="70" x2="500" y2="86" stroke="currentColor" marker-end="url(#arH)"/>
+
+            <!-- row2 -->
+            <rect x="100" y="86" width="240" height="40" rx="8" fill="none" stroke="currentColor"/>
+            <text x="220" y="110" text-anchor="middle">Déficit respiratório</text>
+            <text x="220" y="124" text-anchor="middle" fill="var(--ink-faint)" font-size="10.5">(↓ pO₂)</text>
+            <rect x="380" y="86" width="240" height="40" rx="8" fill="none" stroke="currentColor"/>
+            <text x="500" y="112" text-anchor="middle">Déficit nutritivo</text>
+
+            <line x1="220" y1="126" x2="220" y2="146" stroke="currentColor"/>
+            <line x1="500" y1="126" x2="500" y2="146" stroke="currentColor"/>
+            <line x1="220" y1="146" x2="500" y2="146" stroke="currentColor"/>
+            <line x1="360" y1="146" x2="360" y2="162" stroke="currentColor" marker-end="url(#arH)"/>
+
+            <!-- row3 RCF -->
+            <rect x="270" y="162" width="180" height="38" rx="8" class="svg-accent" fill="none" stroke="currentColor"/>
+            <text x="360" y="186" text-anchor="middle" font-weight="700">RCF</text>
+
+            <line x1="360" y1="200" x2="360" y2="222" stroke="currentColor" marker-end="url(#arH)"/>
+
+            <!-- row4 centralização -->
+            <rect x="190" y="222" width="340" height="40" rx="8" fill="none" stroke="currentColor" class="svg-teal"/>
+            <text x="360" y="247" text-anchor="middle" font-weight="600">Centralização da circulação fetal</text>
+
+            <line x1="360" y1="262" x2="360" y2="280" stroke="currentColor"/>
+            <line x1="190" y1="280" x2="530" y2="280" stroke="currentColor"/>
+            <line x1="190" y1="280" x2="190" y2="296" stroke="currentColor" marker-end="url(#arH)"/>
+            <line x1="530" y1="280" x2="530" y2="296" stroke="currentColor" marker-end="url(#arH)"/>
+
+            <!-- row5 sparing vs isquemia -->
+            <rect x="70" y="296" width="240" height="46" rx="8" fill="none" stroke="currentColor"/>
+            <text x="190" y="316" text-anchor="middle" font-size="11.5">Proteção (“sparing”):</text>
+            <text x="190" y="330" text-anchor="middle" font-size="11.5">SNC, coração, adrenal</text>
+            <rect x="410" y="296" width="250" height="46" rx="8" fill="none" stroke="currentColor"/>
+            <text x="535" y="316" text-anchor="middle" font-size="11.5">Isquemia:</text>
+            <text x="535" y="330" text-anchor="middle" font-size="11.5">rim e outros órgãos</text>
+
+            <line x1="190" y1="342" x2="190" y2="360" stroke="currentColor"/>
+            <line x1="535" y1="342" x2="535" y2="360" stroke="currentColor"/>
+            <line x1="190" y1="360" x2="535" y2="360" stroke="currentColor"/>
+            <line x1="360" y1="360" x2="360" y2="376" stroke="currentColor" marker-end="url(#arH)"/>
+
+            <!-- row6 -->
+            <rect x="180" y="376" width="360" height="42" rx="8" fill="none" stroke="currentColor"/>
+            <text x="360" y="399" text-anchor="middle" font-size="12">Sofrimento fetal compensado + oligoâmnio</text>
+
+            <line x1="360" y1="418" x2="360" y2="444" stroke="currentColor" stroke-dasharray="4 3" marker-end="url(#arH)"/>
+            <text x="380" y="434" font-size="10.5" fill="var(--ink-faint)">se hipóxia progride</text>
+
+            <!-- row7 descompensação -->
+            <rect x="180" y="444" width="360" height="40" rx="8" fill="none" stroke="currentColor" class="svg-accent" stroke-width="1.6"/>
+            <text x="360" y="468" text-anchor="middle" font-weight="600">Descompensação hemodinâmica</text>
+
+            <line x1="360" y1="484" x2="360" y2="500" stroke="currentColor"/>
+            <line x1="140" y1="500" x2="580" y2="500" stroke="currentColor"/>
+            <line x1="140" y1="500" x2="140" y2="516" stroke="currentColor" marker-end="url(#arH)"/>
+            <line x1="360" y1="500" x2="360" y2="516" stroke="currentColor" marker-end="url(#arH)"/>
+            <line x1="580" y1="500" x2="580" y2="516" stroke="currentColor" marker-end="url(#arH)"/>
+
+            <!-- row8 three outcomes -->
+            <rect x="30" y="516" width="220" height="40" rx="8" fill="none" stroke="currentColor"/>
+            <text x="140" y="540" text-anchor="middle" font-size="11.5">Alterações sistema venoso</text>
+            <rect x="270" y="516" width="180" height="40" rx="8" fill="none" stroke="currentColor"/>
+            <text x="360" y="540" text-anchor="middle" font-size="11.5">Hipóxia / acidose</text>
+            <rect x="470" y="516" width="220" height="40" rx="8" fill="none" stroke="currentColor"/>
+            <text x="580" y="540" text-anchor="middle" font-size="11.5">Miocardiopatia isquêmica</text>
+
+            <line x1="140" y1="556" x2="140" y2="572" stroke="currentColor"/>
+            <line x1="360" y1="556" x2="360" y2="572" stroke="currentColor"/>
+            <line x1="580" y1="556" x2="580" y2="572" stroke="currentColor"/>
+            <line x1="140" y1="572" x2="580" y2="572" stroke="currentColor"/>
+            <line x1="360" y1="572" x2="360" y2="588" stroke="currentColor" marker-end="url(#arH)"/>
+
+            <!-- final -->
+            <rect x="290" y="588" width="140" height="40" rx="8" fill="currentColor" class="svg-accent" opacity="0.14" stroke="currentColor"/>
+            <text x="360" y="613" text-anchor="middle" font-weight="700">Óbito fetal</text>
+          </g>
+        </svg>
+        <figcaption>Cascata da insuficiência placentária na RCF: do déficit de troca gasosa/nutrientes à centralização compensatória e, se a hipóxia progride, à descompensação hemodinâmica.</figcaption>
+      </figure>
+    </div>
+
+    <div class="section c1">
+      <div class="section-head"><span class="section-num">1</span><h3>Classificação</h3><span class="sub">por mecanismo e época</span></div>
+      <table class="tbl">
+        <tr><th>Tipo</th><th>Padrão</th><th>Época / mecanismo</th><th>Frequência</th></tr>
+        <tr><td><b>I</b> — Simétrico</td><td>Harmônico, intrínseco. Cabeça, abdome e ossos pequenos</td><td>Precoce (0–14 sem), hiperplasia celular comprometida</td><td>5–10%</td></tr>
+        <tr><td><b>III</b> — Intermediário</td><td>Semi-harmônico, mistura dos dois mecanismos</td><td>14–28 sem</td><td>—</td></tr>
+        <tr><td><b>II</b> — Assimétrico</td><td>Desarmônico, extrínseco. Cabeça/ossos normais, abdome pequeno</td><td>Tardio (após 28 sem), hipertrofia celular comprometida</td><td>75–80%</td></tr>
+      </table>
+      <p style="font-size:12px;color:var(--ink-faint);margin-top:8px">RCF precoce = antes da 34ª semana · RCF tardia = após a 34ª semana.</p>
+    </div>
+
+    <div class="section c4">
+      <div class="section-head"><span class="section-num">4</span><h3>Diagnóstico</h3></div>
+      <p style="font-size:12.5px;color:var(--ink-faint);margin:0 0 8px">Marcadores bioquímicos de predição (desequilíbrio angiogênico é o mecanismo comum à RCF e à PE):</p>
+      <div class="two-col" style="margin-bottom:10px">
+        <div class="card"><span class="t">Angiogênicos (↓ na doença)</span><span class="v">TGF-β · PLGF (fator de crescimento placentário) · VEGF · ADAM12 · PP-13 · PAPP-A · Adiponectina</span></div>
+        <div class="card"><span class="t">Anti-angiogênicos (↑ na doença)</span><span class="v">sEndoglin (endoglina solúvel) · sFlt-1 (receptor solúvel do VEGF) · Angiopoetina (Ang-2)</span></div>
+      </div>
+      <div class="tbl-wrap" style="margin-bottom:14px">
+      <table class="tbl" style="font-size:11.5px">
+        <tr><th>Mediador (pg/mL)</th><th>RCF</th><th>Controle</th><th>p</th></tr>
+        <tr><td>sEndoglin (anti-angiogênico)</td><td class="val">13,86</td><td class="val">7,93</td><td class="val">0,015</td></tr>
+        <tr><td>sFlt-1 (anti-angiogênico)</td><td class="val">4.451</td><td class="val">1.747</td><td class="val">&lt;0,0001</td></tr>
+        <tr><td>Adiponectina (anti-inflamatório)</td><td class="val">1.549.615,62</td><td class="val">905.807,36</td><td class="val">0,004</td></tr>
+      </table>
+      </div>
+      <p style="font-size:11px;color:var(--ink-faint);margin:-8px 0 16px">Zamarian et al., J Perinatal Medicine 2013;41:675 (XI World Congress of Perinatal Medicine, Moscou, 2013).</p>
+      <div class="chain">
+        <div class="chain-item"><b>Rastreamento</b> — características maternas (RCF prévia, afrodescendência, idade materna avançada, HAS/DM, obesidade, tabagismo, método de concepção) + Doppler de artérias uterinas (IP e incisura protodiastólica, melhor no 2º trimestre) + marcadores bioquímicos<span class="note">Rastreamento combinado (IP uterina+PAM+PAPP-A+β-hCG livre+PLGF+PP13+ADAM12): detecta 73% das RCF &lt; 37 sem e 46% das &gt; 37 sem (FP 10%)</span></div>
+        <div class="chain-arrow">↓</div>
+        <div class="chain-item"><b>Clínico</b> — anamnese e fatores de risco, exame físico, ganho ponderal materno, altura uterina<span class="note">baixa sensibilidade e especificidade, achado tardio</span></div>
+        <div class="chain-arrow">↓</div>
+        <div class="chain-item"><b>Ultrassonografia</b> — morfologia fetal, biometria (CA, peso fetal, DTC/CA), ILA, cordão, placenta, US3D<span class="note">diferenciar constitucional de patológico</span></div>
+        <div class="chain-arrow">↓</div>
+        <div class="chain-item"><b>Dopplervelocimetria</b> — ver estadiamento abaixo</div>
+        <div class="chain-arrow">↓</div>
+        <div class="chain-item"><b>Avaliação da função cardíaca</b> — “cardiac sparing”; troponina I elevada = lesão miocárdica por asfixia<span class="note">Na RCF precoce com Doppler alterado (IP de a. umbilical &gt; P95) e interrupção &lt; 34 sem, a sequência de deterioração até o parto é, em mediana: IPM-modificado ~26 dias antes → IP do istmo aórtico ~12 dias antes → IP do ducto venoso ~12 e depois ~5 dias antes do parto.</span></div>
+      </div>
+
+      <p style="font-size:12.5px;color:var(--ink-faint);margin:20px 0 8px">Estadiamento pelo Doppler — Períodos de Carrera (a insuficiência avança conforme a obstrução da árvore vilositária):</p>
+      <figure class="diagram">
+        <svg viewBox="0 0 720 300" role="img" aria-label="Estadiamento Doppler da RCF por percentual de obstrução placentária: índice de pulsatilidade alterado em torno de 30% de obstrução, diástole zero em torno de 50%, diástole reversa a partir de 70%, cada estágio com maior risco de hipóxia, acidemia e complicações neonatais.">
+          <g font-family=Inter, sans-serif" font-size="12" fill="currentColor">
+            <line x1="50" y1="230" x2="690" y2="230" stroke="currentColor" stroke-width="1.2"/>
+            <!-- bar 1 -->
+            <rect x="90" y="170" width="130" height="60" fill="currentColor" class="svg-teal" opacity="0.85"/>
+            <text x="155" y="155" text-anchor="middle" font-weight="600">IP alterado</text>
+            <text x="155" y="252" text-anchor="middle" font-size="11" fill="var(--ink-faint)">~30% obstrução</text>
+            <text x="155" y="267" text-anchor="middle" font-size="11" fill="var(--ink-faint)">↓ fluxo umbilical</text>
+            <!-- bar 2 -->
+            <rect x="295" y="120" width="130" height="110" fill="currentColor" class="svg-amber" opacity="0.85"/>
+            <text x="360" y="105" text-anchor="middle" font-weight="600">Diástole zero</text>
+            <text x="360" y="252" text-anchor="middle" font-size="11" fill="var(--ink-faint)">~50% obstrução</text>
+            <text x="360" y="267" text-anchor="middle" font-size="11" fill="var(--ink-faint)">hipóxia progressiva</text>
+            <!-- bar 3 -->
+            <rect x="500" y="60" width="130" height="170" fill="currentColor" class="svg-accent" opacity="0.85"/>
+            <text x="565" y="45" text-anchor="middle" font-weight="600">Diástole reversa</text>
+            <text x="565" y="252" text-anchor="middle" font-size="11" fill="var(--ink-faint)">≥70% obstrução</text>
+            <text x="565" y="267" text-anchor="middle" font-size="11" fill="var(--ink-faint)">acidemia / risco iminente</text>
+          </g>
+        </svg>
+        <figcaption>Quanto maior a fração da árvore vilositária obstruída, mais grave o padrão Doppler — de IP alterado até diástole reversa. Ducto venoso com fluxo ausente/reverso + padrão pulsátil na veia umbilical = comprometimento fetal grave.</figcaption>
+      </figure>
+      <p style="font-size:12px;color:var(--ink-faint);margin-top:8px">Artéria cerebral média: ↑ PSV = anemia fetal · ↓ IP = hipóxia/hipertensão fetal · relação cerebroplacentária (ACM/umbilical) &lt; 1,08 = centralização.</p>
+
+      <div class="callout" style="margin-top:16px"><b>Mecônio como sinal indireto</b>Na centralização, o fluxo intestinal cai (o rim e o intestino são "sacrificados" para poupar SNC/coração/adrenal) → aumenta o peristaltismo intestinal → eliminação de mecônio. É um sinal indireto de que a centralização está em curso. Há 2 tipos de sofrimento fetal: <b>crônico</b> (o desta cascata, por insuficiência placentária) e <b>agudo</b> (outras causas, ex. acidentes de cordão).</div>
+
+      <p style="font-size:12.5px;color:var(--ink-faint);margin:20px 0 8px">Perfil Biofísico Fetal (PBF) — 5 parâmetros, 0 a 2 pontos cada (escore de 0 a 10):</p>
+      <div class="tbl-wrap">
+      <table class="tbl" style="font-size:12px">
+        <tr><th>Parâmetro</th><th>Normal (2 pts)</th><th>Anormal (0 pts)</th></tr>
+        <tr><td>Líquido amniótico</td><td>Bolsão presente dentro da normalidade</td><td>Oligoâmnio</td></tr>
+        <tr><td>Tônus fetal</td><td>Presente</td><td>Ausente</td></tr>
+        <tr><td>Movimento fetal</td><td>Presente</td><td>Ausente — feto hipóxico reduz movimento para economizar energia</td></tr>
+        <tr><td>Movimento respiratório fetal</td><td>Presente</td><td>Ausente — mau prognóstico; é o "treino" para respirar ao nascer</td></tr>
+        <tr><td>Cardiotocografia</td><td>Reativa (avaliada em 30 min)</td><td>Não reativa</td></tr>
+      </table>
+      </div>
+      <p style="font-size:11.5px;color:var(--ink-faint);margin-top:8px">Oligoâmnio isolado não é necessariamente grave — mas dentro do PBF ele reflete a redução do fluxo renal que acompanha a centralização.</p>
+    </div>
+
+    <div class="section c5">
+      <div class="section-head"><span class="section-num">5</span><h3>Conduta</h3></div>
+      <div class="two-col">
+        <div>
+          <p style="font-size:12.5px;color:var(--ink-faint);margin:0 0 8px">Clínica</p>
+          <div class="pills">
+            <span class="pill">Repouso</span><span class="pill">Oxigênio</span><span class="pill">Restrição salina</span>
+            <span class="pill">Fe / Ca / Mg / Zn</span><span class="pill">Ácido fólico</span><span class="pill">Vitamina D</span>
+            <span class="pill">Suplementação proteica</span><span class="pill">Óleo de peixe</span><span class="pill">AAS baixa dose</span>
+          </div>
+        </div>
+        <div>
+          <p style="font-size:12.5px;color:var(--ink-faint);margin:0 0 8px">Obstétrica</p>
+          <div class="pills">
+            <span class="pill">CTG (marcador agudo)</span><span class="pill">PBF (agudo)</span>
+            <span class="pill">Doppler venoso (agudo)</span><span class="pill">Doppler arterial (crônico)</span>
+            <span class="pill">Corticoterapia</span><span class="pill">Amnioinfusão</span>
+          </div>
+        </div>
+      </div>
+      <div class="callout" style="margin-top:14px"><b>Momento do parto</b>Balancear prematuridade × hipóxia intraútero — decisão individualizada conforme IG e gravidade Doppler.</div>
+    </div>
+
+    <div class="section c4">
+      <div class="section-head"><span class="section-num">4</span><h3>Prognóstico</h3><span class="sub">neurodesenvolvimento</span></div>
+      <div class="card-grid">
+        <div class="card"><span class="t">Circunferência craniana pequena</span><span class="v">Retardo psicomotor, cognitivo e comportamental — independe de IG e Doppler</span></div>
+        <div class="card"><span class="t">Baixo peso ao nascer</span><span class="v">Atraso motor, sobretudo na RCF precoce</span></div>
+        <div class="card"><span class="t">Doppler umbilical alterado</span><span class="v">Retardo motor e disfunção cognitiva na RCF precoce</span></div>
+        <div class="card"><span class="t">Doppler cerebral alterado</span><span class="v">Disfunção psicológica/comportamental na RCF tardia</span></div>
+      </div>
+      <p style="font-size:12px;color:var(--ink-faint);margin-top:10px">Complicações agudas: hipoglicemia, hipocalcemia, policitemia, hipotermia, aspiração de mecônio, hemorragia intracraniana. Sequelas a longo prazo: crescimento somático ↓, hiperatividade do SNC, déficit de atenção, paralisia cerebral.</p>
+    </div>
+  </section>
+
+  <!-- ================= RPM ================= -->
+  <section class="panel" id="panel-rpm" hidden>
+    <div class="panel-head">
+      <span class="kicker">Complicação da bolsa amniótica</span>
+      <h2>Rotura Prematura de Membranas (RPM)</h2>
+      <p class="lede">Rotura espontânea das membranas ovulares fora do trabalho de parto.</p>
+      <div class="stat-row">
+        <div class="stat"><b>90%</b>desencadeia TP em até 24h</div>
+        <div class="stat"><b>12%</b>de todos os partos</div>
+        <div class="stat"><b>1/3</b>dos nascidos prematuros</div>
+      </div>
+    </div>
+
+    <div class="section c2">
+      <div class="section-head"><span class="section-num">2</span><h3>Fisiopatologia</h3></div>
+      <div class="chain" style="max-width:460px">
+        <div class="chain-item">Corioamnionite <b>localizada</b>, próxima ao orifício interno do colo — foco de fragilidade da membrana</div>
+      </div>
+    </div>
+
+    <div class="section c4">
+      <div class="section-head"><span class="section-num">4</span><h3>Diagnóstico</h3></div>
+      <div class="chain">
+        <div class="chain-item"><b>Anamnese</b> — momento da rotura, atividade física associada, volume, cheiro e coloração do líquido</div>
+        <div class="chain-arrow">↓</div>
+        <div class="chain-item"><b>Exame especular</b> — confirma saída de líquido e sinais de infecção</div>
+        <div class="chain-arrow">↓</div>
+        <div class="chain-item"><b>Toque vaginal</b> — apenas se já em trabalho de parto</div>
+        <div class="chain-arrow">↓</div>
+        <div class="chain-item"><b>USG</b> — índice de líquido amniótico (ILA)</div>
+      </div>
+      <div class="two-col" style="margin-top:16px">
+        <div>
+          <p style="font-size:12.5px;color:var(--ink-faint);margin:0 0 8px">Monitorar infecção</p>
+          <div class="pills">
+            <span class="pill">Temperatura 6/6h</span><span class="pill">Taquicardia materna</span><span class="pill">Taquicardia fetal</span>
+            <span class="pill">Fisometria</span><span class="pill">Hemograma</span><span class="pill">PCR 2x/semana</span><span class="pill">Cultura EGB</span>
+          </div>
+        </div>
+        <div>
+          <p style="font-size:12.5px;color:var(--ink-faint);margin:0 0 8px">Vitalidade fetal</p>
+          <div class="pills">
+            <span class="pill">CTG anteparto</span><span class="pill">USG / Doppler</span><span class="pill">Perfil biofísico fetal</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section c5">
+      <div class="section-head"><span class="section-num">5</span><h3>Conduta</h3></div>
+      <div class="pills" style="margin-bottom:16px">
+        <span class="pill on">Internação</span><span class="pill on">Não inibir o TP</span>
+        <span class="pill">ATB é controverso</span><span class="pill on">Corticoide se &lt; 34 sem</span>
+      </div>
+      <div class="decision-wrap">
+        <div class="decision-box">Idade gestacional</div>
+        <div class="branches">
+          <div class="branch">
+            <div class="branch-label">&lt; 24 semanas</div>
+            <div class="branch-body">Discutir com a família e a equipe. Considerar indução do parto.</div>
+          </div>
+          <div class="branch">
+            <div class="branch-label">24 – 34 semanas</div>
+            <div class="branch-body">Conduta expectante. Avaliar vitalidade fetal continuamente. Monitorar sinais de infecção.</div>
+          </div>
+          <div class="branch">
+            <div class="branch-label">&gt; 34 semanas</div>
+            <div class="branch-body">Interrupção da gestação. Infecção presente = indicação de parto. Alteração de vitalidade = indicação de parto.</div>
+          </div>
+        </div>
+      </div>
+      <div class="two-col" style="margin-top:20px">
+        <div>
+          <p style="font-size:12.5px;color:var(--ink-faint);margin:0 0 8px">Corticoide (IG &lt; 34 sem)</p>
+          <div class="dose"><span class="drug">Betametasona</span><span class="amt">12 mg IM — 2 amp / 2 dias</span></div>
+        </div>
+        <div>
+          <p style="font-size:12.5px;color:var(--ink-faint);margin:0 0 8px">Antibioticoterapia (se optada)</p>
+          <div class="dose"><span class="drug">Penicilina cristalina</span><span class="amt">4 milhões UI EV 4/4h</span></div>
+          <div class="dose"><span class="drug">Metronidazol</span><span class="amt">500 mg 6/6h</span></div>
+          <div class="dose"><span class="drug">Gentamicina (Garamicina)</span><span class="amt">180–240 mg EV/dia</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PREMATURIDADE ================= -->
+  <section class="panel" id="panel-ppt" hidden>
+    <div class="panel-head">
+      <span class="kicker">Trabalho de parto pré-termo</span>
+      <h2>Assistência na Prematuridade</h2>
+      <p class="lede">OMS: parto antes de completar 37 semanas de gestação. Etiologia complexa e multifatorial.</p>
+      <div class="stat-row">
+        <div class="stat"><b>11–18%</b>taxa mundial de nascimento pré-termo</div>
+        <div class="stat"><b>6,4–15,2%</b>incidência no Brasil</div>
+        <div class="stat"><b>30 milhões</b>RNs prematuros/ano (2017)</div>
+      </div>
+      <div class="two-col" style="margin-top:16px;max-width:640px">
+        <table class="tbl">
+          <tr><th>IG</th><th>Classificação</th></tr>
+          <tr><td>32 – &lt;37 sem</td><td>Moderado a tardio</td></tr>
+          <tr><td>28 – &lt;32 sem</td><td>Muito pré-termo</td></tr>
+          <tr><td>&lt; 28 sem</td><td>Extremo pré-termo</td></tr>
+        </table>
+        <table class="tbl">
+          <tr><th>Peso</th><th>Classificação</th></tr>
+          <tr><td>&lt; 2500 g</td><td>Baixo peso (BPN)</td></tr>
+          <tr><td>&lt; 1500 g</td><td>Muito baixo peso (MBP)</td></tr>
+          <tr><td>&lt; 1000 g</td><td>Extremo baixo peso (EBP)</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="section c1">
+      <div class="section-head"><span class="section-num">1</span><h3>Etiologia — fator desencadeante</h3></div>
+      <div class="decision-wrap">
+        <div class="decision-box">Origem do parto pré-termo</div>
+        <div class="branches">
+          <div class="branch">
+            <div class="branch-label">Espontâneo · 70–80%</div>
+            <div class="branch-body"><ul><li>Idiopático — 50%</li><li>Trabalho de parto pré-termo — 40–50%</li><li>RPM — 20–30%</li></ul></div>
+          </div>
+          <div class="branch">
+            <div class="branch-label">Eletivo · 20–30%</div>
+            <div class="branch-body"><ul><li>Pré-eclâmpsia</li><li>Restrição de crescimento fetal</li><li>Gestação múltipla</li></ul></div>
+          </div>
+        </div>
+      </div>
+      <p style="font-size:12.5px;color:var(--ink-faint);margin:20px 0 8px">Fatores de risco:</p>
+      <div class="card-grid">
+        <div class="card"><span class="t">Epidemiológicos</span><span class="v">Baixo nível socioeconômico, higiene inadequada, extremos etários, desnutrição, tabagismo, drogas ilícitas, estresse psicossocial</span></div>
+        <div class="card"><span class="t">Obstétricos</span><span class="v">PPT anterior, RPM, infecção amniótica, hemorragia 2º/3º tri, malformação fetal/placentária, gemelaridade, polidrâmnio</span></div>
+        <div class="card"><span class="t">Ginecológicos</span><span class="v">Leiomiomatose uterina, malformação uterina, amputação/conização de colo, insuficiência istmocervical (IIC)</span></div>
+        <div class="card"><span class="t">Clínico-cirúrgicos</span><span class="v">Doenças maternas, infecções genitourinárias, procedimentos cirúrgicos prévios</span></div>
+      </div>
+      <div class="card-grid" style="margin-top:10px">
+        <div class="card"><span class="t">1 PPT prévio</span><span class="rr">risco 14–22%</span></div>
+        <div class="card"><span class="t">2 PPT prévios</span><span class="rr">risco 28–42%</span></div>
+        <div class="card"><span class="t">3 PPT prévios</span><span class="rr">risco 67%</span></div>
+        <div class="card"><span class="t">Sexo do RN</span><span class="v">Meninas têm sobrevida estatisticamente melhor que meninos na prematuridade — pergunta clássica de prova: IG, peso <b>e sexo</b> são as 3 primeiras informações que o pediatra pede na sala de parto.</span></div>
+      </div>
+      <div class="callout" style="margin-top:14px"><b>Insuficiência istmocervical — história clássica</b>Partos cada vez mais precoces a cada gestação (ex.: 32-33 sem → 28 sem → 20 sem), sem trabalho de parto típico — o colo dilata silenciosamente e a bolsa protrui. Ao exame, colo curto/dilatado com a bolsa visível no orifício ("dedo de luva"). Conduta: <b>cerclagem</b> (sutura em bolsa tipo McDonald, 2 pontos fechando o colo, fio inabsorvível) — removida em 37 semanas, permitindo parto vaginal se não houver outra indicação de cesárea. O aumento de procedimentos cervicais (conização, cauterização) por lesões relacionadas ao HPV tem contribuído para mais casos de IIC.</div>
+    </div>
+
+    <div class="section c4">
+      <div class="section-head"><span class="section-num">4</span><h3>Predição</h3></div>
+      <div class="chain">
+        <div class="chain-item"><b>USG transvaginal do colo</b> (16–28 sem) — colo &lt; 20 mm sem PPT prévio, ou &lt; 25 mm com PPT prévio, define risco</div>
+        <div class="chain-arrow">+</div>
+        <div class="chain-item"><b>Fibronectina fetal (fFN)</b>, 22–34⁶/⁷ sem — baixa predição em assintomáticas; em sintomáticas prediz TPP em 7–10 dias (revisão sistemática: ~80% de TPP com teste positivo)<span class="note">fFN é uma glicoproteína de alto peso molecular produzida pelo trofoblasto, presente na interface decíduo-coriônica; some do fluido cervicovaginal após a fusão âmnio-córion (~22 sem) até ~36 sem. Infecção subclínica ou contrações liberam produtos bacterianos/monócitos, IL-1, IL-6, TNF e PGE2/F2α, que liberam fFN no fluido cervicovaginal.</span></div>
+        <div class="chain-arrow">↓</div>
+        <div class="chain-item">Colo curto + fFN positivo = <b>melhor predição combinada</b><span class="note">Em PPT anterior: colo &lt; 25 mm com fFN+ → repetição em 64%; colo &lt; 25mm com fFN− → repetição em apenas 25%</span></div>
+      </div>
+
+      <p style="font-size:12.5px;color:var(--ink-faint);margin:20px 0 8px">Gestante sintomática com risco de PPT — conduta orientada pela história:</p>
+      <div class="decision-wrap">
+        <div class="decision-box">Questionar PPT prévio / perda fetal</div>
+        <div class="branches">
+          <div class="branch">
+            <div class="branch-label">PPT prévio</div>
+            <div class="branch-body">Iniciar progesterona (P4) 200 mg/dia.</div>
+          </div>
+          <div class="branch">
+            <div class="branch-label">Perda fetal prévia</div>
+            <div class="branch-body">Considerar cerclagem.</div>
+          </div>
+          <div class="branch">
+            <div class="branch-label">Sem PPT prévio</div>
+            <div class="branch-body">Medir colo + USG entre 18–24 semanas; repetir conforme evolução.</div>
+          </div>
+        </div>
+      </div>
+      <p style="font-size:11.5px;color:var(--ink-faint);margin-top:10px">Nesta triagem, medir o colo muda a conduta mas não prediz a gravidade do caso.</p>
+    </div>
+
+    <div class="section c1">
+      <div class="section-head"><span class="section-num">1</span><h3>Prevenção</h3></div>
+      <div class="pills">
+        <span class="pill">Primária — reduzir causas epidemiológicas</span>
+        <span class="pill">Secundária — marcadores bioquímicos + USG de colo, identificar gestantes de risco</span>
+        <span class="pill">Terciária — tocólise + corticoterapia</span>
+      </div>
+    </div>
+
+    <div class="section c5">
+      <div class="section-head"><span class="section-num">5</span><h3>Conduta — tocólise</h3></div>
+      <p style="font-size:12.5px;color:var(--ink-faint);margin:0 0 8px">Objetivo: postergar o parto por 48–72h para transferência a centro de referência e completar a corticoterapia — não há evidência para manter tocólise além de 48h rotineiramente.</p>
+      <div class="tbl-wrap" style="margin-bottom:14px">
+      <table class="tbl" style="font-size:11.5px">
+        <tr><th>Mecanismo</th><th>Classe / droga</th></tr>
+        <tr><td>Refratariedade da fibra miometrial</td><td>Progesterona</td></tr>
+        <tr><td>Inibidor da ocitocina</td><td>Etanol <span style="color:var(--ink-faint)">(histórico)</span></td></tr>
+        <tr><td>β-adrenérgicos</td><td>Terbutalina / salbutamol / fenoterol</td></tr>
+        <tr><td>Inibidores das prostaglandinas</td><td>Indometacina / AAS / naproxeno</td></tr>
+        <tr><td>Alteram o potencial eletromagnético da fibra</td><td>Inibidores de canal de Ca (nifedipina) / sulfato de Mg</td></tr>
+        <tr><td>Inibidores da fosfodiesterase</td><td>Teofilina</td></tr>
+        <tr><td>Antagonista da ocitocina</td><td>Atosiban</td></tr>
+        <tr><td>Precursores do óxido nítrico</td><td>Dinitrato de glicerila</td></tr>
+        <tr><td>Outros</td><td>Diazóxido, halotano</td></tr>
+      </table>
+      </div>
+      <div class="callout" style="margin-bottom:14px"><b>Recomendações FEBRASGO 2018, nº 29</b>Confirmar o diagnóstico correto de TPP e a idade gestacional, com avaliação materna e fetal qualificada (a tocólise pode ter efeitos adversos). Objetivo primordial: postergar o parto por 48–72h para transferência e corticoterapia. Prolongar a tocólise além de 48h não tem evidência que justifique o uso rotineiro — reservar a casos selecionados. Progesterona vaginal parece ser a opção mais segura para manutenção prolongada.</div>
+      <div class="dose"><span class="drug">Betametasona</span><span class="amt">12 mg IM/dia por 2 dias consecutivos</span></div>
+      <div class="two-col" style="margin-top:10px">
+        <div>
+          <div class="dose"><span class="drug">Nifedipina VO</span><span class="amt">ataque: 1 cápsula de 10 mg a cada 20 min até eficácia (máx. 3 cáps/h) → manutenção: 1 comp. de 20 mg 8/8h por 48h. Não usar em cardiopata ou hipertensa.</span></div>
+          <div class="dose"><span class="drug">Terbutalina EV</span><span class="amt">Fase 1 (ataque): 5 ampolas em 500 mL SG5%, iniciar 10–20 gotas/min, manter pulso materno &lt; 120 bpm e FCF &lt; 180 bpm; se preciso, +10–20 gotas/min a cada 20–30 min (máx. 80 gotas/min) por ~12h. Fase 2 (manutenção): reduzir 10–20 gotas/min a cada 20–30 min, mantendo a dose mínima eficaz por mais ~12h.</span></div>
+        </div>
+        <div>
+          <div class="dose"><span class="drug">Atosiban EV</span><span class="amt">Fase 1: 0,9 mL em bolus EV em 1 min. Fase 2: 2 frascos de 5 mL em 90 mL de soro, infusão de 24 mL/h por 3h (72 mL) + 8 mL/h por mais 3h30 (28 mL). Fase 3: 10 mL de atosiban em 90 mL de soro, 8 mL/h por até 45h. As 3 fases podem repetir-se até 3x em casos bem selecionados.</span></div>
+          <div class="dose"><span class="drug">Progesterona</span><span class="amt">200 mg/dia se colo curto</span></div>
+        </div>
+      </div>
+      <p style="font-size:12.5px;color:var(--ink-faint);margin:16px 0 8px">Ao internar, avaliar: hospital de referência, via de parto, idade e paridade, peso estimado, passado obstétrico, RCF, hemorragia de 2ª metade, infecção, apresentação, gemelaridade, intercorrências clínicas e vitalidade fetal.</p>
+      <div class="callout danger"><b>Evitar vácuo-extrator no prematuro</b>O crânio prematuro é mais frágil (ossificação incompleta) — o vácuo-extrator aumenta o risco de hemorragia intracraniana ao passar pelo canal de parto. Preferir outras estratégias de assistência ao expulsivo nesses casos.</div>
+    </div>
+  </section>
+
+  <!-- ================= HPP ================= -->
+  <section class="panel" id="panel-hpp" hidden>
+    <div class="panel-head">
+      <span class="kicker">Emergência obstétrica</span>
+      <h2>Hemorragia Pós-Parto (HPP)</h2>
+      <p class="lede">FIGO: perda ≥ 500 mL no parto vaginal ou ≥ 1000 mL na cesárea, nas primeiras 24h, com instabilidade hemodinâmica. HPP maciça: &gt; 2000 mL/24h com transfusão de 1200 mL (4 UI).</p>
+      <div class="stat-row">
+        <div class="stat"><b>150.000</b>mortes/ano no mundo (25% dos óbitos maternos)</div>
+        <div class="stat"><b>1 óbito</b>a cada 4 minutos</div>
+        <div class="stat"><b>0,2%</b>evoluem para histerectomia</div>
+      </div>
+    </div>
+
+    <div class="section c1">
+      <div class="section-head"><span class="section-num">1</span><h3>Classificação &amp; Etiologia</h3></div>
+      <div class="decision-wrap">
+        <div class="decision-box">Tempo de instalação</div>
+        <div class="branches">
+          <div class="branch">
+            <div class="branch-label">Primária — até 24h</div>
+            <div class="branch-body"><ul>
+              <li><b>Atonia uterina — 70%</b></li>
+              <li>Retenção placentária</li>
+              <li>Distúrbios de coagulação</li>
+              <li>Hematomas e lacerações</li>
+              <li>Inversão uterina</li>
+              <li>Rotura uterina</li>
+            </ul></div>
+          </div>
+          <div class="branch">
+            <div class="branch-label">Secundária — 6 a 12 semanas</div>
+            <div class="branch-body"><ul>
+              <li>Retenção placentária</li>
+              <li>Infecção puerperal</li>
+              <li>Coagulopatias</li>
+              <li>Hematomas</li>
+              <li>Mola hidatiforme</li>
+            </ul></div>
+          </div>
+        </div>
+      </div>
+      <p style="font-size:12.5px;color:var(--ink-faint);margin:20px 0 8px">Fatores de risco (baixo valor prognóstico individual — a maioria das HPP ocorre sem fator identificável):</p>
+      <div class="pills">
+        <span class="pill">Acretismo placentário</span><span class="pill">TP prolongado / induções</span>
+        <span class="pill">Parto e dequitação prolongados</span><span class="pill">Gestação múltipla</span>
+        <span class="pill">Feto grande</span><span class="pill">Cesárea anterior</span><span class="pill">Pré-eclâmpsia</span>
+      </div>
+
+      <p style="font-size:12.5px;color:var(--ink-faint);margin:20px 0 8px">Causas mecânicas — detalhe clínico:</p>
+      <div class="card-grid">
+        <div class="card"><span class="t">Inversão uterina</span><span class="v">Tração inadvertida do cordão antes da dequitação (pressa) → o fundo uterino inverte e sai pelo colo. Causa <b>choque hemorrágico + choque neurogênico</b> (não é só sangramento — a tração dos ligamentos gera resposta vagal). Reposicionar o quanto antes.</span></div>
+        <div class="card"><span class="t">Cotilédone aberrante retido</span><span class="v">Lobo placentário acessório que passa despercebido na dequitação (a placenta "parece" íntegra). Semanas depois a paciente volta sangrando ao eliminá-lo — causa clássica de HPP secundária.</span></div>
+        <div class="card"><span class="t">Acretismo placentário (accreta/increta/percreta)</span><span class="v">Placenta adere/invade além do normal — pode invadir bexiga ou intestino se anterior. Fatores associados: placenta prévia + cesárea anterior, gestação múltipla, feto grande, miomectomia prévia, pré-eclâmpsia. <b>Idealmente diagnosticado no pré-natal</b> para planejar o parto.</span></div>
+      </div>
+    </div>
+
+    <div class="section c3">
+      <div class="section-head"><span class="section-num">3</span><h3>Impacto Clínico</h3></div>
+      <div class="two-col">
+        <div class="card"><span class="t">Sequelas físicas</span><span class="v">Esterilidade, disfunções hormonais e orgânicas</span></div>
+        <div class="card"><span class="t">Sequelas emocionais</span><span class="v">Estresse pós-traumático, depressão</span></div>
+      </div>
+      <p style="font-size:12px;color:var(--ink-faint);margin-top:8px">Hemotransfusão em 0,4% dos casos · histerectomia em 0,2%. América Latina: Brasil atingiu 57% da meta de redução da mortalidade materna (meta ODM era 75%) — morte majoritariamente evitável (estratégia "Zero morte por hemorragia", OPAS 2018).</p>
+    </div>
+
+    <div class="section c5">
+      <div class="section-head"><span class="section-num">5</span><h3>Conduta</h3><span class="sub">sequência de resposta</span></div>
+      <div class="callout" style="margin-bottom:16px"><b>4º período (de Greenberg)</b>A primeira hora após o parto é onde a HPP mais passa despercebida — a paciente ainda não foi para o quarto, geralmente sob observação do anestesista. É aqui que a atonia silenciosa começa a sangrar sem que ninguém veja. Vigilância ativa nessa hora é a medida preventiva mais simples.</div>
+      <div class="chain">
+        <div class="chain-item"><b>Enfermagem</b> — iniciar medidas, avisar o médico imediatamente, registrar quadro clínico, conduta e plantonista avisado (nome e horário)</div>
+        <div class="chain-arrow">↓</div>
+        <div class="chain-item"><b>Médico assume imediatamente</b> a condução do caso</div>
+        <div class="chain-arrow">↓</div>
+        <div class="chain-item">Massagem + compressão uterina bimanual · 2 acessos venosos calibrosos (16G) em MMSS · infusão de cristaloide</div>
+        <div class="chain-arrow">↓</div>
+        <div class="chain-item">
+          <b>Uterotônicos em sequência</b>
+          <div class="dose"><span class="drug">Ocitocina</span><span class="amt">10–40 UI em 1000 mL SF EV, 250 mL/h</span></div>
+          <div class="dose"><span class="drug">Metilergonovina</span><span class="amt">1 amp (0,2 mg) IM — repetir em 20 min</span></div>
+          <div class="dose"><span class="drug">Misoprostol</span><span class="amt">800 mcg via retal</span></div>
+          <div class="dose"><span class="drug">Ácido tranexâmico</span><span class="amt">1 g EV lento, em 10 min</span></div>
+        </div>
+        <div class="chain-arrow">↓</div>
+        <div class="chain-item">Colher hemograma + coagulograma · estabilizar vias aéreas · sondagem vesical · avaliar necessidade de transfusão</div>
+        <div class="chain-arrow">↓</div>
+        <div class="chain-item">Se não houve partograma prévio, primeiro passo é a <b>revisão do canal de parto</b>. Terapia dirigida à causa: reparar lacerações vaginais (reexaminar na mesa se sangramento sem causa aparente) · curagem + CTG — usar a cureta puerperal, principalmente se a paciente chegou de outro serviço (maior chance de restos) · avaliar contratilidade uterina por palpação (atonia/hipotonia) · considerar distúrbio de coagulação</div>
+        <div class="chain-arrow">↓</div>
+        <div class="chain-item">Medidas de compressão antes de escalar: <b>saco de areia sobre o abdome</b> (máx. ~20 min) e/ou <b>balão intrauterino</b> (Bakri ou compressa/luva improvisada, se não houver o dispositivo) — já excluída a hipótese de restos</div>
+        <div class="chain-arrow">↓</div>
+        <div class="chain-item" style="border-color:var(--accent)"><b>Sem controle imediato</b> → transferir para o centro cirúrgico. Não adie a decisão: casos de demora na indicação de histerectomia já custaram a vida da paciente.</div>
+      </div>
+
+      <p style="font-size:12.5px;color:var(--ink-faint);margin:20px 0 8px">Intervenção cirúrgica, em ordem crescente de gravidade:</p>
+      <div class="decision-wrap">
+        <div class="decision-box">Hemorragia incontrolável</div>
+        <div class="branches">
+          <div class="branch">
+            <div class="branch-label">Laparotomia</div>
+            <div class="branch-body"><ul>
+              <li>Sutura de B-Lynch</li>
+              <li>Ligadura de artérias uterinas e útero-ovarianas</li>
+              <li>Ligadura de artéria ilíaca interna (hipogástrica)</li>
+              <li><b>Histerectomia</b></li>
+            </ul></div>
+          </div>
+          <div class="branch">
+            <div class="branch-label">Radiologia intervencionista</div>
+            <div class="branch-body"><ul><li>Embolização arterial</li><li>Oclusão arterial</li></ul></div>
+          </div>
+        </div>
+      </div>
+      <div class="callout" style="margin-top:16px"><b>Sutura de B-Lynch — técnica</b>Fio forte inabsorvível tipo braçadeira: entra na parede anterior do útero, passa por cima do fundo, sai na parede posterior, dá a volta e fecha na parte anterior — ao amarrar, comprime o útero mecanicamente e frequentemente controla a atonia. Mesmo com técnica correta, uma minoria evolui para nova hemorragia e histerectomia — documentar bem a conduta, pois o desfecho pode ser questionado mesmo quando o protocolo foi seguido à risca.</div>
+      <div class="callout" style="margin-top:10px"><b>Acretismo conhecido no pré-natal</b>Planejar a cesárea com equipe de cirurgia vascular disponível: pode-se posicionar balões de oclusão nas ilíacas antes da incisão, extrair o feto rapidamente evitando cortar a placenta, e só então trabalhar a exérese do acretismo com controle vascular ativo.</div>
+    </div>
+  </section>
+
+  <!-- ================= USO DE SUBSTÂNCIAS ================= -->
+  <section class="panel" id="panel-drogas" hidden>
+    <div class="panel-head">
+      <span class="kicker">Gestação de alto risco por exposição</span>
+      <h2>Uso de Substâncias na Gestação</h2>
+      <p class="lede">O uso raramente é isolado — tabaco, álcool, maconha e cocaína/crack costumam coexistir na mesma paciente. O uso é sistematicamente subestimado: raramente a própria gestante relata espontaneamente, por medo de implicações legais e culpa pelo possível dano fetal.</p>
+    </div>
+
+    <div class="section c1">
+      <div class="section-head"><span class="section-num">1</span><h3>Epidemiologia &amp; Comportamento da Gestante</h3></div>
+      <div class="card-grid" style="margin-bottom:14px">
+        <div class="card"><span class="t">Maconha na gestação</span><span class="v">Prevalência 0,8–5,3%; em adolescentes no 3º trimestre, em maternidade da periferia de São Paulo, 4,3% (Mitsuhiro et al., Addict Behav 2007)</span></div>
+        <div class="card"><span class="t">Cocaína/crack na gestação</span><span class="v">EUA: 0,9% (~45.000 RNs/ano, National Survey on Drug Use and Health). Brasil: ~2% em adolescentes (Mitsuhiro et al., Addict Behav 2007)</span></div>
+        <div class="card"><span class="t">Contexto de risco</span><span class="v">Aumento do consumo de álcool e drogas entre mulheres, majoritariamente em plena idade reprodutiva. Estudos de prevalência são raros; baixa produção científica no Brasil sobre o tema</span></div>
+      </div>
+      <div class="callout" style="margin-bottom:14px"><b>Por que o relato é raro</b>24–63% das gestantes negam o consumo — por implicações legais, sentimento de culpa por expor o feto, e porque entrevistas isoladas subestimam sistematicamente a prevalência real. Isso compromete medidas de saúde direcionadas.</div>
+      <p style="font-size:12.5px;color:var(--ink-faint);margin:0 0 8px">Transferência placentária por classe físico-química (Little &amp; Van Beveren, Semin Perinatol 1996;20(2):147–53):</p>
+      <div class="tbl-wrap">
+      <table class="tbl" style="font-size:12px">
+        <tr><th>Substância</th><th>Característica físico-química</th><th>Potencial de transferência</th></tr>
+        <tr><td>Tabaco</td><td>Lipofílico</td><td>Muito alto</td></tr>
+        <tr><td>Álcool</td><td>Lipofílico</td><td>Alto</td></tr>
+        <tr><td>Maconha</td><td>Altamente lipofílico</td><td>Muito alto</td></tr>
+        <tr><td>Cocaína</td><td>Moderadamente hidrofílico</td><td>Moderadamente alto</td></tr>
+        <tr><td>Solventes</td><td>Lipofílico</td><td>Muito alto</td></tr>
+      </table>
+      </div>
+    </div>
+
+    <div class="section c2">
+      <div class="section-head"><span class="section-num">2</span><h3>Efeitos por Substância</h3></div>
+      <div class="tbl-wrap">
+      <table class="tbl" style="font-size:12px">
+        <tr><th>Substância</th><th>Mecanismo / efeito obstétrico</th><th>Efeito neonatal</th></tr>
+        <tr><td><b>Tabaco</b></td><td>2.092 substâncias atravessam a barreira placentária</td><td>—</td></tr>
+        <tr><td><b>Álcool</b></td><td>Atravessa livremente a placenta; teratogênico — não existe dose segura estabelecida</td><td>Síndrome Alcoólica Fetal (anomalias faciais características)</td></tr>
+        <tr><td><b>Cocaína / crack</b></td><td>Vasoconstrição (age no cérebro, coração, intestino) → insuficiência placentária, por redução da colinesterase (metabólitos ecgonina e benzoilecgonina). Mais crises hipertensivas, mais placenta prévia/RPM, mais abortamento espontâneo, mais RCIU. Crise hipertensiva pode <b>mimetizar pré-eclâmpsia/eclâmpsia grave</b> — diagnóstico diferencial importante. No pré-natal: comportamento de risco para IST e maior exposição a violência.</td><td>Ausência de anomalias congênitas graves/teratogênicas típicas; sinais de abstinência ao nascer: agitação, tremor, sucção excessiva, choro agudo no berçário — muitas vezes só notados depois, quando o pediatra investiga. Distúrbios comportamentais e de aprendizado a longo prazo. Na amamentação: faltam estudos — consumo oral por crianças causa taquicardia, tontura, ataxia, irritabilidade, desorientação, delirium e convulsões; consumo deve ser desestimulado na amamentação.</td></tr>
+        <tr><td><b>Maconha</b></td><td>Ausência de complicações obstétricas clássicas descritas na literatura — não altera peso, altura ou circunferência cefálica ao nascer</td><td>Reduz produção de prolactina. THC no leite materno em concentração até 8× maior que no sangue materno; 0,8% da dose ingerida pela mãe é transmitida ao lactente — RN pode ter comprometimento do desenvolvimento motor, letargia e redução das mamadas (Del Rio &amp; Rodriguez, Rev Chil Nut 1993). Na infância: comprometimento cognitivo amplo, distúrbios do sono, déficit de compreensão em leitura, aprendizagem escolar comprometida, prejuízo na fluência verbal, déficit de atenção, transtornos de conduta (Fried &amp; Smith, Neurotoxicol Teratol 2001)</td></tr>
+        <tr><td><b>Solventes</b></td><td>Atravessa a barreira placentária com facilidade; faltam estudos quanto à teratogênese. Tolueno é a principal substância envolvida</td><td>Altas doses associadas a alterações fenotípicas semelhantes à Síndrome Alcoólica Fetal — RCIU, alterações de SNC e face</td></tr>
+        <tr><td><b>"Droga zumbi" (análogo sintético)</b></td><td>Mais potente que a maconha sintética; desorientação intensa dificulta a cooperação da paciente no trabalho de parto. Parece alterar a fertilidade na concepção; 1º trimestre interfere na organogênese; 2º trimestre aumenta parto prematuro e alteração neurológica</td><td>—</td></tr>
+      </table>
+      </div>
+      <div class="callout" style="margin-top:14px"><b>Desafio comum a todas as substâncias</b>Uso subestimado porque a gestante nega o consumo. Atravessam a barreira placentária e prejudicam o feto. O efeito teratogênico depende da quantidade consumida, e pode só se tornar evidente ao longo do desenvolvimento neurocomportamental da criança — não necessariamente ao nascer.</div>
+    </div>
+
+    <div class="section c4">
+      <div class="section-head"><span class="section-num">4</span><h3>Diagnóstico</h3></div>
+      <div class="chain" style="max-width:600px">
+        <div class="chain-item">Suspeitar ativamente — o relato espontâneo é raro; muitas vezes o diagnóstico só se confirma no pós-parto, quando o RN apresenta sinais de abstinência e o pediatra investiga a história materna</div>
+      </div>
+      <p style="font-size:12.5px;color:var(--ink-faint);margin:16px 0 8px">Rastreamento laboratorial por amostra biológica (limitações: investigação epidemiológica, tempo de metabolização das drogas, limitações técnicas laboratoriais, alto custo — Strano-Rossi S., Drug Alcohol Depend 1999;53(3):257-71):</p>
+      <div class="tbl-wrap">
+      <table class="tbl" style="font-size:12px">
+        <tr><th>Amostra</th><th>Período de detecção</th><th>Vantagens</th><th>Desvantagens</th></tr>
+        <tr><td>Urina</td><td>~1 semana</td><td>Baixo custo</td><td>Pouca abrangência</td></tr>
+        <tr><td>Líquido amniótico</td><td>&gt; 20 sem IG</td><td>Grande abrangência</td><td>Custo alto</td></tr>
+        <tr><td>Cabelo</td><td>1 cm = 1 mês de consumo</td><td>Grande abrangência e versatilidade</td><td>Custo alto; não detecta consumo recente</td></tr>
+      </table>
+      </div>
+    </div>
+
+    <div class="section c5">
+      <div class="section-head"><span class="section-num">5</span><h3>Conduta</h3></div>
+      <div class="pills">
+        <span class="pill">Equipe multidisciplinar — obstetrícia, psiquiatria, psicologia, assistência social/jurídica</span>
+        <span class="pill">Abordagem individualizada — não existe protocolo único</span>
+        <span class="pill">Tolerância à recaída</span>
+        <span class="pill">Rastrear IST associadas — sífilis e HIV são comuns nessa população</span>
+      </div>
+      <div class="callout" style="margin-top:14px"><b>Nem sempre é voluntário</b>Em alguns quadros a paciente não tem condição de decidir com autonomia plena (ex. intoxicação grave/desorientação) — tratamento involuntário pode ser necessário nesses casos específicos, mas a regra geral é o vínculo de confiança construído ao longo do pré-natal, não a imposição.</div>
+
+      <p style="font-size:12.5px;color:var(--ink-faint);margin:18px 0 8px">Níveis de cuidado ao dependente químico — modelo britânico (National Agency for Substance Misuse):</p>
+      <div class="tbl-wrap" style="margin-bottom:14px">
+      <table class="tbl" style="font-size:12px">
+        <tr><th>Nível</th><th>Descrição</th></tr>
+        <tr><td>1</td><td>Serviços de outras áreas, mais relacionados ao uso indevido de substâncias</td></tr>
+        <tr><td>2</td><td>Serviços para tratamento ou redução de danos existentes, de baixa exigência</td></tr>
+        <tr><td>3</td><td>Serviços especializados, estruturados e com base na comunidade</td></tr>
+        <tr><td>4</td><td>Serviços de internação altamente estruturados</td></tr>
+      </table>
+      </div>
+
+      <p style="font-size:12.5px;color:var(--ink-faint);margin:18px 0 8px">13 princípios do tratamento (NIDA, 2010) — resumo:</p>
+      <div class="card-grid" style="margin-bottom:14px">
+        <div class="card"><span class="t">Sem fórmula única</span><span class="v">Não há um único tratamento apropriado para todas as pessoas; deve estar disponível o tempo todo; precisa ter duração adequada</span></div>
+        <div class="card"><span class="t">Multidimensional</span><span class="v">Engloba as múltiplas necessidades do indivíduo, não apenas as drogas; reavaliado e modificado permanentemente conforme a necessidade do usuário</span></div>
+        <div class="card"><span class="t">Farmacoterapia + psicoterapia</span><span class="v">Psicoterapia é componente essencial (individual e em grupo); promover abordagens farmacoterápicas; visar o tratamento integrado das comorbidades</span></div>
+        <div class="card"><span class="t">Processo contínuo</span><span class="v">Desintoxicação é apenas o primeiro passo; não precisa ser voluntário para ser efetivo; uso de drogas durante o tratamento deve ser monitorado; desenvolver programas para DST/Aids; é um processo de longo prazo, com múltiplas etapas</span></div>
+      </div>
+
+      <p style="font-size:12.5px;color:var(--ink-faint);margin:18px 0 8px">Programas de tratamento específicos para mulheres (Diehl e cols., 2011) — elementos-chave:</p>
+      <div class="pills">
+        <span class="pill">Exclusivo para mulheres, com projeto terapêutico especializado</span>
+        <span class="pill">Participação dos filhos</span>
+        <span class="pill">Cuidados de GO / prevenção de Aids</span>
+        <span class="pill">Aborda questões do universo feminino</span>
+        <span class="pill">Trata comorbidades psiquiátricas</span>
+        <span class="pill">Staff predominantemente feminino</span>
+        <span class="pill">Suporte social (creches, transporte)</span>
+        <span class="pill">Envolve líderes comunitários e considera diferenças culturais locais</span>
+      </div>
+      <div class="callout danger" style="margin-top:14px"><b>Lacuna estrutural (Cremesp, 2010)</b>42% dos serviços sem retaguarda para internação · 66,7% sem médico clínico · 69,4% com falta de profissionais · 45,2% sem capacitação de equipes de saúde · 64,3% sem supervisão técnica · 16,7% sem responsável médico. Contexto relevante para calibrar expectativas ao encaminhar uma gestante para a rede.</div>
+    </div>
+  </section>
+
+  <!-- ================= DMG ================= -->
+  <section class="panel" id="panel-dmg" hidden>
+    <div class="panel-head">
+      <span class="kicker">Distúrbios metabólicos da gestação</span>
+      <h2>Diabetes Mellitus Gestacional (DMG)</h2>
+      <p class="lede">Hiperglicemia reconhecida pela primeira vez na gravidez, por resistência insulínica fisiológica da gestação superando a reserva pancreática materna — espectro que vai do DMG puro ao diabetes manifesto (overt), já presente mas não diagnosticado antes da gravidez.</p>
+      <div class="stat-row">
+        <div class="stat"><b>92 mg/dL</b>corte de jejum que diferencia normal de DMG</div>
+        <div class="stat"><b>24–28 sem</b>janela do TOTG 75g (idealmente na 24ª)</div>
+        <div class="stat"><b>≥126 mg/dL</b>jejum define diabetes manifesto (overt)</div>
+        <div class="stat"><b>35 sem</b>início da via 2 de produção de surfactante — atrasada na DMG</div>
+      </div>
+    </div>
+
+    <div class="section c1">
+      <div class="section-head"><span class="section-num">1</span><h3>Etiologia &amp; Classificação</h3></div>
+      <div class="card-grid">
+        <div class="card"><span class="t">Diabetes Gestacional (DMG)</span><span class="v">Hiperglicemia de grau variável reconhecida <b>pela primeira vez na gestação</b>, sem atingir critério de diabetes franco.</span></div>
+        <div class="card"><span class="t">Diabetes manifesto (overt) na gestação</span><span class="v">Hiperglicemia mais grave, já preenchendo critério de DM fora da gravidez (jejum ≥126) — provavelmente pré-existia sem diagnóstico prévio.</span></div>
+        <div class="card"><span class="t">Diabetes pré-gestacional</span><span class="v">DM tipo 1 ou tipo 2 <b>já conhecido antes</b> da gravidez.</span></div>
+      </div>
+      <p style="font-size:12.5px;color:var(--ink-faint);margin:14px 0 8px">Fatores de risco para rastreio ativo:</p>
+      <div class="pills">
+        <span class="pill">Glicemia de jejum alterada (&gt;100) em consulta prévia</span>
+        <span class="pill">Etnia não branca</span>
+        <span class="pill">Histórico familiar de DM2 em 1º grau</span>
+        <span class="pill">Ganho de peso excessivo / obesidade, sobretudo abdominal</span>
+        <span class="pill">Dieta hipercalórica</span>
+        <span class="pill">Sedentarismo</span>
+        <span class="pill">Macrossomia em gestação prévia (RN &gt; 4,5 kg)</span>
+      </div>
+      <div class="callout" style="margin-top:14px"><b>Pérola de RN grande sem pré-natal adequado</b>Parto com RN de 4,5 kg e sem rastreio prévio → mesma lógica diagnóstica se aplica no puerpério imediato, para não perder o diagnóstico.</div>
+    </div>
+
+    <div class="section c2">
+      <div class="section-head"><span class="section-num">2</span><h3>Fisiopatologia</h3></div>
+      <div class="chain">
+        <div class="chain-item">Resistência insulínica fisiológica da gravidez <b>aumenta progressivamente</b> — hormônios placentários (hPL, progesterona, cortisol, prolactina) antagonizam a insulina materna<span class="note">mecanismo adaptativo normal, para garantir aporte de glicose ao feto</span></div>
+        <div class="chain-arrow">↓</div>
+        <div class="chain-item">Em gestantes com <b>reserva pancreática insuficiente</b> para compensar essa resistência crescente → hiperglicemia materna</div>
+        <div class="chain-arrow">↓</div>
+        <div class="chain-item">Glicose atravessa livremente a placenta (transporte facilitado, ao contrário da insulina materna, que não atravessa) → <b>hiperglicemia fetal</b></div>
+        <div class="chain-arrow">↓</div>
+        <div class="chain-item">Hipertrofia e hiperplasia das células β pancreáticas fetais → <b>hiperinsulinemia fetal</b></div>
+        <div class="chain-arrow">↓</div>
+        <div class="chain-item" style="border-color:var(--accent)">Insulina fetal age como hormônio de crescimento → <b>macrossomia</b>, deposição de gordura e organomegalia<span class="note">no parto: interrupção abrupta do aporte materno de glicose, com hiperinsulinemia fetal ainda ativa → hipoglicemia neonatal</span></div>
+      </div>
+    </div>
+
+    <div class="section c3">
+      <div class="section-head"><span class="section-num">3</span><h3>Apresentação Clínica</h3></div>
+      <div class="decision-wrap">
+        <div class="decision-box">Repercussões da hiperglicemia</div>
+        <div class="branches">
+          <div class="branch">
+            <div class="branch-label">Complicações maternas</div>
+            <div class="branch-body"><ul>
+              <li>Maior taxa de cesárea (polidrâmnio, macrossomia)</li>
+              <li>Atraso no início da amamentação</li>
+              <li>Subgrupo de maior risco para complicações obstétricas e clínicas</li>
+              <li>Maior chance de recorrência em gestação futura</li>
+              <li>Maior risco de DM2 no futuro — mesmo quem só precisou de insulina na gestação</li>
+            </ul></div>
+          </div>
+          <div class="branch">
+            <div class="branch-label">Complicações fetais/neonatais</div>
+            <div class="branch-body"><ul>
+              <li>Macrossomia (crescimento fetal excessivo)</li>
+              <li>Síndrome do desconforto respiratório — atraso da via 2 de produção de surfactante, inclusive em RN a termo</li>
+              <li>Hipoglicemia e hiperbilirrubinemia neonatal</li>
+              <li>Tocotrauma: distocia de ombro → lesão de plexo braquial; fratura de clavícula em galho verde (melhor que fraturar do que lesar o plexo)</li>
+              <li>Hipóxia crônica → policitemia (↑ eritropoetina)</li>
+            </ul></div>
+          </div>
+          <div class="branch">
+            <div class="branch-label">Malformações (hiperglicemia periconcepcional/1º tri)</div>
+            <div class="branch-body">Defeitos de tubo neural (anencefalia, espinha bífida), síndrome de regressão caudal, anomalias renais, anomalias cardíacas.
+              <div class="callout" style="margin-top:8px"><b>Diagnóstico intraútero</b>Só estas 3 categorias são diagnosticáveis na gestação: anomalias renais, regressão caudal e anomalias cardíacas → indicação de morfológico + <b>ecocardiograma fetal com 24–28 semanas</b> em toda diabética.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="callout" style="margin-top:16px"><b>Programação fetal</b>Exposição intrauterina à hiperglicemia está associada a risco futuro de obesidade, diabetes e doença cardiovascular na prole.</div>
+    </div>
+
+    <div class="section c4">
+      <div class="section-head"><span class="section-num">4</span><h3>Diagnóstico &amp; Vigilância</h3></div>
+      <div class="decision-wrap">
+        <div class="decision-box">Rastreamento — depende do exame disponível</div>
+        <div class="branches">
+          <div class="branch">
+            <div class="branch-label">Só glicemia de jejum disponível</div>
+            <div class="branch-body"><ul>
+              <li>&lt; 92 mg/dL — normal → repetir TOTG 75g entre 24–28 sem (ideal: 24)</li>
+              <li>92–125 mg/dL — Diabetes Gestacional</li>
+              <li>≥ 126 mg/dL — Diabetes manifesto (overt)</li>
+            </ul></div>
+          </div>
+          <div class="branch">
+            <div class="branch-label">TOTG 75g disponível (24–28 sem)</div>
+            <div class="branch-body">Diabetes Gestacional se <b>qualquer um</b> dos valores atingido:<ul>
+              <li>Jejum ≥ 92 mg/dL</li>
+              <li>1ª hora ≥ 180 mg/dL</li>
+              <li>2ª hora ≥ 153 mg/dL</li>
+            </ul>Diabetes manifesto se jejum ≥ 126 mg/dL (ou glicemia ao acaso ≥ 200 mg/dL, confirmada).</div>
+          </div>
+        </div>
+      </div>
+      <p style="font-size:12.5px;color:var(--ink-faint);margin:18px 0 8px">Vigilância fetal:</p>
+      <div class="chain" style="max-width:640px">
+        <div class="chain-item"><b>Datação precoce</b> — USG de 1º trimestre (margem de erro ~5 dias) é essencial: sem ela, um feto que evolui para macrossomia tardia não permite saber se a idade gestacional real é diferente da suposta</div>
+        <div class="chain-arrow">·</div>
+        <div class="chain-item"><b>Polidrâmnio</b> — achado comum, por poliúria fetal osmótica secundária à hiperglicemia</div>
+        <div class="chain-arrow">·</div>
+        <div class="chain-item"><b>Provas de vitalidade</b> — CTG, Doppler e PBF seguem o padrão habitual; a melhor "prova de vitalidade", no entanto, é manter os níveis glicêmicos controlados</div>
+      </div>
+      <div class="callout danger" style="margin-top:16px"><b>Caso didático</b>Gestante 40 anos, 29 sem, pré-natal há 3 sem, PA 140x95, altura uterina 34 cm (acima do esperado), BCF 142, glicemia de jejum 140 e TOTG 210, com polidrâmnio. Diagnósticos concomitantes: <b>pré-eclâmpsia</b> (HAS + proteinúria) + <b>diabetes manifesto</b> (jejum ≥126) + polidrâmnio. Sulfato de magnésio <b>não</b> entra aqui — reservado para pré-eclâmpsia com sinais de gravidade ou iminência de eclâmpsia, ausentes neste quadro.</div>
+    </div>
+
+    <div class="section c5">
+      <div class="section-head"><span class="section-num">5</span><h3>Conduta</h3></div>
+      <p style="font-size:12.5px;color:var(--ink-faint);margin:0 0 8px">Tríade do tratamento — reeducação alimentar, exercício físico e medicação:</p>
+      <div class="pills" style="margin-bottom:14px">
+        <span class="pill">Caminhada</span><span class="pill">Natação</span><span class="pill">Ciclismo estacionário</span>
+        <span class="pill">Aeróbica de baixo impacto</span><span class="pill">Yoga</span><span class="pill">Pilates</span>
+      </div>
+      <div class="card-grid" style="margin-bottom:14px">
+        <div class="card"><span class="t">Insulina</span><span class="v">Droga de escolha quando dieta + exercício não controlam. Considerar internação inicial para acertar dose, com perfil glicêmico pré/pós café, almoço e jantar.</span></div>
+        <div class="card"><span class="t">Metformina</span><span class="v">Alternativa quando há dificuldade de adesão/uso de insulina. Dose 500–2.500 mg/dia.</span></div>
+      </div>
+      <div class="decision-wrap">
+        <div class="decision-box">Momento e via de parto</div>
+        <div class="branches">
+          <div class="branch">
+            <div class="branch-label">Controle glicêmico adequado</div>
+            <div class="branch-body">Pode aguardar até 40 semanas. <b>Não permitir pós-datismo</b> (41–42 sem) em diabética.</div>
+          </div>
+          <div class="branch">
+            <div class="branch-label">Controle glicêmico irregular</div>
+            <div class="branch-body">Interromper por volta de 37 semanas.</div>
+          </div>
+          <div class="branch">
+            <div class="branch-label">Via de parto</div>
+            <div class="branch-body">Definida pela macrossomia/avaliação obstétrica.
+              <div class="callout" style="margin-top:8px"><b>Pérola de prova</b>Diabetes gestacional <b>isoladamente não é indicação de cesárea</b> — pegadinha clássica.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p style="font-size:12.5px;color:var(--ink-faint);margin:18px 0 8px">Controle glicêmico intraparto ("euglicemia no parto") — manter 100–120 mg/dL:</p>
+      <div class="dose"><span class="drug">&lt; 70 mg/dL</span><span class="amt">corrigir com glicose</span></div>
+      <div class="dose"><span class="drug">&gt; 120 mg/dL</span><span class="amt">insulina subcutânea de ação rápida</span></div>
+      <div class="dose"><span class="drug">Parto programado (indução/cesárea)</span><span class="amt">metade a um terço da dose matinal de insulina + monitorização capilar + infusão contínua se necessário</span></div>
+    </div>
+  </section>
+
+  <!-- ================= RASTREIO 1º TRI ================= -->
+  <section class="panel" id="panel-rastreio1tri" hidden>
+    <div class="panel-head">
+      <span class="kicker">Medicina fetal · 11 sem 6 dias – 13 sem 6 dias</span>
+      <h2>Rastreamento de Aneuploidias no 1º Trimestre</h2>
+      <p class="lede">Janela ultrassonográfica combinada com marcadores bioquímicos para estimar o risco de aneuploidia fetal — a base do rastreamento combinado do primeiro trimestre.</p>
+      <div class="stat-row">
+        <div class="stat"><b>2,5 mm</b>corte de translucência nucal (FMF)</div>
+        <div class="stat"><b>11s6d–13s6d</b>janela do exame</div>
+        <div class="stat"><b>3</b>marcadores ultrassonográficos principais</div>
+      </div>
+    </div>
+
+    <div class="section c1">
+      <div class="section-head"><span class="section-num">1</span><h3>Frequência Cardíaca Fetal como marcador</h3></div>
+      <div class="chain" style="max-width:600px">
+        <div class="chain-item">Com ~6 semanas a FC fetal ainda é baixa (próxima de 100 bpm) e sobe progressivamente ao longo do 1º trimestre, estabilizando entre 120–160 bpm</div>
+        <div class="chain-arrow">↓</div>
+        <div class="chain-item">FC muito acima ou muito abaixo da faixa esperada para a idade gestacional pode se associar a <b>doença genética</b> (ex. trissomias, triploidia)</div>
+      </div>
+    </div>
+
+    <div class="section c2">
+      <div class="section-head"><span class="section-num">2</span><h3>Os 3 marcadores ultrassonográficos principais</h3></div>
+      <div class="card-grid">
+        <div class="card"><span class="t">Translucência nucal (TN)</span><span class="v">Acúmulo de líquido na região cervical fetal por alteração da drenagem linfática e disfunção cardíaca transitória do 1º trimestre. Ponto de corte FMF: <b>2,5 mm</b>. Quanto maior a TN, maior o risco de aneuploidia — mas também se altera em cardiopatias congênitas, infecções congênitas e doenças gênicas/metabólicas, não sendo exclusiva de aneuploidia.</span></div>
+        <div class="card"><span class="t">Osso nasal</span><span class="v">2º principal marcador. Ausência ou hipoplasia do osso nasal está associada a maior risco de aneuploidia, sobretudo trissomia do 21.</span></div>
+        <div class="card"><span class="t">Ducto venoso</span><span class="v">O sangue do cordão umbilical bifurca entre o ducto venoso (fração maior) e o ramo hepático. Onda de fluxo anormal no ducto venoso associa-se a maior risco de aneuploidia e de cardiopatia congênita associada.</span></div>
+      </div>
+    </div>
+
+    <div class="section c4">
+      <div class="section-head"><span class="section-num">4</span><h3>Rastreamento Combinado</h3></div>
+      <div class="chain">
+        <div class="chain-item"><b>Idade materna</b> + história obstétrica</div>
+        <div class="chain-arrow">+</div>
+        <div class="chain-item"><b>Marcadores ultrassonográficos</b> — translucência nucal, osso nasal, ducto venoso</div>
+        <div class="chain-arrow">+</div>
+        <div class="chain-item"><b>Marcadores bioquímicos</b> — PAPP-A e β-hCG livre (rotina em serviços privados; associável a Doppler de artérias uterinas para rastreio conjunto de pré-eclâmpsia)</div>
+        <div class="chain-arrow">↓</div>
+        <div class="chain-item" style="border-color:var(--accent)">Estimativa de <b>risco combinado</b> de aneuploidia — orienta indicação de teste não invasivo (NIPT) ou investigação invasiva (biópsia de vilo corial / amniocentese)</div>
+      </div>
+      <div class="callout" style="margin-top:14px"><b>Interpretação</b>TN normal, osso nasal presente e ducto venoso normal tranquilizam. A combinação de alterações nos 3 marcadores aumenta substancialmente a suspeita e indica investigação adicional.</div>
+    </div>
+  </section>
+
+  <!-- ================= MECANISMO DE PARTO & PARTOGRAMA ================= -->
+  <section class="panel" id="panel-mecparto" hidden>
+    <div class="panel-head">
+      <span class="kicker">Assistência ao parto</span>
+      <h2>Mecanismo de Parto &amp; Partograma</h2>
+      <p class="lede">Como o feto percorre o canal de parto (estática fetal + tempos do mecanismo) e como acompanhar a evolução do trabalho de parto pelo partograma (curva de Friedman).</p>
+      <div class="stat-row">
+        <div class="stat"><b>~96,5%</b>apresentação cefálica</div>
+        <div class="stat"><b>3–4%</b>apresentação pélvica</div>
+        <div class="stat"><b>Plano 0</b>espinhas ciáticas (De Lee/Hodge)</div>
+        <div class="stat"><b>2h</b>define parada secundária</div>
+      </div>
+    </div>
+
+    <div class="section c1">
+      <div class="section-head"><span class="section-num">1</span><h3>Estática Fetal</h3></div>
+      <div class="card-grid">
+        <div class="card"><span class="t">Atitude fetal</span><span class="v">Relação entre as partes do feto entre si — flexão generalizada é a atitude fisiológica: dois polos (cefálico e pélvico), o pélvico menos adaptável ao trajeto.</span></div>
+        <div class="card"><span class="t">Situação</span><span class="v">Relação entre o maior eixo fetal e o maior eixo uterino. Longitudinal na grande maioria dos casos; transversa/oblíqua são minoria.</span></div>
+        <div class="card"><span class="t">Apresentação</span><span class="v">Cefálica ~96,5% · pélvica/córmica 3–4%.</span></div>
+        <div class="card"><span class="t">Cefálica fletida vs. defletida</span><span class="v">Fletida (occipital) é a mais comum e mais favorável. Defletidas: 1º grau (bregmática), 2º grau (fronte/naso), 3º grau (face/mento).</span></div>
+      </div>
+      <div class="callout" style="margin-top:14px"><b>Pérola de prova</b>Entre as apresentações defletidas, a de <b>2º grau (fronte)</b> é a classicamente descrita como a que não nasce por via vaginal — apresenta o maior diâmetro cefálico ao estreito da bacia.</div>
+      <p style="font-size:12.5px;color:var(--ink-faint);margin:16px 0 8px">Pontos de referência para o toque, por apresentação (cada um localizado como direito/esquerdo, anterior/posterior, ou transverso):</p>
+      <div class="tbl-wrap">
+      <table class="tbl">
+        <tr><th>Apresentação</th><th>Ponto de referência</th></tr>
+        <tr><td>Fletida (occipital)</td><td>Occipício / bregma</td></tr>
+        <tr><td>Defletida 1º grau</td><td>Bregma</td></tr>
+        <tr><td>Defletida 2º grau</td><td>Glabela (naso)</td></tr>
+        <tr><td>Defletida 3º grau</td><td>Mento</td></tr>
+      </table>
+      </div>
+      <p style="font-size:12px;color:var(--ink-faint);margin-top:8px">Fontanelas: bregma (anterior, losangular — a "moleirinha") e lambda (posterior, triangular). Suturas: sagital, metópica e lambdóide — essencial é localizar o bregma para orientar o toque.</p>
+    </div>
+
+    <div class="section c2">
+      <div class="section-head"><span class="section-num">2</span><h3>Mecanismo do Parto — os tempos</h3></div>
+      <div class="chain">
+        <div class="chain-item"><b>Insinuação</b> — passagem do maior diâmetro cefálico pelo estreito superior da bacia<span class="note">referência: plano das espinhas ciáticas (plano zero de Lee, escola americana; equivalente ao plano de Hodge, escola europeia) — é o menor diâmetro da bacia</span></div>
+        <div class="chain-arrow">↓</div>
+        <div class="chain-item"><b>Descida</b> + <b>rotação interna</b> da cabeça</div>
+        <div class="chain-arrow">↓</div>
+        <div class="chain-item"><b>Desprendimento cefálico</b> — passa sob a sínfise púbica; em seguida roda externamente (restituição)</div>
+        <div class="chain-arrow">↓</div>
+        <div class="chain-item"><b>Desprendimento dos ombros</b> — anterior primeiro, depois posterior</div>
+      </div>
+      <div class="callout" style="margin-top:14px"><b>Estação e prognóstico</b>Tocar abaixo do plano zero (estação positiva) é sinal de que o parto vaginal deve evoluir. Acima de zero → atenção para desproporção céfalo-pélvica (DCP).</div>
+    </div>
+
+    <div class="section c4">
+      <div class="section-head"><span class="section-num">4</span><h3>Partograma — Curva de Friedman</h3></div>
+      <div class="chain" style="max-width:640px">
+        <div class="chain-item">Reduz o tempo de trabalho de parto e complicações (inclusive hemorrágicas). 4 períodos: dilatação, expulsivo, dequitação e <b>4º período de Greenberg</b></div>
+        <div class="chain-arrow">↓</div>
+        <div class="chain-item">A partir do 1º toque em fase ativa, traçam-se duas linhas: <b>linha de alerta</b> (1h) e <b>linha de ação</b> (4h após) — dilatação representada por um triângulo, descida por um círculo</div>
+        <div class="chain-arrow">↓</div>
+        <div class="chain-item">Padrão normal: dilatação e descida <b>não cruzam</b> a linha de alerta</div>
+      </div>
+      <p style="font-size:12.5px;color:var(--ink-faint);margin:18px 0 8px">Disfunções do partograma:</p>
+      <div class="card-grid">
+        <div class="card"><span class="t">Fase prolongada</span><span class="v">Dilatação ou descida evoluem mais lentamente que o esperado, cruzando a linha de alerta.</span></div>
+        <div class="card"><span class="t">Parada secundária</span><span class="v">2 toques com intervalo de 2h sem progressão de dilatação ou descida, cruzando a linha de ação.</span></div>
+        <div class="card"><span class="t">Parto taquitócico</span><span class="v">Contrações excessivas, evolução muito rápida — atenção a lacerações e sofrimento fetal agudo.</span></div>
+        <div class="card"><span class="t">DCP suspeitada</span><span class="v">Cabeça parada acima do plano zero, sem descida, mesmo com boa dilatação e contratilidade — sugere desproporção céfalo-pélvica.</span></div>
+      </div>
+      <div class="callout" style="margin-top:14px"><b>Manejo da parada por hipoatividade</b>Sem contração adequada e sem progressão: controlar a atividade uterina; a amniotomia (romper a bolsa) pode aumentar a contratilidade em casos selecionados.</div>
+    </div>
+
+    <div class="section c3">
+      <div class="section-head"><span class="section-num">3</span><h3>Distocias — causas e manobras</h3></div>
+      <div class="decision-wrap">
+        <div class="decision-box">Origem da distocia</div>
+        <div class="branches">
+          <div class="branch">
+            <div class="branch-label">Materna — funcional uterina</div>
+            <div class="branch-body">Alteração de contratilidade (hipoatividade, hipertonia, incoordenação); causas hormonais, prematuridade uterina, alteração nutricional.</div>
+          </div>
+          <div class="branch">
+            <div class="branch-label">Materna — partes moles</div>
+            <div class="branch-body">Anexial (tumores, útero bicorno), cervical, vaginal ou perineal.</div>
+          </div>
+          <div class="branch">
+            <div class="branch-label">Fetal</div>
+            <div class="branch-body">Macrossomia, apresentações anômalas, óbito fetal (mesmo assim, cesárea indicada se necessário), hidrocefalia.</div>
+          </div>
+        </div>
+      </div>
+      <p style="font-size:12.5px;color:var(--ink-faint);margin:20px 0 8px">Manobras específicas:</p>
+      <div class="card-grid">
+        <div class="card"><span class="t">Distocia de ombro</span><span class="v">Reposicionar as pernas maternas em hiperflexão para melhorar o ângulo de saída. <b>Nunca tracionar sozinho</b> — se mal conduzida, risco de lesão de plexo braquial. Fratura de clavícula em galho verde é preferível à lesão do plexo.</span></div>
+        <div class="card"><span class="t">Parto pélvico (manobra de Bracht)</span><span class="v">Nunca conduzir sozinho — um auxiliar faz a "alça de cordão" enquanto o feto desprende. No desprendimento final, nunca tracionar reto: rebater o feto sobre o abdome materno.</span></div>
+        <div class="card"><span class="t">Hidrocefalia com DCP</span><span class="v">Cefalocentese — esvaziar o líquido do polo cefálico dilatado permite parto vaginal, evitando cesárea em feto de prognóstico grave.</span></div>
+        <div class="card"><span class="t">Fórceps vs. vácuo-extrator</span><span class="v">Ambos são seguros na mão de quem tem experiência — o problema não é o instrumento, é a técnica de quem aplica. O vácuo-extrator moderno desliga automaticamente se a tração for excessiva.</span></div>
+      </div>
+      <div class="callout danger" style="margin-top:14px"><b>Prematuro</b>Evitar vácuo-extrator — o crânio prematuro é mais frágil (ossificação incompleta), com maior risco de hemorragia intracraniana ao passar pelo canal de parto.</div>
+    </div>
+  </section>
+
+  <!-- ================= LEIOMIOMA ================= -->
+  <section class="panel" id="panel-mioma" hidden>
+    <div class="panel-head">
+      <span class="kicker">Ginecologia — tumor benigno mais comum da mulher</span>
+      <h2>Leiomioma Uterino (Mioma)</h2>
+      <p class="lede">Tumor benigno estrogênio-dependente mais comum da mulher. Degeneração maligna (sarcomatosa) é rara, menos de 0,5% dos casos.</p>
+      <div class="stat-row">
+        <div class="stat"><b>&lt;0,5%</b>degeneração sarcomatosa</div>
+        <div class="stat"><b>FIGO 0–8</b>classificação por localização</div>
+        <div class="stat"><b>≥50%</b>invasão miometrial (tipo 2) → indicação de cesárea</div>
+      </div>
+    </div>
+
+    <div class="section c1">
+      <div class="section-head"><span class="section-num">1</span><h3>Fatores de Risco</h3></div>
+      <div class="pills">
+        <span class="pill">Etnia negra</span>
+        <span class="pill">Alteração de fatores endócrino-reprodutivos (estrogênio/progesterona)</span>
+        <span class="pill">Baixa paridade — "mulher que não pare filho, pare mioma"</span>
+        <span class="pill">Menarca precoce → menopausa tardia</span>
+        <span class="pill">Dieta rica em carne vermelha</span>
+        <span class="pill">Consumo de álcool</span>
+      </div>
+      <div class="callout" style="margin-top:14px"><b>Pegadinhas de prova</b>Menarca precoce associa-se a menopausa <b>tardia</b>, não precoce. Consumo de vegetais <b>reduz</b> o risco. Anticoncepcional hormonal <b>não é contraindicado</b>. Obesidade tem evidência inconclusiva como fator de risco.</div>
+    </div>
+
+    <div class="section c2">
+      <div class="section-head"><span class="section-num">2</span><h3>Fisiopatologia</h3></div>
+      <div class="chain" style="max-width:560px">
+        <div class="chain-item">Tumor <b>estrogênio-dependente</b> — cresce sob estímulo hormonal, inclusive na gravidez (estímulo placentário)</div>
+        <div class="chain-arrow">↓</div>
+        <div class="chain-item">Na menopausa, a queda do estrogênio leva o mioma a <b>regredir e calcificar</b></div>
+      </div>
+    </div>
+
+    <div class="section c3">
+      <div class="section-head"><span class="section-num">3</span><h3>Apresentação Clínica</h3></div>
+      <div class="card-grid">
+        <div class="card"><span class="t">Sangramento uterino anormal</span><span class="v">Aumento de quantidade e duração da menstruação — achado mais característico</span></div>
+        <div class="card"><span class="t">Dor pélvica / compressão</span><span class="v">Sintomas de compressão urinária, intestinal ou venosa, conforme o volume</span></div>
+        <div class="card"><span class="t">Infertilidade / abortamento</span><span class="v">Sobretudo miomas submucosos; risco de abortamento por crescimento do mioma na gravidez</span></div>
+        <div class="card"><span class="t">Assintomático</span><span class="v">A maioria dos miomas é assintomática e não requer tratamento</span></div>
+      </div>
+      <div class="callout" style="margin-top:14px"><b>Achado ao exame</b>Útero aumentado ao toque bimanual — em casos volumosos, pode alcançar a cicatriz umbilical.</div>
+    </div>
+
+    <div class="section c4">
+      <div class="section-head"><span class="section-num">4</span><h3>Classificação FIGO &amp; Diagnóstico</h3></div>
+      <div class="tbl-wrap">
+      <table class="tbl">
+        <tr><th>Tipo</th><th>Localização</th></tr>
+        <tr><td>0</td><td>Submucoso, totalmente intracavitário (pediculado)</td></tr>
+        <tr><td>1</td><td>Submucoso, &lt; 50% de invasão miometrial</td></tr>
+        <tr><td>2</td><td>Submucoso, ≥ 50% de invasão miometrial</td></tr>
+        <tr><td>3</td><td>Intramural, em contato com o endométrio, 100% miometrial</td></tr>
+        <tr><td>4</td><td>Intramural, sem contato com a cavidade ou a serosa</td></tr>
+        <tr><td>5–7</td><td>Subseroso, com graus decrescentes de componente intramural</td></tr>
+        <tr><td>8</td><td>Outras localizações (ex. cervical, parasitário)</td></tr>
+      </table>
+      </div>
+      <div class="callout" style="margin-top:14px"><b>Pérola de prova</b>Mioma tipo 2 (≥ 50% de invasão miometrial) que exige cirurgia com abertura extensa do miométrio deixa cicatriz miometrial — contraindicação relativa a parto vaginal, com <b>indicação de cesárea</b> na gestação futura.</div>
+      <p style="font-size:12.5px;color:var(--ink-faint);margin:18px 0 8px">Diagnóstico:</p>
+      <div class="chain">
+        <div class="chain-item"><b>Anamnese + toque bimanual</b> — avalia volume uterino e mobilidade</div>
+        <div class="chain-arrow">↓</div>
+        <div class="chain-item"><b>USG</b> transvaginal e/ou pélvica — localização, volume, mobilidade</div>
+        <div class="chain-arrow">↓</div>
+        <div class="chain-item"><b>Histerossonografia</b> (infusão de solução salina) — delineia miomas submucosos</div>
+        <div class="chain-arrow">↓</div>
+        <div class="chain-item"><b>Histeroscopia</b> — diagnóstico e tratamento simultâneo de miomas submucosos</div>
+        <div class="chain-arrow">↓</div>
+        <div class="chain-item"><b>RM / TC contrastada</b> — quando há dúvida de comprometimento ureteral em miomas volumosos</div>
+      </div>
+      <div class="callout danger" style="margin-top:14px"><b>Antes de histerectomia eletiva</b>Sempre descartar gravidez (β-hCG na véspera) — erro clássico é abrir o útero para miomectomia/histerectomia e encontrar uma gestação em curso.</div>
+      <p style="font-size:12.5px;color:var(--ink-faint);margin:18px 0 8px">Diagnóstico diferencial de sangramento uterino anormal — PALM-COEIN:</p>
+      <div class="pills">
+        <span class="pill">Pólipo</span><span class="pill">Adenomiose</span><span class="pill">Leiomioma</span><span class="pill">Malignidade</span>
+        <span class="pill">Coagulopatia</span><span class="pill">disfunção Ovulatória</span><span class="pill">Endométrio</span>
+        <span class="pill">Iatrogênico</span><span class="pill">Não classificado</span>
+      </div>
+      <div class="callout danger" style="margin-top:14px"><b>Sangramento pós-menopausa</b>Mioma <b>não</b> costuma causar sangramento pós-menopausa (sem estrogênio, ele regride). Sangramento na pós-menopausa é sinal de câncer de endométrio até que se prove o contrário.</div>
+    </div>
+
+    <div class="section c5">
+      <div class="section-head"><span class="section-num">5</span><h3>Conduta</h3></div>
+      <div class="pills" style="margin-bottom:14px">
+        <span class="pill on">Assintomático → não tratar</span>
+        <span class="pill">Indicação de cirurgia: sintomas com anemia, dor, compressão ou infertilidade</span>
+      </div>
+      <div class="card-grid">
+        <div class="card"><span class="t">Miomectomia</span><span class="v">Histeroscópica para submucosos (tipos 0–2); laparotômica/laparoscópica para os demais. Preserva a fertilidade.</span></div>
+        <div class="card"><span class="t">Embolização de artéria uterina</span><span class="v">Alternativa à cirurgia, poupa fertilidade em casos selecionados.</span></div>
+        <div class="card"><span class="t">Histerectomia</span><span class="v">Prole definida + sintomas incontroláveis.</span></div>
+      </div>
+      <div class="callout danger" style="margin-top:14px"><b>Nunca operar na gravidez ou no pós-parto imediato</b>O sangramento é excessivo (risco de choque hemorrágico). Conduta expectante — a involução puerperal do útero tende a regredir o mioma também.</div>
+    </div>
+  </section>
+
+  </main>
+</div>
+
+<footer class="page">
+  Resumo de estudo. Doses, condutas e valores de corte condensados para revisão: confirme sempre no protocolo institucional vigente e nas diretrizes do Ministério da Saúde e da FEBRASGO antes de aplicar na prática. Nomes de manobras com identificação incerta estão sinalizados no texto.
+</footer>
+
+<script>
+const panels = document.getElementById('main');
+const nav = document.getElementById('topicNav');
+
+function show(id){
+  document.querySelectorAll('.panel').forEach(p=>p.hidden = p.id!==('panel-'+id));
+  nav.querySelectorAll('.topic-btn').forEach(b=>b.setAttribute('aria-selected', b.dataset.panel===id ? 'true':'false'));
+  try{ localStorage.setItem('altorisco-tab', id); }catch(e){}
+}
+nav.addEventListener('click', e=>{
+  const btn = e.target.closest('.topic-btn');
+  if(!btn) return;
+  show(btn.dataset.panel);
+});
+let initial = 'pe';
+try{ const saved = localStorage.getItem('altorisco-tab'); if(saved) initial = saved; }catch(e){}
+document.addEventListener('DOMContentLoaded', ()=> show(document.getElementById('panel-'+initial) ? initial : 'pe'));
+</script>
+
+
+
+<style id="v4-meu-locus">
+/* V4 meu locus: sobrescreve os tokens e as fontes do material original */
+:root{color-scheme:dark;--accent:#D9B8FF!important;--accent-ink:#E9D8FF!important;--accent-soft:#2E2160!important;--amber:#FBBF6A!important;--amber-soft:#3A2A14!important;--bg:#100C2A!important;--danger:#FF8FA3!important;--indigo:#A8B4FF!important;--indigo-soft:#1E2458!important;--ink:#EDE6FF!important;--ink-faint:#8E83B0!important;--ink-soft:#B9AED6!important;--line:#3A2F66!important;--line-strong:#4F4285!important;--shadow:0 1px 2px rgba(0,0,0,.45)!important;--slate:#A9A3C9!important;--slate-soft:#241E48!important;--surface:rgba(26,20,64,.88)!important;--surface-2:rgba(40,30,86,.88)!important;--teal:#7FD4E0!important;--teal-soft:#12304A!important;}
+html{background:#0B0820}
+body{background:url("padrao-lilas.png") 0 0/620px auto repeat,
+  radial-gradient(760px 460px at 50% -6%,rgba(168,96,216,.34) 0%,rgba(168,96,216,0) 62%),
+  radial-gradient(600px 420px at 100% 100%,rgba(58,91,208,.18) 0%,rgba(58,91,208,0) 60%),
+  linear-gradient(180deg,#100C2A 0%,#0B0820 100%)!important;background-attachment:fixed!important;background-color:#100C2A!important;color:#EDE6FF!important;
+  font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;margin:0}
+h1,h2{font-family:"Playfair Display",Georgia,serif!important;letter-spacing:-.01em}
+h1{font-weight:800!important}
+a{color:#D9B8FF}
+::selection{background:#A860D8;color:#fff}
+.ml-top{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
+  max-width:1100px;margin:0 auto;padding:14px 16px 0;font-family:Inter,system-ui,sans-serif}
+.ml-back{color:#D9B8FF;text-decoration:none;font-size:.9rem;font-weight:600;border:1px solid rgba(216,184,255,.26);
+  border-radius:99px;padding:6px 14px;background:rgba(160,96,216,.10)}
+.ml-back:hover,.ml-back:focus-visible{background:rgba(160,96,216,.22);outline:none}
+.ml-brand{font-family:"Playfair Display",Georgia,serif;font-weight:800;font-size:1.15rem;color:#EDE6FF;letter-spacing:-.01em}
+.ml-brand i{font-style:italic;background:linear-gradient(90deg,#3A5BD0,#A860D8);-webkit-background-clip:text;background-clip:text;color:transparent;padding-right:.08em}
+.ml-note{max-width:1100px;margin:10px auto 0;padding:0 16px;font-family:Inter,system-ui,sans-serif;font-size:.82rem;color:#B9AED6}
+.ml-note span{display:block;border:1px solid rgba(216,184,255,.26);border-left:3px solid #A860D8;border-radius:8px;padding:8px 12px;background:rgba(160,96,216,.08)}
+.ml-warn{position:sticky;top:0;z-index:60;background:#2A0F2E;border-bottom:1px solid #FB923C;color:#FFE4CC;
+  font-family:Inter,system-ui,sans-serif;font-size:.85rem;line-height:1.4;padding:8px 16px;text-align:center}
+.ml-warn b{color:#FB923C}
+@media print{.ml-top,.ml-note,.ml-warn{display:none}}
+</style>
+</body>
+</html>
